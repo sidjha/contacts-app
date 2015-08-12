@@ -15,6 +15,7 @@
 		634732611B7B1623009B0D3B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6347325F1B7B1623009B0D3B /* LaunchScreen.xib */; };
 		6347326D1B7B1623009B0D3B /* mContactAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6347326C1B7B1623009B0D3B /* mContactAppTests.m */; };
 		634732781B7B173E009B0D3B /* cardBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634732771B7B173E009B0D3B /* cardBackViewController.m */; };
+		6347327B1B7B3425009B0D3B /* settingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6347327A1B7B3425009B0D3B /* settingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		6347326C1B7B1623009B0D3B /* mContactAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mContactAppTests.m; sourceTree = "<group>"; };
 		634732761B7B173E009B0D3B /* cardBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cardBackViewController.h; sourceTree = "<group>"; };
 		634732771B7B173E009B0D3B /* cardBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cardBackViewController.m; sourceTree = "<group>"; };
+		634732791B7B3425009B0D3B /* settingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingViewController.h; sourceTree = "<group>"; };
+		6347327A1B7B3425009B0D3B /* settingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +69,8 @@
 		634732441B7B1623009B0D3B = {
 			isa = PBXGroup;
 			children = (
+				634732791B7B3425009B0D3B /* settingViewController.h */,
+				6347327A1B7B3425009B0D3B /* settingViewController.m */,
 				634732761B7B173E009B0D3B /* cardBackViewController.h */,
 				634732771B7B173E009B0D3B /* cardBackViewController.m */,
 				6347324F1B7B1623009B0D3B /* mContactApp */,
@@ -226,6 +231,7 @@
 			files = (
 				634732591B7B1623009B0D3B /* ViewController.m in Sources */,
 				634732781B7B173E009B0D3B /* cardBackViewController.m in Sources */,
+				6347327B1B7B3425009B0D3B /* settingViewController.m in Sources */,
 				634732561B7B1623009B0D3B /* AppDelegate.m in Sources */,
 				634732531B7B1623009B0D3B /* main.m in Sources */,
 			);
