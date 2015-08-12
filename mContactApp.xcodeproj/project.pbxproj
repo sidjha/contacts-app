@@ -14,6 +14,7 @@
 		6347325E1B7B1623009B0D3B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6347325D1B7B1623009B0D3B /* Images.xcassets */; };
 		634732611B7B1623009B0D3B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6347325F1B7B1623009B0D3B /* LaunchScreen.xib */; };
 		6347326D1B7B1623009B0D3B /* mContactAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6347326C1B7B1623009B0D3B /* mContactAppTests.m */; };
+		634732781B7B173E009B0D3B /* cardBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634732771B7B173E009B0D3B /* cardBackViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		634732661B7B1623009B0D3B /* mContactAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mContactAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6347326B1B7B1623009B0D3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6347326C1B7B1623009B0D3B /* mContactAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mContactAppTests.m; sourceTree = "<group>"; };
+		634732761B7B173E009B0D3B /* cardBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cardBackViewController.h; sourceTree = "<group>"; };
+		634732771B7B173E009B0D3B /* cardBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cardBackViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 		634732441B7B1623009B0D3B = {
 			isa = PBXGroup;
 			children = (
+				634732761B7B173E009B0D3B /* cardBackViewController.h */,
+				634732771B7B173E009B0D3B /* cardBackViewController.m */,
 				6347324F1B7B1623009B0D3B /* mContactApp */,
 				634732691B7B1623009B0D3B /* mContactAppTests */,
 				6347324E1B7B1623009B0D3B /* Products */,
@@ -220,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				634732591B7B1623009B0D3B /* ViewController.m in Sources */,
+				634732781B7B173E009B0D3B /* cardBackViewController.m in Sources */,
 				634732561B7B1623009B0D3B /* AppDelegate.m in Sources */,
 				634732531B7B1623009B0D3B /* main.m in Sources */,
 			);
