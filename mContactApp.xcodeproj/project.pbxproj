@@ -16,6 +16,8 @@
 		6347326D1B7B1623009B0D3B /* mContactAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6347326C1B7B1623009B0D3B /* mContactAppTests.m */; };
 		634732781B7B173E009B0D3B /* cardBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634732771B7B173E009B0D3B /* cardBackViewController.m */; };
 		6347327B1B7B3425009B0D3B /* settingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6347327A1B7B3425009B0D3B /* settingViewController.m */; };
+		637C7D441B7C7E4800E9B855 /* cardListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637C7D431B7C7E4800E9B855 /* cardListViewController.m */; };
+		637C7D461B7C92DD00E9B855 /* image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 637C7D451B7C92DD00E9B855 /* image1.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,9 @@
 		634732771B7B173E009B0D3B /* cardBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cardBackViewController.m; sourceTree = "<group>"; };
 		634732791B7B3425009B0D3B /* settingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingViewController.h; sourceTree = "<group>"; };
 		6347327A1B7B3425009B0D3B /* settingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingViewController.m; sourceTree = "<group>"; };
+		637C7D421B7C7E4800E9B855 /* cardListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cardListViewController.h; sourceTree = "<group>"; };
+		637C7D431B7C7E4800E9B855 /* cardListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cardListViewController.m; sourceTree = "<group>"; };
+		637C7D451B7C92DD00E9B855 /* image1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +74,9 @@
 		634732441B7B1623009B0D3B = {
 			isa = PBXGroup;
 			children = (
+				637C7D451B7C92DD00E9B855 /* image1.jpg */,
+				637C7D421B7C7E4800E9B855 /* cardListViewController.h */,
+				637C7D431B7C7E4800E9B855 /* cardListViewController.m */,
 				634732791B7B3425009B0D3B /* settingViewController.h */,
 				6347327A1B7B3425009B0D3B /* settingViewController.m */,
 				634732761B7B173E009B0D3B /* cardBackViewController.h */,
@@ -210,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6347325C1B7B1623009B0D3B /* Main.storyboard in Resources */,
+				637C7D461B7C92DD00E9B855 /* image1.jpg in Resources */,
 				634732611B7B1623009B0D3B /* LaunchScreen.xib in Resources */,
 				6347325E1B7B1623009B0D3B /* Images.xcassets in Resources */,
 			);
@@ -231,6 +240,7 @@
 			files = (
 				634732591B7B1623009B0D3B /* ViewController.m in Sources */,
 				634732781B7B173E009B0D3B /* cardBackViewController.m in Sources */,
+				637C7D441B7C7E4800E9B855 /* cardListViewController.m in Sources */,
 				6347327B1B7B3425009B0D3B /* settingViewController.m in Sources */,
 				634732561B7B1623009B0D3B /* AppDelegate.m in Sources */,
 				634732531B7B1623009B0D3B /* main.m in Sources */,

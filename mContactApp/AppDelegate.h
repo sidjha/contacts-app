@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "cardListViewController.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-
+{
+    cardListViewController *viewC;
+}
 @property (strong, nonatomic) UIWindow *window;
 
 
