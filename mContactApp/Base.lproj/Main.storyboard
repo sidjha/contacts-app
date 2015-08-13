@@ -241,7 +241,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vzs-Jt-R86">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vzs-Jt-R86">
                                 <rect key="frame" x="20" y="101" width="53" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="53" id="bNW-k3-mLZ"/>
@@ -251,7 +251,7 @@
                                 <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rate this app" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIF-FD-rU5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate this app" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIF-FD-rU5">
                                 <rect key="frame" x="20" y="149" width="134" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="134" id="GJK-rg-eK2"/>
@@ -261,7 +261,7 @@
                                 <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contacts us : info@mesh8.co" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtJ-Ri-w3K">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts us : info@mesh8.co" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtJ-Ri-w3K">
                                 <rect key="frame" x="20" y="196" width="238" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="MFP-Le-75Y"/>
@@ -276,7 +276,7 @@
                         <constraints>
                             <constraint firstItem="RIF-FD-rU5" firstAttribute="top" secondItem="Vzs-Jt-R86" secondAttribute="bottom" constant="27" id="2hS-Kt-dSe"/>
                             <constraint firstItem="ZtJ-Ri-w3K" firstAttribute="leading" secondItem="WV4-Ti-EsF" secondAttribute="leading" constant="20" id="HoZ-lx-9CH"/>
-                            <constraint firstItem="Vzs-Jt-R86" firstAttribute="top" secondItem="bHb-99-IMx" secondAttribute="bottom" constant="81" id="Q3F-Nn-G7q"/>
+                            <constraint firstItem="Vzs-Jt-R86" firstAttribute="top" secondItem="bHb-99-IMx" secondAttribute="bottom" constant="37" id="Q3F-Nn-G7q"/>
                             <constraint firstItem="RIF-FD-rU5" firstAttribute="leading" secondItem="WV4-Ti-EsF" secondAttribute="leading" constant="20" id="SGH-Ts-DEI"/>
                             <constraint firstItem="Vzs-Jt-R86" firstAttribute="leading" secondItem="WV4-Ti-EsF" secondAttribute="leading" constant="20" id="ZXp-LA-ZkW"/>
                             <constraint firstItem="ZtJ-Ri-w3K" firstAttribute="top" secondItem="RIF-FD-rU5" secondAttribute="bottom" constant="26" id="g3Y-4u-Y61"/>
@@ -284,17 +284,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="5TI-Eb-GaV"/>
                     <navigationItem key="navigationItem" title="Settings" id="BF9-oC-Si4">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="6XZ-AP-GLy">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WA6-LN-DpE">
-                                <rect key="frame" x="-23" y="-15" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="dismisView:" destination="cS7-3O-XHd" eventType="touchUpInside" id="hbs-Qc-znH"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Back" id="kmu-OL-65R">
+                            <connections>
+                                <action selector="dismisView:" destination="cS7-3O-XHd" id="fD5-Vx-0zP"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

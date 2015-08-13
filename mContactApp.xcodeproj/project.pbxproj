@@ -174,7 +174,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
-				ORGANIZATIONNAME = "Pankaj Bhardwaj";
+				ORGANIZATIONNAME = "Mesh8 Inc";
 				TargetAttributes = {
 					6347324C1B7B1623009B0D3B = {
 						CreatedOnToolsVersion = 6.4;
@@ -428,6 +428,7 @@
 				634732721B7B1624009B0D3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		634732731B7B1624009B0D3B /* Build configuration list for PBXNativeTarget "mContactAppTests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +437,7 @@
 				634732751B7B1624009B0D3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
