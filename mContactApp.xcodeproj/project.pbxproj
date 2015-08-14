@@ -17,7 +17,7 @@
 		634732781B7B173E009B0D3B /* cardBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634732771B7B173E009B0D3B /* cardBackViewController.m */; };
 		6347327B1B7B3425009B0D3B /* settingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6347327A1B7B3425009B0D3B /* settingViewController.m */; };
 		637C7D441B7C7E4800E9B855 /* cardListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637C7D431B7C7E4800E9B855 /* cardListViewController.m */; };
-		637C7D461B7C92DD00E9B855 /* image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 637C7D451B7C92DD00E9B855 /* image1.jpg */; };
+		637C7D4C1B7DB60200E9B855 /* socialAccountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,8 @@
 		6347327A1B7B3425009B0D3B /* settingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingViewController.m; sourceTree = "<group>"; };
 		637C7D421B7C7E4800E9B855 /* cardListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cardListViewController.h; sourceTree = "<group>"; };
 		637C7D431B7C7E4800E9B855 /* cardListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cardListViewController.m; sourceTree = "<group>"; };
-		637C7D451B7C92DD00E9B855 /* image1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpg; sourceTree = "<group>"; };
+		637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socialAccountListViewController.h; sourceTree = "<group>"; };
+		637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = socialAccountListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +75,8 @@
 		634732441B7B1623009B0D3B = {
 			isa = PBXGroup;
 			children = (
-				637C7D451B7C92DD00E9B855 /* image1.jpg */,
+				637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */,
+				637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */,
 				637C7D421B7C7E4800E9B855 /* cardListViewController.h */,
 				637C7D431B7C7E4800E9B855 /* cardListViewController.m */,
 				634732791B7B3425009B0D3B /* settingViewController.h */,
@@ -218,7 +220,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6347325C1B7B1623009B0D3B /* Main.storyboard in Resources */,
-				637C7D461B7C92DD00E9B855 /* image1.jpg in Resources */,
 				634732611B7B1623009B0D3B /* LaunchScreen.xib in Resources */,
 				6347325E1B7B1623009B0D3B /* Images.xcassets in Resources */,
 			);
@@ -242,6 +243,7 @@
 				634732781B7B173E009B0D3B /* cardBackViewController.m in Sources */,
 				637C7D441B7C7E4800E9B855 /* cardListViewController.m in Sources */,
 				6347327B1B7B3425009B0D3B /* settingViewController.m in Sources */,
+				637C7D4C1B7DB60200E9B855 /* socialAccountListViewController.m in Sources */,
 				634732561B7B1623009B0D3B /* AppDelegate.m in Sources */,
 				634732531B7B1623009B0D3B /* main.m in Sources */,
 			);

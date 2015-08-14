@@ -25,6 +25,7 @@
     screenWidth = screenSize.width;
     screenHeight = screenSize.height;
     self.view.backgroundColor = [UIColor blackColor];
+
 }
 
 - (void)didReceiveMemoryWarning {
