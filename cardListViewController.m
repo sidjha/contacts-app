@@ -26,7 +26,7 @@
     screenWidth = screenSize.width;
     screenHeight = screenSize.height;
     // Do any additional setup after loading the view, typically from a nib.
-    NSArray  *friendList = [[NSArray alloc] initWithObjects:@"Siddharth Jha",@"Net",@"Ray",@"Kim",@"Jack",@"Bob",nil];
+    NSArray  *friendList = [[NSArray alloc] initWithObjects:@"Siddharth Jha",@"Net",@"Ray",@"Kim",@"Jack",@"Bob",@"ABC",@"wep",@"foo",@"boo",@"rob",nil];
     [self addDynamicFriendList:friendList];
 }
 
@@ -37,17 +37,18 @@
 -(void)addDynamicFriendList :(NSArray*)sender
 {
     UIButton *ButtonFriendCard;
-    UIView *ViewFriendBg = [[UIView alloc]initWithFrame:CGRectMake(0, 45, screenWidth, screenHeight-120)];
-    ViewFriendBg.backgroundColor = [UIColor clearColor];
-    ViewFriendBg.clipsToBounds = NO;
-    [self.view addSubview:ViewFriendBg];
     UILabel *lableFriendName;
+    UIScrollView *scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 45, screenWidth, screenHeight)];
+    
+   
+    scrollview.contentSize = CGSizeMake(self.view.frame.size.width, 100 *[sender count]);
+    [self.view addSubview:scrollview];
+    
     for (int i=1; i<=[sender count]; i++) {
         
         // friendlist view setup
         ButtonFriendCard = [[UIButton alloc]init];
         ButtonFriendCard.backgroundColor = [UIColor whiteColor];
-        [ViewFriendBg addSubview:ButtonFriendCard];
         ButtonFriendCard.layer.cornerRadius = 10.0;
         ButtonFriendCard.layer.masksToBounds = YES;
         UIColor *color = [UIColor blackColor];
@@ -75,6 +76,7 @@
         lableFriendName.text = [sender objectAtIndex:i-1];
         lableFriendName.font=[UIFont fontWithName:@"Avenir Next Medium" size:26];
         [ButtonFriendCard addSubview:lableFriendName];
+        [scrollview addSubview:ButtonFriendCard];
         
     }
 }
