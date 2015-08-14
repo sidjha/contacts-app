@@ -13,10 +13,19 @@
 @end
 
 @implementation ViewController
+{
+    CGFloat screenWidth;
+    CGFloat screenHeight;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    screenWidth = screenSize.width;
+    screenHeight = screenSize.height;
+    self.view.backgroundColor = [UIColor blackColor];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,4 +33,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
+}
 @end

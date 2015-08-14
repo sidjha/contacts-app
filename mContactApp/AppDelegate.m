@@ -17,6 +17,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+//    self.window.layer.contents = [UIColor blackColor];
+    viewC = [[cardListViewController alloc]init];
+    [self.window addSubview:viewC.view];
+   [self.window makeKeyAndVisible];
+    
+    
     return YES;
 }
 
