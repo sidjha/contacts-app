@@ -33,7 +33,8 @@
             NSLog(@"Instagram");
             break;
         case 2:
-            _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
+//            _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
+            [self kiKViewSetup];
             NSLog(@"Kik");
             break;
         case 3:
@@ -59,7 +60,15 @@
 -(void)whatsappViewSetup
 {
      _labelAccSelected.text = [NSString stringWithFormat:@"Enter %@ #",_accSelectedName];
+    _textFieldUserData.placeholder = @"e.g. +91 9812345678";
 }
+
+-(void)kiKViewSetup
+{
+    _labelAccSelected.text = [NSString stringWithFormat:@"Enter %@ username",_accSelectedName];
+    _textFieldUserData.placeholder = @"Kik username";
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

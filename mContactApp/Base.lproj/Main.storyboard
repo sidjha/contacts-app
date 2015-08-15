@@ -109,6 +109,11 @@
                                             <constraint firstAttribute="centerX" secondItem="83B-Wr-riq" secondAttribute="centerX" id="dwW-EH-k17"/>
                                             <constraint firstAttribute="centerY" secondItem="83B-Wr-riq" secondAttribute="centerY" constant="71" id="gs3-wP-53N"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6x-64-sZi">
                                         <rect key="frame" x="10" y="34" width="394" height="36"/>
@@ -171,6 +176,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="labelUserName" destination="h6x-64-sZi" id="AWf-4h-q9M"/>
+                        <outlet property="profilePic" destination="e1n-0Q-x2u" id="giM-C7-S2u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -260,18 +266,30 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qM1-23-lBe">
+                                <rect key="frame" x="103" y="193" width="209" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="209" id="Mx2-q3-hub"/>
+                                    <constraint firstAttribute="height" constant="30" id="yDN-DX-SlA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qM1-23-lBe" firstAttribute="top" secondItem="zla-NK-Scd" secondAttribute="bottom" constant="75.5" id="4e8-dD-G8Y"/>
                             <constraint firstItem="zla-NK-Scd" firstAttribute="leading" secondItem="Umj-hg-kba" secondAttribute="leading" constant="10" id="BbD-uT-Lvx"/>
                             <constraint firstAttribute="trailing" secondItem="zla-NK-Scd" secondAttribute="trailing" constant="20" symbolic="YES" id="UmY-W0-tDV"/>
                             <constraint firstItem="zla-NK-Scd" firstAttribute="top" secondItem="SaN-Zw-2tg" secondAttribute="bottom" constant="77" id="VkF-Eh-v2e"/>
+                            <constraint firstAttribute="centerX" secondItem="qM1-23-lBe" secondAttribute="centerX" id="ykn-uB-bf1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ck8-Tk-jrq"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="labelAccSelected" destination="zla-NK-Scd" id="moK-NW-nWC"/>
+                        <outlet property="textFieldUserData" destination="qM1-23-lBe" id="DlZ-ir-igj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3H9-as-bH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -327,14 +345,14 @@
                                             <segue destination="4gc-h2-JSe" kind="show" id="g3o-eP-A1V"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w32-PK-689">
-                                        <rect key="frame" x="20" y="474" width="53" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w32-PK-689">
+                                        <rect key="frame" x="20" y="474" width="111" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="5pU-cF-6x9"/>
-                                            <constraint firstAttribute="width" constant="53" id="67r-wm-GpY"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="wGN-ar-hba"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <state key="normal" title="+ add">
+                                        <state key="normal" title="+ Add New Link">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>

@@ -14,4 +14,5 @@
 @property (nonatomic) NSInteger indexSelected;
 @property (weak, nonatomic) IBOutlet UILabel *labelAccSelected;
 
+@property (weak, nonatomic) IBOutlet UITextField *textFieldUserData;
 @end
