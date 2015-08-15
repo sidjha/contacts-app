@@ -177,7 +177,7 @@
             </objects>
             <point key="canvasLocation" x="398" y="276"/>
         </scene>
-        <!--Social Account List View Controller-->
+        <!--Add New Link-->
         <scene sceneID="puS-m3-OGe">
             <objects>
                 <viewController id="uCd-9P-6g2" customClass="socialAccountListViewController" sceneMemberID="viewController">
@@ -189,9 +189,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iMh-ab-bIx">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iMh-ab-bIx">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="customCell" rowHeight="80" id="NnD-kJ-HBB" customClass="SAtableCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NnD-kJ-HBB" id="z8z-Wi-bpr">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pLg-2q-Vsa">
+                                                    <rect key="frame" x="15" y="14" width="50" height="50.5"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account Channel Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCv-nU-WlV">
+                                                    <rect key="frame" x="95" y="29" width="256" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="accImageview" destination="pLg-2q-Vsa" id="bU2-jc-tPj"/>
+                                            <outlet property="accTitleLabel" destination="hCv-nU-WlV" id="reQ-c2-cls"/>
+                                            <segue destination="qc8-QG-qBG" kind="push" identifier="saValidation" id="dOT-HM-Vo3"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="uCd-9P-6g2" id="QFU-yl-ajc"/>
                                     <outlet property="delegate" destination="uCd-9P-6g2" id="qB5-v1-LQp"/>
@@ -200,7 +225,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="IMo-Th-xHL"/>
+                    <navigationItem key="navigationItem" title="Add New Link" id="IMo-Th-xHL">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="UvS-lk-EgB">
+                            <connections>
+                                <action selector="cancelAcion:" destination="uCd-9P-6g2" id="q4u-vd-pMD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="zQA-y9-DE2"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="socialTable" destination="iMh-ab-bIx" id="Hne-wH-wf1"/>
@@ -209,6 +241,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPX-nI-pCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1335" y="-803"/>
+        </scene>
+        <!--Social Account Validation View Controller-->
+        <scene sceneID="ITg-pw-ZaM">
+            <objects>
+                <viewController id="qc8-QG-qBG" customClass="socialAccountValidationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SaN-Zw-2tg"/>
+                        <viewControllerLayoutGuide type="bottom" id="dsl-hk-XVG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Umj-hg-kba">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Account Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zla-NK-Scd">
+                                <rect key="frame" x="10" y="97" width="384" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zla-NK-Scd" firstAttribute="leading" secondItem="Umj-hg-kba" secondAttribute="leading" constant="10" id="BbD-uT-Lvx"/>
+                            <constraint firstAttribute="trailing" secondItem="zla-NK-Scd" secondAttribute="trailing" constant="20" symbolic="YES" id="UmY-W0-tDV"/>
+                            <constraint firstItem="zla-NK-Scd" firstAttribute="top" secondItem="SaN-Zw-2tg" secondAttribute="bottom" constant="77" id="VkF-Eh-v2e"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ck8-Tk-jrq"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="labelAccSelected" destination="zla-NK-Scd" id="moK-NW-nWC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3H9-as-bH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1845" y="-803"/>
         </scene>
         <!--Card Back View Controller-->
         <scene sceneID="pyH-dk-4CG">
