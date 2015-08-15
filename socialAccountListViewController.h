@@ -12,4 +12,5 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *socialTable;
 
+- (IBAction)cancelAcion:(id)sender;
 @end

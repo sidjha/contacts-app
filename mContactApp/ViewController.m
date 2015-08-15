@@ -25,6 +25,14 @@
     screenWidth = screenSize.width;
     screenHeight = screenSize.height;
     self.view.backgroundColor = [UIColor blackColor];
+    
+    
+    _profilePic.layer.cornerRadius = 5.0f;
+    _profilePic.layer.masksToBounds = NO;
+    _profilePic.layer.borderWidth = .5f;
+//    _profilePic.layer.shadowColor = [UIColor orangeColor].CGColor;
+//    _profilePic.layer.shadowOpacity = 0.4;
+    _profilePic.layer.shadowRadius = 5.0f;
 
 }
 

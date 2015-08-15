@@ -7,7 +7,8 @@
 //
 
 #import "socialAccountListViewController.h"
-
+#import "socialAccountValidationViewController.h"
+#import "SAtableCell.h"
 @interface socialAccountListViewController ()
 
 @end
@@ -15,20 +16,31 @@
 @implementation socialAccountListViewController
 {
     NSMutableArray *myData;
+    NSMutableArray *arrayLinkImages;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonTapped:)];
-    self.navigationItem.leftBarButtonItem = done;
+//    
+//    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonTapped:)];
+//    self.navigationItem.leftBarButtonItem = done;
     
     // table view data is being set here
     myData = [[NSMutableArray alloc]initWithObjects:
-              @"Facebook",@"WhatsApp",
-              @"Linkedin",@"Instagram",@"Kik",
-              @"Twitter",@"Snapchat", nil];
+              @"Facebook",@"Instagram",
+              @"Kik",@"Linkedin",@"Snapchat",
+              @"Twitter",@"Whatsapp", nil];
+    arrayLinkImages = [[NSMutableArray alloc]initWithObjects:
+              [UIImage imageNamed:@"linkicons/Facebook-messenger.png"],
+              [UIImage imageNamed:@"linkicons/Instagram.png"],
+              [UIImage imageNamed:@"linkicons/Kik.png"],
+              [UIImage imageNamed:@"linkicons/LinkedIn.png"],
+              [UIImage imageNamed:@"linkicons/Snapchat.png"],
+              [UIImage imageNamed:@"linkicons/Twitter.png"],
+              [UIImage imageNamed:@"linkicons/Whatsapp.png"]
+              , nil];
+    self.socialTable.separatorColor = [UIColor clearColor];
 }
 
 
@@ -40,22 +52,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:
 (NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"cellID";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             cellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:
-                UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    NSString *stringForCell;
-    stringForCell= [myData objectAtIndex:indexPath.row];
-        
     
     
-    [cell.textLabel setText:stringForCell];
+    static NSString *CellIdentifier = @"customCell";
+    SAtableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
+    cell.accImageview.image = [arrayLinkImages objectAtIndex:indexPath.row];
+    cell.accTitleLabel.text = [myData objectAtIndex:indexPath.row];
+
     return cell;
+    
+//    
+//    cell.imageView.image = [arrayLinkImages objectAtIndex:indexPath.row];
+//    CGSize itemSize = CGSizeMake(50, 50);
+//    UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+//    CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+//    [cell.imageView.image drawInRect:imageRect];
+//    cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    
+//    [cell.textLabel setText:stringForCell];
+//    return cell;
 }
+
 
 // Default is 1 if not implemented
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -86,23 +105,37 @@
 //    }
 //    return footerTitle;
 //}
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
 #pragma mark - TableView delegate
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:
 (NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"selected and its data is %@",cell.textLabel.text);
-    UIAlertView *alert= [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@ Integration",cell.textLabel.text] message:@"coming soon..." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    [alert show];
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    NSLog(@"selected and its data is %@",cell.textLabel.text);
+//    UIAlertView *alert= [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@ Integration",cell.textLabel.text] message:@"coming soon..." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+//    [alert show];
+    
+//    socialAccountValidationViewController *objSc = [[socialAccountValidationViewController alloc]init];
+    
+    
+//    saValidation
 }
 
-- (void)doneButtonTapped:(id)sender {
-    
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"saValidation"]) {
+        NSIndexPath *indexPath = [self.socialTable indexPathForSelectedRow];
+        
+        socialAccountValidationViewController *objSc = segue.destinationViewController;
+        objSc.accSelectedName = [myData objectAtIndex:indexPath.row];
+        objSc.indexSelected = indexPath.row;
+    }
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -118,4 +151,7 @@
 }
 */
 
+- (IBAction)cancelAcion:(id)sender {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
 @end
