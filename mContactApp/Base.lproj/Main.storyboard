@@ -219,7 +219,7 @@
                                         <connections>
                                             <outlet property="accImageview" destination="pLg-2q-Vsa" id="bU2-jc-tPj"/>
                                             <outlet property="accTitleLabel" destination="hCv-nU-WlV" id="reQ-c2-cls"/>
-                                            <segue destination="qc8-QG-qBG" kind="push" identifier="saValidation" id="dOT-HM-Vo3"/>
+                                            <segue destination="qc8-QG-qBG" kind="presentation" identifier="saValidation" id="dOT-HM-Vo3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -275,6 +275,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="btW-f4-6cE">
+                                <rect key="frame" x="0.0" y="20" width="373" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="J4a-eq-ugM">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="VyW-Lf-Kjl">
+                                            <connections>
+                                                <action selector="dismisVC:" destination="qc8-QG-qBG" id="IUP-Xs-bfD"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" id="mnW-wx-pZ8">
+                                            <connections>
+                                                <action selector="authenticationComplted:" destination="qc8-QG-qBG" id="0zB-hM-lxS"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -294,7 +311,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3H9-as-bH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1845" y="-803"/>
+            <point key="canvasLocation" x="1847" y="-824"/>
         </scene>
         <!--Card Back View Controller-->
         <scene sceneID="pyH-dk-4CG">
