@@ -88,10 +88,10 @@
                                         <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1n-0Q-x2u">
-                                        <rect key="frame" x="10" y="209" width="394" height="257"/>
+                                        <rect key="frame" x="0.0" y="209" width="414" height="257"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83B-Wr-riq">
-                                                <rect key="frame" x="81" y="41" width="232" height="33"/>
+                                                <rect key="frame" x="91" y="41" width="232" height="33"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="Lz5-z1-cJ1"/>
@@ -109,11 +109,6 @@
                                             <constraint firstAttribute="centerX" secondItem="83B-Wr-riq" secondAttribute="centerX" id="dwW-EH-k17"/>
                                             <constraint firstAttribute="centerY" secondItem="83B-Wr-riq" secondAttribute="centerY" constant="71" id="gs3-wP-53N"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="6"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6x-64-sZi">
                                         <rect key="frame" x="10" y="34" width="394" height="36"/>
@@ -132,7 +127,7 @@
                                     <constraint firstAttribute="trailing" secondItem="WnE-TD-1my" secondAttribute="trailing" constant="10" id="2zT-1h-gyR"/>
                                     <constraint firstAttribute="centerY" secondItem="e1n-0Q-x2u" secondAttribute="centerY" constant="-22" id="5iE-dM-1X5"/>
                                     <constraint firstAttribute="trailing" secondItem="0bF-8f-xiy" secondAttribute="trailing" constant="25" id="5oG-PA-51i"/>
-                                    <constraint firstItem="e1n-0Q-x2u" firstAttribute="leading" secondItem="s28-MY-Un9" secondAttribute="leading" constant="10" id="EWp-jK-4ha"/>
+                                    <constraint firstItem="e1n-0Q-x2u" firstAttribute="leading" secondItem="s28-MY-Un9" secondAttribute="leading" id="EWp-jK-4ha"/>
                                     <constraint firstItem="wHX-Nn-c4i" firstAttribute="top" secondItem="e1n-0Q-x2u" secondAttribute="bottom" constant="131" id="KNK-hd-iGe"/>
                                     <constraint firstItem="eKb-GB-0VX" firstAttribute="top" secondItem="e1n-0Q-x2u" secondAttribute="bottom" constant="123" id="Koq-hQ-wkY"/>
                                     <constraint firstItem="0bF-8f-xiy" firstAttribute="top" secondItem="s28-MY-Un9" secondAttribute="top" constant="8" id="Lnq-kt-QOb"/>
@@ -140,7 +135,7 @@
                                     <constraint firstAttribute="trailing" secondItem="wHX-Nn-c4i" secondAttribute="trailing" constant="20" symbolic="YES" id="gfY-bK-SIi"/>
                                     <constraint firstItem="h6x-64-sZi" firstAttribute="leading" secondItem="WnE-TD-1my" secondAttribute="leading" id="i3h-6R-pAK"/>
                                     <constraint firstItem="WnE-TD-1my" firstAttribute="top" secondItem="h6x-64-sZi" secondAttribute="bottom" constant="8" id="iso-J2-7AG"/>
-                                    <constraint firstAttribute="trailing" secondItem="e1n-0Q-x2u" secondAttribute="trailing" constant="10" id="ncn-50-Add"/>
+                                    <constraint firstAttribute="trailing" secondItem="e1n-0Q-x2u" secondAttribute="trailing" id="ncn-50-Add"/>
                                     <constraint firstItem="eKb-GB-0VX" firstAttribute="leading" secondItem="s28-MY-Un9" secondAttribute="leading" constant="20" symbolic="YES" id="rvP-ul-nFv"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -275,18 +270,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="btW-f4-6cE">
-                                <rect key="frame" x="0.0" y="20" width="373" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btW-f4-6cE">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="J4a-eq-ugM">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="VyW-Lf-Kjl">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="oqH-ZT-lBn">
                                             <connections>
-                                                <action selector="dismisVC:" destination="qc8-QG-qBG" id="IUP-Xs-bfD"/>
+                                                <action selector="dismisVC:" destination="qc8-QG-qBG" id="IOT-Ij-PNZ"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="mnW-wx-pZ8">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="JnZ-3Q-Xh1">
                                             <connections>
-                                                <action selector="authenticationComplted:" destination="qc8-QG-qBG" id="0zB-hM-lxS"/>
+                                                <action selector="authenticationComplted:" destination="qc8-QG-qBG" id="w0o-XP-scO"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -295,10 +290,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="btW-f4-6cE" firstAttribute="top" secondItem="SaN-Zw-2tg" secondAttribute="bottom" id="16v-QH-Zea"/>
                             <constraint firstItem="qM1-23-lBe" firstAttribute="top" secondItem="zla-NK-Scd" secondAttribute="bottom" constant="75.5" id="4e8-dD-G8Y"/>
                             <constraint firstItem="zla-NK-Scd" firstAttribute="leading" secondItem="Umj-hg-kba" secondAttribute="leading" constant="10" id="BbD-uT-Lvx"/>
+                            <constraint firstItem="btW-f4-6cE" firstAttribute="leading" secondItem="Umj-hg-kba" secondAttribute="leading" id="P86-Ze-Yx8"/>
                             <constraint firstAttribute="trailing" secondItem="zla-NK-Scd" secondAttribute="trailing" constant="20" symbolic="YES" id="UmY-W0-tDV"/>
                             <constraint firstItem="zla-NK-Scd" firstAttribute="top" secondItem="SaN-Zw-2tg" secondAttribute="bottom" constant="77" id="VkF-Eh-v2e"/>
+                            <constraint firstAttribute="trailing" secondItem="btW-f4-6cE" secondAttribute="trailing" id="hVJ-uZ-PNe"/>
                             <constraint firstAttribute="centerX" secondItem="qM1-23-lBe" secondAttribute="centerX" id="ykn-uB-bf1"/>
                         </constraints>
                     </view>
@@ -363,7 +361,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w32-PK-689">
-                                        <rect key="frame" x="20" y="474" width="111" height="30"/>
+                                        <rect key="frame" x="20" y="474" width="122" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="5pU-cF-6x9"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="wGN-ar-hba"/>
