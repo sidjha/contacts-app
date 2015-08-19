@@ -13,6 +13,8 @@
 @property (nonatomic , weak) NSString *accSelectedName;
 @property (nonatomic) NSInteger indexSelected;
 @property (weak, nonatomic) IBOutlet UILabel *labelAccSelected;
+- (IBAction)dismisVC:(id)sender;
 
+- (IBAction)authenticationComplted:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldUserData;
 @end

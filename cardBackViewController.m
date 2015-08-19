@@ -19,8 +19,25 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor blackColor];
     self.view.layer.contents = (id)[UIColor blackColor];
-}
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(triggerAction:) name:@"NotificationMessageEvent" object:nil];
 
+}
+#pragma mark - Notification
+-(void) triggerAction:(NSNotification *) notification
+{
+    if ([notification.object isKindOfClass:[NSString class]])
+    {
+        NSString *message = [notification object];
+        NSLog(@"%@",message);
+        // do stuff here with your message data
+    }
+    else
+    {
+        NSLog(@"Error, object not recognised.");
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -36,4 +53,8 @@
 }
 */
 
+- (IBAction)dismissController:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

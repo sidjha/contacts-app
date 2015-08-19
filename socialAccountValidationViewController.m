@@ -18,8 +18,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    NSLog(@"%@",_accSelectedName);
+//    NSLog(@"%@",_accSelectedName);
     [self selectedAccountView:_indexSelected];
+    
 }
 -(void)selectedAccountView :(NSInteger)sender
 {
@@ -61,12 +62,16 @@
 {
      _labelAccSelected.text = [NSString stringWithFormat:@"Enter %@ #",_accSelectedName];
     _textFieldUserData.placeholder = @"e.g. +91 9812345678";
+    
 }
 
 -(void)kiKViewSetup
 {
     _labelAccSelected.text = [NSString stringWithFormat:@"Enter %@ username",_accSelectedName];
     _textFieldUserData.placeholder = @"Kik username";
+    
+    
+   
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,5 +92,13 @@
 - (IBAction)actionCancelValidation:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 
+}
+- (IBAction)dismisVC:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)authenticationComplted:(id)sender {
+    NSString *message = _accSelectedName;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationMessageEvent" object:message];
 }
 @end
