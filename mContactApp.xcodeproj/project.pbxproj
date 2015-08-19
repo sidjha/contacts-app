@@ -59,31 +59,31 @@
 		634732661B7B1623009B0D3B /* mContactAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mContactAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6347326B1B7B1623009B0D3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6347326C1B7B1623009B0D3B /* mContactAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mContactAppTests.m; sourceTree = "<group>"; };
-		634732761B7B173E009B0D3B /* cardBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cardBackViewController.h; sourceTree = "<group>"; };
-		634732771B7B173E009B0D3B /* cardBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cardBackViewController.m; sourceTree = "<group>"; };
-		634732791B7B3425009B0D3B /* settingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingViewController.h; sourceTree = "<group>"; };
-		6347327A1B7B3425009B0D3B /* settingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingViewController.m; sourceTree = "<group>"; };
-		637C7D421B7C7E4800E9B855 /* cardListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cardListViewController.h; sourceTree = "<group>"; };
-		637C7D431B7C7E4800E9B855 /* cardListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cardListViewController.m; sourceTree = "<group>"; };
-		637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socialAccountListViewController.h; sourceTree = "<group>"; };
-		637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = socialAccountListViewController.m; sourceTree = "<group>"; };
+		634732761B7B173E009B0D3B /* cardBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cardBackViewController.h; path = ../cardBackViewController.h; sourceTree = "<group>"; };
+		634732771B7B173E009B0D3B /* cardBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cardBackViewController.m; path = ../cardBackViewController.m; sourceTree = "<group>"; };
+		634732791B7B3425009B0D3B /* settingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = settingViewController.h; path = ../settingViewController.h; sourceTree = "<group>"; };
+		6347327A1B7B3425009B0D3B /* settingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = settingViewController.m; path = ../settingViewController.m; sourceTree = "<group>"; };
+		637C7D421B7C7E4800E9B855 /* cardListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cardListViewController.h; path = ../cardListViewController.h; sourceTree = "<group>"; };
+		637C7D431B7C7E4800E9B855 /* cardListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cardListViewController.m; path = ../cardListViewController.m; sourceTree = "<group>"; };
+		637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = socialAccountListViewController.h; path = ../socialAccountListViewController.h; sourceTree = "<group>"; };
+		637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = socialAccountListViewController.m; path = ../socialAccountListViewController.m; sourceTree = "<group>"; };
 		637C7D4D1B7DC4CB00E9B855 /* linkicons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = linkicons; sourceTree = "<group>"; };
-		637C7D831B7E461200E9B855 /* socialAccountValidationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socialAccountValidationViewController.h; sourceTree = "<group>"; };
-		637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = socialAccountValidationViewController.m; sourceTree = "<group>"; };
-		637C7D861B7E484800E9B855 /* SAtableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAtableCell.h; sourceTree = "<group>"; };
-		637C7D871B7E484800E9B855 /* SAtableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAtableCell.m; sourceTree = "<group>"; };
-		637F80D31B84574E0021BF65 /* TGLCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLCollectionViewCell.h; sourceTree = "<group>"; };
-		637F80D41B84574E0021BF65 /* TGLCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLCollectionViewCell.m; sourceTree = "<group>"; };
-		637F80D51B84574E0021BF65 /* TGLTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLTableViewController.h; sourceTree = "<group>"; };
-		637F80D61B84574E0021BF65 /* TGLTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLTableViewController.m; sourceTree = "<group>"; };
-		637F80D71B84574E0021BF65 /* TGLExposedLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLExposedLayout.h; sourceTree = "<group>"; };
-		637F80D81B84574E0021BF65 /* TGLExposedLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLExposedLayout.m; sourceTree = "<group>"; };
-		637F80D91B84574E0021BF65 /* TGLStackedLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLStackedLayout.h; sourceTree = "<group>"; };
-		637F80DA1B84574E0021BF65 /* TGLStackedLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLStackedLayout.m; sourceTree = "<group>"; };
-		637F80DB1B84574E0021BF65 /* TGLStackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLStackedViewController.h; sourceTree = "<group>"; };
-		637F80DC1B84574E0021BF65 /* TGLStackedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLStackedViewController.m; sourceTree = "<group>"; };
-		637F80DD1B84574E0021BF65 /* TGLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLViewController.h; sourceTree = "<group>"; };
-		637F80DE1B84574E0021BF65 /* TGLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLViewController.m; sourceTree = "<group>"; };
+		637C7D831B7E461200E9B855 /* socialAccountValidationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = socialAccountValidationViewController.h; path = ../socialAccountValidationViewController.h; sourceTree = "<group>"; };
+		637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = socialAccountValidationViewController.m; path = ../socialAccountValidationViewController.m; sourceTree = "<group>"; };
+		637C7D861B7E484800E9B855 /* SAtableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SAtableCell.h; path = ../SAtableCell.h; sourceTree = "<group>"; };
+		637C7D871B7E484800E9B855 /* SAtableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SAtableCell.m; path = ../SAtableCell.m; sourceTree = "<group>"; };
+		637F80D31B84574E0021BF65 /* TGLCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TGLCollectionViewCell.h; path = ../TGLCollectionViewCell.h; sourceTree = "<group>"; };
+		637F80D41B84574E0021BF65 /* TGLCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TGLCollectionViewCell.m; path = ../TGLCollectionViewCell.m; sourceTree = "<group>"; };
+		637F80D51B84574E0021BF65 /* TGLTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TGLTableViewController.h; path = ../TGLTableViewController.h; sourceTree = "<group>"; };
+		637F80D61B84574E0021BF65 /* TGLTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TGLTableViewController.m; path = ../TGLTableViewController.m; sourceTree = "<group>"; };
+		637F80D71B84574E0021BF65 /* TGLExposedLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TGLExposedLayout.h; path = ../TGLExposedLayout.h; sourceTree = "<group>"; };
+		637F80D81B84574E0021BF65 /* TGLExposedLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TGLExposedLayout.m; path = ../TGLExposedLayout.m; sourceTree = "<group>"; };
+		637F80D91B84574E0021BF65 /* TGLStackedLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TGLStackedLayout.h; path = ../TGLStackedLayout.h; sourceTree = "<group>"; };
+		637F80DA1B84574E0021BF65 /* TGLStackedLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TGLStackedLayout.m; path = ../TGLStackedLayout.m; sourceTree = "<group>"; };
+		637F80DB1B84574E0021BF65 /* TGLStackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TGLStackedViewController.h; path = ../TGLStackedViewController.h; sourceTree = "<group>"; };
+		637F80DC1B84574E0021BF65 /* TGLStackedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TGLStackedViewController.m; path = ../TGLStackedViewController.m; sourceTree = "<group>"; };
+		637F80DD1B84574E0021BF65 /* TGLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TGLViewController.h; path = ../TGLViewController.h; sourceTree = "<group>"; };
+		637F80DE1B84574E0021BF65 /* TGLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TGLViewController.m; path = ../TGLViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,31 +107,7 @@
 		634732441B7B1623009B0D3B = {
 			isa = PBXGroup;
 			children = (
-				637F80D31B84574E0021BF65 /* TGLCollectionViewCell.h */,
-				637F80D41B84574E0021BF65 /* TGLCollectionViewCell.m */,
-				637F80D51B84574E0021BF65 /* TGLTableViewController.h */,
-				637F80D61B84574E0021BF65 /* TGLTableViewController.m */,
-				637F80D71B84574E0021BF65 /* TGLExposedLayout.h */,
-				637F80D81B84574E0021BF65 /* TGLExposedLayout.m */,
-				637F80D91B84574E0021BF65 /* TGLStackedLayout.h */,
-				637F80DA1B84574E0021BF65 /* TGLStackedLayout.m */,
-				637F80DB1B84574E0021BF65 /* TGLStackedViewController.h */,
-				637F80DC1B84574E0021BF65 /* TGLStackedViewController.m */,
-				637F80DD1B84574E0021BF65 /* TGLViewController.h */,
-				637F80DE1B84574E0021BF65 /* TGLViewController.m */,
-				637C7D861B7E484800E9B855 /* SAtableCell.h */,
-				637C7D871B7E484800E9B855 /* SAtableCell.m */,
-				637C7D831B7E461200E9B855 /* socialAccountValidationViewController.h */,
-				637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */,
 				637C7D4D1B7DC4CB00E9B855 /* linkicons */,
-				637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */,
-				637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */,
-				637C7D421B7C7E4800E9B855 /* cardListViewController.h */,
-				637C7D431B7C7E4800E9B855 /* cardListViewController.m */,
-				634732791B7B3425009B0D3B /* settingViewController.h */,
-				6347327A1B7B3425009B0D3B /* settingViewController.m */,
-				634732761B7B173E009B0D3B /* cardBackViewController.h */,
-				634732771B7B173E009B0D3B /* cardBackViewController.m */,
 				6347324F1B7B1623009B0D3B /* mContactApp */,
 				634732691B7B1623009B0D3B /* mContactAppTests */,
 				6347324E1B7B1623009B0D3B /* Products */,
@@ -150,6 +126,30 @@
 		6347324F1B7B1623009B0D3B /* mContactApp */ = {
 			isa = PBXGroup;
 			children = (
+				637F80D31B84574E0021BF65 /* TGLCollectionViewCell.h */,
+				637F80D41B84574E0021BF65 /* TGLCollectionViewCell.m */,
+				637F80D51B84574E0021BF65 /* TGLTableViewController.h */,
+				637F80D61B84574E0021BF65 /* TGLTableViewController.m */,
+				637F80D71B84574E0021BF65 /* TGLExposedLayout.h */,
+				637F80D81B84574E0021BF65 /* TGLExposedLayout.m */,
+				637F80D91B84574E0021BF65 /* TGLStackedLayout.h */,
+				637F80DA1B84574E0021BF65 /* TGLStackedLayout.m */,
+				637F80DB1B84574E0021BF65 /* TGLStackedViewController.h */,
+				637F80DC1B84574E0021BF65 /* TGLStackedViewController.m */,
+				637F80DD1B84574E0021BF65 /* TGLViewController.h */,
+				637F80DE1B84574E0021BF65 /* TGLViewController.m */,
+				637C7D861B7E484800E9B855 /* SAtableCell.h */,
+				637C7D871B7E484800E9B855 /* SAtableCell.m */,
+				637C7D831B7E461200E9B855 /* socialAccountValidationViewController.h */,
+				637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */,
+				637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */,
+				637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */,
+				637C7D421B7C7E4800E9B855 /* cardListViewController.h */,
+				637C7D431B7C7E4800E9B855 /* cardListViewController.m */,
+				634732791B7B3425009B0D3B /* settingViewController.h */,
+				6347327A1B7B3425009B0D3B /* settingViewController.m */,
+				634732761B7B173E009B0D3B /* cardBackViewController.h */,
+				634732771B7B173E009B0D3B /* cardBackViewController.m */,
 				634732541B7B1623009B0D3B /* AppDelegate.h */,
 				634732551B7B1623009B0D3B /* AppDelegate.m */,
 				634732571B7B1623009B0D3B /* ViewController.h */,
