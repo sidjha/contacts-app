@@ -55,6 +55,10 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
 @end
 
 @implementation TGLStackedViewController
+{
+    CGFloat screenWidth;
+    CGFloat screenHeight;
+}
 
 @synthesize stackedLayout = _stackedLayout;
 
@@ -114,13 +118,28 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-
+    
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    screenWidth = screenSize.width;
+    screenHeight = screenSize.height;
+    
     self.collectionView.collectionViewLayout = self.stackedLayout;
     
-    self.moveGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    self.moveGestureRecognizer.delegate = self;
+//    self.moveGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+//    self.moveGestureRecognizer.delegate = self;
 
-    [self.collectionView addGestureRecognizer:self.moveGestureRecognizer];
+//    [self.collectionView addGestureRecognizer:self.moveGestureRecognizer];
+    
+//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(300, 5, 300, 30)];
+//    [self.view addSubview:view];
+//    view.backgroundColor = [UIColor redColor];
+    
+    
+//    UIView *editButtonCover = [[UIView alloc]initWithFrame:CGRectMake(screenWidth-50, 50, 130, 30)];
+//    [self.view addSubview:editButtonCover];
+//    editButtonCover.backgroundColor=[UIColor redColor];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
@@ -218,7 +237,8 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    NSString *message = @"bigPage";
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationMessageEventBig" object:message];
     if ([indexPath isEqual:self.exposedItemIndexPath]) {
 
         // Collapse currently exposed item
@@ -233,14 +253,10 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
         self.exposedItemIndexPath = indexPath;
     }
 //
-//    if (indexPath.row == 0) {
-//        UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-//        
-//        UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(200, 25, 60, 30)];
-//        [button setTitle:@"EDIT" forState:UIControlStateNormal];
-//        [button setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-//        [cell addSubview:button];
-//    }
+    if (indexPath.row == 0) {
+        UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+        cell.userInteractionEnabled = YES;
+    }
     NSLog(@"%ld",(long)indexPath.row);
 }
 

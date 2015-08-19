@@ -34,6 +34,7 @@
 
 @implementation UIColor (randomColor)
 
+
 + (UIColor *)randomColor {
     
     CGFloat comps[3];
@@ -56,18 +57,49 @@
 @end
 
 @implementation TGLViewController
+{
+    CGFloat screenWidth;
+    CGFloat screenHeight;
+    UIButton *buttonEdit;
+    UIButton *buttonPlus;
+    UIButton *Favoritesbutton;
+    BOOL isOnce;
+}
 
 @synthesize cards = _cards;
 
 - (void)viewDidLoad {
 
     [super viewDidLoad];
-    
+    isOnce = true;
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    screenWidth = screenSize.width;
+    screenHeight = screenSize.height;
     // Set to NO to prevent a small number
     // of cards from filling the entire
     // view height evenly and only show
     // their -topReveal amount
     //
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(triggerAction:) name:@"NotificationMessageEventBig" object:nil];
+    
+    
+    buttonPlus = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonPlus.frame = CGRectMake(screenWidth-38, 26, 30, 30);
+    buttonPlus.titleLabel.font = [UIFont fontWithName:@"Avenir Next" size:30];
+    [buttonPlus setTitle:@"+" forState:UIControlStateNormal];
+    [buttonPlus setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.view addSubview:buttonPlus];
+    
+    Favoritesbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+    Favoritesbutton.frame = CGRectMake(8, 26, 65, 30);
+    //    Favoritesbutton.backgroundColor = [UIColor redColor];
+    Favoritesbutton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-DemiBold" size:15];
+    [Favoritesbutton setTitle:@"Favorites" forState:UIControlStateNormal];
+    [Favoritesbutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.view addSubview:Favoritesbutton];
+    
     self.stackedLayout.fillHeight = YES;
 
     // Set to NO to prevent a small number
@@ -143,23 +175,55 @@
     cell.title = card[@"name"];
     cell.backgroundColor =[UIColor whiteColor];
     
-    cell.layer.cornerRadius = 10.0;
+    cell.layer.cornerRadius = 20.0;
     cell.layer.masksToBounds = YES;
     UIColor *color = [UIColor blackColor];
     cell.layer.shadowColor = [color CGColor];
-    cell.layer.shadowRadius = 10.0f;
-    cell.layer.shadowOpacity = 1;
+    cell.layer.shadowRadius = 5.0f;
+    cell.layer.shadowOpacity = 0.5;
     cell.layer.shadowOffset = CGSizeZero;
     cell.layer.masksToBounds = NO;
     if (indexPath.row == 0) {
-        UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(300, 70, 60, 30)];
-        [button setTitle:@"EDIT" forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(showAlert) forControlEvents:UIControlEventTouchUpInside];
-        [button setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-        [cell addSubview:button];
+        buttonEdit = [[UIButton alloc]initWithFrame:CGRectMake(screenWidth-50, 5, 40, 30)];
+        [buttonEdit setTitle:@"EDIT" forState:UIControlStateNormal];
+//        button.backgroundColor = [UIColor grayColor];
+        
+        [buttonEdit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [cell addSubview:buttonEdit];
     }
 
     return cell;
+}
+
+
+#pragma mark - Notification
+-(void) triggerAction:(NSNotification *) notification
+{
+    if ([notification.object isKindOfClass:[NSString class]])
+    {
+        NSString *message = [notification object];
+        NSLog(@"%@",message);
+        if (isOnce) {
+            [buttonEdit addTarget:self action:@selector(showAlert) forControlEvents:UIControlEventTouchUpInside];
+            isOnce = false;
+            buttonEdit.hidden=true;
+            Favoritesbutton.hidden = true;
+        }else
+        {
+            [buttonEdit removeTarget:nil
+                               action:NULL
+                     forControlEvents:UIControlEventAllEvents];
+            isOnce = true;
+            buttonEdit.hidden=false;
+            Favoritesbutton.hidden = false;
+        }
+        
+        // do stuff here with your message data
+    }
+    else
+    {
+        NSLog(@"Error, object not recognised.");
+    }
 }
 -(void)showAlert
 {
