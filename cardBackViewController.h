@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface cardBackViewController : UIViewController
+- (IBAction)dismissController:(id)sender;
 
 @end
