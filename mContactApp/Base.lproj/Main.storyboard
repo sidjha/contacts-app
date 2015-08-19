@@ -25,20 +25,38 @@
                                     <rect key="frame" x="0.0" y="0.0" width="353" height="706"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ci6-Yc-XH8">
-                                            <rect key="frame" x="0.0" y="0.0" width="353" height="162"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUp-0m-EN6">
                                             <rect key="frame" x="19" y="33" width="326" height="21"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" editable="NO" text="User Status !" translatesAutoresizingMaskIntoConstraints="NO" id="BJS-B5-N2e">
+                                            <rect key="frame" x="19" y="66" width="326" height="75"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="326" id="5ui-MZ-El9"/>
+                                                <constraint firstAttribute="height" constant="75" id="Ch9-76-89P"/>
+                                            </constraints>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                            <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                        </textView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3iG-SC-ADe">
+                                            <rect key="frame" x="0.0" y="162" width="353" height="234"/>
+                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="BJS-B5-N2e" firstAttribute="top" secondItem="Zub-Fc-xr1" secondAttribute="top" constant="66" id="V5J-aS-Flb"/>
+                                    <constraint firstItem="BJS-B5-N2e" firstAttribute="leading" secondItem="Zub-Fc-xr1" secondAttribute="leading" constant="19" id="mjQ-e5-x6x"/>
+                                    <constraint firstItem="3iG-SC-ADe" firstAttribute="leading" secondItem="Zub-Fc-xr1" secondAttribute="leading" id="tqc-MW-Byp"/>
+                                    <constraint firstAttribute="trailing" secondItem="3iG-SC-ADe" secondAttribute="trailing" id="uY0-m4-hGz"/>
+                                </constraints>
                                 <connections>
-                                    <outlet property="imageView" destination="ci6-Yc-XH8" id="RnK-ro-AyB"/>
                                     <outlet property="nameLabel" destination="fUp-0m-EN6" id="kFD-gf-V7J"/>
                                 </connections>
                             </collectionViewCell>

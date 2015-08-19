@@ -59,7 +59,7 @@
 - (void)initLayout {
     
     self.layoutMargin = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
-    self.topReveal = 120.0;
+    self.topReveal = 70.0;// pankaj top space
     self.bounceFactor = 0.2;
 }
 
@@ -79,7 +79,7 @@
     
     if (topReveal != self.topReveal) {
         
-        _topReveal = topReveal;
+        _topReveal = 70;
         
         [self invalidateLayout];
     }

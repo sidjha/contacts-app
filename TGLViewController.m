@@ -112,7 +112,7 @@
         for (NSInteger i = 0; i < friendList.count; i++) {
             
             NSDictionary *card = @{ @"name" : [NSString stringWithFormat:@"%@",[friendList objectAtIndex:i]], @"color" : [UIColor grayColor] };
-            NSLog(@"%@",[UIColor grayColor]);
+//            NSLog(@"%@",[UIColor grayColor]);
             [_cards addObject:card];
         }
         
@@ -152,7 +152,7 @@
     cell.layer.shadowOffset = CGSizeZero;
     cell.layer.masksToBounds = NO;
     if (indexPath.row == 0) {
-        UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(300, 115, 60, 30)];
+        UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(300, 70, 60, 30)];
         [button setTitle:@"EDIT" forState:UIControlStateNormal];
         [button addTarget:self action:@selector(showAlert) forControlEvents:UIControlEventTouchUpInside];
         [button setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
