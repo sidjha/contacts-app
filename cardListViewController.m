@@ -26,7 +26,8 @@
     screenWidth = screenSize.width;
     screenHeight = screenSize.height;
     // Do any additional setup after loading the view, typically from a nib.
-    NSArray  *friendList = [[NSArray alloc] initWithObjects:@"Siddharth Jha",@"Net",@"Ray",@"Kim",@"Jack",@"Bob",@"ABC",@"wep",@"foo",@"boo",@"rob",nil];
+    //NSArray  *friendList = [[NSArray alloc] initWithObjects:@"Siddharth Jha",@"Sherlock Holmes",@"Henry Ford",@"Elon Musk",@"Mary Jane",@"Clark Kent", nil];
+    NSArray  *friendList = [[NSArray alloc] initWithObjects:@"Siddharth Jha",@"Sherlock Holmes",@"Elon Musk",@"Mary Jane", @"Clark Kent", nil];
     [self addDynamicFriendList:friendList];
 }
 
