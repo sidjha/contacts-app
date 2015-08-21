@@ -7,13 +7,36 @@
 //
 
 #import "cardBackViewController.h"
-
+#import <CoreData/CoreData.h>
 @interface cardBackViewController ()
+@property (strong) NSMutableArray *arraySocialGrid;
 
 @end
 
 @implementation cardBackViewController
 
+- (NSManagedObjectContext *)managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Fetch the devices from persistent data store
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SocialGrid"];
+    [fetchRequest setReturnsObjectsAsFaults:NO];
+    self.arraySocialGrid = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    [_gridCollection reloadData];
+    
+   
+//    NSLog(@"grid items ----------- %@", [device valueForKey:@"acName"]);
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -52,7 +75,24 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.arraySocialGrid.count;
+}
 
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *identifier = @"gridCell";
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    NSManagedObject *device = [self.arraySocialGrid objectAtIndex:indexPath.row];
+
+    
+    
+    UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
+    recipeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"linkicons/%@.png",[NSString stringWithFormat:@"%@",[device valueForKey:@"acName"]]]];
+    
+    return cell;
+}
 - (IBAction)dismissController:(id)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];

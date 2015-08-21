@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface socialAccountValidationViewController : UIViewController
+@interface socialAccountValidationViewController : UIViewController<UITextFieldDelegate>
 - (IBAction)actionCancelValidation:(id)sender;
 @property (nonatomic , weak) NSString *accSelectedName;
 @property (nonatomic) NSInteger indexSelected;

@@ -10,5 +10,6 @@
 
 @interface cardBackViewController : UIViewController
 - (IBAction)dismissController:(id)sender;
+@property (weak, nonatomic) IBOutlet UICollectionView *gridCollection;
 
 @end

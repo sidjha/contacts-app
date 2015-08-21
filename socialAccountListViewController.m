@@ -32,7 +32,7 @@
               @"Kik",@"Linkedin",@"Snapchat",
               @"Twitter",@"Whatsapp", nil];
     arrayLinkImages = [[NSMutableArray alloc]initWithObjects:
-              [UIImage imageNamed:@"linkicons/Facebook-messenger.png"],
+              [UIImage imageNamed:@"linkicons/Facebook.png"],
               [UIImage imageNamed:@"linkicons/Instagram.png"],
               [UIImage imageNamed:@"linkicons/Kik.png"],
               [UIImage imageNamed:@"linkicons/LinkedIn.png"],

@@ -7,7 +7,7 @@
 //
 
 #import "socialAccountValidationViewController.h"
-
+#import <CoreData/CoreData.h>
 @interface socialAccountValidationViewController ()
 
 @end
@@ -20,7 +20,15 @@
     self.view.backgroundColor = [UIColor whiteColor];
 //    NSLog(@"%@",_accSelectedName);
     [self selectedAccountView:_indexSelected];
-    
+    _textFieldUserData.delegate = self;
+}
+- (NSManagedObjectContext *)managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
 }
 -(void)selectedAccountView :(NSInteger)sender
 {
@@ -73,7 +81,32 @@
     
    
 }
-
+- (void)save{
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+//    if (self.device) {
+//        // Update existing device
+//        [self.device setValue:self.nameTextField.text forKey:@"name"];
+//        [self.device setValue:self.versionTextField.text forKey:@"version"];
+//        [self.device setValue:self.companyTextField.text forKey:@"company"];
+//        
+//    } else {
+//        // Create a new device
+        NSManagedObject *newDevice = [NSEntityDescription insertNewObjectForEntityForName:@"SocialGrid" inManagedObjectContext:context];
+        [newDevice setValue:_accSelectedName forKey:@"acName"];
+    NSLog(@"______________________________%@",self.textFieldUserData.text);
+//        [newDevice setValue:self.versionTextField.text forKey:@"version"];
+//        [newDevice setValue:self.companyTextField.text forKey:@"company"];
+//    }
+    
+    NSError *error = nil;
+    // Save the object to persistent store
+    if (![context save:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
+    
+//    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -96,9 +129,19 @@
 - (IBAction)dismisVC:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];// this will do the trick
+}
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
 - (IBAction)authenticationComplted:(id)sender {
-    NSString *message = _accSelectedName;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationMessageEvent" object:message];
+//    NSString *message = _accSelectedName;
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationMessageEvent" object:message];
+    [self save];
 }
 @end
+
+
