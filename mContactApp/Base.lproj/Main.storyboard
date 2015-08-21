@@ -46,6 +46,17 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                             <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                                         </textView>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b08-zd-Dkn">
+                                            <rect key="frame" x="292" y="8" width="40" height="30"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
+                                            <state key="normal" title="EDIT">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="callEditAction:" destination="Iu6-il-kEZ" eventType="touchUpInside" id="fuD-fE-6ZB"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -53,11 +64,14 @@
                                     <constraint firstItem="fUp-0m-EN6" firstAttribute="leading" secondItem="Zub-Fc-xr1" secondAttribute="leading" constant="10" id="4Bg-qd-G9s"/>
                                     <constraint firstItem="BJS-B5-N2e" firstAttribute="leading" secondItem="Zub-Fc-xr1" secondAttribute="leading" constant="10" id="DxO-qv-SEe"/>
                                     <constraint firstItem="fUp-0m-EN6" firstAttribute="top" secondItem="Zub-Fc-xr1" secondAttribute="top" constant="35" id="Gkg-Na-9Qk"/>
+                                    <constraint firstItem="b08-zd-Dkn" firstAttribute="top" secondItem="Zub-Fc-xr1" secondAttribute="top" constant="8" id="J9O-e7-uK5"/>
                                     <constraint firstItem="BJS-B5-N2e" firstAttribute="top" secondItem="fUp-0m-EN6" secondAttribute="bottom" constant="47" id="QPV-Kt-XMK"/>
+                                    <constraint firstAttribute="trailing" secondItem="b08-zd-Dkn" secondAttribute="trailing" constant="21" id="d67-18-0ir"/>
                                     <constraint firstAttribute="trailing" secondItem="fUp-0m-EN6" secondAttribute="trailing" constant="10" id="eV6-w2-fTj"/>
                                     <constraint firstAttribute="trailing" secondItem="BJS-B5-N2e" secondAttribute="trailing" constant="10" id="iLj-dk-JZv"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="editbbb" destination="b08-zd-Dkn" id="CAw-Ee-CUo"/>
                                     <outlet property="nameLabel" destination="fUp-0m-EN6" id="kFD-gf-V7J"/>
                                 </connections>
                             </collectionViewCell>
@@ -494,7 +508,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vzs-Jt-R86">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vzs-Jt-R86">
                                 <rect key="frame" x="20" y="101" width="53" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="53" id="bNW-k3-mLZ"/>
@@ -504,7 +518,7 @@
                                 <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rate this app" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIF-FD-rU5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate this app" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIF-FD-rU5">
                                 <rect key="frame" x="20" y="149" width="134" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="134" id="GJK-rg-eK2"/>
@@ -514,7 +528,7 @@
                                 <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contacts us : info@mesh8.co" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtJ-Ri-w3K">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts us : info@mesh8.co" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtJ-Ri-w3K">
                                 <rect key="frame" x="20" y="196" width="238" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="MFP-Le-75Y"/>

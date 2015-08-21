@@ -28,6 +28,7 @@
 #import "TGLStackedViewController.h"
 
 @interface TGLViewController : TGLStackedViewController
+- (IBAction)callEditAction:(id)sender;
 
 @property (nonatomic, assign) BOOL doubleTapToClose;
 - (IBAction)alertShow:(id)sender;

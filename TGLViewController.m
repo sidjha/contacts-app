@@ -60,10 +60,11 @@
 {
     CGFloat screenWidth;
     CGFloat screenHeight;
-    UIButton *buttonEdit;
+//    UIButton *buttonEdit;
     UIButton *buttonPlus;
     UIButton *Favoritesbutton;
     BOOL isOnce;
+    BOOL isOnceEdit;
 }
 
 @synthesize cards = _cards;
@@ -83,7 +84,7 @@
     //
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(triggerAction:) name:@"NotificationMessageEventBig" object:nil];
-    
+    isOnceEdit = true;
     
     buttonPlus = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonPlus.frame = CGRectMake(screenWidth-38, 26, 30, 30);
@@ -99,6 +100,13 @@
     [Favoritesbutton setTitle:@"Favorites" forState:UIControlStateNormal];
     [Favoritesbutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:Favoritesbutton];
+    
+//    buttonEdit = [[UIButton alloc]initWithFrame:CGRectMake(screenWidth-50, 5, 40, 30)];
+//    [buttonEdit setTitle:@"EDIT" forState:UIControlStateNormal];
+//    //        button.backgroundColor = [UIColor grayColor];
+//    [buttonEdit addTarget:self action:@selector(showAlert) forControlEvents:UIControlEventTouchUpInside];
+//    [buttonEdit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
     
     self.stackedLayout.fillHeight = YES;
 
@@ -134,7 +142,7 @@
 
 - (NSMutableArray *)cards {
 
-    NSArray  *friendList = [[NSArray alloc] initWithObjects:@"Siddharth Jha",@"Net",@"Ray",@"Kim",@"Jack",@"Bob",@"ABC",@"wep",@"foo",@"boo",@"rob",nil];
+    NSArray  *friendList = [[NSArray alloc] initWithObjects:@"Siddharth Jha",@"Net",@"Ray",@"Kim",@"Jack",@"Bob",@"ABC",@"wep",@"foo",nil];
     if (_cards == nil) {
         
         _cards = [NSMutableArray array];
@@ -183,15 +191,13 @@
     cell.layer.shadowOpacity = 0.5;
     cell.layer.shadowOffset = CGSizeZero;
     cell.layer.masksToBounds = NO;
+    
     if (indexPath.row == 0) {
-        buttonEdit = [[UIButton alloc]initWithFrame:CGRectMake(screenWidth-50, 5, 40, 30)];
-        [buttonEdit setTitle:@"EDIT" forState:UIControlStateNormal];
-//        button.backgroundColor = [UIColor grayColor];
-        
-        [buttonEdit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [cell addSubview:buttonEdit];
+       cell.editbbb.hidden = false;
+    }else
+    {
+     cell.editbbb.hidden = true;
     }
-
     return cell;
 }
 
@@ -204,17 +210,13 @@
         NSString *message = [notification object];
         NSLog(@"%@",message);
         if (isOnce) {
-            [buttonEdit addTarget:self action:@selector(showAlert) forControlEvents:UIControlEventTouchUpInside];
             isOnce = false;
-            buttonEdit.hidden=true;
+            buttonPlus.hidden = true;
             Favoritesbutton.hidden = true;
         }else
         {
-            [buttonEdit removeTarget:nil
-                               action:NULL
-                     forControlEvents:UIControlEventAllEvents];
             isOnce = true;
-            buttonEdit.hidden=false;
+            buttonPlus.hidden = false;
             Favoritesbutton.hidden = false;
         }
         
@@ -225,23 +227,23 @@
         NSLog(@"Error, object not recognised.");
     }
 }
--(void)showAlert
-{
-//    UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"test" message:nil delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-//    [alert show];
-    
-    UIViewController *ObjcInitial = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"cardBACK"];
-    
-    ObjcInitial.modalTransitionStyle   = UIModalTransitionStyleFlipHorizontal;
-    ObjcInitial.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
-    
-    [self presentViewController:ObjcInitial animated:YES completion:nil];
-    
-//    cardBackViewController *objC = [[cardBackViewController alloc]init];
-//    objC.modalTransitionStyle   = UIModalTransitionStyleFlipHorizontal;
-//    objC.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
-//    [self presentViewController:objC animated:YES completion:nil];
-}
+//-(void)showAlert
+//{
+////    UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"test" message:nil delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+////    [alert show];
+//    
+//    UIViewController *ObjcInitial = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"cardBACK"];
+//    
+//    ObjcInitial.modalTransitionStyle   = UIModalTransitionStyleFlipHorizontal;
+//    ObjcInitial.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
+//    
+//    [self presentViewController:ObjcInitial animated:YES completion:nil];
+//    
+////    cardBackViewController *objC = [[cardBackViewController alloc]init];
+////    objC.modalTransitionStyle   = UIModalTransitionStyleFlipHorizontal;
+////    objC.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
+////    [self presentViewController:objC animated:YES completion:nil];
+//}
 #pragma mark - Overloaded methods
 
 - (void)moveItemAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
@@ -257,5 +259,14 @@
 - (IBAction)alertShow:(id)sender {
     UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"test" message:nil delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
     [alert show];
+}
+- (IBAction)callEditAction:(id)sender {
+    
+    UIViewController *ObjcInitial = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"cardBACK"];
+    
+    ObjcInitial.modalTransitionStyle   = UIModalTransitionStyleFlipHorizontal;
+    ObjcInitial.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    [self presentViewController:ObjcInitial animated:YES completion:nil];
 }
 @end

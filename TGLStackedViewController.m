@@ -58,6 +58,7 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
 {
     CGFloat screenWidth;
     CGFloat screenHeight;
+    UIButton *button;
 }
 
 @synthesize stackedLayout = _stackedLayout;
@@ -132,14 +133,6 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
 
 //    [self.collectionView addGestureRecognizer:self.moveGestureRecognizer];
     
-//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(300, 5, 300, 30)];
-//    [self.view addSubview:view];
-//    view.backgroundColor = [UIColor redColor];
-    
-    
-//    UIView *editButtonCover = [[UIView alloc]initWithFrame:CGRectMake(screenWidth-50, 50, 130, 30)];
-//    [self.view addSubview:editButtonCover];
-//    editButtonCover.backgroundColor=[UIColor redColor];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
@@ -159,7 +152,7 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
             // deslecting the previous selection,
             // and animate to exposed layout
             //
-            [self.collectionView selectItemAtIndexPath:exposedItemIndexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+                        [self.collectionView selectItemAtIndexPath:exposedItemIndexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
             
             if (self.collectionView.collectionViewLayout == self.stackedLayout) {
                 
@@ -181,7 +174,10 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
             exposedLayout.pinningMode = self.exposedPinningMode;
             exposedLayout.topPinningCount = self.exposedTopPinningCount;
             exposedLayout.bottomPinningCount = self.exposedBottomPinningCount;
+            
+            
 
+            
             [self.collectionView setCollectionViewLayout:exposedLayout animated:YES];
             
         } else {
@@ -221,6 +217,19 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
     // prevent them from being highlighted and thus
     // selected by the collection view
     //
+    
+     [collectionView addSubview:button];
+    if (indexPath.row == 0) {
+        //                UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+        self.collectionView.userInteractionEnabled = YES;
+        button.hidden=false;
+        
+        
+    }else
+    {
+         button.hidden=true;
+    }
+    NSLog(@"%ld",(long)indexPath.row);
     return self.unexposedItemsAreSelectable || self.exposedItemIndexPath == nil || [indexPath isEqual:self.exposedItemIndexPath];
 }
 
@@ -231,6 +240,7 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
         // When selecting unexposed items is not allowed
         // make sure the currently exposed item remains
         // selected
+        
         //
         [collectionView selectItemAtIndexPath:self.exposedItemIndexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     }
@@ -253,10 +263,7 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
         self.exposedItemIndexPath = indexPath;
     }
 //
-    if (indexPath.row == 0) {
-        UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-        cell.userInteractionEnabled = YES;
-    }
+    
     NSLog(@"%ld",(long)indexPath.row);
 }
 

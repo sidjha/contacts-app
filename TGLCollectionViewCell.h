@@ -26,8 +26,9 @@
 #import <UIKit/UIKit.h>
 
 @interface TGLCollectionViewCell : UICollectionViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) UIColor *color;
+@property (weak, nonatomic) IBOutlet UIButton *editbbb;
 
 @end
