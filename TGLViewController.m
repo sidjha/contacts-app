@@ -103,7 +103,7 @@
     
 //    buttonEdit = [[UIButton alloc]initWithFrame:CGRectMake(screenWidth-50, 5, 40, 30)];
 //    [buttonEdit setTitle:@"EDIT" forState:UIControlStateNormal];
-//    //        button.backgroundColor = [UIColor grayColor];
+//    //        button.backgroundColor = [UIColor grayColor] ;
 //    [buttonEdit addTarget:self action:@selector(showAlert) forControlEvents:UIControlEventTouchUpInside];
 //    [buttonEdit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
