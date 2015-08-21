@@ -331,6 +331,7 @@
                                             [weakSelf.collectionView insertItemsAtIndexPaths:@[ newMovingIndexPath ]];
                                         }
                                       completion:nil];
+//        
     }
 }
 

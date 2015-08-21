@@ -220,7 +220,7 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
     
      [collectionView addSubview:button];
     if (indexPath.row == 0) {
-        //                UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+       
         self.collectionView.userInteractionEnabled = YES;
         button.hidden=false;
         

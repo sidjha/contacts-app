@@ -34,6 +34,7 @@
 
 @end
 
+
 @implementation TGLCollectionViewCell
 
 - (void)awakeFromNib {

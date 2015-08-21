@@ -237,8 +237,7 @@
 //    ObjcInitial.modalTransitionStyle   = UIModalTransitionStyleFlipHorizontal;
 //    ObjcInitial.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
 //    
-//    [self presentViewController:ObjcInitial animated:YES completion:nil];
-//    
+//    [self presentViewController:ObjcInitial animated:YES completion:nil];    
 ////    cardBackViewController *objC = [[cardBackViewController alloc]init];
 ////    objC.modalTransitionStyle   = UIModalTransitionStyleFlipHorizontal;
 ////    objC.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
