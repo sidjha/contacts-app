@@ -33,6 +33,7 @@
 		637F80E81B84574E0021BF65 /* TGLStackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637F80DC1B84574E0021BF65 /* TGLStackedViewController.m */; };
 		637F80E91B84574E0021BF65 /* TGLViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 637F80DD1B84574E0021BF65 /* TGLViewController.h */; };
 		637F80EA1B84574E0021BF65 /* TGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637F80DE1B84574E0021BF65 /* TGLViewController.m */; };
+		637F81221B8713D90021BF65 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 637F81201B8713D90021BF65 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +68,7 @@
 		637C7D431B7C7E4800E9B855 /* cardListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cardListViewController.m; sourceTree = "<group>"; };
 		637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socialAccountListViewController.h; sourceTree = "<group>"; };
 		637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = socialAccountListViewController.m; sourceTree = "<group>"; };
-		637C7D4D1B7DC4CB00E9B855 /* linkicons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = linkicons; sourceTree = "<group>"; };
+		637C7D4D1B7DC4CB00E9B855 /* linkicons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = linkicons; path = ../linkicons; sourceTree = "<group>"; };
 		637C7D831B7E461200E9B855 /* socialAccountValidationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socialAccountValidationViewController.h; sourceTree = "<group>"; };
 		637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = socialAccountValidationViewController.m; sourceTree = "<group>"; };
 		637C7D861B7E484800E9B855 /* SAtableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAtableCell.h; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		637F80DC1B84574E0021BF65 /* TGLStackedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLStackedViewController.m; sourceTree = "<group>"; };
 		637F80DD1B84574E0021BF65 /* TGLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLViewController.h; sourceTree = "<group>"; };
 		637F80DE1B84574E0021BF65 /* TGLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLViewController.m; sourceTree = "<group>"; };
+		637F81211B8713D90021BF65 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,25 +109,12 @@
 		634732441B7B1623009B0D3B = {
 			isa = PBXGroup;
 			children = (
-				637F80D31B84574E0021BF65 /* TGLCollectionViewCell.h */,
-				637F80D41B84574E0021BF65 /* TGLCollectionViewCell.m */,
-				637F80D51B84574E0021BF65 /* TGLTableViewController.h */,
-				637F80D61B84574E0021BF65 /* TGLTableViewController.m */,
-				637F80D71B84574E0021BF65 /* TGLExposedLayout.h */,
-				637F80D81B84574E0021BF65 /* TGLExposedLayout.m */,
-				637F80D91B84574E0021BF65 /* TGLStackedLayout.h */,
-				637F80DA1B84574E0021BF65 /* TGLStackedLayout.m */,
-				637F80DB1B84574E0021BF65 /* TGLStackedViewController.h */,
-				637F80DC1B84574E0021BF65 /* TGLStackedViewController.m */,
-				637F80DD1B84574E0021BF65 /* TGLViewController.h */,
-				637F80DE1B84574E0021BF65 /* TGLViewController.m */,
-				637C7D861B7E484800E9B855 /* SAtableCell.h */,
-				637C7D871B7E484800E9B855 /* SAtableCell.m */,
-				637C7D831B7E461200E9B855 /* socialAccountValidationViewController.h */,
-				637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */,
-				637C7D4D1B7DC4CB00E9B855 /* linkicons */,
+				637F81231B8714080021BF65 /* TGL */,
+				637F81201B8713D90021BF65 /* Model.xcdatamodeld */,
 				637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */,
 				637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */,
+				637C7D831B7E461200E9B855 /* socialAccountValidationViewController.h */,
+				637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */,
 				637C7D421B7C7E4800E9B855 /* cardListViewController.h */,
 				637C7D431B7C7E4800E9B855 /* cardListViewController.m */,
 				634732791B7B3425009B0D3B /* settingViewController.h */,
@@ -156,6 +145,7 @@
 				634732581B7B1623009B0D3B /* ViewController.m */,
 				6347325A1B7B1623009B0D3B /* Main.storyboard */,
 				6347325D1B7B1623009B0D3B /* Images.xcassets */,
+				637C7D4D1B7DC4CB00E9B855 /* linkicons */,
 				6347325F1B7B1623009B0D3B /* LaunchScreen.xib */,
 				634732501B7B1623009B0D3B /* Supporting Files */,
 			);
@@ -186,6 +176,27 @@
 				6347326B1B7B1623009B0D3B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		637F81231B8714080021BF65 /* TGL */ = {
+			isa = PBXGroup;
+			children = (
+				637F80D31B84574E0021BF65 /* TGLCollectionViewCell.h */,
+				637F80D41B84574E0021BF65 /* TGLCollectionViewCell.m */,
+				637F80D51B84574E0021BF65 /* TGLTableViewController.h */,
+				637F80D61B84574E0021BF65 /* TGLTableViewController.m */,
+				637F80D71B84574E0021BF65 /* TGLExposedLayout.h */,
+				637F80D81B84574E0021BF65 /* TGLExposedLayout.m */,
+				637F80D91B84574E0021BF65 /* TGLStackedLayout.h */,
+				637F80DA1B84574E0021BF65 /* TGLStackedLayout.m */,
+				637F80DB1B84574E0021BF65 /* TGLStackedViewController.h */,
+				637F80DC1B84574E0021BF65 /* TGLStackedViewController.m */,
+				637F80DD1B84574E0021BF65 /* TGLViewController.h */,
+				637F80DE1B84574E0021BF65 /* TGLViewController.m */,
+				637C7D861B7E484800E9B855 /* SAtableCell.h */,
+				637C7D871B7E484800E9B855 /* SAtableCell.m */,
+			);
+			name = TGL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +309,7 @@
 				637F80E51B84574E0021BF65 /* TGLStackedLayout.h in Sources */,
 				637F80E61B84574E0021BF65 /* TGLStackedLayout.m in Sources */,
 				637F80E71B84574E0021BF65 /* TGLStackedViewController.h in Sources */,
+				637F81221B8713D90021BF65 /* Model.xcdatamodeld in Sources */,
 				637F80E81B84574E0021BF65 /* TGLStackedViewController.m in Sources */,
 				637F80E91B84574E0021BF65 /* TGLViewController.h in Sources */,
 				637F80EA1B84574E0021BF65 /* TGLViewController.m in Sources */,
@@ -516,6 +528,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		637F81201B8713D90021BF65 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				637F81211B8713D90021BF65 /* Model.xcdatamodel */,
+			);
+			currentVersion = 637F81211B8713D90021BF65 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 634732451B7B1623009B0D3B /* Project object */;
 }
