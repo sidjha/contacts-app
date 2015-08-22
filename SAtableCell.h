@@ -14,4 +14,3 @@
 @property (weak, nonatomic) IBOutlet UILabel *accTitleLabel;
 
 @end
-  
