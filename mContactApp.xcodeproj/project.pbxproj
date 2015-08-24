@@ -34,6 +34,9 @@
 		637F80E91B84574E0021BF65 /* TGLViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 637F80DD1B84574E0021BF65 /* TGLViewController.h */; };
 		637F80EA1B84574E0021BF65 /* TGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637F80DE1B84574E0021BF65 /* TGLViewController.m */; };
 		637F81221B8713D90021BF65 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 637F81201B8713D90021BF65 /* Model.xcdatamodeld */; };
+		EBF30B891B8BC7F700B57F46 /* PhoneVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF30B881B8BC7F700B57F46 /* PhoneVerificationViewController.m */; };
+		EBF30B8C1B8BC80D00B57F46 /* CountryCodeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF30B8B1B8BC80D00B57F46 /* CountryCodeTableViewController.m */; };
+		EBF30B8F1B8BC81A00B57F46 /* ConfirmCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF30B8E1B8BC81A00B57F46 /* ConfirmCodeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +89,12 @@
 		637F80DD1B84574E0021BF65 /* TGLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLViewController.h; sourceTree = "<group>"; };
 		637F80DE1B84574E0021BF65 /* TGLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLViewController.m; sourceTree = "<group>"; };
 		637F81211B8713D90021BF65 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		EBF30B871B8BC7F700B57F46 /* PhoneVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneVerificationViewController.h; sourceTree = "<group>"; };
+		EBF30B881B8BC7F700B57F46 /* PhoneVerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneVerificationViewController.m; sourceTree = "<group>"; };
+		EBF30B8A1B8BC80D00B57F46 /* CountryCodeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCodeTableViewController.h; sourceTree = "<group>"; };
+		EBF30B8B1B8BC80D00B57F46 /* CountryCodeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCodeTableViewController.m; sourceTree = "<group>"; };
+		EBF30B8D1B8BC81A00B57F46 /* ConfirmCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmCodeViewController.h; sourceTree = "<group>"; };
+		EBF30B8E1B8BC81A00B57F46 /* ConfirmCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmCodeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +130,12 @@
 				6347327A1B7B3425009B0D3B /* settingViewController.m */,
 				634732761B7B173E009B0D3B /* cardBackViewController.h */,
 				634732771B7B173E009B0D3B /* cardBackViewController.m */,
+				EBF30B871B8BC7F700B57F46 /* PhoneVerificationViewController.h */,
+				EBF30B881B8BC7F700B57F46 /* PhoneVerificationViewController.m */,
+				EBF30B8A1B8BC80D00B57F46 /* CountryCodeTableViewController.h */,
+				EBF30B8B1B8BC80D00B57F46 /* CountryCodeTableViewController.m */,
+				EBF30B8D1B8BC81A00B57F46 /* ConfirmCodeViewController.h */,
+				EBF30B8E1B8BC81A00B57F46 /* ConfirmCodeViewController.m */,
 				6347324F1B7B1623009B0D3B /* mContactApp */,
 				634732691B7B1623009B0D3B /* mContactAppTests */,
 				6347324E1B7B1623009B0D3B /* Products */,
@@ -300,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF30B8F1B8BC81A00B57F46 /* ConfirmCodeViewController.m in Sources */,
 				637F80DF1B84574E0021BF65 /* TGLCollectionViewCell.h in Sources */,
 				637F80E01B84574E0021BF65 /* TGLCollectionViewCell.m in Sources */,
 				637F80E11B84574E0021BF65 /* TGLTableViewController.h in Sources */,
@@ -318,10 +334,12 @@
 				637C7D441B7C7E4800E9B855 /* cardListViewController.m in Sources */,
 				6347327B1B7B3425009B0D3B /* settingViewController.m in Sources */,
 				637C7D851B7E461200E9B855 /* socialAccountValidationViewController.m in Sources */,
+				EBF30B8C1B8BC80D00B57F46 /* CountryCodeTableViewController.m in Sources */,
 				637C7D4C1B7DB60200E9B855 /* socialAccountListViewController.m in Sources */,
 				637C7D881B7E484800E9B855 /* SAtableCell.m in Sources */,
 				634732561B7B1623009B0D3B /* AppDelegate.m in Sources */,
 				634732531B7B1623009B0D3B /* main.m in Sources */,
+				EBF30B891B8BC7F700B57F46 /* PhoneVerificationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
