@@ -105,7 +105,7 @@
         NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
     }
     
-//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
