@@ -142,7 +142,9 @@
 
 - (NSMutableArray *)cards {
 
-    NSArray  *friendList = [[NSArray alloc] initWithObjects:@"Siddharth Jha",@"Net",@"Ray",@"Kim",@"Jack",@"Bob",@"ABC",@"wep",@"foo",nil];
+//    NSArray  *friendList = [[NSArray alloc] initWithObjects:@"Siddharth Jha",@"Net",@"Ray",@"Kim",@"Jack",@"Bob",@"ABC",@"wep",@"foo",nil];
+    NSArray  *friendList = [[NSArray alloc] initWithObjects:@"Siddharth Jha",@"Sherlock Holmes",@"Ray Kurzweil",@"Kim Kardashian",@"Jack Dorsey",@"John Biggs",@"Nia Vardalos",@"Ash Coles",@"Jimmy Neutron",nil];
+    
     if (_cards == nil) {
         
         _cards = [NSMutableArray array];
