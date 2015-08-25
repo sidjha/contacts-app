@@ -101,13 +101,6 @@
     [Favoritesbutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:Favoritesbutton];
     
-//    buttonEdit = [[UIButton alloc]initWithFrame:CGRectMake(screenWidth-50, 5, 40, 30)];
-//    [buttonEdit setTitle:@"EDIT" forState:UIControlStateNormal];
-//    //        button.backgroundColor = [UIColor grayColor] ;
-//    [buttonEdit addTarget:self action:@selector(showAlert) forControlEvents:UIControlEventTouchUpInside];
-//    [buttonEdit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    
     self.stackedLayout.fillHeight = YES;
 
     // Set to NO to prevent a small number
@@ -130,6 +123,67 @@
         recognizer.numberOfTapsRequired = 2;
         
         [self.collectionView addGestureRecognizer:recognizer];
+    }
+    [self fetchDataFromServer];
+}
+- (void) fetchDataFromServer
+{
+    
+    NSString *post = [NSString stringWithFormat:@"id_str=%@",@"h2dJrEjKWJ"];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[post length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://favor8api.herokuapp.com/cards/update"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBody:postData];
+    NSURLConnection *theConnection = [NSURLConnection connectionWithRequest:request delegate:self];
+    
+    if( theConnection ){
+        
+        _responseData = [[NSMutableData alloc]init];
+    }
+}
+#pragma mark NSURLConnection Delegate Methods
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    // A response has been received, this is where we initialize the instance var you created
+    // so that we can append data to it in the didReceiveData method
+    // Furthermore, this method is called each time there is a redirect so reinitializing it
+    // also serves to clear it
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    // Append the new data to the instance variable you declared
+    [_responseData appendData:data];
+}
+
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
+                  willCacheResponse:(NSCachedURLResponse*)cachedResponse {
+    // Return nil to indicate not necessary to store a cached response for this connection
+    return nil;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    // The request is complete and data has been received
+    // You can parse the stuff in your instance variable now
+
+    NSError *error = nil;
+    NSDictionary *json;
+    @try {
+        json = [NSJSONSerialization JSONObjectWithData:_responseData options: NSJSONReadingMutableContainers error: &error];
+        
+    }
+    @catch (NSException *exception) {
+        NSLog(@"url error");
+    }
+    [self serverResponse:json];
+    
+}
+
+-(void)serverResponse:(id)sender
+{
+    if ([sender isKindOfClass:[NSDictionary class]] ) {
+        NSLog(@"%@",sender);
     }
 }
 
@@ -229,22 +283,7 @@
         NSLog(@"Error, object not recognised.");
     }
 }
-//-(void)showAlert
-//{
-////    UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"test" message:nil delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-////    [alert show];
-//    
-//    UIViewController *ObjcInitial = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"cardBACK"];
-//    
-//    ObjcInitial.modalTransitionStyle   = UIModalTransitionStyleFlipHorizontal;
-//    ObjcInitial.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
-//    
-//    [self presentViewController:ObjcInitial animated:YES completion:nil];    
-////    cardBackViewController *objC = [[cardBackViewController alloc]init];
-////    objC.modalTransitionStyle   = UIModalTransitionStyleFlipHorizontal;
-////    objC.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
-////    [self presentViewController:objC animated:YES completion:nil];
-//}
+
 #pragma mark - Overloaded methods
 
 - (void)moveItemAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {

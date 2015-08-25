@@ -27,7 +27,10 @@
 
 #import "TGLStackedViewController.h"
 
-@interface TGLViewController : TGLStackedViewController
+@interface TGLViewController : TGLStackedViewController<NSURLConnectionDelegate>
+{
+    NSMutableData *_responseData;
+}
 - (IBAction)callEditAction:(id)sender;
 
 @property (nonatomic, assign) BOOL doubleTapToClose;
