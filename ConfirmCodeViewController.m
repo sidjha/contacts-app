@@ -2,7 +2,7 @@
 //  ConfirmCodeViewController.m
 //  mContactApp
 //
-//  Created by Sid Jha on 2015-03-14.
+//  Created by Sid Jha on 2015-08-24.
 //  Copyright (c) 2015 Mesh8. All rights reserved.
 //
 
@@ -33,12 +33,11 @@
     NSString *confirmation_code = self.confirmationCodeField.text;
     
     if ([self validateConfirmationCodeInput:confirmation_code]) {
-        //NSLog(@"Confirmation code input clean");
         
         // GET from server to check if code is actually valid
         
-        // TODO: change this to official API URL
-        NSString *baseUrl = @"http://3a92a6e0.ngrok.com/check_ver_code";
+        // TODO: convert http to https once SSL is set up
+        NSString *baseUrl = @"http://favor8api.herokuapp.com/account/code-verify";
         
         NSString *urlStr = [NSString stringWithFormat:@"%@?phoneNum=%@&submitted_code=%@", baseUrl, self.phone, confirmation_code];
         
@@ -61,14 +60,10 @@
                                           JSONObjectWithData:data options:0 error:&serializeError];
                 
                 if ([jsonData[@"match"] isEqualToString:@"True"]) {
-                    NSLog(@"True");
-                    // TODO: Do something after request successful
+                    NSLog(@"Codes match. True");
+                    
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        //UITabBarController *tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:@"loggedInTBController"];
-                        //ContactsViewController *contactsVC = [[ContactsViewController alloc] init];
-                       
-                        //tabBarController.viewControllers = @[contactsVC, meVC];
-                        //[self presentViewController:tabBarController animated:YES completion:nil];
+                        // TODO: Do something after request successful
                     });
                     // TODO: advance to logged in view
                     // TODO: create/update user on backend
@@ -128,8 +123,8 @@
 }
 
 - (void) sendSMS {
-    
-    NSURL *url = [NSURL URLWithString:@"http://3a92a6e0.ngrok.com/verify"];
+    // TODO: convert http to https once SSL is set up
+    NSURL *url = [NSURL URLWithString:@"http://favor8api.herokuapp.com/account/sms-verify"];
     NSString *post = [NSString stringWithFormat:@"phone=%@",self.phone];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];

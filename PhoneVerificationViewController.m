@@ -2,7 +2,7 @@
 //  PhoneVerificationViewController.m
 //  mContactApp
 //
-//  Created by Sid Jha on 2015-01-23.
+//  Created by Sid Jha on 2015-08-24.
 //  Copyright (c) 2015 Mesh8. All rights reserved.
 //
 
@@ -101,7 +101,7 @@
     
     // TODO: change this to official API URL
     // TODO: make this request more secure
-    NSURL *url = [NSURL URLWithString:@"http://3a92a6e0.ngrok.com/verify"];
+    NSURL *url = [NSURL URLWithString:@"http://favor8api.herokuapp.com/account/sms-verify"];
     NSString *post = [NSString stringWithFormat:@"phone=%@",fullPhone];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
@@ -113,9 +113,9 @@
         NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
         
         if (!error && httpResp.statusCode == 200) {
-            NSLog(@"POST Request to /verify, SUCCESS");
+            NSLog(@"POST Request to /account/sms-verify, SUCCESS");
         } else {
-            NSLog(@"POST Request to /verify, FAILED. userInfo:%@", [error userInfo]);
+            NSLog(@"POST Request to /account/sms-verify, FAILED. userInfo:%@", [error userInfo]);
         }
     }];
     
