@@ -7,7 +7,7 @@
 //
 
 #import "ConfirmCodeViewController.h"
-
+#import "TGLViewController.h"
 @interface ConfirmCodeViewController ()
 
 @end
@@ -64,6 +64,9 @@
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         // TODO: Do something after request successful
+                        
+                        TGLViewController *objTgl = [[TGLViewController alloc]init];
+                        [self presentViewController:objTgl animated:YES completion:nil];
                     });
                     // TODO: advance to logged in view
                     // TODO: create/update user on backend
@@ -92,6 +95,7 @@
     }
 
 }
+
 
 - (BOOL)validateConfirmationCodeInput:(NSString *)aString
 {
