@@ -7,7 +7,7 @@
 //
 
 #import "ConfirmCodeViewController.h"
-
+#import "TGLViewController.h"
 @interface ConfirmCodeViewController ()
 
 @end
@@ -53,7 +53,7 @@
             NSLog(@"%@", response);
             NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
             NSInteger statusCode = [HTTPResponse statusCode];
-            if (statusCode == 200) {
+            if (statusCode == 200 || statusCode == 400) {
                 NSLog(@"Response: %@ %@", response, error);
                 NSError *serializeError = nil;
                 NSDictionary *jsonData = [NSJSONSerialization
@@ -64,24 +64,22 @@
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         // TODO: Do something after request successful
+                        TGLViewController *objTgl = [self.storyboard instantiateViewControllerWithIdentifier:@"tglObj"];
+                        [self presentViewController:objTgl animated:YES completion:nil];
                     });
                     // TODO: advance to logged in view
                     // TODO: create/update user on backend
                 } else {
                     NSLog(@"False");
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Incorrect code" message:@"Your verification code didn't match. Try again or tap Resend Confirmation Code." preferredStyle:UIAlertControllerStyleAlert];
-                        
-                        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                            // do stuff
-                        }];
-                        
-                        [alert addAction:defaultAction];
-                        [self presentViewController:alert animated:YES completion:nil];
-                    });
+                     [self customAlertFn];
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [self customAlertFn];
+//                    });
                 }
                 
+            }else
+            {
+                [self customAlertFn];
             }
             // TODO: monitor verification code input independently from PhoneVerificationViewController
             
@@ -89,8 +87,23 @@
     } else {
         NSLog(@"Confirmation code input invalid");
         // TODO: show error message to user
+        [self customAlertFn];
     }
 
+}
+-(void)customAlertFn
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // TODO: Do something after request successful
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Incorrect code" message:@"Your verification code didn't match. Try again or tap Resend Confirmation Code." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            // do stuff
+        }];
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    });
+
+    
 }
 
 - (BOOL)validateConfirmationCodeInput:(NSString *)aString

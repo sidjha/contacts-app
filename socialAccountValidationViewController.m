@@ -84,23 +84,24 @@
 - (void)save{
     NSManagedObjectContext *context = [self managedObjectContext];
     
-//    if (self.device) {
-//        // Update existing device
-//        [self.device setValue:self.nameTextField.text forKey:@"name"];
-//        [self.device setValue:self.versionTextField.text forKey:@"version"];
-//        [self.device setValue:self.companyTextField.text forKey:@"company"];
-//        
-//    } else {
-//        // Create a new device
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SocialGrid"];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"acName = %@", _accSelectedName]];
+    [request setFetchLimit:1];
+    NSError *error = nil;
+    NSUInteger count = [context countForFetchRequest:request error:&error];
+    if (count == NSNotFound)
+    {
+        // some error occurred
+    }else if (count == 0){
+            // no matching object
         NSManagedObject *newDevice = [NSEntityDescription insertNewObjectForEntityForName:@"SocialGrid" inManagedObjectContext:context];
         [newDevice setValue:_accSelectedName forKey:@"acName"];
-    NSLog(@"______________________________%@",self.textFieldUserData.text);
-//        [newDevice setValue:self.versionTextField.text forKey:@"version"];
-//        [newDevice setValue:self.companyTextField.text forKey:@"company"];
-//    }
-    
-    NSError *error = nil;
+    }else{
+                // at least one matching object exists
+    }
+   
     // Save the object to persistent store
+    
     if (![context save:&error]) {
         NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
     }
