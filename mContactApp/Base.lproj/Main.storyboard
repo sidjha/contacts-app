@@ -8,7 +8,7 @@
         <!--View Controller-->
         <scene sceneID="RLx-3o-ii6">
             <objects>
-                <collectionViewController id="Iu6-il-kEZ" customClass="TGLViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="tglObj" id="Iu6-il-kEZ" customClass="TGLViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="p8F-VX-0Ko">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -690,7 +690,7 @@
                                     <constraint firstAttribute="height" constant="57" id="TOa-DA-I2X"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="27"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your phone number is your account key. We will send a verification code to it every time you login." textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="a4I-TG-DSu">
                                 <rect key="frame" x="62" y="121" width="290" height="79"/>
