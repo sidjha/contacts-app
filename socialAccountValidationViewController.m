@@ -32,55 +32,27 @@
 }
 -(void)selectedAccountView :(NSInteger)sender
 {
-    switch (sender) {
-        case 0:
-            _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-            NSLog(@"facebook");
-            break;
-        case 1:
-            _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-            NSLog(@"Instagram");
-            break;
-        case 2:
-//            _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-            [self kiKViewSetup];
-            NSLog(@"Kik");
-            break;
-        case 3:
-            _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-            NSLog(@"Linkedin");
-            break;
-        case 4:
-            _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-            NSLog(@"Snapchat");
-            break;
-        case 5:
-            _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-            NSLog(@"Twitter");
-            break;
-        case 6:
-            NSLog(@"Whatsapp");
-            [self whatsappViewSetup];
-            break;
-        default:
-            break;
+    // if whatsapp then ask for phone, otherwise ask for username
+    if (sender == 6) {
+        [self setupPhoneFields];
+    } else {
+        [self setupUsernameFields];
     }
 }
--(void)whatsappViewSetup
+
+-(void)setupUsernameFields
 {
-     _labelAccSelected.text = [NSString stringWithFormat:@"Enter %@ #",_accSelectedName];
-    _textFieldUserData.placeholder = @"e.g. +91 9812345678";
+    _labelAccSelected.text = [NSString stringWithFormat:@"Enter your %@ username",_accSelectedName];
+    NSLog(@"%@", _accSelectedName);
+}
+
+-(void)setupPhoneFields
+{
+     _labelAccSelected.text = [NSString stringWithFormat:@"Enter your %@ #",_accSelectedName];
+    _textFieldUserData.placeholder = @"e.g. +1 415 123 4567";
     
 }
 
--(void)kiKViewSetup
-{
-    _labelAccSelected.text = [NSString stringWithFormat:@"Enter %@ username",_accSelectedName];
-    _textFieldUserData.placeholder = @"Kik username";
-        //
-    
-   
-}
 - (void)save{
     NSManagedObjectContext *context = [self managedObjectContext];
     

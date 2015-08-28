@@ -349,7 +349,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btW-f4-6cE">
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="J4a-eq-ugM">
+                                    <navigationItem title="Add New Account" id="J4a-eq-ugM">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="oqH-ZT-lBn">
                                             <connections>
                                                 <action selector="dismisVC:" destination="qc8-QG-qBG" id="IOT-Ij-PNZ"/>
@@ -1015,7 +1015,6 @@
         <!--mera app-->
         <scene sceneID="PBI-Bq-UOr">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5J6-IF-tLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="8zf-xm-ejq" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rkn-C7-c8S"/>
@@ -1044,6 +1043,7 @@
                     <navigationItem key="navigationItem" title="mera app" id="nuF-zy-1wn"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5J6-IF-tLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1682" y="1190"/>
         </scene>
