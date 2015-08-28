@@ -9,7 +9,7 @@
 #import "PhoneVerificationViewController.h"
 #import "ConfirmCodeViewController.h"
 #import "CountryCodeTableViewController.h"
-
+#import "TGLViewController.h"
 @interface PhoneVerificationViewController ()
 
 @end
@@ -65,6 +65,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"userID"];
+    if (savedValue) {
+        TGLViewController *objTgl = [self.storyboard instantiateViewControllerWithIdentifier:@"tglObj"];
+        [self presentViewController:objTgl animated:YES completion:nil];
+    }
     // Do any additional setup after loading the view.
     self.phoneNumberField.delegate = self;
     
