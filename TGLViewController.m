@@ -124,7 +124,106 @@
         
         [self.collectionView addGestureRecognizer:recognizer];
     }
-    [self fetchDataFromServer];
+//    [self fetchDataFromServer];
+    [self fetchDataFromServerGet];
+}
+-(void)fetchDataFromServerGet
+{
+    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"userID"];
+    
+//    NSString *post = [NSString stringWithFormat:@"id_str=%@",savedValue];
+//    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+//    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[post length]];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://favor8api.herokuapp.com/cards/my_stack"]];
+//    [request setHTTPMethod:@"POST"];
+//    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+//    [request setHTTPBody:postData];
+//    NSURLConnection *theConnection = [NSURLConnection connectionWithRequest:request delegate:self];
+//    
+//    if( theConnection ){
+//        
+//        _responseData = [[NSMutableData alloc]init];
+//    }
+    NSString *baseUrl = @"https://favor8api.herokuapp.com/cards/my_stack";
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@?id_str=%@", baseUrl, savedValue];
+    
+    NSURL *url = [NSURL URLWithString:urlStr];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    
+    // NOTE: why declare a new *session object?
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        NSError *serializeError = nil;
+        
+        NSDictionary *json;
+        @try {
+            json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &serializeError];
+            NSLog(@"Card Stack Array :%lu",(unsigned long)[[json valueForKey:@"my_stack"] count]);
+            
+            if (_cards == nil) {
+                
+//                _cards = [NSMutableArray array];
+                
+                // Adjust the number of cards here
+                //
+                
+                for (NSInteger i = 0; i < [[json valueForKey:@"my_stack"] count]; i++) {
+                    
+                    NSDictionary *card = @{ @"name" : [[NSString stringWithFormat:@"%@",[[json valueForKey:@"my_stack"] objectAtIndex:i]] valueForKey:@"name"], @"color" : [UIColor grayColor] };
+                    //            NSLog(@"%@",[UIColor grayColor]);
+                    [_cards addObject:card];
+                }
+                [self.collectionView reloadData];
+            }
+        }
+        @catch (NSException *exception) {
+            NSLog(@"url error");
+            
+        }
+        //            NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+        //            NSInteger statusCode = [HTTPResponse statusCode];
+        //            if (statusCode == 200 || statusCode == 400) {
+        //                NSLog(@"Response: %@ %@", response, error);
+        //                NSError *serializeError = nil;
+        //                NSDictionary *jsonData = [NSJSONSerialization
+        //                                          JSONObjectWithData:data options:0 error:&serializeError];
+        //
+        //                if ([jsonData[@"match"] isEqualToString:@"True"]) {
+        //                    NSLog(@"Codes match. True");
+        //
+        //                    NSString *valueToSave = @"someValue";
+        //                    [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:@"preferenceName"];
+        //                    [[NSUserDefaults standardUserDefaults] synchronize];
+        //
+        //                    dispatch_async(dispatch_get_main_queue(), ^{
+        //                        // TODO: Do something after request successful
+        //                        TGLViewController *objTgl = [self.storyboard instantiateViewControllerWithIdentifier:@"tglObj"];
+        //                        [self presentViewController:objTgl animated:YES completion:nil];
+        //                    });
+        //                    // TODO: advance to logged in view
+        //                    // TODO: create/update user on backend
+        //                } else {
+        //                    NSLog(@"False");
+        //                     [self customAlertFn];
+        ////                    dispatch_async(dispatch_get_main_queue(), ^{
+        ////                        [self customAlertFn];
+        ////                    });
+        //                }
+        //
+        //            }else
+        //            {
+        //                [self customAlertFn];
+        //            }
+        // TODO: monitor verification code input independently from PhoneVerificationViewController
+        
+    }] resume];
+    
 }
 - (void) fetchDataFromServer
 {
@@ -142,6 +241,8 @@
         
         _responseData = [[NSMutableData alloc]init];
     }
+    
+   
 }
 #pragma mark NSURLConnection Delegate Methods
 
@@ -197,7 +298,7 @@
 - (NSMutableArray *)cards {
 
 //    NSArray  *friendList = [[NSArray alloc] initWithObjects:@"Siddharth Jha",@"Net",@"Ray",@"Kim",@"Jack",@"Bob",@"ABC",@"wep",@"foo",nil];
-    NSArray  *friendList = [[NSArray alloc] initWithObjects:@"Siddharth Jha",@"Sherlock Holmes",@"Ray Kurzweil",@"Kim Kardashian",@"Jack Dorsey",@"John Biggs",@"Nia Vardalos",@"Ash Coles",@"Jimmy Neutron",nil];
+    NSArray  *friendList = [[NSArray alloc] initWithObjects:@"Siddharth Jha",nil];
     
     if (_cards == nil) {
         
@@ -205,12 +306,12 @@
         
         // Adjust the number of cards here
         //
-        for (NSInteger i = 0; i < friendList.count; i++) {
-            
-            NSDictionary *card = @{ @"name" : [NSString stringWithFormat:@"%@",[friendList objectAtIndex:i]], @"color" : [UIColor grayColor] };
+//        for (NSInteger i = 0; i < friendList.count; i++) {
+        
+            NSDictionary *card = @{ @"name" : [NSString stringWithFormat:@"%@",[friendList objectAtIndex:0]], @"color" : [UIColor grayColor] };
 //            NSLog(@"%@",[UIColor grayColor]);
             [_cards addObject:card];
-        }
+//        }
         
     }
     
