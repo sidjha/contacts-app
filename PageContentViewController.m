@@ -1,22 +1,26 @@
 //
-//  settingViewController.m
-//  mContactApp
+//  PageContentViewController.m
+//  dynamic-contacts
 //
-//  Created by Pankaj Bhardwaj on 12/08/15.
+//  Created by Sid Jha on 2015-01-08.
 //  Copyright (c) 2015 Mesh8 Inc. All rights reserved.
 //
 
-#import "settingViewController.h"
+#import "PageContentViewController.h"
 
-@interface settingViewController ()
+@interface PageContentViewController ()
 
 @end
 
-@implementation settingViewController
+@implementation PageContentViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.backgroundImageView.image = [UIImage imageNamed:self.imageFile];
+    self.titleLabel.text = self.titleText;
+    self.contentTextView.text = self.contentText;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,8 +38,4 @@
 }
 */
 
-- (IBAction)dismisView:(id)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-
-}
 @end

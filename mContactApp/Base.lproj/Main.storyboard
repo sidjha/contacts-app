@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="d3p-R6-lfu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8zf-xm-ejq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -949,6 +949,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Jr-22-TaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="155" y="1190"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="Yez-ob-3oc">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="eVP-Vq-ccR" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ex-i7-t1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1906" y="-586"/>
+        </scene>
+        <!--Page Content View Controller-->
+        <scene sceneID="oAs-Kt-R1U">
+            <objects>
+                <viewController storyboardIdentifier="PageContentViewController" id="Grl-q8-aSI" customClass="PageContentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kk6-TJ-OGg"/>
+                        <viewControllerLayoutGuide type="bottom" id="RUn-km-BXu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xYX-8e-jCb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pgi-RS-FhE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="637"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pgi-RS-FhE" firstAttribute="leading" secondItem="xYX-8e-jCb" secondAttribute="leadingMargin" id="15v-kJ-JnU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pgi-RS-FhE" secondAttribute="trailing" id="7Hk-46-Bza"/>
+                            <constraint firstAttribute="centerY" secondItem="Pgi-RS-FhE" secondAttribute="centerY" id="7cK-H5-l0L"/>
+                            <constraint firstItem="RUn-km-BXu" firstAttribute="top" secondItem="Pgi-RS-FhE" secondAttribute="bottom" constant="1" id="BU3-T9-wbg"/>
+                            <constraint firstItem="RUn-km-BXu" firstAttribute="top" secondItem="Pgi-RS-FhE" secondAttribute="bottom" id="HtI-eS-WYp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pgi-RS-FhE" secondAttribute="trailing" constant="-16" id="JHR-TL-RYF"/>
+                            <constraint firstAttribute="centerY" secondItem="Pgi-RS-FhE" secondAttribute="centerY" id="Mvr-rS-T6E"/>
+                            <constraint firstItem="Pgi-RS-FhE" firstAttribute="top" secondItem="xYX-8e-jCb" secondAttribute="topMargin" constant="1" id="PeJ-Kd-2XZ"/>
+                            <constraint firstAttribute="centerX" secondItem="Pgi-RS-FhE" secondAttribute="centerX" id="Q9o-Qm-yhN"/>
+                            <constraint firstAttribute="centerX" secondItem="Pgi-RS-FhE" secondAttribute="centerX" id="XVP-qy-E1q"/>
+                            <constraint firstItem="Pgi-RS-FhE" firstAttribute="top" secondItem="Kk6-TJ-OGg" secondAttribute="bottom" constant="-20" id="cTQ-KB-MVG"/>
+                            <constraint firstItem="Pgi-RS-FhE" firstAttribute="leading" secondItem="xYX-8e-jCb" secondAttribute="leadingMargin" constant="-16" id="fEY-VL-Kxx"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="15v-kJ-JnU"/>
+                                <exclude reference="7Hk-46-Bza"/>
+                                <exclude reference="7cK-H5-l0L"/>
+                                <exclude reference="PeJ-Kd-2XZ"/>
+                                <exclude reference="XVP-qy-E1q"/>
+                                <exclude reference="BU3-T9-wbg"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="Pgi-RS-FhE" id="B5a-7w-1OX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RXr-WU-z14" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1406" y="-586"/>
+        </scene>
+        <!--mera app-->
+        <scene sceneID="PBI-Bq-UOr">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5J6-IF-tLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="8zf-xm-ejq" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rkn-C7-c8S"/>
+                        <viewControllerLayoutGuide type="bottom" id="BMu-ef-2m1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6ro-1k-k7B">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5oH-Zb-cLR">
+                                <rect key="frame" x="167" y="696" width="80" height="30"/>
+                                <state key="normal" title="Get Started">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="d3p-R6-lfu" kind="show" id="0CH-Xc-N3L"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BMu-ef-2m1" firstAttribute="top" secondItem="5oH-Zb-cLR" secondAttribute="bottom" constant="10" id="qIH-5D-BQY"/>
+                            <constraint firstAttribute="centerX" secondItem="5oH-Zb-cLR" secondAttribute="centerX" id="xL9-Dn-RAq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="mera app" id="nuF-zy-1wn"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-1682" y="1190"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

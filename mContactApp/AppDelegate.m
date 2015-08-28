@@ -3,7 +3,7 @@
 //  mContactApp
 //
 //  Created by Pankaj Bhardwaj on 12/08/15.
-//  Copyright (c) 2015 Pankaj Bhardwaj. All rights reserved.
+//  Copyright (c) 2015 Mesh8 Inc. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -20,7 +20,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
-    
+    //UIPageControl *pageControl = [UIPageControl appearance];
+    //pageControl.pageIndicatorTintColor = [UIColor grayColor];
+    //pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+    //pageControl.backgroundColor = [UIColor clearColor];
     
     return YES;
 }
