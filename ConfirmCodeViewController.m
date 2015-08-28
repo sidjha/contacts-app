@@ -50,37 +50,60 @@
         NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
         
         [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            NSLog(@"%@", response);
-            NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
-            NSInteger statusCode = [HTTPResponse statusCode];
-            if (statusCode == 200 || statusCode == 400) {
-                NSLog(@"Response: %@ %@", response, error);
-                NSError *serializeError = nil;
-                NSDictionary *jsonData = [NSJSONSerialization
-                                          JSONObjectWithData:data options:0 error:&serializeError];
+
+            NSError *serializeError = nil;
+
+            NSDictionary *json;
+            @try {
+                json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &serializeError];
+                NSString *valueToSave = [json valueForKey:@"id_str"];
+                [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:@"userID"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 
-                if ([jsonData[@"match"] isEqualToString:@"True"]) {
-                    NSLog(@"Codes match. True");
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        // TODO: Do something after request successful
-                        TGLViewController *objTgl = [self.storyboard instantiateViewControllerWithIdentifier:@"tglObj"];
-                        [self presentViewController:objTgl animated:YES completion:nil];
-                    });
-                    // TODO: advance to logged in view
-                    // TODO: create/update user on backend
-                } else {
-                    NSLog(@"False");
-                     [self customAlertFn];
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        [self customAlertFn];
-//                    });
-                }
-                
-            }else
-            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                                        // TODO: Do something after request successful
+                TGLViewController *objTgl = [self.storyboard instantiateViewControllerWithIdentifier:@"tglObj"];
+                [self presentViewController:objTgl animated:YES completion:nil];
+                                    });
+            }
+            @catch (NSException *exception) {
+                NSLog(@"url error");
                 [self customAlertFn];
             }
+//            NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+//            NSInteger statusCode = [HTTPResponse statusCode];
+//            if (statusCode == 200 || statusCode == 400) {
+//                NSLog(@"Response: %@ %@", response, error);
+//                NSError *serializeError = nil;
+//                NSDictionary *jsonData = [NSJSONSerialization
+//                                          JSONObjectWithData:data options:0 error:&serializeError];
+//                
+//                if ([jsonData[@"match"] isEqualToString:@"True"]) {
+//                    NSLog(@"Codes match. True");
+//                    
+//                    NSString *valueToSave = @"someValue";
+//                    [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:@"preferenceName"];
+//                    [[NSUserDefaults standardUserDefaults] synchronize];
+//
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        // TODO: Do something after request successful
+//                        TGLViewController *objTgl = [self.storyboard instantiateViewControllerWithIdentifier:@"tglObj"];
+//                        [self presentViewController:objTgl animated:YES completion:nil];
+//                    });
+//                    // TODO: advance to logged in view
+//                    // TODO: create/update user on backend
+//                } else {
+//                    NSLog(@"False");
+//                     [self customAlertFn];
+////                    dispatch_async(dispatch_get_main_queue(), ^{
+////                        [self customAlertFn];
+////                    });
+//                }
+//                
+//            }else
+//            {
+//                [self customAlertFn];
+//            }
             // TODO: monitor verification code input independently from PhoneVerificationViewController
             
         }] resume];
