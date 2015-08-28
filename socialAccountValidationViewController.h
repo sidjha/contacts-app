@@ -14,6 +14,7 @@
 @property (nonatomic) NSInteger indexSelected;
 @property (weak, nonatomic) IBOutlet UILabel *labelAccSelected;
 - (IBAction)dismisVC:(id)sender;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
 
 - (IBAction)authenticationComplted:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldUserData;

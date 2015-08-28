@@ -141,6 +141,7 @@
 		6347324F1B7B1623009B0D3B /* mContactApp */ = {
 			isa = PBXGroup;
 			children = (
+				6347325A1B7B1623009B0D3B /* Main.storyboard */,
 				637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */,
 				637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */,
 				637C7D831B7E461200E9B855 /* socialAccountValidationViewController.h */,
@@ -163,7 +164,6 @@
 				634732551B7B1623009B0D3B /* AppDelegate.m */,
 				634732571B7B1623009B0D3B /* ViewController.h */,
 				634732581B7B1623009B0D3B /* ViewController.m */,
-				6347325A1B7B1623009B0D3B /* Main.storyboard */,
 				6347325D1B7B1623009B0D3B /* Images.xcassets */,
 				637C7D4D1B7DC4CB00E9B855 /* linkicons */,
 				6347325F1B7B1623009B0D3B /* LaunchScreen.xib */,

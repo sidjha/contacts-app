@@ -82,7 +82,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-563" y="29"/>
+            <point key="canvasLocation" x="733" y="1173"/>
         </scene>
         <!--Card List View Controller-->
         <scene sceneID="3wj-Zj-gcj">
@@ -101,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ah-VE-nbz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-56" y="101"/>
+            <point key="canvasLocation" x="1258" y="1173"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -253,7 +253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="398" y="276"/>
+            <point key="canvasLocation" x="1796" y="1265"/>
         </scene>
         <!--Add New Link-->
         <scene sceneID="puS-m3-OGe">
@@ -317,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPX-nI-pCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1335" y="-803"/>
+            <point key="canvasLocation" x="3575" y="313"/>
         </scene>
         <!--Social Account Validation View Controller-->
         <scene sceneID="ITg-pw-ZaM">
@@ -337,19 +337,19 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qM1-23-lBe">
-                                <rect key="frame" x="103" y="193" width="209" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter username / phone #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qM1-23-lBe">
+                                <rect key="frame" x="58" y="193" width="300" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="209" id="Mx2-q3-hub"/>
-                                    <constraint firstAttribute="height" constant="30" id="yDN-DX-SlA"/>
+                                    <constraint firstAttribute="width" constant="300" id="Mx2-q3-hub"/>
+                                    <constraint firstAttribute="height" constant="50" id="yDN-DX-SlA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btW-f4-6cE">
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Add New Account" id="J4a-eq-ugM">
+                                    <navigationItem title="Account Name" id="J4a-eq-ugM">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="oqH-ZT-lBn">
                                             <connections>
                                                 <action selector="dismisVC:" destination="qc8-QG-qBG" id="IOT-Ij-PNZ"/>
@@ -380,12 +380,13 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="labelAccSelected" destination="zla-NK-Scd" id="moK-NW-nWC"/>
+                        <outlet property="navItem" destination="J4a-eq-ugM" id="N9m-5b-iBj"/>
                         <outlet property="textFieldUserData" destination="qM1-23-lBe" id="DlZ-ir-igj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3H9-as-bH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1847" y="-824"/>
+            <point key="canvasLocation" x="4157" y="313"/>
         </scene>
         <!--Card Back View Controller-->
         <scene sceneID="pyH-dk-4CG">
@@ -532,7 +533,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ra6-Ar-igz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880" y="177"/>
+            <point key="canvasLocation" x="2410" y="1265"/>
         </scene>
         <!--Settings-->
         <scene sceneID="o4n-Sp-3IQ">
@@ -600,7 +601,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYq-BN-T2V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2159" y="193"/>
+            <point key="canvasLocation" x="3575" y="1265"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VLU-uA-ywW">
@@ -619,7 +620,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MlH-sl-vm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1347" y="193"/>
+            <point key="canvasLocation" x="2991" y="1265"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DAO-KE-ize">
@@ -638,7 +639,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dM1-YC-Kxx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="523" y="-803"/>
+            <point key="canvasLocation" x="2991" y="313"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kjw-OF-T9o">
@@ -958,7 +959,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ex-i7-t1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1906" y="-586"/>
+            <point key="canvasLocation" x="-1682" y="2089"/>
         </scene>
         <!--Page Content View Controller-->
         <scene sceneID="oAs-Kt-R1U">
@@ -1010,7 +1011,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RXr-WU-z14" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1406" y="-586"/>
+            <point key="canvasLocation" x="-1214" y="2089"/>
         </scene>
         <!--mera app-->
         <scene sceneID="PBI-Bq-UOr">
