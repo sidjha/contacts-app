@@ -34,54 +34,21 @@
 -(void)selectedAccountView :(NSString*)sender
 {
     
-    if ([sender isEqualToString:@"Facebook"]) {
-        _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-        NSLog(@"facebook");
+    if ([sender isEqualToString:@"Whatsapp"]) {
+        [self whatsappViewSetup];
+        NSLog(@"whatsappViewSetup");
     }
-    else if([sender isEqualToString:@"Instagram"])
+    else
     {
         _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
         NSLog(@"Instagram");
     }
-    else if([sender isEqualToString:@"Kik"])
-    {
-        [self kiKViewSetup];
-        NSLog(@"Kik");
-    }
-    else if([sender isEqualToString:@"Linkedin"])
-    {
-        _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-        NSLog(@"Linkedin");
-    }
-    else if([sender isEqualToString:@"Snapchat"])
-    {
-        _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-        NSLog(@"Snapchat");    }
-    else if([sender isEqualToString:@"Twitter"])
-    {
-        _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-        NSLog(@"Twitter");
-    }
-    else if([sender isEqualToString:@"Whatsapp"])
-    {
-        _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-        NSLog(@"Whatsapp");
-    }
 }
 -(void)whatsappViewSetup
 {
-     _labelAccSelected.text = [NSString stringWithFormat:@"Enter %@ #",_accSelectedName];
+     _labelAccSelected.text = [NSString stringWithFormat:@"Enter %@ username",_accSelectedName];
     _textFieldUserData.placeholder = @"e.g. +91 9812345678";
     
-}
-
--(void)kiKViewSetup
-{
-    _labelAccSelected.text = [NSString stringWithFormat:@"Enter %@ username",_accSelectedName];
-    _textFieldUserData.placeholder = @"Kik username";
-        //
-    
-   
 }
 - (void)save{
     NSManagedObjectContext *context = [self managedObjectContext];
