@@ -19,7 +19,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
 //    NSLog(@"%@",_accSelectedName);
-    [self selectedAccountView:_indexSelected];
+    [self selectedAccountView:_accSelectedName];
     _textFieldUserData.delegate = self;
 }
 - (NSManagedObjectContext *)managedObjectContext {
@@ -30,10 +30,10 @@
     }
     return context;
 }
--(void)selectedAccountView :(NSInteger)sender
+-(void)selectedAccountView :(NSString*)sender
 {
     // if whatsapp then ask for phone, otherwise ask for username
-    if (sender == 6) {
+    if ([sender isEqualToString:@"Whatsapp"]) {
         [self setupPhoneFields];
     } else {
         [self setupUsernameFields];

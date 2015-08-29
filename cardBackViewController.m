@@ -8,6 +8,7 @@
 
 #import "cardBackViewController.h"
 #import <CoreData/CoreData.h>
+#import "socialAccountValidationViewController.h"
 @interface cardBackViewController ()
 @property (strong) NSMutableArray *arraySocialGrid;
 
@@ -90,8 +91,22 @@
     
     UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
     recipeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"linkicons/%@.png",[NSString stringWithFormat:@"%@",[device valueForKey:@"acName"]]]];
+    UILabel *labelView = (UILabel *)[cell viewWithTag:101];
     
+    labelView.text = [NSString stringWithFormat:@"%@",[device valueForKey:@"acName"]];
     return cell;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    UILabel *lbltemp=(UILabel *)[cell.contentView viewWithTag:101];
+    NSLog(@"cell name%@",lbltemp.text);
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    socialAccountValidationViewController *controller = (socialAccountValidationViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"validationViewC"];
+    controller.accSelectedName = lbltemp.text;
+    [self presentViewController:controller animated:YES completion:nil];
+    
 }
 - (IBAction)dismissController:(id)sender {
     
