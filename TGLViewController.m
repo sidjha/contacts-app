@@ -124,27 +124,14 @@
         
         [self.collectionView addGestureRecognizer:recognizer];
     }
-//    [self fetchDataFromServer];
-    [self fetchDataFromServerGet];
+//    [self fetchDataFromServerCardUpdate];
+//    [self fetchDataFromServerGetCardStack];
 }
--(void)fetchDataFromServerGet
+-(void)fetchDataFromServerGetCardStack
 {
     NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                             stringForKey:@"userID"];
-    
-//    NSString *post = [NSString stringWithFormat:@"id_str=%@",savedValue];
-//    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-//    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[post length]];
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://favor8api.herokuapp.com/cards/my_stack"]];
-//    [request setHTTPMethod:@"POST"];
-//    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-//    [request setHTTPBody:postData];
-//    NSURLConnection *theConnection = [NSURLConnection connectionWithRequest:request delegate:self];
-//    
-//    if( theConnection ){
-//        
-//        _responseData = [[NSMutableData alloc]init];
-//    }
+
     NSString *baseUrl = @"https://favor8api.herokuapp.com/cards/my_stack";
     
     NSString *urlStr = [NSString stringWithFormat:@"%@?id_str=%@", baseUrl, savedValue];
@@ -167,17 +154,11 @@
             NSLog(@"Card Stack Array :%lu",(unsigned long)[[json valueForKey:@"my_stack"] count]);
             
             if (_cards == nil) {
-                
-//                _cards = [NSMutableArray array];
-                
-                // Adjust the number of cards here
-                //
-                
-                for (NSInteger i = 0; i < [[json valueForKey:@"my_stack"] count]; i++) {
-                    
+                  for (NSInteger i = 0; i < [[json valueForKey:@"my_stack"] count]; i++) {
+                    NSLog(@"fhgfgjhgjhgjhg%@",[[json valueForKey:@"my_stack"] objectAtIndex:i]);
                     NSDictionary *card = @{ @"name" : [[NSString stringWithFormat:@"%@",[[json valueForKey:@"my_stack"] objectAtIndex:i]] valueForKey:@"name"], @"color" : [UIColor grayColor] };
-                    //            NSLog(@"%@",[UIColor grayColor]);
                     [_cards addObject:card];
+                      
                 }
                 [self.collectionView reloadData];
             }
@@ -186,105 +167,65 @@
             NSLog(@"url error");
             
         }
-        //            NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
-        //            NSInteger statusCode = [HTTPResponse statusCode];
-        //            if (statusCode == 200 || statusCode == 400) {
-        //                NSLog(@"Response: %@ %@", response, error);
-        //                NSError *serializeError = nil;
-        //                NSDictionary *jsonData = [NSJSONSerialization
-        //                                          JSONObjectWithData:data options:0 error:&serializeError];
-        //
-        //                if ([jsonData[@"match"] isEqualToString:@"True"]) {
-        //                    NSLog(@"Codes match. True");
-        //
-        //                    NSString *valueToSave = @"someValue";
-        //                    [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:@"preferenceName"];
-        //                    [[NSUserDefaults standardUserDefaults] synchronize];
-        //
-        //                    dispatch_async(dispatch_get_main_queue(), ^{
-        //                        // TODO: Do something after request successful
-        //                        TGLViewController *objTgl = [self.storyboard instantiateViewControllerWithIdentifier:@"tglObj"];
-        //                        [self presentViewController:objTgl animated:YES completion:nil];
-        //                    });
-        //                    // TODO: advance to logged in view
-        //                    // TODO: create/update user on backend
-        //                } else {
-        //                    NSLog(@"False");
-        //                     [self customAlertFn];
-        ////                    dispatch_async(dispatch_get_main_queue(), ^{
-        ////                        [self customAlertFn];
-        ////                    });
-        //                }
-        //
-        //            }else
-        //            {
-        //                [self customAlertFn];
-        //            }
-        // TODO: monitor verification code input independently from PhoneVerificationViewController
-        
     }] resume];
     
 }
-- (void) fetchDataFromServer
-{
+
+- (void) fetchDataFromServerCardUpdate {
+    // Set up session
+    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"userID"];
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     
-    NSString *post = [NSString stringWithFormat:@"id_str=%@",@"h2dJrEjKWJ"];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[post length]];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://favor8api.herokuapp.com/cards/update"]];
+   NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+
+    NSURL *url = [NSURL URLWithString:@"https://favor8api.herokuapp.com/cards/update"];
+    NSString *post = [NSString stringWithFormat:@"id_str=%@&name=%@",savedValue,@"Test"];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody:postData];
-    NSURLConnection *theConnection = [NSURLConnection connectionWithRequest:request delegate:self];
     
-    if( theConnection ){
+    NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSURLSessionUploadTask *uploadTask = [session uploadTaskWithRequest:request fromData:postData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
-        _responseData = [[NSMutableData alloc]init];
-    }
-    
-   
-}
-#pragma mark NSURLConnection Delegate Methods
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    // A response has been received, this is where we initialize the instance var you created
-    // so that we can append data to it in the didReceiveData method
-    // Furthermore, this method is called each time there is a redirect so reinitializing it
-    // also serves to clear it
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    // Append the new data to the instance variable you declared
-    [_responseData appendData:data];
-}
-
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
-                  willCacheResponse:(NSCachedURLResponse*)cachedResponse {
-    // Return nil to indicate not necessary to store a cached response for this connection
-    return nil;
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    // The request is complete and data has been received
-    // You can parse the stuff in your instance variable now
-
-    NSError *error = nil;
-    NSDictionary *json;
-    @try {
-        json = [NSJSONSerialization JSONObjectWithData:_responseData options: NSJSONReadingMutableContainers error: &error];
+        NSDictionary *json;
+        @try {
+            json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
+            
+        }
+        @catch (NSException *exception) {
+            NSLog(@"url error");
+        }
+        [self serverResponse:json];
         
-    }
-    @catch (NSException *exception) {
-        NSLog(@"url error");
-    }
-    [self serverResponse:json];
+    }];
     
+    [uploadTask resume];
 }
 
 -(void)serverResponse:(id)sender
 {
     if ([sender isKindOfClass:[NSDictionary class]] ) {
-        NSLog(@"%@",sender);
+        NSLog(@"card update data -: %@",sender);
+        if (sender) {
+//                    NSArray  *friendList = [[NSArray alloc] initWithObjects:@"Siddharth Jha",nil];
+            
+            NSDictionary *card;
+                    if (_cards == nil) {
+                        _cards = [NSMutableArray array];
+                        if (![[sender valueForKey:@"name"] isEqualToString:@""]) {
+                        card = @{ @"name" : [NSString stringWithFormat:@"%@",[sender valueForKey:@"name"]], @"color" : [UIColor grayColor] };
+                            
+                        }else
+                        {
+                            card = @{ @"name" : [NSString stringWithFormat:@"N.A"], @"color" : [UIColor grayColor] };
+                        }
+                        [_cards addObject:card];
+                    }
+
+        }
+        [self.collectionView reloadData];
     }
 }
 

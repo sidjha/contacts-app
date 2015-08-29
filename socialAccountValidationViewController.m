@@ -18,9 +18,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-//    NSLog(@"%@",_accSelectedName);
-    [self selectedAccountView:_indexSelected];
+    [self selectedAccountView:_accSelectedName];
     _textFieldUserData.delegate = self;
+    
+    NSLog(@"--------%@",_accSelectedName);
 }
 - (NSManagedObjectContext *)managedObjectContext {
     NSManagedObjectContext *context = nil;
@@ -30,40 +31,41 @@
     }
     return context;
 }
--(void)selectedAccountView :(NSInteger)sender
+-(void)selectedAccountView :(NSString*)sender
 {
-    switch (sender) {
-        case 0:
-            _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-            NSLog(@"facebook");
-            break;
-        case 1:
-            _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-            NSLog(@"Instagram");
-            break;
-        case 2:
-//            _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-            [self kiKViewSetup];
-            NSLog(@"Kik");
-            break;
-        case 3:
-            _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-            NSLog(@"Linkedin");
-            break;
-        case 4:
-            _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-            NSLog(@"Snapchat");
-            break;
-        case 5:
-            _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
-            NSLog(@"Twitter");
-            break;
-        case 6:
-            NSLog(@"Whatsapp");
-            [self whatsappViewSetup];
-            break;
-        default:
-            break;
+    
+    if ([sender isEqualToString:@"Facebook"]) {
+        _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
+        NSLog(@"facebook");
+    }
+    else if([sender isEqualToString:@"Instagram"])
+    {
+        _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
+        NSLog(@"Instagram");
+    }
+    else if([sender isEqualToString:@"Kik"])
+    {
+        [self kiKViewSetup];
+        NSLog(@"Kik");
+    }
+    else if([sender isEqualToString:@"Linkedin"])
+    {
+        _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
+        NSLog(@"Linkedin");
+    }
+    else if([sender isEqualToString:@"Snapchat"])
+    {
+        _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
+        NSLog(@"Snapchat");    }
+    else if([sender isEqualToString:@"Twitter"])
+    {
+        _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
+        NSLog(@"Twitter");
+    }
+    else if([sender isEqualToString:@"Whatsapp"])
+    {
+        _labelAccSelected.text = [NSString stringWithFormat:@"Selected %@",_accSelectedName];
+        NSLog(@"Whatsapp");
     }
 }
 -(void)whatsappViewSetup

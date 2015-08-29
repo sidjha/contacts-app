@@ -317,12 +317,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPX-nI-pCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1335" y="-803"/>
+            <point key="canvasLocation" x="973" y="-803"/>
         </scene>
         <!--Social Account Validation View Controller-->
         <scene sceneID="ITg-pw-ZaM">
             <objects>
-                <viewController id="qc8-QG-qBG" customClass="socialAccountValidationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="validationViewC" id="qc8-QG-qBG" customClass="socialAccountValidationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SaN-Zw-2tg"/>
                         <viewControllerLayoutGuide type="bottom" id="dsl-hk-XVG"/>
@@ -385,7 +385,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3H9-as-bH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1847" y="-824"/>
+            <point key="canvasLocation" x="1412" y="-803"/>
         </scene>
         <!--Card Back View Controller-->
         <scene sceneID="pyH-dk-4CG">
@@ -464,7 +464,7 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="338" id="x7s-ol-gxB"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="71z-VH-Wjb">
-                                            <size key="itemSize" width="61" height="66"/>
+                                            <size key="itemSize" width="60" height="83"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -474,12 +474,18 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="61" height="66"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="83"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3b6-9b-jaE">
                                                             <rect key="frame" x="5" y="8" width="50" height="50"/>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NF2-dw-rEY">
+                                                            <rect key="frame" x="5" y="58" width="50" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -532,7 +538,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ra6-Ar-igz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880" y="177"/>
+            <point key="canvasLocation" x="905" y="50"/>
         </scene>
         <!--Settings-->
         <scene sceneID="o4n-Sp-3IQ">
