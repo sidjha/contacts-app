@@ -23,7 +23,8 @@
 - (IBAction)signupButtonPressed:(id)sender {
     // make request to /users/create
     // Show a progress HUD
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Signing you up...";
     
     // Note: Explicitly getting a low priority queue and making the request on that,
     //       because MBProgressHUD recommends so. However, the success and failure
