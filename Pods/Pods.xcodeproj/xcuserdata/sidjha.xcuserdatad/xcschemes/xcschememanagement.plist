@@ -19,20 +19,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TGLStackedViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>49D55FA417582717DA81980BBD272D7E</key>
+		<key>41B9BCCABC427002AEEF320D19C87FAF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>84115665AC0A9822D62F0423DF4FC766</key>
+		<key>4767470BED4F934CF6292C05CA8DF733</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A6C13D6371542A42CC5B95DD4189DFD8</key>
+		<key>BC491208AC81F7317905FFB29F01DD7B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB5DA050D6082B3DEA5BBE70ABCF803B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

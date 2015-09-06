@@ -20,21 +20,11 @@
 		637C7D4C1B7DB60200E9B855 /* socialAccountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */; };
 		637C7D4E1B7DC4CB00E9B855 /* linkicons in Resources */ = {isa = PBXBuildFile; fileRef = 637C7D4D1B7DC4CB00E9B855 /* linkicons */; };
 		637C7D851B7E461200E9B855 /* socialAccountValidationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */; };
-		637C7D881B7E484800E9B855 /* SAtableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 637C7D871B7E484800E9B855 /* SAtableCell.m */; };
-		637F80DF1B84574E0021BF65 /* TGLCollectionViewCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 637F80D31B84574E0021BF65 /* TGLCollectionViewCell.h */; };
-		637F80E01B84574E0021BF65 /* TGLCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 637F80D41B84574E0021BF65 /* TGLCollectionViewCell.m */; };
-		637F80E11B84574E0021BF65 /* TGLTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 637F80D51B84574E0021BF65 /* TGLTableViewController.h */; };
-		637F80E21B84574E0021BF65 /* TGLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637F80D61B84574E0021BF65 /* TGLTableViewController.m */; };
-		637F80E31B84574E0021BF65 /* TGLExposedLayout.h in Sources */ = {isa = PBXBuildFile; fileRef = 637F80D71B84574E0021BF65 /* TGLExposedLayout.h */; };
-		637F80E41B84574E0021BF65 /* TGLExposedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 637F80D81B84574E0021BF65 /* TGLExposedLayout.m */; };
-		637F80E51B84574E0021BF65 /* TGLStackedLayout.h in Sources */ = {isa = PBXBuildFile; fileRef = 637F80D91B84574E0021BF65 /* TGLStackedLayout.h */; };
-		637F80E61B84574E0021BF65 /* TGLStackedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 637F80DA1B84574E0021BF65 /* TGLStackedLayout.m */; };
-		637F80E71B84574E0021BF65 /* TGLStackedViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 637F80DB1B84574E0021BF65 /* TGLStackedViewController.h */; };
-		637F80E81B84574E0021BF65 /* TGLStackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637F80DC1B84574E0021BF65 /* TGLStackedViewController.m */; };
-		637F80E91B84574E0021BF65 /* TGLViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 637F80DD1B84574E0021BF65 /* TGLViewController.h */; };
-		637F80EA1B84574E0021BF65 /* TGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637F80DE1B84574E0021BF65 /* TGLViewController.m */; };
 		637F81221B8713D90021BF65 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 637F81201B8713D90021BF65 /* Model.xcdatamodeld */; };
 		EB3FB4A31B9692C100B11FCE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3FB4A21B9692C100B11FCE /* LoginViewController.m */; };
+		EB9F6ABD1B9B7AD5007CEEEE /* StackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6ABC1B9B7AD5007CEEEE /* StackedViewController.m */; };
+		EB9F6AD81B9B7D2B007CEEEE /* SAtableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6AD71B9B7D2B007CEEEE /* SAtableCell.m */; };
+		EB9F6ADE1B9BF4B1007CEEEE /* StackedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6ADD1B9BF4B1007CEEEE /* StackedCollectionViewCell.m */; };
 		EBBB552C1B90E64C00A92C43 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBB552B1B90E64C00A92C43 /* PageContentViewController.m */; };
 		EBF30B891B8BC7F700B57F46 /* PhoneVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF30B881B8BC7F700B57F46 /* PhoneVerificationViewController.m */; };
 		EBF30B8C1B8BC80D00B57F46 /* CountryCodeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF30B8B1B8BC80D00B57F46 /* CountryCodeTableViewController.m */; };
@@ -66,45 +56,37 @@
 		634732661B7B1623009B0D3B /* mContactAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mContactAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6347326B1B7B1623009B0D3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6347326C1B7B1623009B0D3B /* mContactAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mContactAppTests.m; sourceTree = "<group>"; };
-		634732761B7B173E009B0D3B /* cardBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cardBackViewController.h; path = ../cardBackViewController.h; sourceTree = "<group>"; };
-		634732771B7B173E009B0D3B /* cardBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cardBackViewController.m; path = ../cardBackViewController.m; sourceTree = "<group>"; };
-		634732791B7B3425009B0D3B /* settingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = settingViewController.h; path = ../settingViewController.h; sourceTree = "<group>"; };
-		6347327A1B7B3425009B0D3B /* settingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = settingViewController.m; path = ../settingViewController.m; sourceTree = "<group>"; };
-		637C7D421B7C7E4800E9B855 /* cardListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cardListViewController.h; path = ../cardListViewController.h; sourceTree = "<group>"; };
-		637C7D431B7C7E4800E9B855 /* cardListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cardListViewController.m; path = ../cardListViewController.m; sourceTree = "<group>"; };
-		637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = socialAccountListViewController.h; path = ../socialAccountListViewController.h; sourceTree = "<group>"; };
-		637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = socialAccountListViewController.m; path = ../socialAccountListViewController.m; sourceTree = "<group>"; };
+		634732761B7B173E009B0D3B /* cardBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cardBackViewController.h; sourceTree = "<group>"; };
+		634732771B7B173E009B0D3B /* cardBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cardBackViewController.m; sourceTree = "<group>"; };
+		634732791B7B3425009B0D3B /* settingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingViewController.h; sourceTree = "<group>"; };
+		6347327A1B7B3425009B0D3B /* settingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingViewController.m; sourceTree = "<group>"; };
+		637C7D421B7C7E4800E9B855 /* cardListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cardListViewController.h; sourceTree = "<group>"; };
+		637C7D431B7C7E4800E9B855 /* cardListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cardListViewController.m; sourceTree = "<group>"; };
+		637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socialAccountListViewController.h; sourceTree = "<group>"; };
+		637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = socialAccountListViewController.m; sourceTree = "<group>"; };
 		637C7D4D1B7DC4CB00E9B855 /* linkicons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = linkicons; path = ../linkicons; sourceTree = "<group>"; };
-		637C7D831B7E461200E9B855 /* socialAccountValidationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = socialAccountValidationViewController.h; path = ../socialAccountValidationViewController.h; sourceTree = "<group>"; };
-		637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = socialAccountValidationViewController.m; path = ../socialAccountValidationViewController.m; sourceTree = "<group>"; };
-		637C7D861B7E484800E9B855 /* SAtableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAtableCell.h; sourceTree = "<group>"; };
-		637C7D871B7E484800E9B855 /* SAtableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAtableCell.m; sourceTree = "<group>"; };
-		637F80D31B84574E0021BF65 /* TGLCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLCollectionViewCell.h; sourceTree = "<group>"; };
-		637F80D41B84574E0021BF65 /* TGLCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLCollectionViewCell.m; sourceTree = "<group>"; };
-		637F80D51B84574E0021BF65 /* TGLTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLTableViewController.h; sourceTree = "<group>"; };
-		637F80D61B84574E0021BF65 /* TGLTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLTableViewController.m; sourceTree = "<group>"; };
-		637F80D71B84574E0021BF65 /* TGLExposedLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLExposedLayout.h; sourceTree = "<group>"; };
-		637F80D81B84574E0021BF65 /* TGLExposedLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLExposedLayout.m; sourceTree = "<group>"; };
-		637F80D91B84574E0021BF65 /* TGLStackedLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLStackedLayout.h; sourceTree = "<group>"; };
-		637F80DA1B84574E0021BF65 /* TGLStackedLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLStackedLayout.m; sourceTree = "<group>"; };
-		637F80DB1B84574E0021BF65 /* TGLStackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLStackedViewController.h; sourceTree = "<group>"; };
-		637F80DC1B84574E0021BF65 /* TGLStackedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLStackedViewController.m; sourceTree = "<group>"; };
-		637F80DD1B84574E0021BF65 /* TGLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLViewController.h; sourceTree = "<group>"; };
-		637F80DE1B84574E0021BF65 /* TGLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLViewController.m; sourceTree = "<group>"; };
+		637C7D831B7E461200E9B855 /* socialAccountValidationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socialAccountValidationViewController.h; sourceTree = "<group>"; };
+		637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = socialAccountValidationViewController.m; sourceTree = "<group>"; };
 		637F81211B8713D90021BF65 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		643D3DED03463FD1B34094A4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A49AB772EA34C02137A47776 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85AD2CF4DE24241F20F002C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EB3FB4A11B9692C100B11FCE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		EB3FB4A21B9692C100B11FCE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		EBBB552A1B90E64C00A92C43 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageContentViewController.h; path = ../PageContentViewController.h; sourceTree = "<group>"; };
-		EBBB552B1B90E64C00A92C43 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageContentViewController.m; path = ../PageContentViewController.m; sourceTree = "<group>"; };
-		EBF30B871B8BC7F700B57F46 /* PhoneVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneVerificationViewController.h; path = ../PhoneVerificationViewController.h; sourceTree = "<group>"; };
-		EBF30B881B8BC7F700B57F46 /* PhoneVerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneVerificationViewController.m; path = ../PhoneVerificationViewController.m; sourceTree = "<group>"; };
-		EBF30B8A1B8BC80D00B57F46 /* CountryCodeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountryCodeTableViewController.h; path = ../CountryCodeTableViewController.h; sourceTree = "<group>"; };
-		EBF30B8B1B8BC80D00B57F46 /* CountryCodeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountryCodeTableViewController.m; path = ../CountryCodeTableViewController.m; sourceTree = "<group>"; };
-		EBF30B8D1B8BC81A00B57F46 /* ConfirmCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfirmCodeViewController.h; path = ../ConfirmCodeViewController.h; sourceTree = "<group>"; };
-		EBF30B8E1B8BC81A00B57F46 /* ConfirmCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfirmCodeViewController.m; path = ../ConfirmCodeViewController.m; sourceTree = "<group>"; };
+		EB9F6ABB1B9B7AD5007CEEEE /* StackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackedViewController.h; sourceTree = "<group>"; };
+		EB9F6ABC1B9B7AD5007CEEEE /* StackedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackedViewController.m; sourceTree = "<group>"; };
+		EB9F6AD61B9B7D2B007CEEEE /* SAtableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAtableCell.h; sourceTree = "<group>"; };
+		EB9F6AD71B9B7D2B007CEEEE /* SAtableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAtableCell.m; sourceTree = "<group>"; };
+		EB9F6ADC1B9BF4B1007CEEEE /* StackedCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackedCollectionViewCell.h; sourceTree = "<group>"; };
+		EB9F6ADD1B9BF4B1007CEEEE /* StackedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackedCollectionViewCell.m; sourceTree = "<group>"; };
+		EBBB552A1B90E64C00A92C43 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
+		EBBB552B1B90E64C00A92C43 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
+		EBF30B871B8BC7F700B57F46 /* PhoneVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneVerificationViewController.h; sourceTree = "<group>"; };
+		EBF30B881B8BC7F700B57F46 /* PhoneVerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneVerificationViewController.m; sourceTree = "<group>"; };
+		EBF30B8A1B8BC80D00B57F46 /* CountryCodeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCodeTableViewController.h; sourceTree = "<group>"; };
+		EBF30B8B1B8BC80D00B57F46 /* CountryCodeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCodeTableViewController.m; sourceTree = "<group>"; };
+		EBF30B8D1B8BC81A00B57F46 /* ConfirmCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmCodeViewController.h; sourceTree = "<group>"; };
+		EBF30B8E1B8BC81A00B57F46 /* ConfirmCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmCodeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +111,27 @@
 		634732441B7B1623009B0D3B = {
 			isa = PBXGroup;
 			children = (
-				637F81231B8714080021BF65 /* TGL */,
 				637F81201B8713D90021BF65 /* Model.xcdatamodeld */,
+				637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */,
+				EB9F6AD61B9B7D2B007CEEEE /* SAtableCell.h */,
+				EB9F6AD71B9B7D2B007CEEEE /* SAtableCell.m */,
+				637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */,
+				637C7D831B7E461200E9B855 /* socialAccountValidationViewController.h */,
+				637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */,
+				637C7D421B7C7E4800E9B855 /* cardListViewController.h */,
+				637C7D431B7C7E4800E9B855 /* cardListViewController.m */,
+				634732791B7B3425009B0D3B /* settingViewController.h */,
+				6347327A1B7B3425009B0D3B /* settingViewController.m */,
+				634732761B7B173E009B0D3B /* cardBackViewController.h */,
+				634732771B7B173E009B0D3B /* cardBackViewController.m */,
+				EBF30B871B8BC7F700B57F46 /* PhoneVerificationViewController.h */,
+				EBF30B881B8BC7F700B57F46 /* PhoneVerificationViewController.m */,
+				EBF30B8A1B8BC80D00B57F46 /* CountryCodeTableViewController.h */,
+				EBF30B8B1B8BC80D00B57F46 /* CountryCodeTableViewController.m */,
+				EBF30B8D1B8BC81A00B57F46 /* ConfirmCodeViewController.h */,
+				EBF30B8E1B8BC81A00B57F46 /* ConfirmCodeViewController.m */,
+				EBBB552A1B90E64C00A92C43 /* PageContentViewController.h */,
+				EBBB552B1B90E64C00A92C43 /* PageContentViewController.m */,
 				6347324F1B7B1623009B0D3B /* mContactApp */,
 				634732691B7B1623009B0D3B /* mContactAppTests */,
 				6347324E1B7B1623009B0D3B /* Products */,
@@ -152,26 +153,12 @@
 			isa = PBXGroup;
 			children = (
 				6347325A1B7B1623009B0D3B /* Main.storyboard */,
+				EB9F6ADC1B9BF4B1007CEEEE /* StackedCollectionViewCell.h */,
+				EB9F6ADD1B9BF4B1007CEEEE /* StackedCollectionViewCell.m */,
+				EB9F6ABB1B9B7AD5007CEEEE /* StackedViewController.h */,
+				EB9F6ABC1B9B7AD5007CEEEE /* StackedViewController.m */,
 				EB3FB4A11B9692C100B11FCE /* LoginViewController.h */,
 				EB3FB4A21B9692C100B11FCE /* LoginViewController.m */,
-				637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */,
-				637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */,
-				637C7D831B7E461200E9B855 /* socialAccountValidationViewController.h */,
-				637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */,
-				637C7D421B7C7E4800E9B855 /* cardListViewController.h */,
-				637C7D431B7C7E4800E9B855 /* cardListViewController.m */,
-				634732791B7B3425009B0D3B /* settingViewController.h */,
-				6347327A1B7B3425009B0D3B /* settingViewController.m */,
-				634732761B7B173E009B0D3B /* cardBackViewController.h */,
-				634732771B7B173E009B0D3B /* cardBackViewController.m */,
-				EBF30B871B8BC7F700B57F46 /* PhoneVerificationViewController.h */,
-				EBF30B881B8BC7F700B57F46 /* PhoneVerificationViewController.m */,
-				EBF30B8A1B8BC80D00B57F46 /* CountryCodeTableViewController.h */,
-				EBF30B8B1B8BC80D00B57F46 /* CountryCodeTableViewController.m */,
-				EBF30B8D1B8BC81A00B57F46 /* ConfirmCodeViewController.h */,
-				EBF30B8E1B8BC81A00B57F46 /* ConfirmCodeViewController.m */,
-				EBBB552A1B90E64C00A92C43 /* PageContentViewController.h */,
-				EBBB552B1B90E64C00A92C43 /* PageContentViewController.m */,
 				634732541B7B1623009B0D3B /* AppDelegate.h */,
 				634732551B7B1623009B0D3B /* AppDelegate.m */,
 				634732571B7B1623009B0D3B /* ViewController.h */,
@@ -208,27 +195,6 @@
 				6347326B1B7B1623009B0D3B /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		637F81231B8714080021BF65 /* TGL */ = {
-			isa = PBXGroup;
-			children = (
-				637F80D31B84574E0021BF65 /* TGLCollectionViewCell.h */,
-				637F80D41B84574E0021BF65 /* TGLCollectionViewCell.m */,
-				637F80D51B84574E0021BF65 /* TGLTableViewController.h */,
-				637F80D61B84574E0021BF65 /* TGLTableViewController.m */,
-				637F80D71B84574E0021BF65 /* TGLExposedLayout.h */,
-				637F80D81B84574E0021BF65 /* TGLExposedLayout.m */,
-				637F80D91B84574E0021BF65 /* TGLStackedLayout.h */,
-				637F80DA1B84574E0021BF65 /* TGLStackedLayout.m */,
-				637F80DB1B84574E0021BF65 /* TGLStackedViewController.h */,
-				637F80DC1B84574E0021BF65 /* TGLStackedViewController.m */,
-				637F80DD1B84574E0021BF65 /* TGLViewController.h */,
-				637F80DE1B84574E0021BF65 /* TGLViewController.m */,
-				637C7D861B7E484800E9B855 /* SAtableCell.h */,
-				637C7D871B7E484800E9B855 /* SAtableCell.m */,
-			);
-			name = TGL;
 			sourceTree = "<group>";
 		};
 		C06A3A41CFB09CCC59075EF5 /* Pods */ = {
@@ -385,31 +351,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBF30B8F1B8BC81A00B57F46 /* ConfirmCodeViewController.m in Sources */,
-				637F80DF1B84574E0021BF65 /* TGLCollectionViewCell.h in Sources */,
-				637F80E01B84574E0021BF65 /* TGLCollectionViewCell.m in Sources */,
-				637F80E11B84574E0021BF65 /* TGLTableViewController.h in Sources */,
-				637F80E21B84574E0021BF65 /* TGLTableViewController.m in Sources */,
 				EB3FB4A31B9692C100B11FCE /* LoginViewController.m in Sources */,
-				637F80E31B84574E0021BF65 /* TGLExposedLayout.h in Sources */,
-				637F80E41B84574E0021BF65 /* TGLExposedLayout.m in Sources */,
-				637F80E51B84574E0021BF65 /* TGLStackedLayout.h in Sources */,
-				637F80E61B84574E0021BF65 /* TGLStackedLayout.m in Sources */,
-				637F80E71B84574E0021BF65 /* TGLStackedViewController.h in Sources */,
 				637F81221B8713D90021BF65 /* Model.xcdatamodeld in Sources */,
-				637F80E81B84574E0021BF65 /* TGLStackedViewController.m in Sources */,
-				637F80E91B84574E0021BF65 /* TGLViewController.h in Sources */,
-				637F80EA1B84574E0021BF65 /* TGLViewController.m in Sources */,
 				634732591B7B1623009B0D3B /* ViewController.m in Sources */,
 				634732781B7B173E009B0D3B /* cardBackViewController.m in Sources */,
 				637C7D441B7C7E4800E9B855 /* cardListViewController.m in Sources */,
 				6347327B1B7B3425009B0D3B /* settingViewController.m in Sources */,
 				637C7D851B7E461200E9B855 /* socialAccountValidationViewController.m in Sources */,
+				EB9F6ABD1B9B7AD5007CEEEE /* StackedViewController.m in Sources */,
 				EBF30B8C1B8BC80D00B57F46 /* CountryCodeTableViewController.m in Sources */,
 				637C7D4C1B7DB60200E9B855 /* socialAccountListViewController.m in Sources */,
 				EBBB552C1B90E64C00A92C43 /* PageContentViewController.m in Sources */,
-				637C7D881B7E484800E9B855 /* SAtableCell.m in Sources */,
 				634732561B7B1623009B0D3B /* AppDelegate.m in Sources */,
+				EB9F6AD81B9B7D2B007CEEEE /* SAtableCell.m in Sources */,
 				634732531B7B1623009B0D3B /* main.m in Sources */,
+				EB9F6ADE1B9BF4B1007CEEEE /* StackedCollectionViewCell.m in Sources */,
 				EBF30B891B8BC7F700B57F46 /* PhoneVerificationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

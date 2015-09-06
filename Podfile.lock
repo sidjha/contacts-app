@@ -21,13 +21,16 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - MBProgressHUD (0.9.1)
+  - TGLStackedViewController (1.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - MBProgressHUD (~> 0.9.1)
+  - TGLStackedViewController (~> 1.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  TGLStackedViewController: 2edc69ada1f9ed269d982d9936d7ff567890e634
 
 COCOAPODS: 0.38.2

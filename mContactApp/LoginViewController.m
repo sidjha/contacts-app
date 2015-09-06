@@ -10,6 +10,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "AFURLRequestSerialization.h"
 #import "MBProgressHUD.h"
+#import "StackedViewController.h"
 
 @interface LoginViewController ()
 
@@ -36,7 +37,7 @@
         NSString *username = _usernameField.text;
         NSString *password = _passwordField.text;
         NSDictionary *parameters = @{@"username": username, @"password": password};
-        NSString *URLString = @"http://127.0.0.1:5000/favor8/api/v1.0/users/login";
+        NSString *URLString = @"http://4024ed13.ngrok.com/favor8/api/v1.0/users/login";
         
         // Set headers
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -45,7 +46,7 @@
         
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         
-        // Make the request
+               // Make the request
         [manager
          POST:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
              NSLog(@"/users/login response data: %@", responseObject);
@@ -53,15 +54,18 @@
              
              // TODO: save the auth token more securely in Keychain
              NSString *authToken = responseObject[@"auth_token"];
-             NSString *userID = responseObject[@"userID"];
+             NSString *userID = responseObject[@"user_id"];
              [[NSUserDefaults standardUserDefaults] setObject:authToken forKey:@"favor8AuthToken"];
-             [[NSUserDefaults standardUserDefaults] setObject:authToken forKey:@"favor8UserID"];
+             [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"favor8UserID"];
              [[NSUserDefaults standardUserDefaults] synchronize];
              
-             NSString *savedVal = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
+             NSString *savedVal = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8UserID"];
              NSLog(@"Saved value: %@", savedVal);
              
-             // TODO: navigate to the logged-in view
+             StackedViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"card"];
+             controller.stackedLayout.layoutMargin = UIEdgeInsetsZero;
+             controller.exposedLayoutMargin = controller.exposedPinningMode ? UIEdgeInsetsMake(40.0, 0.0, 0.0, 0.0) : UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
+             [self presentViewController:controller animated:YES completion:nil];
              
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"Error: %@", error);
@@ -94,7 +98,7 @@
         NSString *username = _usernameField.text;
         NSString *password = _passwordField.text;
         NSDictionary *parameters = @{@"username": username, @"password": password};
-        NSString *URLString = @"http://127.0.0.1:5000/favor8/api/v1.0/users/create";
+        NSString *URLString = @"http://4024ed13.ngrok.com/favor8/api/v1.0/users/create";
         
         // Set headers
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -120,6 +124,8 @@
              NSLog(@"Saved value: %@", savedVal);
              
              // TODO: navigate to the logged-in view
+             StackedViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"card"];
+             [self presentViewController:controller animated:YES completion:nil];
              
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"Error: %@", error);

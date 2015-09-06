@@ -7,7 +7,6 @@
 //
 
 #import "ConfirmCodeViewController.h"
-#import "TGLViewController.h"
 @interface ConfirmCodeViewController ()
 
 @end
@@ -62,9 +61,8 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                                         // TODO: Do something after request successful
-                TGLViewController *objTgl = [self.storyboard instantiateViewControllerWithIdentifier:@"tglObj"];
-                [self presentViewController:objTgl animated:YES completion:nil];
-                                    });
+
+                });
             }
             @catch (NSException *exception) {
                 NSLog(@"url error");
