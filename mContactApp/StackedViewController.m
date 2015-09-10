@@ -161,7 +161,6 @@
              NSDictionary *card = @{ @"name" : responseObject[@"name"], @"color" : [UIColor grayColor] };
              [_cards addObject:card];
              [self getFriendsCards];
-             //[self.collectionView reloadData];
 
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"Error: %@", error);
@@ -214,7 +213,7 @@
              [self.collectionView reloadData];
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"Error: %@", error);
-             
+             [self.collectionView reloadData]; // if GET "/friends/list" fails, reload anyway so user's card is displayed
              [MBProgressHUD hideHUDForView:self.view animated:YES];
          }];
     });
@@ -267,7 +266,7 @@
     //cell.color = card[@"color"];
     cell.backgroundColor =[UIColor whiteColor];
     
-    cell.layer.cornerRadius = 20.0;
+    cell.layer.cornerRadius = 15.0;
     cell.layer.masksToBounds = NO;
     UIColor *color = [UIColor blackColor];
     cell.layer.shadowColor = [color CGColor];

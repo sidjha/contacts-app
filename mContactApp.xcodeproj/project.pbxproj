@@ -43,7 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6347324D1B7B1623009B0D3B /* mContactApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mContactApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6347324D1B7B1623009B0D3B /* Favor8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Favor8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		634732511B7B1623009B0D3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		634732521B7B1623009B0D3B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		634732541B7B1623009B0D3B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		6347324E1B7B1623009B0D3B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6347324D1B7B1623009B0D3B /* mContactApp.app */,
+				6347324D1B7B1623009B0D3B /* Favor8.app */,
 				634732661B7B1623009B0D3B /* mContactAppTests.xctest */,
 			);
 			name = Products;
@@ -233,7 +233,7 @@
 			);
 			name = mContactApp;
 			productName = mContactApp;
-			productReference = 6347324D1B7B1623009B0D3B /* mContactApp.app */;
+			productReference = 6347324D1B7B1623009B0D3B /* Favor8.app */;
 			productType = "com.apple.product-type.application";
 		};
 		634732651B7B1623009B0D3B /* mContactAppTests */ = {
@@ -494,8 +494,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = mContactApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mesh8.mContactApp;
+				PRODUCT_NAME = Favor8;
 			};
 			name = Debug;
 		};
@@ -505,8 +507,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = mContactApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mesh8.mContactApp;
+				PRODUCT_NAME = Favor8;
 			};
 			name = Release;
 		};

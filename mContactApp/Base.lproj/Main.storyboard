@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -1068,18 +1069,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uhl-vu-eB1">
-                                <rect key="frame" x="29" y="212" width="356" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uhl-vu-eB1">
+                                <rect key="frame" x="50" y="212" width="315" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BTE-C7-Spu">
-                                <rect key="frame" x="29" y="300" width="350" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Cf-JX-nah">
-                                <rect key="frame" x="88" y="85" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Cf-JX-nah">
+                                <rect key="frame" x="184" y="381" width="46" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1088,8 +1084,8 @@
                                     <action selector="loginButtonPressed:" destination="Zdn-9h-xxo" eventType="touchUpInside" id="v5z-Mu-ZNt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PcH-tb-Oj8">
-                                <rect key="frame" x="215" y="81" width="57" height="34"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PcH-tb-Oj8">
+                                <rect key="frame" x="322" y="28" width="57" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Signup">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1099,8 +1095,44 @@
                                     <action selector="signupButtonPressed:" destination="Zdn-9h-xxo" eventType="touchUpInside" id="Xia-Ki-Cr4"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Favor8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCE-zF-KdH">
+                                <rect key="frame" x="25" y="110" width="365" height="53"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BTE-C7-Spu">
+                                <rect key="frame" x="53" y="300" width="309" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BTE-C7-Spu" firstAttribute="centerX" secondItem="4B0-3h-5L0" secondAttribute="centerX" id="5JV-Db-JBR"/>
+                            <constraint firstItem="PcH-tb-Oj8" firstAttribute="top" secondItem="rxu-KM-Jm6" secondAttribute="bottom" constant="8" id="Gg0-RR-iYU"/>
+                            <constraint firstItem="Uhl-vu-eB1" firstAttribute="top" secondItem="bCE-zF-KdH" secondAttribute="bottom" constant="70" id="InP-xx-fT8"/>
+                            <constraint firstItem="bCE-zF-KdH" firstAttribute="centerX" secondItem="4B0-3h-5L0" secondAttribute="centerX" id="Lv8-bg-Gma"/>
+                            <constraint firstItem="BTE-C7-Spu" firstAttribute="width" secondItem="Uhl-vu-eB1" secondAttribute="width" id="TFl-Nd-WHb"/>
+                            <constraint firstItem="7Cf-JX-nah" firstAttribute="top" secondItem="BTE-C7-Spu" secondAttribute="bottom" constant="40" id="Usx-Md-Idh"/>
+                            <constraint firstItem="7Cf-JX-nah" firstAttribute="height" secondItem="PcH-tb-Oj8" secondAttribute="height" id="V7U-H1-WvE"/>
+                            <constraint firstItem="Uhl-vu-eB1" firstAttribute="width" secondItem="4B0-3h-5L0" secondAttribute="height" multiplier="315:736" id="bsU-qe-buF"/>
+                            <constraint firstItem="bCE-zF-KdH" firstAttribute="top" secondItem="PcH-tb-Oj8" secondAttribute="bottom" constant="50" id="ecn-EZ-g6e"/>
+                            <constraint firstItem="7Cf-JX-nah" firstAttribute="centerX" secondItem="4B0-3h-5L0" secondAttribute="centerX" id="gs0-TA-csa"/>
+                            <constraint firstItem="7Cf-JX-nah" firstAttribute="width" secondItem="PcH-tb-Oj8" secondAttribute="width" id="jbH-JD-24U"/>
+                            <constraint firstItem="Uhl-vu-eB1" firstAttribute="width" secondItem="BTE-C7-Spu" secondAttribute="width" id="jec-CF-Dbs"/>
+                            <constraint firstItem="BTE-C7-Spu" firstAttribute="top" secondItem="Uhl-vu-eB1" secondAttribute="bottom" constant="58" id="ktc-Ig-50w"/>
+                            <constraint firstItem="Uhl-vu-eB1" firstAttribute="height" secondItem="BTE-C7-Spu" secondAttribute="height" id="luy-0h-bqi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PcH-tb-Oj8" secondAttribute="trailing" constant="15" id="rK5-S3-RVH"/>
+                            <constraint firstItem="Uhl-vu-eB1" firstAttribute="centerX" secondItem="4B0-3h-5L0" secondAttribute="centerX" id="vgk-3p-yta"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="jec-CF-Dbs"/>
+                                <exclude reference="luy-0h-bqi"/>
+                                <exclude reference="jbH-JD-24U"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
