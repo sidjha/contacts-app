@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mContactApp/LoginViewController.m"
-            timestampString = "463195494.914165"
+            timestampString = "463555488.515429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "-loginButtonPressed:"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-signupButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

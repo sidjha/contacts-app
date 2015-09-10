@@ -42,11 +42,14 @@
         // Set headers
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         
-        manager.securityPolicy.allowInvalidCertificates = YES;
+        AFSecurityPolicy* policy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+        [policy setValidatesDomainName:NO];
+        [policy setAllowInvalidCertificates:YES];
+        manager.securityPolicy = policy;
         
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         
-               // Make the request
+        // Make the request
         [manager
          POST:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
              NSLog(@"/users/login response data: %@", responseObject);
@@ -61,11 +64,18 @@
              
              NSString *savedVal = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8UserID"];
              NSLog(@"Saved value: %@", savedVal);
-             
+
              StackedViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"card"];
-             controller.stackedLayout.layoutMargin = UIEdgeInsetsZero;
-             controller.exposedLayoutMargin = controller.exposedPinningMode ? UIEdgeInsetsMake(40.0, 0.0, 0.0, 0.0) : UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
-             [self presentViewController:controller animated:YES completion:nil];
+             
+             controller.exposedPinningMode = TGLExposedLayoutPinningModeAll;
+             controller.exposedItemSize = controller.stackedLayout.itemSize = CGSizeMake(0.0, 500.0);
+             controller.exposedBottomPinningCount = 7;
+             //controller.stackedLayout.overwriteContentOffset = YES;
+             //controller.stackedLayout.contentOffset = CGPointMake(0.0, 20.0);
+             controller.doubleTapToClose = NO;
+             controller.exposedLayoutMargin = controller.stackedLayout.layoutMargin = UIEdgeInsetsMake(60.0, 0.0, 0.0, 0.0);
+             
+            [self presentViewController:controller animated:YES completion:nil];
              
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"Error: %@", error);
@@ -79,6 +89,7 @@
     });
 
 }
+
 - (IBAction)signupButtonPressed:(id)sender {
     // make request to /users/create
     // Show a progress HUD
@@ -98,7 +109,7 @@
         NSString *username = _usernameField.text;
         NSString *password = _passwordField.text;
         NSDictionary *parameters = @{@"username": username, @"password": password};
-        NSString *URLString = @"http://4024ed13.ngrok.com/favor8/api/v1.0/users/create";
+        NSString *URLString = @"https://4024ed13.ngrok.com/favor8/api/v1.0/users/create";
         
         // Set headers
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -117,7 +128,7 @@
              NSString *authToken = responseObject[@"auth_token"];
              NSString *userID = responseObject[@"userID"];
              [[NSUserDefaults standardUserDefaults] setObject:authToken forKey:@"favor8AuthToken"];
-             [[NSUserDefaults standardUserDefaults] setObject:authToken forKey:@"favor8UserID"];
+             [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"favor8UserID"];
              [[NSUserDefaults standardUserDefaults] synchronize];
              
              NSString *savedVal = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];

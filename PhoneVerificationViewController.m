@@ -9,7 +9,7 @@
 #import "PhoneVerificationViewController.h"
 #import "ConfirmCodeViewController.h"
 #import "CountryCodeTableViewController.h"
-#import "TGLViewController.h"
+#import "StackedViewController.h"
 @interface PhoneVerificationViewController ()
 
 @end
@@ -69,8 +69,8 @@
     NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                             stringForKey:@"userID"];
     if (savedValue) {
-        TGLViewController *objTgl = [self.storyboard instantiateViewControllerWithIdentifier:@"tglObj"];
-        [self presentViewController:objTgl animated:YES completion:nil];
+        StackedViewController *stackedVC = [self.storyboard instantiateViewControllerWithIdentifier:@"card"];
+        [self presentViewController:stackedVC animated:YES completion:nil];
     }
     // Do any additional setup after loading the view.
     self.phoneNumberField.delegate = self;

@@ -66,18 +66,42 @@
     
     [super viewDidLoad];
     
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    //CGFloat screenHeight = screenSize.height;
+    
+    UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    plusButton.frame = CGRectMake(screenWidth-38, 20, 30, 30);
+    plusButton.titleLabel.font = [UIFont systemFontOfSize:28.0];
+    [plusButton setTitle:@"+" forState:UIControlStateNormal];
+    [plusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.view addSubview:plusButton];
+    
+    UIButton *favoritesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    favoritesButton.frame = CGRectMake(8, 20, 65, 30);
+    favoritesButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    [favoritesButton setTitle:@"Favorites" forState:UIControlStateNormal];
+    [favoritesButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.view addSubview:favoritesButton];
+    
+    
     // Set to NO to prevent a small number
     // of cards from filling the entire
     // view height evenly and only show
     // their -topReveal amount
     //
-    self.stackedLayout.fillHeight = YES;
+    //self.stackedLayout.fillHeight = NO;
     
     // Set to NO to prevent a small number
     // of cards from being scrollable and
     // bounce
     //
     self.stackedLayout.alwaysBounce = YES;
+    
+    //self.stackedLayout.overwriteContentOffset = YES;
+    //self.stackedLayout.contentOffset = CGPointMake(screenWidth, 100);
     
     // Set to NO to prevent unexposed
     // items at top and bottom from
@@ -96,7 +120,6 @@
     }
     
     [self getMyCard];
-    [self getFriendsCards];
 }
 
 - (void) getMyCard {
@@ -137,7 +160,8 @@
              
              NSDictionary *card = @{ @"name" : responseObject[@"name"], @"color" : [UIColor grayColor] };
              [_cards addObject:card];
-             [self.collectionView reloadData];
+             [self getFriendsCards];
+             //[self.collectionView reloadData];
 
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"Error: %@", error);
@@ -244,14 +268,12 @@
     cell.backgroundColor =[UIColor whiteColor];
     
     cell.layer.cornerRadius = 20.0;
-    cell.layer.masksToBounds = YES;
+    cell.layer.masksToBounds = NO;
     UIColor *color = [UIColor blackColor];
     cell.layer.shadowColor = [color CGColor];
     cell.layer.shadowRadius = 5.0f;
     cell.layer.shadowOpacity = 0.5;
     cell.layer.shadowOffset = CGSizeZero;
-    cell.layer.masksToBounds = NO;
-    
     return cell;
 }
 
