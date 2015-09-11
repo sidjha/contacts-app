@@ -15,6 +15,14 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UITextField *phoneField;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+
+@property (weak, nonatomic) NSString *name;
+@property (weak, nonatomic) NSString *status;
+@property (weak, nonatomic) NSString *phone;
+@property (weak, nonatomic) NSMutableDictionary *socialLinks;
+@property (weak, nonatomic) NSString *profileImgURL;
+
+
 - (IBAction)donePressed:(id)sender;
 
 @end

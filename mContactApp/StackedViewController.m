@@ -28,6 +28,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "AFURLRequestSerialization.h"
 #import "MBProgressHUD.h"
+#import "EditViewController.h"
 
 @interface UIColor (randomColor)
 
@@ -130,6 +131,18 @@
 
 - (IBAction)editButtonPressed:(id)sender {
     NSLog(@"Edit button pressed");
+    NSDictionary *card = self.cards[self.exposedItemIndexPath.item];
+    
+    NSString *name;
+    
+    if ([card objectForKey:@"name"]) {
+        name = card[@"name"];
+    }
+    
+    if (name != NULL) {
+        // Need to pass this name object to the new view controller
+    }
+    
 }
 
 - (IBAction)socialButtonPressed:(id)sender {
@@ -383,12 +396,12 @@
 
     if (indexPath.row == 0) {
         cell.editButton.hidden = false;
-        //cell.socialButton.hidden = true;
-        ///cell.phoneButton.hidden = true;
+        cell.socialButton.hidden = true;
+        cell.phoneButton.hidden = true;
     } else {
         cell.editButton.hidden = true;
-        //cell.socialButton.hidden = false;
-        //cell.phoneButton.hidden = false;
+        cell.socialButton.hidden = false;
+        cell.phoneButton.hidden = false;
     }
     
     cell.title = card[@"name"];
@@ -417,5 +430,85 @@
     [self.cards removeObjectAtIndex:fromIndexPath.item];
     [self.cards insertObject:card atIndex:toIndexPath.item];
 }
+
+#pragma mark - Navigation methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender  {
+    
+    if ([segue.identifier isEqualToString:@"editSegue"]) {
+        
+        EditViewController *editVC = (EditViewController *)[segue destinationViewController];
+        
+        editVC.name = [self getName];
+        editVC.status = [self getStatus];
+        editVC.phone = [self getPhone];
+        editVC.profileImgURL = [self getProfileImgURL];
+    }
+}
+
+- (NSString *)getName {
+    
+    NSDictionary *card = self.cards[self.exposedItemIndexPath.item];
+    NSString *name;
+    
+    if ([card objectForKey:@"name"]) {
+        name = card[@"name"];
+    }
+    
+    if (name == NULL) {
+        name = @"";
+    }
+
+    return name;
+}
+
+- (NSString *)getStatus {
+    
+    NSDictionary *card = self.cards[self.exposedItemIndexPath.item];
+    NSString *status;
+    
+    if ([card objectForKey:@"status"]) {
+        status = card[@"status"];
+    }
+    
+    if (status == NULL) {
+        status = @"";
+    }
+    
+    return status;
+}
+
+- (NSString *)getPhone {
+    
+    NSDictionary *card = self.cards[self.exposedItemIndexPath.item];
+    NSString *phone;
+    
+    if ([card objectForKey:@"phone"]) {
+        phone = card[@"phone"];
+    }
+    
+    if (phone == NULL) {
+        phone = @"";
+    }
+    
+    return phone;
+}
+
+- (NSString *)getProfileImgURL {
+    
+    NSDictionary *card = self.cards[self.exposedItemIndexPath.item];
+    NSString *profileImgURL;
+    
+    if ([card objectForKey:@"profile_img"]) {
+        profileImgURL = card[@"profile_img"];
+    }
+    
+    if (profileImgURL == NULL) {
+        profileImgURL = @"";
+    }
+    
+    return profileImgURL;
+}
+
 
 @end

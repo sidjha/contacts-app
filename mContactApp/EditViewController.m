@@ -16,7 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    if (![_name isEqualToString:@""]) {
+        [self.nameField setText:_name];
+    } else {
+        [self.nameField setPlaceholder:@"Your Name"];
+    }
+    
+    if (![_status isEqualToString:@""]) {
+        [self.statusField setText:_status];
+    } else {
+        [self.statusField setText:@"Type a simple status here"];
+    }
+    
+    [self.phoneField setText:_phone];
 }
 
 - (void)didReceiveMemoryWarning {
