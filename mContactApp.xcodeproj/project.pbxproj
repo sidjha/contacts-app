@@ -21,6 +21,7 @@
 		637C7D4E1B7DC4CB00E9B855 /* linkicons in Resources */ = {isa = PBXBuildFile; fileRef = 637C7D4D1B7DC4CB00E9B855 /* linkicons */; };
 		637C7D851B7E461200E9B855 /* socialAccountValidationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */; };
 		637F81221B8713D90021BF65 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 637F81201B8713D90021BF65 /* Model.xcdatamodeld */; };
+		EB1A0EC01BA2A5FA005F9FF8 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1A0EBF1BA2A5FA005F9FF8 /* EditViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EB3FB4A31B9692C100B11FCE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3FB4A21B9692C100B11FCE /* LoginViewController.m */; };
 		EB9F6ABD1B9B7AD5007CEEEE /* StackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6ABC1B9B7AD5007CEEEE /* StackedViewController.m */; };
 		EB9F6AD81B9B7D2B007CEEEE /* SAtableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6AD71B9B7D2B007CEEEE /* SAtableCell.m */; };
@@ -72,6 +73,8 @@
 		643D3DED03463FD1B34094A4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A49AB772EA34C02137A47776 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85AD2CF4DE24241F20F002C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EB1A0EBE1BA2A5FA005F9FF8 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		EB1A0EBF1BA2A5FA005F9FF8 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		EB3FB4A11B9692C100B11FCE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		EB3FB4A21B9692C100B11FCE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EB9F6ABB1B9B7AD5007CEEEE /* StackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackedViewController.h; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 				634732551B7B1623009B0D3B /* AppDelegate.m */,
 				634732571B7B1623009B0D3B /* ViewController.h */,
 				634732581B7B1623009B0D3B /* ViewController.m */,
+				EB1A0EBE1BA2A5FA005F9FF8 /* EditViewController.h */,
+				EB1A0EBF1BA2A5FA005F9FF8 /* EditViewController.m */,
 				6347325D1B7B1623009B0D3B /* Images.xcassets */,
 				637C7D4D1B7DC4CB00E9B855 /* linkicons */,
 				6347325F1B7B1623009B0D3B /* LaunchScreen.xib */,
@@ -366,6 +371,7 @@
 				EB9F6ABD1B9B7AD5007CEEEE /* StackedViewController.m in Sources */,
 				EBF30B8C1B8BC80D00B57F46 /* CountryCodeTableViewController.m in Sources */,
 				637C7D4C1B7DB60200E9B855 /* socialAccountListViewController.m in Sources */,
+				EB1A0EC01BA2A5FA005F9FF8 /* EditViewController.m in Sources */,
 				EBBB552C1B90E64C00A92C43 /* PageContentViewController.m in Sources */,
 				EBAF4AA41BA298440024DEB8 /* SignupViewController.m in Sources */,
 				634732561B7B1623009B0D3B /* AppDelegate.m in Sources */,

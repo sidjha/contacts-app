@@ -1186,6 +1186,81 @@
             </objects>
             <point key="canvasLocation" x="-1010" y="1190"/>
         </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="QML-gp-UaR">
+            <objects>
+                <viewController id="qRU-MJ-qXp" customClass="EditViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YU6-7h-DIF"/>
+                        <viewControllerLayoutGuide type="bottom" id="wIa-u1-YLN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bBx-xW-2vI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lLj-Kt-hSJ">
+                                <rect key="frame" x="33" y="40" width="313" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="A simple status. It can span 3 lines. It's like a tweet or a facebook status." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AIy-2B-Kh8">
+                                <rect key="frame" x="33" y="85" width="348" height="90"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BXl-qh-ITp">
+                                <rect key="frame" x="28" y="190" width="353" height="234"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKf-gj-a67">
+                                <rect key="frame" x="338" y="20" width="56" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <state key="normal" title="DONE"/>
+                                <connections>
+                                    <action selector="donePressed:" destination="qRU-MJ-qXp" eventType="touchUpInside" id="Qyk-ly-67P"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svw-XW-k3R">
+                                <rect key="frame" x="28" y="479" width="49" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. +14166001234" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c7V-7g-D5Z">
+                                <rect key="frame" x="127" y="479" width="254" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AIy-2B-Kh8" firstAttribute="centerX" secondItem="bBx-xW-2vI" secondAttribute="centerX" id="2dh-7B-XGN"/>
+                            <constraint firstItem="BXl-qh-ITp" firstAttribute="top" secondItem="AIy-2B-Kh8" secondAttribute="bottom" constant="15" id="Ei7-af-Cdf"/>
+                            <constraint firstItem="c7V-7g-D5Z" firstAttribute="bottom" secondItem="svw-XW-k3R" secondAttribute="bottom" id="GD7-Vb-0Bd"/>
+                            <constraint firstItem="svw-XW-k3R" firstAttribute="leading" secondItem="bBx-xW-2vI" secondAttribute="leadingMargin" constant="20" id="Iai-8Q-7Eb"/>
+                            <constraint firstItem="lLj-Kt-hSJ" firstAttribute="width" secondItem="AIy-2B-Kh8" secondAttribute="width" id="J6X-a4-rIM"/>
+                            <constraint firstItem="AIy-2B-Kh8" firstAttribute="width" secondItem="BXl-qh-ITp" secondAttribute="width" id="RqC-v3-Mmf"/>
+                            <constraint firstItem="KKf-gj-a67" firstAttribute="top" secondItem="YU6-7h-DIF" secondAttribute="bottom" constant="15" id="bIy-Ia-g43"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KKf-gj-a67" secondAttribute="trailing" constant="8" id="cVC-uX-0MU"/>
+                            <constraint firstItem="lLj-Kt-hSJ" firstAttribute="top" secondItem="KKf-gj-a67" secondAttribute="bottom" constant="10" id="lre-TS-zAa"/>
+                            <constraint firstItem="c7V-7g-D5Z" firstAttribute="leading" secondItem="svw-XW-k3R" secondAttribute="trailing" constant="50" id="qlI-Ld-bDz"/>
+                            <constraint firstItem="lLj-Kt-hSJ" firstAttribute="centerX" secondItem="bBx-xW-2vI" secondAttribute="centerX" id="s5l-cD-lmv"/>
+                            <constraint firstItem="AIy-2B-Kh8" firstAttribute="top" secondItem="lLj-Kt-hSJ" secondAttribute="bottom" constant="15" id="vQj-HD-ehp"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="doneButton" destination="KKf-gj-a67" id="WZZ-fS-f0r"/>
+                        <outlet property="nameField" destination="lLj-Kt-hSJ" id="sbB-qD-nS3"/>
+                        <outlet property="phoneField" destination="c7V-7g-D5Z" id="I4e-2m-2Wa"/>
+                        <outlet property="phoneLabel" destination="svw-XW-k3R" id="OBH-5m-E0W"/>
+                        <outlet property="profileImage" destination="BXl-qh-ITp" id="xjP-zV-ZQS"/>
+                        <outlet property="statusField" destination="AIy-2B-Kh8" id="Qtc-Sl-Mms"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yhe-4E-KEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="467" y="1956"/>
+        </scene>
         <!--Stacked View Controller-->
         <scene sceneID="gUx-5p-4Vw">
             <objects>
@@ -1237,6 +1312,7 @@
                                             <state key="normal" title="EDIT"/>
                                             <connections>
                                                 <action selector="editButtonPressed:" destination="X4L-a1-K8U" eventType="touchUpInside" id="ahd-mk-sm1"/>
+                                                <segue destination="qRU-MJ-qXp" kind="presentation" id="XiY-DV-5Fo"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sI8-tG-0ju">
