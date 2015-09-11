@@ -130,9 +130,19 @@
 - (IBAction)socialButtonPressed:(id)sender {
     NSLog(@"Social button pressed");
     NSDictionary *card = self.cards[self.exposedItemIndexPath.item];
-    
+    NSString *name;
+    if ([card objectForKey:@"name"]) {
+        name = card[@"name"];
+    }
     if ([card objectForKey:@"social_links"]) {
-        UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Social Links" message:@"Using the alert controller" preferredStyle:UIAlertControllerStyleActionSheet];
+        NSString *msg;
+        if (name != NULL) {
+            msg = [NSString stringWithFormat:@"Select a channel to reach %@ on", name];
+        } else {
+            msg = @"Select a channel to reach on";
+        }
+        
+        UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Social Links" message:msg preferredStyle:UIAlertControllerStyleActionSheet];
         [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
 
         for (id key in card[@"social_links"]) {
@@ -159,7 +169,7 @@
     NSString *phoneNumber;
     NSDictionary *card = self.cards[self.exposedItemIndexPath.item];
     if ([card objectForKey:@"phone"]) {
-        phoneNumber = [@"telprompt://" stringByAppendingString:card[@"phone"]];
+        phoneNumber = [@"tel:" stringByAppendingString:card[@"phone"]];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     } else {
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
