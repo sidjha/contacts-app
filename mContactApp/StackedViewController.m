@@ -67,46 +67,27 @@
     [super viewDidLoad];
     
     
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width;
-    //CGFloat screenHeight = screenSize.height;
-    
-    UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    plusButton.frame = CGRectMake(screenWidth-38, 20, 30, 30);
-    plusButton.titleLabel.font = [UIFont systemFontOfSize:28.0];
-    [plusButton setTitle:@"+" forState:UIControlStateNormal];
-    [plusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.view addSubview:plusButton];
-    
-    UIButton *favoritesButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    favoritesButton.frame = CGRectMake(8, 20, 65, 30);
-    favoritesButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
-    [favoritesButton setTitle:@"Favorites" forState:UIControlStateNormal];
-    [favoritesButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.view addSubview:favoritesButton];
-    
+    // Set TGL properties
+    self.exposedPinningMode = TGLExposedLayoutPinningModeAll;
+    self.exposedItemSize = self.stackedLayout.itemSize = CGSizeMake(0.0, 500.0);
+    self.exposedBottomPinningCount = 7;
+    self.doubleTapToClose = NO;
+    self.exposedLayoutMargin = self.stackedLayout.layoutMargin = UIEdgeInsetsMake(60.0, 0.0, 0.0, 0.0);
     
     // Set to NO to prevent a small number
     // of cards from filling the entire
     // view height evenly and only show
     // their -topReveal amount
-    //
-    //self.stackedLayout.fillHeight = NO;
+    self.stackedLayout.fillHeight = NO;
     
     // Set to NO to prevent a small number
     // of cards from being scrollable and
     // bounce
-    //
     self.stackedLayout.alwaysBounce = YES;
-    
-    //self.stackedLayout.overwriteContentOffset = YES;
-    //self.stackedLayout.contentOffset = CGPointMake(screenWidth, 100);
     
     // Set to NO to prevent unexposed
     // items at top and bottom from
     // being selectable
-    //
     self.unexposedItemsAreSelectable = YES;
     
     if (self.doubleTapToClose) {
@@ -119,23 +100,52 @@
         [self.collectionView addGestureRecognizer:recognizer];
     }
     
+    
+    // Add a topbar consisting of "Favorites" and "+" button
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    
+    UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    plusButton.frame = CGRectMake(screenWidth-38, 20, 30, 30);
+    plusButton.titleLabel.font = [UIFont systemFontOfSize:28.0];
+    [plusButton setTitle:@"+" forState:UIControlStateNormal];
+    [plusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    [self.view addSubview:plusButton];
+    
+    UIButton *favoritesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    favoritesButton.frame = CGRectMake(8, 20, 65, 30);
+    favoritesButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    [favoritesButton setTitle:@"Favorites" forState:UIControlStateNormal];
+    [favoritesButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    [self.view addSubview:favoritesButton];
+    
+    // Retrieve user's card and friends' cards from server
     [self getMyCard];
 }
+
 - (IBAction)editButtonPressed:(id)sender {
     NSLog(@"Edit button pressed");
-    
-    // TODO: how to get the current card?
 }
 
 - (IBAction)socialButtonPressed:(id)sender {
-    NSLog(@"Social button pressed");
+    // Get current card
     NSDictionary *card = self.cards[self.exposedItemIndexPath.item];
+
     NSString *name;
+
     if ([card objectForKey:@"name"]) {
         name = card[@"name"];
     }
+
     if ([card objectForKey:@"social_links"]) {
+        
         NSString *msg;
+
         if (name != NULL) {
             msg = [NSString stringWithFormat:@"Select a channel to reach %@ on", name];
         } else {
@@ -143,43 +153,54 @@
         }
         
         UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Social Links" message:msg preferredStyle:UIAlertControllerStyleActionSheet];
+        
         [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
 
         for (id key in card[@"social_links"]) {
             [actionSheet addAction:[UIAlertAction actionWithTitle:key style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 
-                // Distructive button tapped.
                 //[self dismissViewControllerAnimated:YES completion:^{
                 //}];
+                // TODO: deep link to app
             }]];
         }
         
         // Present action sheet.
         [self presentViewController:actionSheet animated:YES completion:nil];
+    
     } else {
+        
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Social Links set" message:@"Your friend has not enabled any social links." preferredStyle:UIAlertControllerStyleAlert];
+        
         [alert addAction:ok];
         [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
 - (IBAction)phoneButtonPressed:(id)sender {
-    NSLog(@"Phone button pressed");
-    NSString *phoneNumber;
+    
     NSDictionary *card = self.cards[self.exposedItemIndexPath.item];
+    NSString *phoneNumber;
+
     if ([card objectForKey:@"phone"]) {
+        
         phoneNumber = [@"tel:" stringByAppendingString:card[@"phone"]];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+        
     } else {
+        
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No phone number set" message:@"Your friend has not enabled a phone number." preferredStyle:UIAlertControllerStyleAlert];
+        
         [alert addAction:ok];
         [self presentViewController:alert animated:YES completion:nil];
+        
     }
 }
 
 - (void) getMyCard {
+    
     NSString *userID = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8UserID"];
     NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
     
@@ -218,10 +239,13 @@
              NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone"];
              NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
              NSMutableArray *objects = [[NSMutableArray alloc]init];
+             
              NSDictionary *card;
              
              for (NSInteger i = 0; i < [keys count]; i++) {
+                 
                  if ([responseObject objectForKey:keys[i]]) {
+                     
                      [matchingKeys addObject:keys[i]];
                      [objects addObject:responseObject[keys[i]]];
                  }
@@ -230,18 +254,20 @@
              card = [NSDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
              
              [_cards addObject:card];
+
              [self getFriendsCards];
              
-         }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
              NSLog(@"Error: %@", error);
              
              [MBProgressHUD hideHUDForView:self.view animated:YES];
          }];
     });
-    
 }
 
 - (void) getFriendsCards {
+    
     NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
     
     // make request to /friends/list
@@ -273,13 +299,17 @@
         // Make the request
         [manager
          GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
+             
              NSLog(@"/friends/list response data: %@", responseObject);
+             
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              
              for (NSInteger j = 0; j < [[responseObject valueForKey:@"friends"] count]; j++) {
+                 
                  NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone"];
                  NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
                  NSMutableArray *objects = [[NSMutableArray alloc]init];
+                 
                  NSDictionary *card;
                  
                  for (NSInteger i = 0; i < [keys count]; i++) {
@@ -290,12 +320,19 @@
                  }
                  
                  card = [NSDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
+                 
                  [_cards addObject:card];
              }
+             
              [self.collectionView reloadData];
-         }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             
              NSLog(@"Error: %@", error);
-             [self.collectionView reloadData]; // if GET "/friends/list" fails, reload anyway so user's card is displayed
+             
+             // if GET "/friends/list" fails, reload anyway so user's card is displayed
+             [self.collectionView reloadData];
+
              [MBProgressHUD hideHUDForView:self.view animated:YES];
          }];
     });

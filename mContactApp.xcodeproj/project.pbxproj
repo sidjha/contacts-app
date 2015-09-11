@@ -25,6 +25,7 @@
 		EB9F6ABD1B9B7AD5007CEEEE /* StackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6ABC1B9B7AD5007CEEEE /* StackedViewController.m */; };
 		EB9F6AD81B9B7D2B007CEEEE /* SAtableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6AD71B9B7D2B007CEEEE /* SAtableCell.m */; };
 		EB9F6ADE1B9BF4B1007CEEEE /* StackedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6ADD1B9BF4B1007CEEEE /* StackedCollectionViewCell.m */; };
+		EBAF4AA41BA298440024DEB8 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF4AA31BA298440024DEB8 /* SignupViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EBBB552C1B90E64C00A92C43 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBB552B1B90E64C00A92C43 /* PageContentViewController.m */; };
 		EBF30B891B8BC7F700B57F46 /* PhoneVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF30B881B8BC7F700B57F46 /* PhoneVerificationViewController.m */; };
 		EBF30B8C1B8BC80D00B57F46 /* CountryCodeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF30B8B1B8BC80D00B57F46 /* CountryCodeTableViewController.m */; };
@@ -79,6 +80,8 @@
 		EB9F6AD71B9B7D2B007CEEEE /* SAtableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAtableCell.m; sourceTree = "<group>"; };
 		EB9F6ADC1B9BF4B1007CEEEE /* StackedCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackedCollectionViewCell.h; sourceTree = "<group>"; };
 		EB9F6ADD1B9BF4B1007CEEEE /* StackedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackedCollectionViewCell.m; sourceTree = "<group>"; };
+		EBAF4AA21BA298440024DEB8 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		EBAF4AA31BA298440024DEB8 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		EBBB552A1B90E64C00A92C43 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
 		EBBB552B1B90E64C00A92C43 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		EBF30B871B8BC7F700B57F46 /* PhoneVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneVerificationViewController.h; sourceTree = "<group>"; };
@@ -159,6 +162,8 @@
 				EB9F6ABC1B9B7AD5007CEEEE /* StackedViewController.m */,
 				EB3FB4A11B9692C100B11FCE /* LoginViewController.h */,
 				EB3FB4A21B9692C100B11FCE /* LoginViewController.m */,
+				EBAF4AA21BA298440024DEB8 /* SignupViewController.h */,
+				EBAF4AA31BA298440024DEB8 /* SignupViewController.m */,
 				634732541B7B1623009B0D3B /* AppDelegate.h */,
 				634732551B7B1623009B0D3B /* AppDelegate.m */,
 				634732571B7B1623009B0D3B /* ViewController.h */,
@@ -362,6 +367,7 @@
 				EBF30B8C1B8BC80D00B57F46 /* CountryCodeTableViewController.m in Sources */,
 				637C7D4C1B7DB60200E9B855 /* socialAccountListViewController.m in Sources */,
 				EBBB552C1B90E64C00A92C43 /* PageContentViewController.m in Sources */,
+				EBAF4AA41BA298440024DEB8 /* SignupViewController.m in Sources */,
 				634732561B7B1623009B0D3B /* AppDelegate.m in Sources */,
 				EB9F6AD81B9B7D2B007CEEEE /* SAtableCell.m in Sources */,
 				634732531B7B1623009B0D3B /* main.m in Sources */,
@@ -494,7 +500,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = mContactApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mesh8.mContactApp;
 				PRODUCT_NAME = Favor8;
@@ -507,7 +513,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = mContactApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mesh8.mContactApp;
 				PRODUCT_NAME = Favor8;

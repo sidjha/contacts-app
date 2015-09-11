@@ -1,22 +1,22 @@
 //
-//  LoginViewController.m
+//  SignupViewController.m
 //  mContactApp
 //
-//  Created by Sid Jha on 02/09/15.
-//  Copyright (c) 2015 Mesh8 Inc. All rights reserved.
+//  Created by Sid Jha on 11/09/15.
+//  Copyright © 2015 Mesh8 Inc. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "SignupViewController.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "AFURLRequestSerialization.h"
 #import "MBProgressHUD.h"
 #import "StackedViewController.h"
 
-@interface LoginViewController ()
+@interface SignupViewController ()
 
 @end
 
-@implementation LoginViewController
+@implementation SignupViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,11 +28,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)loginButtonPressed:(id)sender {
-    // make request to /users/login
+- (IBAction)signupButtonPressed:(id)sender {
+    // make request to /users/create
     // Show a progress HUD
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Logging in..";
+    hud.labelText = @"Signing you up...";
     
     // Note: Explicitly getting a low priority queue and making the request on that,
     //       because MBProgressHUD recommends so. However, the success and failure
@@ -46,8 +46,9 @@
         
         NSString *username = _usernameField.text;
         NSString *password = _passwordField.text;
-        NSDictionary *parameters = @{@"username": username, @"password": password};
-        NSString *URLString = @"http://4024ed13.ngrok.com/favor8/api/v1.0/users/login";
+        NSString *name = _nameField.text;
+        NSDictionary *parameters = @{@"username": username, @"password": password, @"name": name};
+        NSString *URLString = @"http://4024ed13.ngrok.com/favor8/api/v1.0/users/create";
         
         // Set headers
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -62,7 +63,7 @@
         // Make the request
         [manager
          POST:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
-             NSLog(@"/users/login response data: %@", responseObject);
+             NSLog(@"/users/create response data: %@", responseObject);
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              
              // TODO: save the auth token more securely in Keychain
@@ -72,34 +73,33 @@
              [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"favor8UserID"];
              [[NSUserDefaults standardUserDefaults] synchronize];
              
-             NSString *savedVal = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8UserID"];
+             NSString *savedVal = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
              NSLog(@"Saved value: %@", savedVal);
-
+             
              StackedViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"card"];
              
-            [self presentViewController:controller animated:YES completion:nil];
+             [self presentViewController:controller animated:YES completion:nil];
              
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"Error: %@", error);
              
              //dispatch_queue_t mainQueue = dispatch_get_main_queue();
              //dispatch_async(mainQueue, ^{
-             [[[UIAlertView alloc] initWithTitle:@"Error" message:@"We're so sorry! Something went wrong and we couldn't log you in :(" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+             [[[UIAlertView alloc] initWithTitle:@"Error" message:@"We're so sorry! Something went wrong in trying to sign you up :(" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
              // });
              [MBProgressHUD hideHUDForView:self.view animated:YES];
          }];
     });
-
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
