@@ -109,13 +109,16 @@
         NSString *username = _usernameField.text;
         NSString *password = _passwordField.text;
         NSDictionary *parameters = @{@"username": username, @"password": password};
-        NSString *URLString = @"https://4024ed13.ngrok.com/favor8/api/v1.0/users/create";
+        NSString *URLString = @"http://4024ed13.ngrok.com/favor8/api/v1.0/users/create";
         
         // Set headers
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         
-        manager.securityPolicy.allowInvalidCertificates = YES;
-        
+        AFSecurityPolicy* policy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+        [policy setValidatesDomainName:NO];
+        [policy setAllowInvalidCertificates:YES];
+        manager.securityPolicy = policy;
+
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         
         // Make the request

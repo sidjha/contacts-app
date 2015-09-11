@@ -121,6 +121,48 @@
     
     [self getMyCard];
 }
+- (IBAction)editButtonPressed:(id)sender {
+    NSLog(@"Edit button pressed");
+    
+    // TODO: how to get the current card?
+}
+
+- (IBAction)socialButtonPressed:(id)sender {
+    NSLog(@"Social button pressed");
+    NSDictionary *card = self.cards[self.exposedItemIndexPath.item];
+    
+    if ([card objectForKey:@"social_links"]) {
+        UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Social Links" message:@"Using the alert controller" preferredStyle:UIAlertControllerStyleActionSheet];
+        [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            
+            // Cancel button tappped.
+            //[self dismissViewControllerAnimated:YES completion:^{
+            //}];
+        }]];
+
+        for (id key in card[@"social_links"]) {
+            [actionSheet addAction:[UIAlertAction actionWithTitle:key style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                // Distructive button tapped.
+                //[self dismissViewControllerAnimated:YES completion:^{
+                //}];
+            }]];
+        }
+        
+        // Present action sheet.
+        [self presentViewController:actionSheet animated:YES completion:nil];
+    } else {
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Social Links set" message:@"Your friend has not enabled any social links." preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+
+- (IBAction)phoneButtonPressed:(id)sender {
+    NSLog(@"Phone button pressed");
+    NSLog(@"Current card %@", self.cards[self.exposedItemIndexPath.item]);
+}
 
 - (void) getMyCard {
     NSString *userID = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8UserID"];
@@ -158,17 +200,30 @@
              NSLog(@"/users/show response data: %@", responseObject);
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              
-             NSDictionary *card = @{ @"name" : responseObject[@"name"], @"color" : [UIColor grayColor] };
+             NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone"];
+             NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
+             NSMutableArray *objects = [[NSMutableArray alloc]init];
+             NSDictionary *card;
+             
+             for (NSInteger i = 0; i < [keys count]; i++) {
+                 if ([responseObject objectForKey:keys[i]]) {
+                     [matchingKeys addObject:keys[i]];
+                     [objects addObject:responseObject[keys[i]]];
+                 }
+             }
+             
+             card = [NSDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
+             
              [_cards addObject:card];
              [self getFriendsCards];
-
+             
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"Error: %@", error);
              
              [MBProgressHUD hideHUDForView:self.view animated:YES];
          }];
     });
-
+    
 }
 
 - (void) getFriendsCards {
@@ -205,10 +260,22 @@
          GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
              NSLog(@"/friends/list response data: %@", responseObject);
              [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
-             for (NSInteger i = 0; i < [[responseObject valueForKey:@"friends"] count]; i++) {
-              NSDictionary *card = @{ @"name" : responseObject[@"friends"][i][@"name"], @"color" : [UIColor grayColor] };
-              [_cards addObject:card];
+             
+             for (NSInteger j = 0; j < [[responseObject valueForKey:@"friends"] count]; j++) {
+                 NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone"];
+                 NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
+                 NSMutableArray *objects = [[NSMutableArray alloc]init];
+                 NSDictionary *card;
+                 
+                 for (NSInteger i = 0; i < [keys count]; i++) {
+                     if ([responseObject[@"friends"][j] objectForKey:keys[i]]) {
+                         [matchingKeys addObject:keys[i]];
+                         [objects addObject:responseObject[@"friends"][j][keys[i]]];
+                     }
+                 }
+                 
+                 card = [NSDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
+                 [_cards addObject:card];
              }
              [self.collectionView reloadData];
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -234,11 +301,11 @@
         
         // Adjust the number of cards here
         /*
-        for (NSInteger i = 1; i < 100; i++) {
-            NSDictionary *card = @{ @"name" : [NSString stringWithFormat:@"Card #%d", (int)i], @"color" : [UIColor randomColor] };
-            
-            [_cards addObject:card];
-        } */
+         for (NSInteger i = 1; i < 100; i++) {
+         NSDictionary *card = @{ @"name" : [NSString stringWithFormat:@"Card #%d", (int)i], @"color" : [UIColor randomColor] };
+         
+         [_cards addObject:card];
+         } */
     }
     return _cards;
 }
@@ -261,6 +328,16 @@
     
     StackedCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardcell" forIndexPath:indexPath];
     NSDictionary *card = self.cards[indexPath.item];
+
+    if (indexPath.row == 0) {
+        cell.editButton.hidden = false;
+        //cell.socialButton.hidden = true;
+        ///cell.phoneButton.hidden = true;
+    } else {
+        cell.editButton.hidden = true;
+        //cell.socialButton.hidden = false;
+        //cell.phoneButton.hidden = false;
+    }
     
     cell.title = card[@"name"];
     //cell.color = card[@"color"];
@@ -273,6 +350,7 @@
     cell.layer.shadowRadius = 5.0f;
     cell.layer.shadowOpacity = 0.5;
     cell.layer.shadowOffset = CGSizeZero;
+    
     return cell;
 }
 
