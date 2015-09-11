@@ -133,12 +133,7 @@
     
     if ([card objectForKey:@"social_links"]) {
         UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Social Links" message:@"Using the alert controller" preferredStyle:UIAlertControllerStyleActionSheet];
-        [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            
-            // Cancel button tappped.
-            //[self dismissViewControllerAnimated:YES completion:^{
-            //}];
-        }]];
+        [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
 
         for (id key in card[@"social_links"]) {
             [actionSheet addAction:[UIAlertAction actionWithTitle:key style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -161,7 +156,17 @@
 
 - (IBAction)phoneButtonPressed:(id)sender {
     NSLog(@"Phone button pressed");
-    NSLog(@"Current card %@", self.cards[self.exposedItemIndexPath.item]);
+    NSString *phoneNumber;
+    NSDictionary *card = self.cards[self.exposedItemIndexPath.item];
+    if ([card objectForKey:@"phone"]) {
+        phoneNumber = [@"telprompt://" stringByAppendingString:card[@"phone"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    } else {
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No phone number set" message:@"Your friend has not enabled a phone number." preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (void) getMyCard {
