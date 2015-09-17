@@ -57,6 +57,7 @@
 
 @property (strong, readonly, nonatomic) NSMutableArray *cards;
 
+
 @end
 
 @implementation StackedViewController
@@ -129,19 +130,16 @@
     [self getMyCard];
 }
 
+- (void) editViewController:(EditViewController *)controller didFinishUpdatingCard:(NSMutableDictionary *)card {
+    [_cards replaceObjectAtIndex:0 withObject:card];
+    _myCard = card;
+    [self.collectionView reloadData];
+}
+
+
 - (IBAction)editButtonPressed:(id)sender {
+
     NSLog(@"Edit button pressed");
-    NSDictionary *card = self.cards[self.exposedItemIndexPath.item];
-    
-    NSString *name;
-    
-    if ([card objectForKey:@"name"]) {
-        name = card[@"name"];
-    }
-    
-    if (name != NULL) {
-        // Need to pass this name object to the new view controller
-    }
     
 }
 
@@ -253,7 +251,7 @@
              NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
              NSMutableArray *objects = [[NSMutableArray alloc]init];
              
-             NSDictionary *card;
+             NSMutableDictionary *card;
              
              for (NSInteger i = 0; i < [keys count]; i++) {
                  
@@ -264,8 +262,8 @@
                  }
              }
              
-             card = [NSDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
-             
+             card = [NSMutableDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
+             _myCard = card;
              [_cards addObject:card];
 
              [self getFriendsCards];
@@ -363,14 +361,6 @@
     if (_cards == nil) {
         
         _cards = [NSMutableArray array];
-        
-        // Adjust the number of cards here
-        /*
-         for (NSInteger i = 1; i < 100; i++) {
-         NSDictionary *card = @{ @"name" : [NSString stringWithFormat:@"Card #%d", (int)i], @"color" : [UIColor randomColor] };
-         
-         [_cards addObject:card];
-         } */
     }
     return _cards;
 }
@@ -378,7 +368,6 @@
 #pragma mark - Actions
 
 - (IBAction)handleDoubleTap:(UITapGestureRecognizer *)recognizer {
-    
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -395,17 +384,25 @@
     NSDictionary *card = self.cards[indexPath.item];
 
     if (indexPath.row == 0) {
+        
         cell.editButton.hidden = false;
         cell.socialButton.hidden = true;
         cell.phoneButton.hidden = true;
+    
     } else {
+        
         cell.editButton.hidden = true;
         cell.socialButton.hidden = false;
         cell.phoneButton.hidden = false;
     }
     
     cell.title = card[@"name"];
-    //cell.color = card[@"color"];
+    
+    if ([card objectForKey:@"status"]) {
+
+        cell.statusTextView.text = card[@"status"];
+    }
+    
     cell.backgroundColor =[UIColor whiteColor];
     
     cell.layer.cornerRadius = 15.0;
@@ -431,6 +428,30 @@
     [self.cards insertObject:card atIndex:toIndexPath.item];
 }
 
+- (BOOL)canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return NO;
+    }
+    return YES;
+}
+
+- (NSIndexPath *)targetIndexPathForMoveFromItemAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
+
+    // Don't allow moving of the first card in the stack
+    //if (sourceIndexPath.row == 0) {
+     //   return nil;
+   // }
+    
+    // Don't allow moving of card to top position in the stack
+    if (proposedDestinationIndexPath.row == 0) {
+        return nil;
+    }
+    
+    return proposedDestinationIndexPath;
+}
+
+
+
 #pragma mark - Navigation methods
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender  {
@@ -438,11 +459,8 @@
     if ([segue.identifier isEqualToString:@"editSegue"]) {
         
         EditViewController *editVC = (EditViewController *)[segue destinationViewController];
-        
-        editVC.name = [self getName];
-        editVC.status = [self getStatus];
-        editVC.phone = [self getPhone];
-        editVC.profileImgURL = [self getProfileImgURL];
+        editVC.delegate = self;
+        editVC.card = _myCard;
     }
 }
 

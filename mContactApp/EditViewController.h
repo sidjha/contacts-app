@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class EditViewController;
+
+@protocol EditViewControllerDelegate <NSObject>
+
+- (void) editViewController:(EditViewController *)controller didFinishUpdatingCard:(NSMutableDictionary *)card;
+
+@end
+
 @interface EditViewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextView *statusField;
@@ -21,6 +30,10 @@
 @property (weak, nonatomic) NSString *phone;
 @property (weak, nonatomic) NSMutableDictionary *socialLinks;
 @property (weak, nonatomic) NSString *profileImgURL;
+
+@property (weak, nonatomic) NSMutableDictionary *card;
+
+@property (weak, nonatomic) id <EditViewControllerDelegate> delegate;
 
 
 - (IBAction)donePressed:(id)sender;
