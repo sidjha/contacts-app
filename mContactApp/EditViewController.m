@@ -35,7 +35,7 @@
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.delegate editViewController:self didFinishUpdatingCard:(NSDictionary *)_card];
+    [self.delegate editViewController:self didFinishUpdatingCard:(NSMutableDictionary *)_card];
 }
 
 - (void)didReceiveMemoryWarning {
