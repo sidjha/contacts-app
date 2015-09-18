@@ -9,6 +9,9 @@
 
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) UIColor *color;
+@property (copy, nonatomic) NSString *status;
+@property (copy, nonatomic) NSURL *profileImg;
+
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UITextView *statusTextView;

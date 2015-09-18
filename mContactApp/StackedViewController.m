@@ -400,15 +400,14 @@
     
     if ([card objectForKey:@"status"]) {
 
-        cell.statusTextView.text = card[@"status"];
+        cell.status = card[@"status"];
     }
     
     if ([card objectForKey:@"profile_img"]) {
+        
         NSURL *imageURL = [NSURL URLWithString:card[@"profile_img"]];
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-        UIImage *image = [UIImage imageWithData:imageData];
-        cell.profileImageView.image = image;
-        cell.profileImageView.frame = CGRectMake(0, 156, 353, 234);
+        cell.profileImg = imageURL;
+
     } else {
         // initialize imageView with placeholder image
     }

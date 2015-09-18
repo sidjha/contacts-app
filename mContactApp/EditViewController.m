@@ -23,12 +23,13 @@
     [super viewDidLoad];
     
     if ([_card objectForKey:@"profile_img"]) {
+        // TODO: no need to load this from URL, can get parent to pass actual image data in
         NSURL *imageURL = [NSURL URLWithString:_card[@"profile_img"]];
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         UIImage *image = [UIImage imageWithData:imageData];
         self.profileImage.image = image;
     } else {
-        // initialize imageView with placeholder image
+        // TODO: initialize imageView with placeholder image
     }
 
     UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapDetected)];
@@ -71,8 +72,6 @@
 
 
 - (IBAction)donePressed:(id)sender {
-    // TODO: call a method on parent view controller reloading the cards.
-  //  StackedViewController *stackedVC = (StackedViewController *) self.parentViewController;
     // TODO: Make sure to update the card after each text field is updated/dirty
     _card[@"name"] = _nameField.text;
     _card[@"status"] = _statusField.text;
@@ -155,7 +154,7 @@
              NSLog(@"/users/update response data: %@", responseObject);
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              
-             NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone"];
+             NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
              NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
              NSMutableArray *objects = [[NSMutableArray alloc]init];
              
