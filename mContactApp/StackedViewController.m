@@ -247,7 +247,7 @@
              NSLog(@"/users/show response data: %@", responseObject);
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              
-             NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone"];
+             NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
              NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
              NSMutableArray *objects = [[NSMutableArray alloc]init];
              
@@ -317,7 +317,7 @@
              
              for (NSInteger j = 0; j < [[responseObject valueForKey:@"friends"] count]; j++) {
                  
-                 NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone"];
+                 NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
                  NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
                  NSMutableArray *objects = [[NSMutableArray alloc]init];
                  
@@ -401,6 +401,16 @@
     if ([card objectForKey:@"status"]) {
 
         cell.statusTextView.text = card[@"status"];
+    }
+    
+    if ([card objectForKey:@"profile_img"]) {
+        NSURL *imageURL = [NSURL URLWithString:card[@"profile_img"]];
+        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        UIImage *image = [UIImage imageWithData:imageData];
+        cell.profileImageView.image = image;
+        cell.profileImageView.frame = CGRectMake(0, 156, 353, 234);
+    } else {
+        // initialize imageView with placeholder image
     }
     
     cell.backgroundColor =[UIColor whiteColor];

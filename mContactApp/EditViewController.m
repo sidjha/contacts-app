@@ -11,6 +11,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "AFURLRequestSerialization.h"
 #import "MBProgressHUD.h"
+#import "AWSS3.h"
 
 @interface EditViewController ()
 
@@ -20,6 +21,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if ([_card objectForKey:@"profile_img"]) {
+        NSURL *imageURL = [NSURL URLWithString:_card[@"profile_img"]];
+        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        UIImage *image = [UIImage imageWithData:imageData];
+        self.profileImage.image = image;
+    } else {
+        // initialize imageView with placeholder image
+    }
+
+    UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapDetected)];
+    singleTapOnImage.numberOfTapsRequired = 1;
+    self.profileImage.userInteractionEnabled = YES;
+    [self.profileImage addGestureRecognizer:singleTapOnImage];
     
     [self.nameField setText:_card[@"name"]];
     
@@ -43,6 +58,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) imageTapDetected {
+    NSLog(@"Tap detected!");
+}
+
 
 #pragma mark - Navigation
 
@@ -58,8 +77,48 @@
     _card[@"name"] = _nameField.text;
     _card[@"status"] = _statusField.text;
     _card[@"phone"] = _phoneField.text;
+    
     [self updateMyCard];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) uploadImage {
+    NSURL *testFileURL; // TODO: initialize URL with actual image data URL
+    AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
+    
+    AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
+    uploadRequest.bucket = @"favor8-pp-darkhorse";
+    // TODO: proper key
+    uploadRequest.key = @"myTestFile.txt";
+    uploadRequest.body = testFileURL;
+    
+    [[transferManager upload:uploadRequest] continueWithExecutor:[AWSExecutor mainThreadExecutor]
+                                                       withBlock:^id(AWSTask *task) {
+                                                           if (task.error) {
+                                                               if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
+                                                                   switch (task.error.code) {
+                                                                       case AWSS3TransferManagerErrorCancelled:
+                                                                       case AWSS3TransferManagerErrorPaused:
+                                                                           break;
+                                                                           
+                                                                       default:
+                                                                           NSLog(@"Error: %@", task.error);
+                                                                           break;
+                                                                   }
+                                                               } else {
+                                                                   // Unknown error.
+                                                                   NSLog(@"Error: %@", task.error);
+                                                               }
+                                                           }
+                                                           
+                                                           if (task.result) {
+                                                               AWSS3TransferManagerUploadOutput *uploadOutput = task.result;
+                                                               NSLog(@"Upload output: %@", uploadOutput);
+                                                               // The file uploaded successfully.
+                                                           }
+                                                           return nil;
+                                                       }];
+
 }
 
 

@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AWSCore.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AWSS3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>41B9BCCABC427002AEEF320D19C87FAF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4767470BED4F934CF6292C05CA8DF733</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC491208AC81F7317905FFB29F01DD7B</key>
+		<key>6D1F526EB4DB90424A9E75914BE56060</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EB5DA050D6082B3DEA5BBE70ABCF803B</key>
+		<key>7F21A84BBFE1C35DF7A3E3CA3DEE4131</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C7F29FD4691E83F7400F3F09AB2E4A96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DDE66C0AC1EA492CF68B8439DC422538</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC55EA451AD4D4E067657D60538816E6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
