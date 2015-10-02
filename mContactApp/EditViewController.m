@@ -22,7 +22,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    /*
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.contentView
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                      relatedBy:0
+                                                                         toItem:self.view
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                     multiplier:1.0
+                                                                       constant:0];
+    [self.view addConstraint:leftConstraint];
+    
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.contentView
+                                                                       attribute:NSLayoutAttributeRight
+                                                                       relatedBy:0
+                                                                          toItem:self.view
+                                                                       attribute:NSLayoutAttributeRight
+                                                                      multiplier:1.0
+                                                                        constant:0];
+    [self.view addConstraint:rightConstraint];
 
+     */
+    
+    
     [self.nameField setText:_card[@"name"]];
     
     // TODO: Add a placeholder for textview instead
@@ -75,7 +97,7 @@
     self.socialLinksTableView.separatorColor = [UIColor clearColor];
     
     //[self.socialLinksTableView addObserver:self forKeyPath:@"contentSize" options:0 context:NULL];
-    
+   // [self.contentView setFrame:CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, 2000)];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
