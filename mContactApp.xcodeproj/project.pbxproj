@@ -13,7 +13,6 @@
 		6347325C1B7B1623009B0D3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6347325A1B7B1623009B0D3B /* Main.storyboard */; };
 		6347325E1B7B1623009B0D3B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6347325D1B7B1623009B0D3B /* Images.xcassets */; };
 		634732611B7B1623009B0D3B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6347325F1B7B1623009B0D3B /* LaunchScreen.xib */; };
-		6347326D1B7B1623009B0D3B /* mContactAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6347326C1B7B1623009B0D3B /* mContactAppTests.m */; };
 		634732781B7B173E009B0D3B /* cardBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634732771B7B173E009B0D3B /* cardBackViewController.m */; };
 		6347327B1B7B3425009B0D3B /* settingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6347327A1B7B3425009B0D3B /* settingViewController.m */; };
 		637C7D441B7C7E4800E9B855 /* cardListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637C7D431B7C7E4800E9B855 /* cardListViewController.m */; };
@@ -21,6 +20,7 @@
 		637C7D4E1B7DC4CB00E9B855 /* linkicons in Resources */ = {isa = PBXBuildFile; fileRef = 637C7D4D1B7DC4CB00E9B855 /* linkicons */; };
 		637C7D851B7E461200E9B855 /* socialAccountValidationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */; };
 		637F81221B8713D90021BF65 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 637F81201B8713D90021BF65 /* Model.xcdatamodeld */; };
+		EB08CC8A1BAFD1E3009AD762 /* SocialLinksTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB08CC891BAFD1E3009AD762 /* SocialLinksTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		EB1A0EC01BA2A5FA005F9FF8 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1A0EBF1BA2A5FA005F9FF8 /* EditViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EB3FB4A31B9692C100B11FCE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3FB4A21B9692C100B11FCE /* LoginViewController.m */; };
 		EB9F6ABD1B9B7AD5007CEEEE /* StackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6ABC1B9B7AD5007CEEEE /* StackedViewController.m */; };
@@ -34,16 +34,6 @@
 		FAACFC87C87DFCC373482D47 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49AB772EA34C02137A47776 /* libPods.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		634732671B7B1623009B0D3B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 634732451B7B1623009B0D3B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6347324C1B7B1623009B0D3B;
-			remoteInfo = mContactApp;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		6347324D1B7B1623009B0D3B /* Favor8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Favor8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		634732511B7B1623009B0D3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,9 +45,6 @@
 		6347325B1B7B1623009B0D3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6347325D1B7B1623009B0D3B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		634732601B7B1623009B0D3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		634732661B7B1623009B0D3B /* mContactAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mContactAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6347326B1B7B1623009B0D3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6347326C1B7B1623009B0D3B /* mContactAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mContactAppTests.m; sourceTree = "<group>"; };
 		634732761B7B173E009B0D3B /* cardBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cardBackViewController.h; sourceTree = "<group>"; };
 		634732771B7B173E009B0D3B /* cardBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cardBackViewController.m; sourceTree = "<group>"; };
 		634732791B7B3425009B0D3B /* settingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingViewController.h; sourceTree = "<group>"; };
@@ -73,6 +60,8 @@
 		643D3DED03463FD1B34094A4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A49AB772EA34C02137A47776 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85AD2CF4DE24241F20F002C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EB08CC881BAFD1E3009AD762 /* SocialLinksTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialLinksTableViewCell.h; sourceTree = "<group>"; };
+		EB08CC891BAFD1E3009AD762 /* SocialLinksTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialLinksTableViewCell.m; sourceTree = "<group>"; };
 		EB1A0EBE1BA2A5FA005F9FF8 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		EB1A0EBF1BA2A5FA005F9FF8 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		EB3FB4A11B9692C100B11FCE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -104,13 +93,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		634732631B7B1623009B0D3B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -118,9 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				637F81201B8713D90021BF65 /* Model.xcdatamodeld */,
-				637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */,
 				EB9F6AD61B9B7D2B007CEEEE /* SAtableCell.h */,
 				EB9F6AD71B9B7D2B007CEEEE /* SAtableCell.m */,
+				637C7D4A1B7DB60200E9B855 /* socialAccountListViewController.h */,
 				637C7D4B1B7DB60200E9B855 /* socialAccountListViewController.m */,
 				637C7D831B7E461200E9B855 /* socialAccountValidationViewController.h */,
 				637C7D841B7E461200E9B855 /* socialAccountValidationViewController.m */,
@@ -139,7 +121,6 @@
 				EBBB552A1B90E64C00A92C43 /* PageContentViewController.h */,
 				EBBB552B1B90E64C00A92C43 /* PageContentViewController.m */,
 				6347324F1B7B1623009B0D3B /* mContactApp */,
-				634732691B7B1623009B0D3B /* mContactAppTests */,
 				6347324E1B7B1623009B0D3B /* Products */,
 				C06A3A41CFB09CCC59075EF5 /* Pods */,
 				C7B581AF35400C20C319B398 /* Frameworks */,
@@ -150,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				6347324D1B7B1623009B0D3B /* Favor8.app */,
-				634732661B7B1623009B0D3B /* mContactAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,6 +153,8 @@
 				634732581B7B1623009B0D3B /* ViewController.m */,
 				EB1A0EBE1BA2A5FA005F9FF8 /* EditViewController.h */,
 				EB1A0EBF1BA2A5FA005F9FF8 /* EditViewController.m */,
+				EB08CC881BAFD1E3009AD762 /* SocialLinksTableViewCell.h */,
+				EB08CC891BAFD1E3009AD762 /* SocialLinksTableViewCell.m */,
 				6347325D1B7B1623009B0D3B /* Images.xcassets */,
 				637C7D4D1B7DC4CB00E9B855 /* linkicons */,
 				6347325F1B7B1623009B0D3B /* LaunchScreen.xib */,
@@ -186,23 +168,6 @@
 			children = (
 				634732511B7B1623009B0D3B /* Info.plist */,
 				634732521B7B1623009B0D3B /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		634732691B7B1623009B0D3B /* mContactAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				6347326C1B7B1623009B0D3B /* mContactAppTests.m */,
-				6347326A1B7B1623009B0D3B /* Supporting Files */,
-			);
-			path = mContactAppTests;
-			sourceTree = "<group>";
-		};
-		6347326A1B7B1623009B0D3B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6347326B1B7B1623009B0D3B /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -246,39 +211,17 @@
 			productReference = 6347324D1B7B1623009B0D3B /* Favor8.app */;
 			productType = "com.apple.product-type.application";
 		};
-		634732651B7B1623009B0D3B /* mContactAppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 634732731B7B1624009B0D3B /* Build configuration list for PBXNativeTarget "mContactAppTests" */;
-			buildPhases = (
-				634732621B7B1623009B0D3B /* Sources */,
-				634732631B7B1623009B0D3B /* Frameworks */,
-				634732641B7B1623009B0D3B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				634732681B7B1623009B0D3B /* PBXTargetDependency */,
-			);
-			name = mContactAppTests;
-			productName = mContactAppTests;
-			productReference = 634732661B7B1623009B0D3B /* mContactAppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		634732451B7B1623009B0D3B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Mesh8 Inc";
 				TargetAttributes = {
 					6347324C1B7B1623009B0D3B = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					634732651B7B1623009B0D3B = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = 6347324C1B7B1623009B0D3B;
 					};
 				};
 			};
@@ -296,7 +239,6 @@
 			projectRoot = "";
 			targets = (
 				6347324C1B7B1623009B0D3B /* mContactApp */,
-				634732651B7B1623009B0D3B /* mContactAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -310,13 +252,6 @@
 				634732611B7B1623009B0D3B /* LaunchScreen.xib in Resources */,
 				6347325E1B7B1623009B0D3B /* Images.xcassets in Resources */,
 				637C7D4E1B7DC4CB00E9B855 /* linkicons in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		634732641B7B1623009B0D3B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +299,7 @@
 				EB3FB4A31B9692C100B11FCE /* LoginViewController.m in Sources */,
 				637F81221B8713D90021BF65 /* Model.xcdatamodeld in Sources */,
 				634732591B7B1623009B0D3B /* ViewController.m in Sources */,
+				EB08CC8A1BAFD1E3009AD762 /* SocialLinksTableViewCell.m in Sources */,
 				634732781B7B173E009B0D3B /* cardBackViewController.m in Sources */,
 				637C7D441B7C7E4800E9B855 /* cardListViewController.m in Sources */,
 				6347327B1B7B3425009B0D3B /* settingViewController.m in Sources */,
@@ -382,23 +318,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		634732621B7B1623009B0D3B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6347326D1B7B1623009B0D3B /* mContactAppTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		634732681B7B1623009B0D3B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6347324C1B7B1623009B0D3B /* mContactApp */;
-			targetProxy = 634732671B7B1623009B0D3B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6347325A1B7B1623009B0D3B /* Main.storyboard */ = {
@@ -441,6 +361,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -456,7 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -493,7 +414,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -506,7 +427,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = mContactApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mesh8.mContactApp;
 				PRODUCT_NAME = Favor8;
@@ -519,44 +440,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = mContactApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mesh8.mContactApp;
 				PRODUCT_NAME = Favor8;
-			};
-			name = Release;
-		};
-		634732741B7B1624009B0D3B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = mContactAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mContactApp.app/mContactApp";
-			};
-			name = Debug;
-		};
-		634732751B7B1624009B0D3B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = mContactAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mContactApp.app/mContactApp";
 			};
 			name = Release;
 		};
@@ -577,15 +464,6 @@
 			buildConfigurations = (
 				634732711B7B1624009B0D3B /* Debug */,
 				634732721B7B1624009B0D3B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		634732731B7B1624009B0D3B /* Build configuration list for PBXNativeTarget "mContactAppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				634732741B7B1624009B0D3B /* Debug */,
-				634732751B7B1624009B0D3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

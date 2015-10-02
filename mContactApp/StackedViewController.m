@@ -68,7 +68,6 @@
     
     [super viewDidLoad];
     
-    
     // Set TGL properties
     self.exposedPinningMode = TGLExposedLayoutPinningModeAll;
     self.exposedItemSize = self.stackedLayout.itemSize = CGSizeMake(0.0, 500.0);

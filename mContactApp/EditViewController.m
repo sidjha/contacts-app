@@ -12,6 +12,7 @@
 #import "AFURLRequestSerialization.h"
 #import "MBProgressHUD.h"
 #import "AWSS3.h"
+#import "SocialLinksTableViewCell.h"
 
 @interface EditViewController ()
 
@@ -21,6 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"It's hitting here");
+    [self.nameField setText:_card[@"name"]];
+    self.profileImage.translatesAutoresizingMaskIntoConstraints = NO;
     
     if ([_card objectForKey:@"profile_img"]) {
         // TODO: no need to load this from URL, can get parent to pass actual image data in
@@ -32,14 +36,15 @@
         // TODO: initialize imageView with placeholder image
     }
 
+    
     UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapDetected)];
     singleTapOnImage.numberOfTapsRequired = 1;
     self.profileImage.userInteractionEnabled = YES;
     [self.profileImage addGestureRecognizer:singleTapOnImage];
     
-    [self.nameField setText:_card[@"name"]];
     
     /* Add a placeholder for textview instead */
+    /*
     if (![_card[@"status"] isEqualToString:@""]) {
         [self.statusField setText:_card[@"status"]];
     } else {
@@ -47,6 +52,27 @@
     }
     
     [self.phoneField setText:_card[@"phone"]];
+    
+    NSLog(@"Yo yo yo!!!");
+    _links = [[NSMutableArray alloc]initWithObjects:
+              @"Facebook",@"Instagram",
+              @"Twitter",@"Snapchat",@"WhatsApp",
+              @"LinkedIn",@"FB Messenger", nil];
+    
+    
+    _linkImages = [[NSMutableArray alloc]initWithObjects:
+                       [UIImage imageNamed:@"linkicons/Facebook.png"],
+                       [UIImage imageNamed:@"linkicons/Instagram.png"],
+                       [UIImage imageNamed:@"linkicons/Twitter.png"],
+                       [UIImage imageNamed:@"linkicons/Snapchat.png"],
+                       [UIImage imageNamed:@"linkicons/Whatsapp.png"],
+                       [UIImage imageNamed:@"linkicons/LinkedIn.png"],
+                       [UIImage imageNamed:@"linkicons/Facebook.png"]
+                       , nil];
+    
+    
+    self.socialLinksTableView.separatorColor = [UIColor clearColor];
+     */
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -181,5 +207,38 @@
     });
 
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:
+(NSInteger)section{
+    NSLog(@"We're here: %lu", (unsigned long)[_links count]);
+    return [_links count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:
+(NSIndexPath *)indexPath {
+    static NSString *cellID = @"socialLinkCell";
+    SocialLinksTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    
+    cell.socialLinkImage.image = [_linkImages objectAtIndex:indexPath.row];
+    cell.socialLinkLabel.text = [_links objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
+/*
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+*/
 
 @end
