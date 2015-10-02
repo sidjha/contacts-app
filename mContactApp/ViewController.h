@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PageContentViewController.h"
 
 
-@interface ViewController : UIViewController <UIPageViewControllerDataSource>
+@interface ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *labelUserName;
 

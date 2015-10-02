@@ -21,7 +21,6 @@
 		EB9F6ABD1B9B7AD5007CEEEE /* StackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6ABC1B9B7AD5007CEEEE /* StackedViewController.m */; };
 		EB9F6ADE1B9BF4B1007CEEEE /* StackedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6ADD1B9BF4B1007CEEEE /* StackedCollectionViewCell.m */; };
 		EBAF4AA41BA298440024DEB8 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF4AA31BA298440024DEB8 /* SignupViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EBBB552C1B90E64C00A92C43 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBB552B1B90E64C00A92C43 /* PageContentViewController.m */; };
 		FAACFC87C87DFCC373482D47 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49AB772EA34C02137A47776 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -53,8 +52,6 @@
 		EB9F6ADD1B9BF4B1007CEEEE /* StackedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackedCollectionViewCell.m; sourceTree = "<group>"; };
 		EBAF4AA21BA298440024DEB8 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		EBAF4AA31BA298440024DEB8 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
-		EBBB552A1B90E64C00A92C43 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
-		EBBB552B1B90E64C00A92C43 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				637F81201B8713D90021BF65 /* Model.xcdatamodeld */,
-				EBBB552A1B90E64C00A92C43 /* PageContentViewController.h */,
-				EBBB552B1B90E64C00A92C43 /* PageContentViewController.m */,
 				6347324F1B7B1623009B0D3B /* mContactApp */,
 				6347324E1B7B1623009B0D3B /* Products */,
 				C06A3A41CFB09CCC59075EF5 /* Pods */,
@@ -257,7 +252,6 @@
 				EB08CC8A1BAFD1E3009AD762 /* SocialLinksTableViewCell.m in Sources */,
 				EB9F6ABD1B9B7AD5007CEEEE /* StackedViewController.m in Sources */,
 				EB1A0EC01BA2A5FA005F9FF8 /* EditViewController.m in Sources */,
-				EBBB552C1B90E64C00A92C43 /* PageContentViewController.m in Sources */,
 				EBAF4AA41BA298440024DEB8 /* SignupViewController.m in Sources */,
 				634732561B7B1623009B0D3B /* AppDelegate.m in Sources */,
 				634732531B7B1623009B0D3B /* main.m in Sources */,
