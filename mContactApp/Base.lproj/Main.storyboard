@@ -1426,12 +1426,17 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8Bg-94-AAB">
-                                                <rect key="frame" x="44" y="68" width="326" height="88"/>
+                                                <rect key="frame" x="16" y="68" width="382" height="68"/>
                                                 <animations/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culp.</string>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt eu fugiat nulla pariatur. </string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhq-FV-MI1">
+                                                <rect key="frame" x="16" y="144" width="382" height="215"/>
+                                                <animations/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </imageView>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" red="0.48636728525161743" green="0.58485561609268188" blue="0.94678252935409546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1440,6 +1445,8 @@
                                             <constraint firstItem="xAz-nN-Zks" firstAttribute="top" secondItem="kz4-dh-0Da" secondAttribute="top" constant="5" id="DBB-g4-jxc"/>
                                             <constraint firstItem="xAz-nN-Zks" firstAttribute="leading" secondItem="kz4-dh-0Da" secondAttribute="leading" constant="8" id="ZCX-F3-KbD"/>
                                             <constraint firstItem="8Bg-94-AAB" firstAttribute="top" secondItem="xAz-nN-Zks" secondAttribute="bottom" constant="10" id="b3f-60-tyc"/>
+                                            <constraint firstAttribute="trailing" secondItem="xhq-FV-MI1" secondAttribute="trailing" constant="8" id="dMj-ds-NOv"/>
+                                            <constraint firstItem="xhq-FV-MI1" firstAttribute="leading" secondItem="kz4-dh-0Da" secondAttribute="leading" constant="8" id="hcO-Q0-15k"/>
                                             <constraint firstItem="8Bg-94-AAB" firstAttribute="leading" secondItem="kz4-dh-0Da" secondAttribute="leading" constant="8" id="sot-8R-BkE"/>
                                             <constraint firstAttribute="width" constant="414" id="tQW-55-Hms"/>
                                             <constraint firstAttribute="trailing" secondItem="8Bg-94-AAB" secondAttribute="trailing" constant="8" id="xCY-3s-wYJ"/>
@@ -1475,7 +1482,10 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="nameField" destination="xAz-nN-Zks" id="uYF-Vh-tmj"/>
+                        <outlet property="doneButton" destination="Bbd-lG-Bjo" id="u94-tZ-wgz"/>
+                        <outlet property="nameField" destination="xAz-nN-Zks" id="bII-fh-RUK"/>
+                        <outlet property="profileImage" destination="xhq-FV-MI1" id="mcM-IC-aap"/>
+                        <outlet property="statusField" destination="8Bg-94-AAB" id="zR8-0H-aco"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQd-OH-w3Y" userLabel="First Responder" sceneMemberID="firstResponder"/>

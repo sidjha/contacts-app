@@ -22,8 +22,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"It's hitting here");
+
     [self.nameField setText:_card[@"name"]];
+    
+    // TODO: Add a placeholder for textview instead
+    
+    if (![_card[@"status"] isEqualToString:@""]) {
+        [self.statusField setText:_card[@"status"]];
+    } else {
+        [self.statusField setText:@"Type a simple status here"];
+    }
+    
     self.profileImage.translatesAutoresizingMaskIntoConstraints = NO;
     
     if ([_card objectForKey:@"profile_img"]) {
@@ -42,15 +51,7 @@
     self.profileImage.userInteractionEnabled = YES;
     [self.profileImage addGestureRecognizer:singleTapOnImage];
     
-    
-    /* Add a placeholder for textview instead */
     /*
-    if (![_card[@"status"] isEqualToString:@""]) {
-        [self.statusField setText:_card[@"status"]];
-    } else {
-        [self.statusField setText:@"Type a simple status here"];
-    }
-    
     [self.phoneField setText:_card[@"phone"]];
     
     NSLog(@"Yo yo yo!!!");
