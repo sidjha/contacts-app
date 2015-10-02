@@ -1436,16 +1436,88 @@
                                                 <rect key="frame" x="16" y="144" width="382" height="215"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="234" id="aeU-0u-z22"/>
+                                                </constraints>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVW-ZI-Wcy" userLabel="Phone Label">
+                                                <rect key="frame" x="21" y="382" width="49" height="21"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="416-100-1000" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gL1-hU-i4a" userLabel="Phone Field">
+                                                <rect key="frame" x="99" y="378" width="276" height="30"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="s5U-BB-Sfd"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iks-1F-qel">
+                                                <rect key="frame" x="21" y="437" width="377" height="189"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="socialLinkCell" rowHeight="71" id="aPn-hT-kuY" customClass="SocialLinksTableViewCell">
+                                                        <rect key="frame" x="0.0" y="28" width="377" height="71"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aPn-hT-kuY" id="j7H-Qj-fkq" userLabel="Cell Content View">
+                                                            <rect key="frame" x="0.0" y="0.0" width="377" height="70"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Facebook.png" translatesAutoresizingMaskIntoConstraints="NO" id="HH9-Xd-KVA" userLabel="Social Network Image">
+                                                                    <rect key="frame" x="8" y="8" width="53" height="54"/>
+                                                                    <animations/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="50" id="Kfy-8X-Nq8"/>
+                                                                        <constraint firstAttribute="width" constant="50" id="hcL-OC-aJk"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Social Network Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUD-k7-WgV">
+                                                                    <rect key="frame" x="78" y="24" width="169" height="21"/>
+                                                                    <animations/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <animations/>
+                                                            <constraints>
+                                                                <constraint firstItem="HH9-Xd-KVA" firstAttribute="leading" secondItem="j7H-Qj-fkq" secondAttribute="leadingMargin" constant="5" id="SgY-Ib-IMP"/>
+                                                                <constraint firstItem="dUD-k7-WgV" firstAttribute="leading" secondItem="HH9-Xd-KVA" secondAttribute="trailing" constant="20" id="w4r-6B-3C1"/>
+                                                            </constraints>
+                                                        </tableViewCellContentView>
+                                                        <animations/>
+                                                        <connections>
+                                                            <outlet property="socialLinkImage" destination="HH9-Xd-KVA" id="mU3-CV-k4Y"/>
+                                                            <outlet property="socialLinkLabel" destination="dUD-k7-WgV" id="ney-Re-Gdh"/>
+                                                        </connections>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="S3k-DT-xzz" id="xeH-ww-4jW"/>
+                                                    <outlet property="delegate" destination="S3k-DT-xzz" id="qSh-Ps-oxx"/>
+                                                </connections>
+                                            </tableView>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" red="0.48636728525161743" green="0.58485561609268188" blue="0.94678252935409546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="xAz-nN-Zks" secondAttribute="trailing" constant="8" id="185-ax-MPQ"/>
+                                            <constraint firstItem="AVW-ZI-Wcy" firstAttribute="top" secondItem="xhq-FV-MI1" secondAttribute="bottom" constant="20" id="BSl-Ao-WSy"/>
                                             <constraint firstItem="xAz-nN-Zks" firstAttribute="top" secondItem="kz4-dh-0Da" secondAttribute="top" constant="5" id="DBB-g4-jxc"/>
+                                            <constraint firstItem="iks-1F-qel" firstAttribute="width" secondItem="xhq-FV-MI1" secondAttribute="width" id="DhY-ew-iBW"/>
+                                            <constraint firstItem="iks-1F-qel" firstAttribute="leading" secondItem="kz4-dh-0Da" secondAttribute="leading" constant="8" id="Ey1-7y-Kwb"/>
+                                            <constraint firstItem="gL1-hU-i4a" firstAttribute="baseline" secondItem="AVW-ZI-Wcy" secondAttribute="baseline" id="XtP-aH-Pcg"/>
                                             <constraint firstItem="xAz-nN-Zks" firstAttribute="leading" secondItem="kz4-dh-0Da" secondAttribute="leading" constant="8" id="ZCX-F3-KbD"/>
                                             <constraint firstItem="8Bg-94-AAB" firstAttribute="top" secondItem="xAz-nN-Zks" secondAttribute="bottom" constant="10" id="b3f-60-tyc"/>
                                             <constraint firstAttribute="trailing" secondItem="xhq-FV-MI1" secondAttribute="trailing" constant="8" id="dMj-ds-NOv"/>
+                                            <constraint firstItem="iks-1F-qel" firstAttribute="top" secondItem="AVW-ZI-Wcy" secondAttribute="bottom" constant="34" id="fDc-1d-r83"/>
+                                            <constraint firstItem="AVW-ZI-Wcy" firstAttribute="leading" secondItem="kz4-dh-0Da" secondAttribute="leading" constant="8" id="fuR-Xa-W6D"/>
+                                            <constraint firstItem="gL1-hU-i4a" firstAttribute="leading" secondItem="AVW-ZI-Wcy" secondAttribute="trailing" constant="15" id="h3H-7f-xfO"/>
                                             <constraint firstItem="xhq-FV-MI1" firstAttribute="leading" secondItem="kz4-dh-0Da" secondAttribute="leading" constant="8" id="hcO-Q0-15k"/>
                                             <constraint firstItem="8Bg-94-AAB" firstAttribute="leading" secondItem="kz4-dh-0Da" secondAttribute="leading" constant="8" id="sot-8R-BkE"/>
                                             <constraint firstAttribute="width" constant="414" id="tQW-55-Hms"/>
@@ -1484,7 +1556,10 @@
                     <connections>
                         <outlet property="doneButton" destination="Bbd-lG-Bjo" id="u94-tZ-wgz"/>
                         <outlet property="nameField" destination="xAz-nN-Zks" id="bII-fh-RUK"/>
+                        <outlet property="phoneField" destination="gL1-hU-i4a" id="C1t-1a-ZW2"/>
+                        <outlet property="phoneLabel" destination="AVW-ZI-Wcy" id="IpF-b0-dMD"/>
                         <outlet property="profileImage" destination="xhq-FV-MI1" id="mcM-IC-aap"/>
+                        <outlet property="socialLinksTableView" destination="iks-1F-qel" id="XZD-fo-Hn3"/>
                         <outlet property="statusField" destination="8Bg-94-AAB" id="zR8-0H-aco"/>
                     </connections>
                 </viewController>
@@ -1647,6 +1722,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Facebook.png" width="100" height="100"/>
         <image name="chat" width="64" height="60"/>
         <image name="phone" width="64" height="64"/>
     </resources>

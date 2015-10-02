@@ -51,10 +51,10 @@
     self.profileImage.userInteractionEnabled = YES;
     [self.profileImage addGestureRecognizer:singleTapOnImage];
     
-    /*
+    
     [self.phoneField setText:_card[@"phone"]];
     
-    NSLog(@"Yo yo yo!!!");
+    
     _links = [[NSMutableArray alloc]initWithObjects:
               @"Facebook",@"Instagram",
               @"Twitter",@"Snapchat",@"WhatsApp",
@@ -73,7 +73,9 @@
     
     
     self.socialLinksTableView.separatorColor = [UIColor clearColor];
-     */
+    
+    //[self.socialLinksTableView addObserver:self forKeyPath:@"contentSize" options:0 context:NULL];
+    
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -90,6 +92,12 @@
     NSLog(@"Tap detected!");
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
+    CGRect frame = self.socialLinksTableView.frame;
+    frame.size = self.socialLinksTableView.contentSize;
+    self.socialLinksTableView.frame = frame;
+}
 
 #pragma mark - Navigation
 
