@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <AWSCore/AWSCore.h>
+#import <AWSS3/AWSS3.h>
 
 @interface AppDelegate ()
 
@@ -25,7 +27,22 @@
     //pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
     //pageControl.backgroundColor = [UIColor clearColor];
     
+    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1 identityPoolId:@"us-east-1:2fff4c6c-c171-4016-b8f8-3fa3bc4bb6a2"];
+    
+    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];
+    
+    AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;
+    
     return YES;
+}
+
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
+    /*
+     Store the completion handler.
+     */
+    [AWSS3TransferUtility interceptApplication:application
+           handleEventsForBackgroundURLSession:identifier
+                             completionHandler:completionHandler];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

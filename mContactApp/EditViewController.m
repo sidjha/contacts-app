@@ -111,7 +111,31 @@
 }
 
 - (void) imageTapDetected {
-    NSLog(@"Tap detected!");
+    UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+    imgPicker.delegate = self;
+    imgPicker.allowsEditing = YES;
+    
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Change Profile Image" message:@"Take a photo or upload your own" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+        [actionSheet addAction:[UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            imgPicker.modalPresentationStyle = UIModalPresentationPopover;
+            [self presentViewController:imgPicker animated:YES completion:nil];
+        }]];
+    }
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Choose from Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imgPicker.modalPresentationStyle = UIModalPresentationPopover;
+        [self presentViewController:imgPicker animated:YES completion:nil];
+    }]];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:actionSheet animated:YES completion:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -134,47 +158,75 @@
     _card[@"status"] = _statusField.text;
     _card[@"phone"] = _phoneField.text;
     
+    if (_updatedProfileImgURL) {
+        _card[@"profile_img"] = self.updatedProfileImgURL;
+    }
+    
     [self updateMyCard];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) uploadImage {
-    NSURL *testFileURL; // TODO: initialize URL with actual image data URL
-    AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-    AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-    uploadRequest.bucket = @"favor8-pp-darkhorse";
-    // TODO: proper key
-    uploadRequest.key = @"myTestFile.txt";
-    uploadRequest.body = testFileURL;
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.profileImage.image = chosenImage;
     
-    [[transferManager upload:uploadRequest] continueWithExecutor:[AWSExecutor mainThreadExecutor]
-                                                       withBlock:^id(AWSTask *task) {
-                                                           if (task.error) {
-                                                               if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
-                                                                   switch (task.error.code) {
-                                                                       case AWSS3TransferManagerErrorCancelled:
-                                                                       case AWSS3TransferManagerErrorPaused:
-                                                                           break;
-                                                                           
-                                                                       default:
-                                                                           NSLog(@"Error: %@", task.error);
-                                                                           break;
-                                                                   }
-                                                               } else {
-                                                                   // Unknown error.
-                                                                   NSLog(@"Error: %@", task.error);
-                                                               }
-                                                           }
-                                                           
-                                                           if (task.result) {
-                                                               AWSS3TransferManagerUploadOutput *uploadOutput = task.result;
-                                                               NSLog(@"Upload output: %@", uploadOutput);
-                                                               // The file uploaded successfully.
-                                                           }
-                                                           return nil;
-                                                       }];
+    NSData *imgData = UIImageJPEGRepresentation(self.profileImage.image, 0.0);
+    
+    [self uploadImage:imgData];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
 
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) uploadImage:(NSData *)imageData {
+    // Upload image to S3 and get a URL back
+    
+    NSString *objectKey = [[NSProcessInfo processInfo] globallyUniqueString];
+    objectKey = [objectKey stringByAppendingString:@".jpg"];
+    
+    AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
+    expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Do something e.g. Update a progress bar.
+        });
+    };
+    
+    AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                NSLog(@"Error: %@", error);
+            } else {
+                NSLog(@"Upload successful.");
+                _updatedProfileImgURL = [NSString stringWithFormat:@"http://s3.amazonaws.com/favor8-bucket-2/%@", objectKey];
+                NSLog(@"New profile image: %@", _updatedProfileImgURL);
+            }
+        });
+    };
+    
+    AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility defaultS3TransferUtility];
+    
+    
+    
+    [[transferUtility uploadData:imageData bucket:@"favor8-bucket-2" key:objectKey contentType:@"image/jpeg" expression:expression completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
+        if (task.error) {
+            NSLog(@"Error: %@", task.error);
+        }
+        if (task.exception) {
+            NSLog(@"Exception: %@", task.exception);
+        }
+        if (task.result) {
+            AWSS3TransferUtilityUploadTask *uploadTask = task.result;
+            // Do something with uploadTask.
+        }
+        
+        return nil;
+    }];
+    
 }
 
 

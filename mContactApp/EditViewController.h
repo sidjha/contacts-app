@@ -16,7 +16,7 @@
 
 @end
 
-@interface EditViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface EditViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -35,6 +35,7 @@
 @property (weak, nonatomic) NSString *profileImgURL;
 @property (strong, nonatomic) NSMutableArray *links;
 @property (strong, nonatomic) NSMutableArray *linkImages;
+@property (strong, nonatomic) NSString *updatedProfileImgURL;
 
 
 
