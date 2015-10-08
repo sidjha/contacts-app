@@ -41,48 +41,8 @@
         NSURL *imageURL = [NSURL URLWithString:_card[@"profile_img"]];
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         UIImage *image = [UIImage imageWithData:imageData];
-        
-        /*
-        
-        AWSS3TransferUtilityDownloadExpression *expression = [AWSS3TransferUtilityDownloadExpression new];
-        expression.downloadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // Do something e.g. Update a progress bar.
-            });
-        };
-        
-        AWSS3TransferUtilityDownloadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityDownloadTask *task, NSURL *location, NSData *data, NSError *error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // Do something e.g. Alert a user for transfer completion.
-                // On successful downloads, `data` contains the S3 object.
-                // On failed downloads, `error` contains the error object.
-                self.profileImage.image = [UIImage imageWithData:data];
-            });
-        };
-        
-        // TODO: parse "http://s3.amazonaws.com/favor8-bucket-2/" out of _card["profile_img"]
-        //       to get the object key for download
-        AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility defaultS3TransferUtility];
-        [[transferUtility downloadDataFromBucket:@"favor8-bucket-2"
-                                             key:_updatedProfileImgURL
-                                      expression:expression
-                                completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
-            if (task.error) {
-                NSLog(@"Error: %@", task.error);
-            }
-            if (task.exception) {
-                NSLog(@"Exception: %@", task.exception);
-            }
-            if (task.result) {
-                AWSS3TransferUtilityDownloadTask *downloadTask = task.result;
-            }
-            
-            return nil;
-        }];
-        
-        */
-        
-       
+        self.profileImage.image = image;
+
     } else {
         // TODO: initialize imageView with placeholder image
     }
