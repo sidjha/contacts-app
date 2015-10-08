@@ -338,11 +338,11 @@
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="socialLinkCell" rowHeight="71" id="aPn-hT-kuY" customClass="SocialLinksTableViewCell">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="socialLinkCell" rowHeight="71" id="aPn-hT-kuY" customClass="SocialLinksTableViewCell">
                                                         <rect key="frame" x="0.0" y="28" width="377" height="71"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aPn-hT-kuY" id="j7H-Qj-fkq" userLabel="Cell Content View">
-                                                            <rect key="frame" x="0.0" y="0.0" width="344" height="70"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="330" height="70"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Facebook.png" translatesAutoresizingMaskIntoConstraints="NO" id="HH9-Xd-KVA" userLabel="Social Network Image">
@@ -371,6 +371,7 @@
                                                         <connections>
                                                             <outlet property="socialLinkImage" destination="HH9-Xd-KVA" id="mU3-CV-k4Y"/>
                                                             <outlet property="socialLinkLabel" destination="dUD-k7-WgV" id="ney-Re-Gdh"/>
+                                                            <segue destination="OTX-h8-fJw" kind="showDetail" identifier="socialAccountEditSegue" trigger="accessoryAction" id="S4n-nR-K2L"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
@@ -448,6 +449,73 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQd-OH-w3Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="472" y="2063"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="udf-CO-x5m">
+            <objects>
+                <viewController id="OTX-h8-fJw" customClass="SAEditViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aM6-Mm-t8m"/>
+                        <viewControllerLayoutGuide type="bottom" id="cmP-75-8sD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q9Z-U5-Scz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZbI-Wq-sM0">
+                                <rect key="frame" x="20" y="20" width="59" height="30"/>
+                                <animations/>
+                                <state key="normal" title="CANCEL"/>
+                                <connections>
+                                    <action selector="cancelPressed:" destination="OTX-h8-fJw" eventType="touchUpInside" id="Zpf-XJ-jWQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uuo-Y1-TAL">
+                                <rect key="frame" x="350" y="20" width="42" height="30"/>
+                                <animations/>
+                                <state key="normal" title="DONE"/>
+                                <connections>
+                                    <action selector="donePressed:" destination="OTX-h8-fJw" eventType="touchUpInside" id="qKR-Ef-T5M"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Account handle / id" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RpY-03-Tyg">
+                                <rect key="frame" x="0.0" y="176" width="414" height="59"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Account Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJ8-y9-yjW">
+                                <rect key="frame" x="58" y="62" width="298" height="49"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RpY-03-Tyg" firstAttribute="top" secondItem="FJ8-y9-yjW" secondAttribute="bottom" constant="40" id="5gt-UL-Q7f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uuo-Y1-TAL" secondAttribute="trailing" constant="8" id="6wB-TW-ZXd"/>
+                            <constraint firstItem="RpY-03-Tyg" firstAttribute="centerX" secondItem="q9Z-U5-Scz" secondAttribute="centerX" id="KhC-03-vfR"/>
+                            <constraint firstItem="FJ8-y9-yjW" firstAttribute="centerX" secondItem="q9Z-U5-Scz" secondAttribute="centerX" id="hNR-rZ-LXc"/>
+                            <constraint firstItem="uuo-Y1-TAL" firstAttribute="top" secondItem="aM6-Mm-t8m" secondAttribute="bottom" id="n7u-zF-Xqw"/>
+                            <constraint firstItem="FJ8-y9-yjW" firstAttribute="top" secondItem="aM6-Mm-t8m" secondAttribute="bottom" constant="40" id="nzq-wo-h0z"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ZbI-Wq-sM0" secondAttribute="leading" constant="8" id="ocG-jG-6Tn"/>
+                            <constraint firstItem="ZbI-Wq-sM0" firstAttribute="top" secondItem="aM6-Mm-t8m" secondAttribute="bottom" id="tWp-b3-mEm"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="accountHandleTextField" destination="RpY-03-Tyg" id="leY-e4-cDe"/>
+                        <outlet property="cancelButton" destination="ZbI-Wq-sM0" id="l4T-5Y-lMI"/>
+                        <outlet property="doneButton" destination="uuo-Y1-TAL" id="CRz-ot-8UX"/>
+                        <outlet property="titleLabel" destination="FJ8-y9-yjW" id="0JJ-WD-3Cz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ltW-24-jE1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1010" y="2063"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="Xcd-3h-R3q">

@@ -13,6 +13,7 @@
 #import "MBProgressHUD.h"
 #import "AWSS3.h"
 #import "SocialLinksTableViewCell.h"
+#import "SAEditViewController.h"
 
 @interface EditViewController ()
 
@@ -83,6 +84,8 @@
     [self.delegate editViewController:self didFinishUpdatingCard:(NSMutableDictionary *)_card];
 }
 
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -121,12 +124,6 @@
     CGRect frame = self.socialLinksTableView.frame;
     frame.size = self.socialLinksTableView.contentSize;
     self.socialLinksTableView.frame = frame;
-}
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 }
 
 
@@ -330,11 +327,43 @@
     return 80;
 }
 
-/*
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSLog(@"Row tapped");
 }
-*/
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"socialAccountEditSegue" sender:self];
+    NSLog(@"Disclosure button tapped");
+}
+
+- (void)socialEditViewController:(SAEditViewController *)controller didFinishUpdatingAccount:(NSString *)accountHandle {
+    
+    NSLog(@"Account handle: %@", accountHandle);
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"socialAccountEditSegue"]) {
+        
+        NSIndexPath *indexPath = [self.socialLinksTableView indexPathForCell:sender];
+        
+        NSString *s = [NSString stringWithFormat:@"Row: %ld", indexPath.row];
+        
+        SAEditViewController *detailVC = (SAEditViewController *) segue.destinationViewController;
+        
+        [detailVC.titleLabel setText:s];
+        detailVC.row = indexPath.row;
+        detailVC.delegate = self;
+        
+    }
+}
+
 
 @end

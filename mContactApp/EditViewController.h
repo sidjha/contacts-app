@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SAEditViewController.h"
 
 @class EditViewController;
 
@@ -16,7 +17,7 @@
 
 @end
 
-@interface EditViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface EditViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SAEditViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
