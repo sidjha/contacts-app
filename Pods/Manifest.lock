@@ -28,7 +28,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
-  - AWSS3
+  - AWSS3 (~> 2.2.3)
   - MBProgressHUD (~> 0.9.1)
   - TGLStackedViewController (~> 1.1)
 

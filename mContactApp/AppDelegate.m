@@ -21,11 +21,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
-    //UIPageControl *pageControl = [UIPageControl appearance];
-    //pageControl.pageIndicatorTintColor = [UIColor grayColor];
-    //pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-    //pageControl.backgroundColor = [UIColor clearColor];
     
     AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1 identityPoolId:@"us-east-1:2fff4c6c-c171-4016-b8f8-3fa3bc4bb6a2"];
     
@@ -36,14 +31,15 @@
     return YES;
 }
 
+/*
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
-    /*
-     Store the completion handler.
-     */
+
     [AWSS3TransferUtility interceptApplication:application
            handleEventsForBackgroundURLSession:identifier
                              completionHandler:completionHandler];
 }
+
+*/
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

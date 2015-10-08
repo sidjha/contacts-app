@@ -23,28 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    /*
-    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.contentView
-                                                                      attribute:NSLayoutAttributeLeft
-                                                                      relatedBy:0
-                                                                         toItem:self.view
-                                                                      attribute:NSLayoutAttributeLeft
-                                                                     multiplier:1.0
-                                                                       constant:0];
-    [self.view addConstraint:leftConstraint];
-    
-    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.contentView
-                                                                       attribute:NSLayoutAttributeRight
-                                                                       relatedBy:0
-                                                                          toItem:self.view
-                                                                       attribute:NSLayoutAttributeRight
-                                                                      multiplier:1.0
-                                                                        constant:0];
-    [self.view addConstraint:rightConstraint];
-
-     */
-    
-    
     [self.nameField setText:_card[@"name"]];
     
     // TODO: Add a placeholder for textview instead
@@ -59,10 +37,52 @@
     
     if ([_card objectForKey:@"profile_img"]) {
         // TODO: no need to load this from URL, can get parent to pass actual image data in
+        
         NSURL *imageURL = [NSURL URLWithString:_card[@"profile_img"]];
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         UIImage *image = [UIImage imageWithData:imageData];
-        self.profileImage.image = image;
+        
+        /*
+        
+        AWSS3TransferUtilityDownloadExpression *expression = [AWSS3TransferUtilityDownloadExpression new];
+        expression.downloadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Do something e.g. Update a progress bar.
+            });
+        };
+        
+        AWSS3TransferUtilityDownloadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityDownloadTask *task, NSURL *location, NSData *data, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Do something e.g. Alert a user for transfer completion.
+                // On successful downloads, `data` contains the S3 object.
+                // On failed downloads, `error` contains the error object.
+                self.profileImage.image = [UIImage imageWithData:data];
+            });
+        };
+        
+        // TODO: parse "http://s3.amazonaws.com/favor8-bucket-2/" out of _card["profile_img"]
+        //       to get the object key for download
+        AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility defaultS3TransferUtility];
+        [[transferUtility downloadDataFromBucket:@"favor8-bucket-2"
+                                             key:_updatedProfileImgURL
+                                      expression:expression
+                                completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
+            if (task.error) {
+                NSLog(@"Error: %@", task.error);
+            }
+            if (task.exception) {
+                NSLog(@"Exception: %@", task.exception);
+            }
+            if (task.result) {
+                AWSS3TransferUtilityDownloadTask *downloadTask = task.result;
+            }
+            
+            return nil;
+        }];
+        
+        */
+        
+       
     } else {
         // TODO: initialize imageView with placeholder image
     }
@@ -96,8 +116,6 @@
     
     self.socialLinksTableView.separatorColor = [UIColor clearColor];
     
-    //[self.socialLinksTableView addObserver:self forKeyPath:@"contentSize" options:0 context:NULL];
-   // [self.contentView setFrame:CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, 2000)];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -189,44 +207,79 @@
     NSString *objectKey = [[NSProcessInfo processInfo] globallyUniqueString];
     objectKey = [objectKey stringByAppendingString:@".jpg"];
     
-    AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
-    expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Do something e.g. Update a progress bar.
-        });
-    };
+    NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:@"favor8-image.jpg"];
     
-    AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (error) {
-                NSLog(@"Error: %@", error);
-            } else {
-                NSLog(@"Upload successful.");
-                _updatedProfileImgURL = [NSString stringWithFormat:@"http://s3.amazonaws.com/favor8-bucket-2/%@", objectKey];
-                NSLog(@"New profile image: %@", _updatedProfileImgURL);
-            }
-        });
-    };
+    [imageData writeToFile:path atomically:YES];
     
-    AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility defaultS3TransferUtility];
+    NSURL *localFileURL = [[NSURL alloc] initFileURLWithPath:path];
     
+    AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
     
+    uploadRequest.bucket = @"favor8-bucket-2";
+    uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
+    uploadRequest.key = objectKey;
+    uploadRequest.contentType = @"image/jpeg";
+    uploadRequest.body = localFileURL;
     
-    [[transferUtility uploadData:imageData bucket:@"favor8-bucket-2" key:objectKey contentType:@"image/jpeg" expression:expression completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
+    AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
+    
+    [[transferManager upload:uploadRequest] continueWithExecutor:[AWSExecutor mainThreadExecutor] withBlock:^id(AWSTask *task) {
+        
         if (task.error) {
-            NSLog(@"Error: %@", task.error);
-        }
-        if (task.exception) {
-            NSLog(@"Exception: %@", task.exception);
-        }
-        if (task.result) {
-            AWSS3TransferUtilityUploadTask *uploadTask = task.result;
-            // Do something with uploadTask.
+            NSLog(@"%@", task.error);
+        } else {
+            NSLog(@"Successful upload to S3.");
+            _updatedProfileImgURL = [NSString stringWithFormat:@"http://s3.amazonaws.com/favor8-bucket-2/%@", objectKey];
+            NSLog(@"New profile image: %@", _updatedProfileImgURL);
         }
         
         return nil;
     }];
-    
+}
+
+- (void) uploadToS3UsingTransferUtility {
+
+    /*
+     AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
+     expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+     dispatch_async(dispatch_get_main_queue(), ^{
+     // Do something e.g. Update a progress bar.
+     });
+     };
+     
+     [expression setValue:@"AWSS3ObjectCannedACLPublicRead" forRequestParameter:@"ACL"];
+     NSLog(@"Expression RP: %@", expression.requestParameters);
+     
+     AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
+     dispatch_async(dispatch_get_main_queue(), ^{
+     if (error) {
+     NSLog(@"Error: %@", error);
+     } else {
+     NSLog(@"Upload successful.");
+     _updatedProfileImgURL = [NSString stringWithFormat:@"http://s3.amazonaws.com/favor8-bucket-2/%@", objectKey];
+     NSLog(@"New profile image: %@", _updatedProfileImgURL);
+     }
+     });
+     };
+     
+     AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility defaultS3TransferUtility];
+     
+     
+     [[transferUtility uploadData:imageData bucket:@"favor8-bucket-2" key:objectKey contentType:@"image/jpeg" expression:expression completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
+     if (task.error) {
+     NSLog(@"Error: %@", task.error);
+     }
+     if (task.exception) {
+     NSLog(@"Exception: %@", task.exception);
+     }
+     if (task.result) {
+     AWSS3TransferUtilityUploadTask *uploadTask = task.result;
+     // Do something with uploadTask.
+     }
+     
+     return nil;
+     }];
+     */
 }
 
 
