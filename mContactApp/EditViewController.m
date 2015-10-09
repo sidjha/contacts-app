@@ -353,14 +353,25 @@
     NSString *key = [accountHandle allKeys][0];
     NSString *value = [accountHandle allValues][0];
     
+    // initialize dictionary if no existing social links
     if (!self.socialLinks) {
-        self.socialLinks = [NSMutableDictionary
-                            dictionaryWithDictionary:@{ key : value }];
+        if ([value length] > 0) {
+            self.socialLinks = [NSMutableDictionary
+                                dictionaryWithDictionary:@{ key : value }];
+        }
     } else {
+        // check if key exists
         if ([self.socialLinks objectForKey:key]) {
-            [self.socialLinks setObject:value forKey:key];
+            if ([value length] > 0) {
+                [self.socialLinks setObject:value forKey:key];
+            } else {
+                [self.socialLinks removeObjectForKey:key];
+            }
         } else {
-            self.socialLinks[key] = value;
+            // an empty social link has no effect if key does not exist
+            if ([value length] > 0) {
+                self.socialLinks[key] = value;
+            }
         }
     }
     
