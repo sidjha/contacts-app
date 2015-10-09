@@ -38,8 +38,6 @@
 @property (strong, nonatomic) NSMutableArray *linkImages;
 @property (strong, nonatomic) NSString *updatedProfileImgURL;
 
-
-
 @property (weak, nonatomic) NSMutableDictionary *card;
 
 @property (weak, nonatomic) id <EditViewControllerDelegate> delegate;

@@ -240,10 +240,14 @@
         
         [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
         
+        manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+        
         // Make the request
         [manager
          GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
              NSLog(@"/users/show response data: %@", responseObject);
+             
+             
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              
              NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
