@@ -381,8 +381,16 @@
         
         SAEditViewController *detailVC = (SAEditViewController *) segue.destinationViewController;
         
+        NSMutableArray *socialLabels = [[NSMutableArray alloc]initWithObjects: @"Facebook", @"Instagram", @"Twitter", @"Snapchat", @"WhatsApp", @"LinkedIn", @"FB Messenger", nil];
+        
         [detailVC.titleLabel setText:s];
-        detailVC.row = indexPath.row;
+        
+        detailVC.accountLabelStr = socialLabels[indexPath.row];
+        
+        if ([self.socialLinks objectForKey:socialLabels[indexPath.row]]) {
+            detailVC.accountValueStr = self.socialLinks[socialLabels[indexPath.row]];
+        }
+        
         detailVC.delegate = self;
         
     }

@@ -380,6 +380,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     StackedCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardcell" forIndexPath:indexPath];
+    // TODO: Mutable vs. Immutable dictionary
     NSDictionary *card = self.cards[indexPath.item];
 
     if (indexPath.row == 0) {

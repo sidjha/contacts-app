@@ -17,13 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    NSLog(@"Received row: %ld", _row);
 
-    _socialLabels = [[NSMutableArray alloc]initWithObjects: @"Facebook", @"Instagram", @"Twitter", @"Snapchat", @"WhatsApp", @"LinkedIn", @"FB Messenger", nil];
+    [_titleLabel setText:_accountLabelStr];
     
-    [_titleLabel setText:_socialLabels[_row]];
-    
+    if (_accountValueStr) {
+        [_accountHandleTextField setText:_accountValueStr];
+    }
 }
 
 - (void) viewWillDisappear:(BOOL)animated {

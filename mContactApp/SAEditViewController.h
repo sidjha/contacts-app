@@ -23,9 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextField *accountHandleTextField;
 
-@property (nonatomic, assign) NSInteger row;
-@property (strong, nonatomic) NSMutableArray *socialLabels;
-@property (strong, nonatomic) NSMutableArray *socialPlaceholders;
+@property (weak, nonatomic) NSString *accountLabelStr;
+@property (weak, nonatomic) NSString *accountValueStr;
 
 @property (weak, nonatomic) id <SAEditViewControllerDelegate> delegate;
 
