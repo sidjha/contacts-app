@@ -169,9 +169,57 @@
         for (id key in card[@"social_links"]) {
             [actionSheet addAction:[UIAlertAction actionWithTitle:key style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 
-                //[self dismissViewControllerAnimated:YES completion:^{
-                //}];
-                // TODO: deep link to app
+                NSString *stringURL;
+                NSString *handle = card[@"social_links"][key];
+
+                if ([key isEqualToString:@"Twitter"]) {
+                    
+                    stringURL = [NSString stringWithFormat:@"twitter://user?screen_name=%@", handle];
+                
+                } else if ([key isEqualToString:@"Facebook"]) {
+                    
+                    stringURL = @"fb://profile";
+                    
+                    // NOTE: fb://profile/<handle> requires handle to be facebook numeric id
+                    //stringURL = [NSString stringWithFormat:@"fb://profile", handle];
+                    
+                } else if ([key isEqualToString:@"FB Messenger"]) {
+                    
+                    // NOTE: if there's no user thread with that user, an error message shows up in Messenger
+                    stringURL = [NSString stringWithFormat:@"fb-messenger://user-thread/%@", handle];
+                    
+                } else if ([key isEqualToString:@"Instagram"]) {
+                    
+                    stringURL = [NSString stringWithFormat:@"instagram://user?username=%@", handle];
+                    
+                } else if ([key isEqualToString:@"WhatsApp"]) {
+                    
+                    stringURL = [NSString stringWithFormat:@"whatsapp://send?abid=%@", handle];
+                    
+                } else if ([key isEqualToString:@"Snapchat"]) {
+                    
+                    stringURL = [NSString stringWithFormat:@"snapchat://?u=%@", handle];
+                    
+                } else if ([key isEqualToString:@"LinkedIn"]) {
+                    
+                    // UPDATE: linkedin:// URL scheme does not work at all
+                    stringURL = @"linkedin://";
+                    
+                    // UPDATE: linkedin://#profile URL scheme does not work
+                    stringURL = [NSString stringWithFormat:@"linkedin://#profile/%@", handle];
+                    
+                } else {
+                    // do nothing
+                }
+                
+                NSURL *url = [NSURL URLWithString:stringURL];
+                
+                if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                    [[UIApplication sharedApplication] openURL:url];
+                } else {
+                    NSLog(@"Couldn't open URL: %@", url);
+                }
+                
             }]];
         }
         

@@ -39,5 +39,15 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>twitter</string>
+        <string>whatsapp</string>
+        <string>snapchat</string>
+        <string>fb</string>
+        <string>fb-messenger</string>
+        <string>linkedin</string>
+        <string>instagram</string>
+    </array>
 </dict>
 </plist>
