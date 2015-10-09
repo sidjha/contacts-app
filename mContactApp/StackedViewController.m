@@ -29,6 +29,7 @@
 #import "AFURLRequestSerialization.h"
 #import "MBProgressHUD.h"
 #import "EditViewController.h"
+@import StoreKit;
 
 @interface UIColor (randomColor)
 
@@ -217,9 +218,52 @@
                 if ([[UIApplication sharedApplication] canOpenURL:url]) {
                     [[UIApplication sharedApplication] openURL:url];
                 } else {
+                    
+                    /*
+                     iTunes IDs: 
+                     
+                     Instagram — 389801252
+                     Facebook — 284882215
+                     FB Messenger — 454638411
+                     Snapchat — 447188370
+                     WhatsApp — 310633997
+                     Twitter — 333903271
+                     LinkedIn — 288429040
+                     
+                     */
+                    
                     NSLog(@"Couldn't open URL: %@", url);
+                    
+                    NSDictionary *iTunesIDs = @{
+                                                @"Instagram":[NSNumber numberWithInt:389801252],
+                                                @"Facebook": [NSNumber numberWithInt:284882215],
+                                                @"FB Messenger": [NSNumber numberWithInt:454638411],
+                                                @"Snapchat": [NSNumber numberWithInt:447188370],
+                                                @"WhatsApp": [NSNumber numberWithInt:310633997],
+                                                @"Twitter": [NSNumber numberWithInt:333903271],
+                                                @"LinkedIn": [NSNumber numberWithInt:288429040]
+                                                };
+                    
+                    // Set up an App Store modal to let the user download the linked 3rd-party app
+                    // TODO: analytics
+                    SKStoreProductViewController *storeVC = [[SKStoreProductViewController alloc]init];
+                    
+                    storeVC.delegate = self;
+                    
+                    NSDictionary *item = [NSDictionary dictionaryWithObject:iTunesIDs[key] forKey:SKStoreProductParameterITunesItemIdentifier];
+                    
+                    [storeVC loadProductWithParameters:item completionBlock:^(BOOL result, NSError * _Nullable error) {
+                        
+                        if (result) {
+                            
+                            [self presentViewController:storeVC animated:YES completion:nil];
+                        
+                        } else {
+                            
+                            NSLog(@"Error: %@", error);
+                        }
+                    }];
                 }
-                
             }]];
         }
         
@@ -523,6 +567,13 @@
         editVC.delegate = self;
         editVC.card = _myCard;
     }
+}
+
+#pragma mark — SKStoreProductViewControllerDelegate
+
+-(void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController
+{
+    [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSString *)getName {

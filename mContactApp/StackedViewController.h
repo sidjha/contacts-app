@@ -8,8 +8,9 @@
 
 #import "TGLStackedViewController.h"
 #import "EditViewController.h"
+@import StoreKit;
 
-@interface StackedViewController : TGLStackedViewController <EditViewControllerDelegate>
+@interface StackedViewController : TGLStackedViewController <EditViewControllerDelegate, SKStoreProductViewControllerDelegate>
 
 @property (nonatomic, assign) BOOL doubleTapToClose;
 @property (nonatomic, weak) NSMutableDictionary *myCard;
