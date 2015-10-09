@@ -57,14 +57,16 @@
     
     [self.phoneField setText:_card[@"phone"]];
     
+    self.socialLinks = _card[@"social_links"];
     
-    _links = [[NSMutableArray alloc]initWithObjects:
+    
+    self.links = [[NSMutableArray alloc]initWithObjects:
               @"Facebook",@"Instagram",
               @"Twitter",@"Snapchat",@"WhatsApp",
               @"LinkedIn",@"FB Messenger", nil];
     
     
-    _linkImages = [[NSMutableArray alloc]initWithObjects:
+    self.linkImages = [[NSMutableArray alloc]initWithObjects:
                        [UIImage imageNamed:@"linkicons/Facebook.png"],
                        [UIImage imageNamed:@"linkicons/Instagram.png"],
                        [UIImage imageNamed:@"linkicons/Twitter.png"],
@@ -76,6 +78,8 @@
     
     
     self.socialLinksTableView.separatorColor = [UIColor clearColor];
+    
+    
     
 }
 
@@ -132,6 +136,8 @@
     _card[@"name"] = _nameField.text;
     _card[@"status"] = _statusField.text;
     _card[@"phone"] = _phoneField.text;
+    
+    _card[@"social_links"] = _socialLinks;
     
     if (_updatedProfileImgURL) {
         _card[@"profile_img"] = self.updatedProfileImgURL;
@@ -340,9 +346,26 @@
     NSLog(@"Disclosure button tapped");
 }
 
-- (void)socialEditViewController:(SAEditViewController *)controller didFinishUpdatingAccount:(NSString *)accountHandle {
+- (void)socialEditViewController:(SAEditViewController *)controller didFinishUpdatingAccount:(NSMutableDictionary *)accountHandle {
     
     NSLog(@"Account handle: %@", accountHandle);
+    
+    NSString *key = [accountHandle allKeys][0];
+    NSString *value = [accountHandle allValues][0];
+    
+    if (!self.socialLinks) {
+        self.socialLinks = [NSMutableDictionary
+                            dictionaryWithDictionary:@{ key : value }];
+    } else {
+        if ([self.socialLinks objectForKey:key]) {
+            [self.socialLinks setObject:value forKey:key];
+        } else {
+            self.socialLinks[key] = value;
+        }
+    }
+    
+    NSLog(@"self.socialLinks contents: %@", self.socialLinks);
+    
 }
 
 #pragma mark - Navigation

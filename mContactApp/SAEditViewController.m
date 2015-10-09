@@ -20,7 +20,7 @@
     
     NSLog(@"Received row: %ld", _row);
 
-    _socialLabels = [[NSMutableArray alloc]initWithObjects: @"Facebook", @"Instagram", @"Twitter", @"Snapchat", @"WhatsApp", @"LinkedIn", @"Facebook Messenger", nil];
+    _socialLabels = [[NSMutableArray alloc]initWithObjects: @"Facebook", @"Instagram", @"Twitter", @"Snapchat", @"WhatsApp", @"LinkedIn", @"FB Messenger", nil];
     
     [_titleLabel setText:_socialLabels[_row]];
     
@@ -28,7 +28,10 @@
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.delegate socialEditViewController:self didFinishUpdatingAccount:_accountHandleTextField.text];
+    NSMutableDictionary *accountHandle = [NSMutableDictionary dictionaryWithDictionary:@{
+                                            _titleLabel.text : _accountHandleTextField.text
+                                            }];
+    [self.delegate socialEditViewController:self didFinishUpdatingAccount:accountHandle];
 }
 
 

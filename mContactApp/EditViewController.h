@@ -32,7 +32,7 @@
 @property (weak, nonatomic) NSString *name;
 @property (weak, nonatomic) NSString *status;
 @property (weak, nonatomic) NSString *phone;
-@property (weak, nonatomic) NSMutableDictionary *socialLinks;
+@property (strong, nonatomic) NSMutableDictionary *socialLinks;
 @property (weak, nonatomic) NSString *profileImgURL;
 @property (strong, nonatomic) NSMutableArray *links;
 @property (strong, nonatomic) NSMutableArray *linkImages;

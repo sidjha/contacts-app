@@ -12,7 +12,7 @@
 
 @protocol SAEditViewControllerDelegate <NSObject>
 
-- (void) socialEditViewController:(SAEditViewController *)controller didFinishUpdatingAccount:(NSString *)accountHandle;
+- (void) socialEditViewController:(SAEditViewController *)controller didFinishUpdatingAccount:(NSMutableDictionary *)accountHandle;
 
 @end
 
