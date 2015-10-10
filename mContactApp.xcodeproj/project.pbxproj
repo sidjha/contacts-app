@@ -21,6 +21,7 @@
 		EB9F6ABD1B9B7AD5007CEEEE /* StackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6ABC1B9B7AD5007CEEEE /* StackedViewController.m */; };
 		EB9F6ADE1B9BF4B1007CEEEE /* StackedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6ADD1B9BF4B1007CEEEE /* StackedCollectionViewCell.m */; };
 		EBA6B67A1BC7266D0076E80E /* SAEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA6B6791BC7266D0076E80E /* SAEditViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EBA6B67D1BC7A7AD0076E80E /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA6B67C1BC7A7AD0076E80E /* AddFriendViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EBAF4AA41BA298440024DEB8 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF4AA31BA298440024DEB8 /* SignupViewController.m */; settings = {ASSET_TAGS = (); }; };
 		FAACFC87C87DFCC373482D47 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49AB772EA34C02137A47776 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,8 @@
 		EB9F6ADD1B9BF4B1007CEEEE /* StackedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackedCollectionViewCell.m; sourceTree = "<group>"; };
 		EBA6B6781BC7266D0076E80E /* SAEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAEditViewController.h; sourceTree = "<group>"; };
 		EBA6B6791BC7266D0076E80E /* SAEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAEditViewController.m; sourceTree = "<group>"; };
+		EBA6B67B1BC7A7AD0076E80E /* AddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendViewController.h; sourceTree = "<group>"; };
+		EBA6B67C1BC7A7AD0076E80E /* AddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendViewController.m; sourceTree = "<group>"; };
 		EBAF4AA21BA298440024DEB8 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		EBAF4AA31BA298440024DEB8 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +113,8 @@
 				EB08CC891BAFD1E3009AD762 /* SocialLinksTableViewCell.m */,
 				EBA6B6781BC7266D0076E80E /* SAEditViewController.h */,
 				EBA6B6791BC7266D0076E80E /* SAEditViewController.m */,
+				EBA6B67B1BC7A7AD0076E80E /* AddFriendViewController.h */,
+				EBA6B67C1BC7A7AD0076E80E /* AddFriendViewController.m */,
 				6347325D1B7B1623009B0D3B /* Images.xcassets */,
 				637C7D4D1B7DC4CB00E9B855 /* linkicons */,
 				6347325F1B7B1623009B0D3B /* LaunchScreen.xib */,
@@ -255,6 +260,7 @@
 				EB3FB4A31B9692C100B11FCE /* LoginViewController.m in Sources */,
 				637F81221B8713D90021BF65 /* Model.xcdatamodeld in Sources */,
 				634732591B7B1623009B0D3B /* ViewController.m in Sources */,
+				EBA6B67D1BC7A7AD0076E80E /* AddFriendViewController.m in Sources */,
 				EB08CC8A1BAFD1E3009AD762 /* SocialLinksTableViewCell.m in Sources */,
 				EB9F6ABD1B9B7AD5007CEEEE /* StackedViewController.m in Sources */,
 				EB1A0EC01BA2A5FA005F9FF8 /* EditViewController.m in Sources */,

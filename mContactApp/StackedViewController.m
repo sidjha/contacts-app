@@ -29,6 +29,7 @@
 #import "AFURLRequestSerialization.h"
 #import "MBProgressHUD.h"
 #import "EditViewController.h"
+#import "AddFriendViewController.h"
 @import StoreKit;
 
 @interface UIColor (randomColor)
@@ -115,7 +116,11 @@
     [plusButton setTitle:@"+" forState:UIControlStateNormal];
     [plusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
+    [plusButton addTarget:self action:@selector(pushAddFriendViewController) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview:plusButton];
+    
+    
     
     UIButton *favoritesButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -299,6 +304,15 @@
         [self presentViewController:alert animated:YES completion:nil];
         
     }
+}
+
+- (IBAction) pushAddFriendViewController
+{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AddFriendViewController *addFriendVC = [storyboard instantiateViewControllerWithIdentifier:@"AddFriendViewController.m"];
+    
+    [self presentViewController:addFriendVC animated:YES completion:nil];
 }
 
 - (void) getMyCard {

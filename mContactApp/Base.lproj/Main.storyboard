@@ -278,6 +278,78 @@
             </objects>
             <point key="canvasLocation" x="472" y="1105"/>
         </scene>
+        <!--Add Friend View Controller-->
+        <scene sceneID="om0-Ec-baz">
+            <objects>
+                <viewController storyboardIdentifier="AddFriendViewController.m" id="Phc-rM-v5G" customClass="AddFriendViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cmV-LR-gBi"/>
+                        <viewControllerLayoutGuide type="bottom" id="3iz-Dh-T5z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ns3-a1-V4c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add People" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZ9-B3-S7W">
+                                <rect key="frame" x="124" y="36" width="166" height="33"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gdB-a3-9aq">
+                                <rect key="frame" x="57" y="88" width="300" height="120"/>
+                                <animations/>
+                                <string key="text">You can add cards of people to your deck in many ways. If the person is nearby and has the app, Broadcast is the easiest way. If you have someone’s Profile Code, select Upload Code. Otherwise, select Send e-mail or Send SMS.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybe-y5-qhT">
+                                <rect key="frame" x="72" y="399" width="271" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Upload Code to Add Person"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9b-8r-NzZ">
+                                <rect key="frame" x="14" y="9" width="59" height="30"/>
+                                <animations/>
+                                <state key="normal" title="CANCEL"/>
+                                <connections>
+                                    <action selector="cancelButton:" destination="Phc-rM-v5G" eventType="touchUpInside" id="oVo-d3-oHq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zic-tX-dx9">
+                                <rect key="frame" x="72" y="337" width="271" height="36"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Add Person by Username"/>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zic-tX-dx9" firstAttribute="centerX" secondItem="Ns3-a1-V4c" secondAttribute="centerX" id="9bM-DP-STs"/>
+                            <constraint firstItem="zic-tX-dx9" firstAttribute="top" secondItem="gdB-a3-9aq" secondAttribute="bottom" constant="100" id="Cjo-nf-VIK"/>
+                            <constraint firstItem="ybe-y5-qhT" firstAttribute="top" secondItem="zic-tX-dx9" secondAttribute="bottom" constant="30" id="NfQ-rw-IIg"/>
+                            <constraint firstItem="T9b-8r-NzZ" firstAttribute="leading" secondItem="Ns3-a1-V4c" secondAttribute="leadingMargin" constant="8" id="ULc-sQ-lD5"/>
+                            <constraint firstItem="ybe-y5-qhT" firstAttribute="centerX" secondItem="Ns3-a1-V4c" secondAttribute="centerX" id="XiM-0O-36v"/>
+                            <constraint firstItem="NZ9-B3-S7W" firstAttribute="centerX" secondItem="Ns3-a1-V4c" secondAttribute="centerX" id="alm-3Z-6rX"/>
+                            <constraint firstItem="NZ9-B3-S7W" firstAttribute="top" secondItem="cmV-LR-gBi" secondAttribute="bottom" constant="16" id="egK-wb-sIK"/>
+                            <constraint firstItem="T9b-8r-NzZ" firstAttribute="top" secondItem="cmV-LR-gBi" secondAttribute="bottom" constant="5" id="o3E-yF-YNK"/>
+                            <constraint firstItem="gdB-a3-9aq" firstAttribute="top" secondItem="NZ9-B3-S7W" secondAttribute="bottom" constant="20" id="swR-uF-Nz3"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="addByCodeUpload" destination="ybe-y5-qhT" id="M3t-oY-pKS"/>
+                        <outlet property="addByUsernameButton" destination="zic-tX-dx9" id="2BB-Ix-Hyl"/>
+                        <outlet property="cancelButton" destination="T9b-8r-NzZ" id="fFQ-Ub-ooC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JI2-bO-2Bh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1010" y="1105"/>
+        </scene>
         <!--Edit View Controller-->
         <scene sceneID="VHe-cS-Vu8">
             <objects>
@@ -488,7 +560,7 @@
                                 <rect key="frame" x="58" y="62" width="298" height="49"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
