@@ -421,12 +421,18 @@
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <state key="normal" title="Accept"/>
+                                            <connections>
+                                                <action selector="acceptAction:" destination="vyx-ag-N7b" eventType="touchUpInside" id="x0S-kJ-UGa"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6R-Bj-P4l">
                                             <rect key="frame" x="348" y="16" width="49" height="30"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <state key="normal" title="Ignore"/>
+                                            <connections>
+                                                <action selector="ignoreAction:" destination="vyx-ag-N7b" eventType="touchUpInside" id="k3I-Eu-AW3"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <animations/>
@@ -443,6 +449,8 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
+                                    <outlet property="acceptButton" destination="fYw-qz-FRz" id="xy7-cn-dui"/>
+                                    <outlet property="ignoreButton" destination="x6R-Bj-P4l" id="tfh-Nd-u2k"/>
                                     <outlet property="nameLabel" destination="hzS-HO-b0U" id="CwD-tf-dzy"/>
                                     <outlet property="usernameLabel" destination="LPC-59-Yjy" id="RJl-Qn-Lar"/>
                                 </connections>

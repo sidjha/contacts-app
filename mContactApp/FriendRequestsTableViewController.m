@@ -58,6 +58,8 @@
     static NSString *cellID = @"friendRequestCell";
     FriendRequestTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
+    cell.delegate = self;
+    
     [cell.nameLabel setText:[_requests objectAtIndex:indexPath.row]];
     [cell.usernameLabel setText:[_requests objectAtIndex:indexPath.row]];
     
@@ -69,6 +71,22 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 80;
+}
+
+# pragma mark — FriendRequestCellDelegate methods
+
+- (void) friendRequestCell:(FriendRequestTableViewCell *)cell didApproveRequest:(NSString *)username {
+    
+    NSLog(@"In FRTVC: didApproveRequest. %@", username);
+    
+    [self.delegate friendRequestsController:self didApproveRequest:username];
+}
+
+- (void) friendRequestCell:(FriendRequestTableViewCell *)cell didIgnoreRequest:(NSString *)username {
+    
+    NSLog(@"In FRTVC: didIgnoreRequest. %@", username);
+    
+    [self.delegate friendRequestsController:self didIgnoreRequest:username];
 }
 
 

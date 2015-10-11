@@ -182,7 +182,22 @@
         FriendRequestsTableViewController *friendRequestsTVC = [navVC.viewControllers objectAtIndex:0];
         
         friendRequestsTVC.requests = self.incomingFriendRequests;
+        
+        friendRequestsTVC.delegate = self;
     }
+}
+
+# pragma mark — FriendRequestsControllerDelegate methods
+
+- (void) friendRequestsController:(FriendRequestsTableViewController *)controller didApproveRequest:(NSString *)username {
+    
+    NSLog(@"Called didApproveRequest: %@", username);
+}
+
+- (void) friendRequestsController:(FriendRequestsTableViewController *)controller didIgnoreRequest:(NSString *)username {
+    
+    NSLog(@"Called didIgnoreRequest: %@", username);
+    
 }
 
 

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FriendRequestsTableViewController.h"
 
-@interface AddFriendViewController : UIViewController
+@interface AddFriendViewController : UIViewController <FriendRequestsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addByUsernameButton;

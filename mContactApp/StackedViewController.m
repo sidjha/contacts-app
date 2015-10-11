@@ -66,6 +66,15 @@
 
 @synthesize cards = _cards;
 
+- (void) viewWillAppear:(BOOL)animated {
+
+    // Retrieve user's card and friends' cards from server
+    [self getMyCard];
+    
+    [self getFriendsCards];
+
+}
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
@@ -130,9 +139,7 @@
     [favoritesButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [self.view addSubview:favoritesButton];
-    
-    // Retrieve user's card and friends' cards from server
-    [self getMyCard];
+
 }
 
 - (void) editViewController:(EditViewController *)controller didFinishUpdatingCard:(NSMutableDictionary *)card {
@@ -373,9 +380,16 @@
              
              card = [NSMutableDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
              _myCard = card;
-             [_cards addObject:card];
+             
+             if ([_cards count] > 0) {
+                 
+                 [_cards replaceObjectAtIndex:0 withObject:card];
+             
+             } else {
+                 
+                 [_cards addObject:card];
+             }
 
-             [self getFriendsCards];
              
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
@@ -441,7 +455,35 @@
                  
                  card = [NSDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
                  
-                 [_cards addObject:card];
+                 
+                 /*
+                  
+                  Basically, if the friend card doesn't exist, simply add it.
+                  
+                  If the friend card exists, replace it.
+                  
+                  OK, so:
+                  
+                  - iterate over _cards array
+                  - if card with username already there, replace that card with "card"
+                  - if card with username does not exist, add "card"
+                  
+                  */
+                 
+                 bool found = 0;
+                 for (NSInteger k = 0; k < [_cards count]; k++) {
+                     if ([card[@"username"] isEqualToString:_cards[k][@"username"]]) {
+                         
+                         [_cards replaceObjectAtIndex:k withObject:card];
+                         
+                         found = 1;
+                     }
+                 }
+                 
+                 if (found == 0) {
+                     
+                     [_cards addObject:card];
+                 }
              }
              
              [self.collectionView reloadData];
@@ -451,7 +493,7 @@
              NSLog(@"Error: %@", error);
              
              // if GET "/friends/list" fails, reload anyway so user's card is displayed
-             [self.collectionView reloadData];
+             //[self.collectionView reloadData];
 
              [MBProgressHUD hideHUDForView:self.view animated:YES];
          }];

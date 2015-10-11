@@ -7,11 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FriendRequestTableViewCell.h"
 
-@interface FriendRequestsTableViewController : UITableViewController
+@class FriendRequestsTableViewController;
+
+@protocol FriendRequestsControllerDelegate <NSObject>
+
+- (void) friendRequestsController:(FriendRequestsTableViewController *)controller didApproveRequest:(NSString *)username;
+
+- (void) friendRequestsController:(FriendRequestsTableViewController *)controller didIgnoreRequest:(NSString *)username;
+
+@end
+
+@interface FriendRequestsTableViewController : UITableViewController <FriendRequestCellDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *friendRequestsTableView;
 
 @property (strong, nonatomic) NSMutableArray *requests;
+
+@property (weak, nonatomic) id <FriendRequestsControllerDelegate> delegate;
 
 @end

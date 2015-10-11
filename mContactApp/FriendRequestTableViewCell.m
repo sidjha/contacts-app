@@ -20,4 +20,14 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)acceptAction:(id)sender {
+    
+    [self.delegate friendRequestCell:self didApproveRequest:self.usernameLabel.text];
+}
+
+- (IBAction)ignoreAction:(id)sender {
+    
+    [self.delegate friendRequestCell:self didIgnoreRequest:self.usernameLabel.text];
+}
+
 @end
