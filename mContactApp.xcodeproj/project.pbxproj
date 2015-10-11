@@ -23,6 +23,8 @@
 		EBA6B67A1BC7266D0076E80E /* SAEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA6B6791BC7266D0076E80E /* SAEditViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EBA6B67D1BC7A7AD0076E80E /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA6B67C1BC7A7AD0076E80E /* AddFriendViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EBAF4AA41BA298440024DEB8 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF4AA31BA298440024DEB8 /* SignupViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EBBDAA411BCA24250005E486 /* FriendRequestsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBDAA401BCA24250005E486 /* FriendRequestsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EBBDAA441BCA26E30005E486 /* FriendRequestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBDAA431BCA26E30005E486 /* FriendRequestTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		FAACFC87C87DFCC373482D47 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49AB772EA34C02137A47776 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,10 @@
 		EBA6B67C1BC7A7AD0076E80E /* AddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendViewController.m; sourceTree = "<group>"; };
 		EBAF4AA21BA298440024DEB8 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		EBAF4AA31BA298440024DEB8 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		EBBDAA3F1BCA24250005E486 /* FriendRequestsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendRequestsTableViewController.h; sourceTree = "<group>"; };
+		EBBDAA401BCA24250005E486 /* FriendRequestsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendRequestsTableViewController.m; sourceTree = "<group>"; };
+		EBBDAA421BCA26E30005E486 /* FriendRequestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendRequestTableViewCell.h; sourceTree = "<group>"; };
+		EBBDAA431BCA26E30005E486 /* FriendRequestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendRequestTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,10 @@
 				EBA6B6791BC7266D0076E80E /* SAEditViewController.m */,
 				EBA6B67B1BC7A7AD0076E80E /* AddFriendViewController.h */,
 				EBA6B67C1BC7A7AD0076E80E /* AddFriendViewController.m */,
+				EBBDAA3F1BCA24250005E486 /* FriendRequestsTableViewController.h */,
+				EBBDAA401BCA24250005E486 /* FriendRequestsTableViewController.m */,
+				EBBDAA421BCA26E30005E486 /* FriendRequestTableViewCell.h */,
+				EBBDAA431BCA26E30005E486 /* FriendRequestTableViewCell.m */,
 				6347325D1B7B1623009B0D3B /* Images.xcassets */,
 				637C7D4D1B7DC4CB00E9B855 /* linkicons */,
 				6347325F1B7B1623009B0D3B /* LaunchScreen.xib */,
@@ -264,6 +274,8 @@
 				EB08CC8A1BAFD1E3009AD762 /* SocialLinksTableViewCell.m in Sources */,
 				EB9F6ABD1B9B7AD5007CEEEE /* StackedViewController.m in Sources */,
 				EB1A0EC01BA2A5FA005F9FF8 /* EditViewController.m in Sources */,
+				EBBDAA411BCA24250005E486 /* FriendRequestsTableViewController.m in Sources */,
+				EBBDAA441BCA26E30005E486 /* FriendRequestTableViewCell.m in Sources */,
 				EBAF4AA41BA298440024DEB8 /* SignupViewController.m in Sources */,
 				634732561B7B1623009B0D3B /* AppDelegate.m in Sources */,
 				634732531B7B1623009B0D3B /* main.m in Sources */,

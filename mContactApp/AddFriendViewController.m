@@ -10,6 +10,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "AFURLRequestSerialization.h"
 #import "MBProgressHUD.h"
+#import "FriendRequestsTableViewController.h"
 
 
 @interface AddFriendViewController ()
@@ -17,6 +18,7 @@
 @end
 
 @implementation AddFriendViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -85,6 +87,8 @@
         [manager
          GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
              NSLog(@"/friends/incoming_requests response data: %@", responseObject);
+             
+             self.incomingFriendRequests = responseObject[@"incoming_requests"];
              
              for (NSInteger i = 0; i < [responseObject[@"incoming_requests"] count]; i++) {
                  NSLog(@"Request from: %@", responseObject[@"incoming_requests"][i]);
@@ -164,14 +168,22 @@
 
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"viewFriendRequestsSegue"]) {
+        UINavigationController *navVC = (UINavigationController *) segue.destinationViewController;
+
+        FriendRequestsTableViewController *friendRequestsTVC = [navVC.viewControllers objectAtIndex:0];
+        
+        friendRequestsTVC.requests = self.incomingFriendRequests;
+    }
 }
-*/
+
 
 @end

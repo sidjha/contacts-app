@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *addByUsernameButton;
 @property (weak, nonatomic) IBOutlet UIButton *addByCodeUploadButton;
 
+@property (strong, nonatomic) NSMutableArray *incomingFriendRequests;
 
 @end
