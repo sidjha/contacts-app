@@ -7,6 +7,10 @@
 //
 
 #import "AddFriendViewController.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "AFURLRequestSerialization.h"
+#import "MBProgressHUD.h"
+
 
 @interface AddFriendViewController ()
 
@@ -17,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self getIncomingRequests];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,6 +32,136 @@
 
 - (IBAction)cancelButton:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)addFriendByUsername:(id)sender {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Add a person to your Favor8" message:@"Enter username of person you wish to add" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField){
+        textField.placeholder = NSLocalizedString(@"Username", @"Username");
+    }];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Send Request", @"OK Action") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        UITextField *username = alertController.textFields.firstObject;
+        
+        [self sendFriendRequest:username.text];
+        
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel Action") style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+}
+- (IBAction)addFriendbyCodeUpload:(id)sender {
+ 
+}
+
+- (void) getIncomingRequests {
+    
+    NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
+ 
+    // do this on the background queue
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        NSString *URLString = [NSString stringWithFormat:@"http://4024ed13.ngrok.com/favor8/api/v1.0/friends/incoming_requests"];
+        
+        // Set headers
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        
+        manager.securityPolicy.allowInvalidCertificates = YES;
+        
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
+        
+        manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+        
+        // Make the request
+        [manager
+         GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
+             NSLog(@"/friends/incoming_requests response data: %@", responseObject);
+             
+             for (NSInteger i = 0; i < [responseObject[@"incoming_requests"] count]; i++) {
+                 NSLog(@"Request from: %@", responseObject[@"incoming_requests"][i]);
+             }
+             
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             
+             NSLog(@"Error: %@", error);
+             
+         }];
+    });
+
+}
+
+
+- (void) sendFriendRequest:(NSString *)username {
+    NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
+    
+    // make request to /users/show
+    // Show a progress HUD
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Sending friend request..";
+    
+    // new low priority thread to make request
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        NSString *URLString = [NSString stringWithFormat:@"http://4024ed13.ngrok.com/favor8/api/v1.0/friends/send_request"];
+        
+        // Set headers
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        
+        manager.securityPolicy.allowInvalidCertificates = YES;
+        
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
+        
+        
+        NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+        data[@"target_username"] = username;
+        
+        // Make the request
+        [manager
+         POST:URLString parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject){
+             NSLog(@"/friends/send_request response data: %@", responseObject);
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             
+             NSLog(@"Friend request to %@ sent!", username);
+             
+             NSString *msg = [NSString stringWithFormat:@"Friend request to %@ sent.", username];
+             
+             // show alert
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Friend request sent." message:msg preferredStyle:UIAlertControllerStyleAlert];
+             
+             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+             
+             [alertController addAction:okAction];
+             
+             [self presentViewController:alertController animated:YES completion:nil];
+             
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             
+             NSLog(@"Error: %@", error);
+             
+             NSString *msg = [NSString stringWithFormat:@"Friend request to %@ could not be sent", username];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:msg preferredStyle:UIAlertControllerStyleAlert];
+             
+             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+             
+             [alertController addAction:okAction];
+             
+             [self presentViewController:alertController animated:YES completion:nil];
+             
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+         }];
+    });
+
 }
 
 /*

@@ -12,8 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addByUsernameButton;
-@property (weak, nonatomic) IBOutlet UIButton *addByCodeUpload;
-
+@property (weak, nonatomic) IBOutlet UIButton *addByCodeUploadButton;
 
 
 @end
