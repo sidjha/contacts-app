@@ -193,12 +193,11 @@
     
     [self addNewFriend:username];
     
-    NSLog(@"Called didApproveRequest: %@", username);
 }
 
 - (void) friendRequestsController:(FriendRequestsTableViewController *)controller didIgnoreRequest:(NSString *)username {
     
-    NSLog(@"Called didIgnoreRequest: %@", username);
+    // TODO: make request to remove incoming request from server
     
 }
 

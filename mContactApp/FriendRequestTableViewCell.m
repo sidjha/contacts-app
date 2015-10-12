@@ -16,18 +16,43 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
 - (IBAction)acceptAction:(id)sender {
     
-    [self.delegate friendRequestCell:self didApproveRequest:self.usernameLabel.text];
+    // Get current row and a reference to the parent tableView
+    id view = [self superview];
+    
+    while (view && [view isKindOfClass:[UITableView class]] == NO) {
+        view = [view superview];
+    }
+    
+    UITableView *tableView = (UITableView *)view;
+    
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tableView];
+    
+    NSIndexPath *indexPath = [tableView indexPathForRowAtPoint:buttonPosition];
+    
+    [self.delegate friendRequestCell:self didApproveRequest:self.usernameLabel.text indexPath:indexPath];
 }
 
 - (IBAction)ignoreAction:(id)sender {
     
-    [self.delegate friendRequestCell:self didIgnoreRequest:self.usernameLabel.text];
+    // Get current row and a reference to the parent tableView
+    id view = [self superview];
+    
+    while (view && [view isKindOfClass:[UITableView class]] == NO) {
+        view = [view superview];
+    }
+    
+    UITableView *tableView = (UITableView *)view;
+    
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tableView];
+    
+    NSIndexPath *indexPath = [tableView indexPathForRowAtPoint:buttonPosition];
+    
+    [self.delegate friendRequestCell:self didIgnoreRequest:self.usernameLabel.text indexPath:indexPath];
 }
 
 @end

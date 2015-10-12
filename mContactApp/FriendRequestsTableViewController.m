@@ -75,18 +75,23 @@
 
 # pragma mark — FriendRequestCellDelegate methods
 
-- (void) friendRequestCell:(FriendRequestTableViewCell *)cell didApproveRequest:(NSString *)username {
-    
-    NSLog(@"In FRTVC: didApproveRequest. %@", username);
+- (void) friendRequestCell:(FriendRequestTableViewCell *)cell didApproveRequest:(NSString *)username indexPath:(NSIndexPath *)indexPath {
     
     [self.delegate friendRequestsController:self didApproveRequest:username];
+    
+    [_requests removeObjectAtIndex:indexPath.row];
+
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
 }
 
-- (void) friendRequestCell:(FriendRequestTableViewCell *)cell didIgnoreRequest:(NSString *)username {
-    
-    NSLog(@"In FRTVC: didIgnoreRequest. %@", username);
+- (void) friendRequestCell:(FriendRequestTableViewCell *)cell didIgnoreRequest:(NSString *)username indexPath:(NSIndexPath *)indexPath {
     
     [self.delegate friendRequestsController:self didIgnoreRequest:username];
+    
+    [_requests removeObjectAtIndex:indexPath.row];
+    
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 

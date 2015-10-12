@@ -47,7 +47,7 @@
             UIImage *image = [UIImage imageWithData:imageData];
             self.profileImageView.image = image;
             
-            self.profileImageView.contentMode = UIViewContentModeScaleAspectFill;
+            self.profileImageView.contentMode = UIViewContentModeScaleAspectFit;
         });
     });
 

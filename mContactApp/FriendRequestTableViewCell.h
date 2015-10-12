@@ -12,9 +12,9 @@
 
 @protocol FriendRequestCellDelegate <NSObject>
 
-- (void) friendRequestCell:(FriendRequestTableViewCell *)cell didApproveRequest:(NSString *)username;
+- (void) friendRequestCell:(FriendRequestTableViewCell *)cell didApproveRequest:(NSString *)username indexPath:(NSIndexPath *)indexPath;
 
-- (void) friendRequestCell:(FriendRequestTableViewCell *)cell didIgnoreRequest:(NSString *)username;
+- (void) friendRequestCell:(FriendRequestTableViewCell *)cell didIgnoreRequest:(NSString *)username indexPath:(NSIndexPath *)indexPath;
 
 @end
 
