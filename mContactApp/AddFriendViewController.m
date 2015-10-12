@@ -191,12 +191,54 @@
 
 - (void) friendRequestsController:(FriendRequestsTableViewController *)controller didApproveRequest:(NSString *)username {
     
+    [self addNewFriend:username];
+    
     NSLog(@"Called didApproveRequest: %@", username);
 }
 
 - (void) friendRequestsController:(FriendRequestsTableViewController *)controller didIgnoreRequest:(NSString *)username {
     
     NSLog(@"Called didIgnoreRequest: %@", username);
+    
+}
+
+- (void) addNewFriend:(NSString *)username {
+    
+    // Make request to approve friendship on server side
+    // and get new friend's card
+    
+    NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
+    
+    // new low priority thread to make request
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        NSString *URLString = [NSString stringWithFormat:@"http://4024ed13.ngrok.com/favor8/api/v1.0/friendships/create"];
+        
+        // Set headers
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        
+        manager.securityPolicy.allowInvalidCertificates = YES;
+        
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
+        
+        
+        NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+        data[@"incoming_username"] = username;
+        
+        // Make the request
+        [manager
+         POST:URLString parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject){
+             NSLog(@"/friendships/create response data: %@", responseObject);
+             
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             
+             NSLog(@"Error: %@", error);
+
+         }];
+    });
+
     
 }
 

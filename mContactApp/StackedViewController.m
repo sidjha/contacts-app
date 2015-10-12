@@ -70,8 +70,6 @@
 
     // Retrieve user's card and friends' cards from server
     [self getMyCard];
-    
-    [self getFriendsCards];
 
 }
 
@@ -389,6 +387,8 @@
                  
                  [_cards addObject:card];
              }
+             
+            [self getFriendsCards];
 
              
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
