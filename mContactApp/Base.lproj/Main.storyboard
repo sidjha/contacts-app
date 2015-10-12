@@ -181,14 +181,14 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Joc-H3-7r1">
                                             <rect key="frame" x="8" y="35" width="337" height="30"/>
                                             <animations/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.9999127984046936" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" text="A simple status goes here" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="UYH-nF-Uej">
                                             <rect key="frame" x="8" y="82" width="337" height="53"/>
                                             <animations/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.9999127984046936" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
@@ -214,7 +214,9 @@
                                             <rect key="frame" x="299" y="8" width="46" height="30"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                            <state key="normal" title="EDIT"/>
+                                            <state key="normal" title="EDIT">
+                                                <color key="titleColor" red="0.9999127984046936" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="editButtonPressed:" destination="X4L-a1-K8U" eventType="touchUpInside" id="ahd-mk-sm1"/>
                                                 <segue destination="S3k-DT-xzz" kind="presentation" identifier="editSegue" id="TEL-bm-7Tj"/>

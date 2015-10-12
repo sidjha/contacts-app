@@ -30,6 +30,7 @@
 #import "MBProgressHUD.h"
 #import "EditViewController.h"
 #import "AddFriendViewController.h"
+#include <stdlib.h>
 @import StoreKit;
 
 @interface UIColor (randomColor)
@@ -80,7 +81,8 @@
     // Set TGL properties
     self.exposedPinningMode = TGLExposedLayoutPinningModeAll;
     self.exposedItemSize = self.stackedLayout.itemSize = CGSizeMake(0.0, 500.0);
-    self.exposedBottomPinningCount = 7;
+    self.exposedBottomOverlap = 10.0;
+    self.exposedBottomPinningCount = 5;
     self.doubleTapToClose = NO;
     self.exposedLayoutMargin = self.stackedLayout.layoutMargin = UIEdgeInsetsMake(60.0, 0.0, 0.0, 0.0);
     
@@ -564,7 +566,27 @@
         // initialize imageView with placeholder image
     }
     
-    cell.backgroundColor =[UIColor whiteColor];
+    NSDictionary *colorDict = @{
+        @"#95a5a6": [UIColor whiteColor], // Concrete
+        @"#E74C3C": [UIColor whiteColor], // alizarin (red) .
+        @"#5856D6": [UIColor whiteColor], // purple .
+        @"#ecf0f1": [UIColor blackColor], // clouds .
+        @"#f1c40f": [UIColor blackColor], // sunflower .
+        @"#e67e22": [UIColor whiteColor], // carrot .
+        @"#6a76ac": [UIColor whiteColor], // TiVo purple .
+        @"#1F1F21": [UIColor whiteColor] //iOS 7 black .
+        };
+    
+    colorDict = @{ @"#95a5a6": [UIColor whiteColor]};
+    NSArray *colors = [colorDict allKeys];
+    
+    int r = arc4random_uniform((int)[colors count]);
+    
+    UIColor *bg = [self colorFromHexString:colors[r]];
+    
+    cell.backgroundColor = bg;
+    [cell changeBG: bg];
+    [cell setColor:colorDict[colors[r]]];
     
     cell.layer.cornerRadius = 15.0;
     cell.layer.masksToBounds = NO;
@@ -575,6 +597,14 @@
     cell.layer.shadowOffset = CGSizeZero;
     
     return cell;
+}
+
+- (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
 #pragma mark - Overloaded methods

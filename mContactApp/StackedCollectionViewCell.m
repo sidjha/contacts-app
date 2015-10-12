@@ -21,6 +21,11 @@
     [super awakeFromNib];
 }
 
+- (void) changeBG:(UIColor *)bg {
+    self.nameLabel.backgroundColor = bg;
+    self.statusTextView.backgroundColor = bg;
+}
+
 #pragma mark - Accessors
 
 - (void)setTitle:(NSString *)title {
@@ -33,6 +38,8 @@
 - (void)setColor:(UIColor *)color {
     
     _color = [color copy];
+    self.nameLabel.textColor = color;
+    self.statusTextView.textColor = color;
 }
 
 - (void) setProfileImg:(NSURL *)profileImg {
