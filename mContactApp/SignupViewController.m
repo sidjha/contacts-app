@@ -113,6 +113,7 @@
     } else {
         // Not found, so remove keyboard.
         [textField resignFirstResponder];
+        [self.signupButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
     
     return NO; // We do not want UITextField to insert line-breaks.

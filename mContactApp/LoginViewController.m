@@ -113,6 +113,7 @@
     } else {
         // Not found, so remove keyboard.
         [textField resignFirstResponder];
+        [self.loginButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
     
     return NO; // We do not want UITextField to insert line-breaks.
@@ -141,7 +142,6 @@
     
     return YES;
 }
-
 
 /*
 #pragma mark - Navigation
