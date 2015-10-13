@@ -21,6 +21,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self.usernameField becomeFirstResponder];
+    
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,6 +93,31 @@
     });
 
 }
+
+# pragma mark - UITextFieldDelegate protocol methods
+
+- (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField
+{
+    
+    // shift focus to next text field
+    // http://stackoverflow.com/a/1351090
+    
+    NSInteger nextTag = textField.tag + 1;
+    
+    // Try to find next responder
+    UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
+    
+    if (nextResponder) {
+        // Found next responder, so set it.
+        [nextResponder becomeFirstResponder];
+    } else {
+        // Not found, so remove keyboard.
+        [textField resignFirstResponder];
+    }
+    
+    return NO; // We do not want UITextField to insert line-breaks.
+}
+
 
 /*
 #pragma mark - Navigation
