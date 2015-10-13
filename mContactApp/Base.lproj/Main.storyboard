@@ -327,6 +327,7 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9b-8r-NzZ">
                                 <rect key="frame" x="346" y="20" width="59" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="DONE"/>
                                 <connections>
                                     <action selector="cancelButton:" destination="Phc-rM-v5G" eventType="touchUpInside" id="oVo-d3-oHq"/>
@@ -614,6 +615,7 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbd-lG-Bjo">
                                 <rect key="frame" x="357" y="20" width="46" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="DONE"/>
                                 <connections>
                                     <action selector="donePressed:" destination="S3k-DT-xzz" eventType="touchUpInside" id="zGk-bp-ccM"/>
@@ -668,8 +670,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uuo-Y1-TAL">
-                                <rect key="frame" x="350" y="20" width="42" height="30"/>
+                                <rect key="frame" x="348" y="20" width="44" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="DONE"/>
                                 <connections>
                                     <action selector="donePressed:" destination="OTX-h8-fJw" eventType="touchUpInside" id="qKR-Ef-T5M"/>
