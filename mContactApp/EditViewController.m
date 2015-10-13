@@ -391,6 +391,7 @@
     
     if (textField.tag == 0) {
         // Limit name entry to 50 characters
+        // http://stackoverflow.com/a/12944946
         NSUInteger MAXLENGTH = 50;
         
         NSUInteger oldLength = [textField.text length];
@@ -417,7 +418,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField
 {
     // shift focus to next text field
-    
+    // http://stackoverflow.com/a/1351090
     NSInteger nextTag = textField.tag + 1;
     // Try to find next responder
     UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
@@ -429,6 +430,27 @@
         [textField resignFirstResponder];
     }
     return NO; // We do not want UITextField to insert line-breaks.
+}
+
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    // http://stackoverflow.com/posts/32889628/revisions
+    
+    NSString *newText = [textView.text stringByReplacingCharactersInRange:range withString:text];
+    
+    NSDictionary *textAttributes = @{NSFontAttributeName : textView.font};
+    
+    CGFloat textWidth = CGRectGetWidth(UIEdgeInsetsInsetRect(textView.frame, textView.textContainerInset));
+    textWidth -= 2.0f * textView.textContainer.lineFragmentPadding;
+    CGRect boundingRect = [newText boundingRectWithSize:CGSizeMake(textWidth, 0)
+                                                options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+                                             attributes:textAttributes
+                                                context:nil];
+    
+    NSUInteger numberOfLines = CGRectGetHeight(boundingRect) / textView.font.lineHeight;
+    
+    return numberOfLines <= 3;
 }
 
 
