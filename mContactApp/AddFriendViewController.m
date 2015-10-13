@@ -70,12 +70,12 @@
     // do this on the background queue
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
-        NSString *URLString = [NSString stringWithFormat:@"http://4024ed13.ngrok.com/favor8/api/v1.0/friends/incoming_requests"];
+        NSString *URLString = [NSString stringWithFormat:@"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/friends/incoming_requests"];
         
         // Set headers
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         
-        manager.securityPolicy.allowInvalidCertificates = YES;
+        manager.securityPolicy.allowInvalidCertificates = NO;
         
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         
@@ -115,12 +115,12 @@
     // new low priority thread to make request
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
-        NSString *URLString = [NSString stringWithFormat:@"http://4024ed13.ngrok.com/favor8/api/v1.0/friends/send_request"];
+        NSString *URLString = [NSString stringWithFormat:@"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/friends/send_request"];
         
         // Set headers
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         
-        manager.securityPolicy.allowInvalidCertificates = YES;
+        manager.securityPolicy.allowInvalidCertificates = NO;
         
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         
@@ -211,12 +211,12 @@
     // new low priority thread to make request
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
-        NSString *URLString = [NSString stringWithFormat:@"http://4024ed13.ngrok.com/favor8/api/v1.0/friendships/create"];
+        NSString *URLString = [NSString stringWithFormat:@"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/friendships/create"];
         
         // Set headers
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         
-        manager.securityPolicy.allowInvalidCertificates = YES;
+        manager.securityPolicy.allowInvalidCertificates = NO;
         
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         

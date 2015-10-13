@@ -257,12 +257,12 @@
     // new low priority thread to make request
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
-        NSString *URLString = [NSString stringWithFormat:@"http://4024ed13.ngrok.com/favor8/api/v1.0/users/update"];
+        NSString *URLString = [NSString stringWithFormat:@"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/users/update"];
         
         // Set headers
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         
-        manager.securityPolicy.allowInvalidCertificates = YES;
+        manager.securityPolicy.allowInvalidCertificates = NO;
         
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         

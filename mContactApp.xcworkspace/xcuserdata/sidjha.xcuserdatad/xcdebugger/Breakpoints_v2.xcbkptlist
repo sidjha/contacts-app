@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mContactApp/StackedViewController.m"
-            timestampString = "466300855.429237"
+            timestampString = "466323043.216198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "-socialButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mContactApp/StackedViewController.m"
-            timestampString = "466300855.429237"
+            timestampString = "466323043.216198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "-socialButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mContactApp/StackedViewController.m"
-            timestampString = "466300855.429237"
+            timestampString = "466323043.216198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "-pushAddFriendViewController"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,12 +170,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mContactApp/StackedCollectionViewCell.m"
-            timestampString = "466305496.166532"
+            timestampString = "466318858.8632"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-setProfileImg:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mContactApp/LoginViewController.m"
+            timestampString = "466403594.975211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
-            landmarkName = "-setProfileImg:"
+            landmarkName = "-loginButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

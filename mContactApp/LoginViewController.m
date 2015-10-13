@@ -47,15 +47,12 @@
         NSString *username = _usernameField.text;
         NSString *password = _passwordField.text;
         NSDictionary *parameters = @{@"username": username, @"password": password};
-        NSString *URLString = @"http://4024ed13.ngrok.com/favor8/api/v1.0/users/login";
+        NSString *URLString = @"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/users/login";
         
         // Set headers
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         
-        AFSecurityPolicy* policy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
-        [policy setValidatesDomainName:NO];
-        [policy setAllowInvalidCertificates:YES];
-        manager.securityPolicy = policy;
+        manager.securityPolicy.allowInvalidCertificates = NO;
         
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         
