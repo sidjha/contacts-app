@@ -210,10 +210,10 @@
                                                 <action selector="socialButtonPressed:" destination="X4L-a1-K8U" eventType="touchUpInside" id="tS0-24-i4b"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TST-pr-fo5">
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TST-pr-fo5">
                                             <rect key="frame" x="299" y="8" width="46" height="30"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <state key="normal" title="EDIT">
                                                 <color key="titleColor" red="0.9999127984046936" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
@@ -241,7 +241,7 @@
                                     <constraint firstItem="UYH-nF-Uej" firstAttribute="leading" secondItem="8E8-Tr-SAH" secondAttribute="leadingMargin" constant="4" id="WrH-Fo-flY"/>
                                     <constraint firstItem="bSc-xR-pNJ" firstAttribute="width" secondItem="8E8-Tr-SAH" secondAttribute="width" id="X6N-98-5Aw"/>
                                     <constraint firstItem="Joc-H3-7r1" firstAttribute="top" secondItem="TST-pr-fo5" secondAttribute="bottom" constant="10" id="ZmC-sB-4E3"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="TST-pr-fo5" secondAttribute="trailing" constant="8" id="ecT-38-wrQ"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="TST-pr-fo5" secondAttribute="trailing" constant="5" id="ecT-38-wrQ"/>
                                     <constraint firstItem="UYH-nF-Uej" firstAttribute="width" secondItem="Joc-H3-7r1" secondAttribute="width" id="iQY-yj-h2e"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="Joc-H3-7r1" secondAttribute="trailing" constant="8" id="k3b-QA-e1e"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="bSc-xR-pNJ" secondAttribute="trailing" constant="-8" id="pqe-8X-TrH"/>
