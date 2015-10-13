@@ -566,6 +566,8 @@
         // initialize imageView with placeholder image
     }
     
+    
+    // Color repository
     NSDictionary *colorDict = @{
         @"#95a5a6": [UIColor whiteColor], // Concrete
         @"#E74C3C": [UIColor whiteColor], // alizarin (red) .
@@ -577,7 +579,9 @@
         @"#1F1F21": [UIColor whiteColor] //iOS 7 black .
         };
     
+    // current color
     colorDict = @{ @"#95a5a6": [UIColor whiteColor]};
+    
     NSArray *colors = [colorDict allKeys];
     
     int r = arc4random_uniform((int)[colors count]);
