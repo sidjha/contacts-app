@@ -121,10 +121,7 @@
     UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
     
     plusButton.frame = CGRectMake(screenWidth-38, 25, 30, 30);
-    //plusButton.titleLabel.font = [UIFont systemFontOfSize:28.0];
-    //[plusButton setTitle:@"+" forState:UIControlStateNormal];
     [plusButton setTintColor:[UIColor whiteColor]];
-    //[plusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [plusButton addTarget:self action:@selector(pushAddFriendViewController) forControlEvents:UIControlEventTouchUpInside];
     
