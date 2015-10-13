@@ -41,6 +41,7 @@
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField){
         textField.placeholder = NSLocalizedString(@"Username", @"Username");
+        textField.delegate = self;
     }];
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Send Request", @"OK Action") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -171,6 +172,29 @@
     });
 
 }
+
+#pragma mark - UITextFieldDelegate protocol methods
+
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string {
+    
+    // Don't allow whitespace or new line chars
+    NSString *trimmedStr = [[textField.text stringByReplacingCharactersInRange:range withString:string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([textField.text isEqualToString:trimmedStr])
+    {
+        return NO;
+    }
+    
+    NSMutableCharacterSet *allowedChars = [NSMutableCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyz0123456789_.-"];
+        
+    if ([string rangeOfCharacterFromSet:[allowedChars invertedSet]].location != NSNotFound) {
+        return NO;
+    }
+    
+    return YES;
+    
+}
+
 
 
 #pragma mark - Navigation

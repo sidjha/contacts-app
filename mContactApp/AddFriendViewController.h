@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FriendRequestsTableViewController.h"
 
-@interface AddFriendViewController : UIViewController <FriendRequestsControllerDelegate>
+@interface AddFriendViewController : UIViewController <FriendRequestsControllerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addByUsernameButton;
