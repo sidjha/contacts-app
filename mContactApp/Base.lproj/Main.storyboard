@@ -363,6 +363,7 @@
                         <outlet property="addByCodeUploadButton" destination="ybe-y5-qhT" id="XF3-yK-GIN"/>
                         <outlet property="addByUsernameButton" destination="zic-tX-dx9" id="2BB-Ix-Hyl"/>
                         <outlet property="cancelButton" destination="T9b-8r-NzZ" id="fFQ-Ub-ooC"/>
+                        <outlet property="viewRequestsButton" destination="koe-bK-vKh" id="neY-Gi-ZnK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JI2-bO-2Bh" userLabel="First Responder" sceneMemberID="firstResponder"/>

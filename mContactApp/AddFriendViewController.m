@@ -90,6 +90,10 @@
              
              self.incomingFriendRequests = responseObject[@"incoming_requests"];
              
+             if ([responseObject[@"incoming_requests"] count] > 0) {
+                  [self.viewRequestsButton setTitle:[NSString stringWithFormat:@"View Friend Requests (%lu)", [responseObject[@"incoming_requests"] count]] forState:UIControlStateNormal];
+             }
+             
              for (NSInteger i = 0; i < [responseObject[@"incoming_requests"] count]; i++) {
                  NSLog(@"Request from: %@", responseObject[@"incoming_requests"][i]);
              }
