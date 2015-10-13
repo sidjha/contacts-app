@@ -26,6 +26,8 @@
     
     [self.nameField setText:_card[@"name"]];
     
+    self.nameField.delegate = self;
+    
     // TODO: Add a placeholder for textview instead
     
     if (![_card[@"status"] isEqualToString:@""]) {
@@ -33,6 +35,8 @@
     } else {
         [self.statusField setText:@"Type a simple status here"];
     }
+    
+    self.statusField.delegate = self;
     
     self.profileImage.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -56,6 +60,8 @@
     
     
     [self.phoneField setText:_card[@"phone"]];
+    
+    self.phoneField.delegate = self;
     
     self.socialLinks = _card[@"social_links"];
     
@@ -378,6 +384,53 @@
     NSLog(@"self.socialLinks contents: %@", self.socialLinks);
     
 }
+
+# pragma mark — UITextFieldDelegate methods
+
+- (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange)range replacementString:(nonnull NSString *)string {
+    
+    if (textField.tag == 0) {
+        // Limit name entry to 50 characters
+        NSUInteger MAXLENGTH = 50;
+        
+        NSUInteger oldLength = [textField.text length];
+        NSUInteger replacementLength = [string length];
+        NSUInteger rangeLength = range.length;
+        
+        NSUInteger newLength = oldLength - rangeLength + replacementLength;
+        
+        BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+        
+        return newLength <= MAXLENGTH || returnKey;
+
+    } else {
+        // Limit phone number entry to only phone numbers
+        NSMutableCharacterSet *allowedChars = [NSMutableCharacterSet characterSetWithCharactersInString:@"+-1234567890 "];
+        if ([string rangeOfCharacterFromSet:[allowedChars invertedSet]].location != NSNotFound) {
+            return NO;
+        }
+        
+        return YES;
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField
+{
+    // shift focus to next text field
+    
+    NSInteger nextTag = textField.tag + 1;
+    // Try to find next responder
+    UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
+    if (nextResponder) {
+        // Found next responder, so set it.
+        [nextResponder becomeFirstResponder];
+    } else {
+        // Not found, so remove keyboard.
+        [textField resignFirstResponder];
+    }
+    return NO; // We do not want UITextField to insert line-breaks.
+}
+
 
 #pragma mark - Navigation
 
