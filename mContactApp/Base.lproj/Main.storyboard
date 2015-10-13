@@ -299,7 +299,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gdB-a3-9aq">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdB-a3-9aq">
                                 <rect key="frame" x="57" y="150" width="300" height="120"/>
                                 <animations/>
                                 <string key="text">You can add people to your Favor8 in multiple ways. If you know the username of the person, tap Add Person by Username. Or if you have someone’s Profile Code, select Upload Code.</string>
