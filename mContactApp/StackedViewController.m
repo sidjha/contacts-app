@@ -118,12 +118,13 @@
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
     
-    UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
     
-    plusButton.frame = CGRectMake(screenWidth-38, 20, 30, 30);
-    plusButton.titleLabel.font = [UIFont systemFontOfSize:28.0];
-    [plusButton setTitle:@"+" forState:UIControlStateNormal];
-    [plusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    plusButton.frame = CGRectMake(screenWidth-38, 25, 30, 30);
+    //plusButton.titleLabel.font = [UIFont systemFontOfSize:28.0];
+    //[plusButton setTitle:@"+" forState:UIControlStateNormal];
+    [plusButton setTintColor:[UIColor whiteColor]];
+    //[plusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [plusButton addTarget:self action:@selector(pushAddFriendViewController) forControlEvents:UIControlEventTouchUpInside];
     
@@ -133,8 +134,8 @@
     
     UIButton *favoritesButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    favoritesButton.frame = CGRectMake(8, 20, 65, 30);
-    favoritesButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    favoritesButton.frame = CGRectMake(0, 25, 90, 30);
+    favoritesButton.titleLabel.font = [UIFont systemFontOfSize:16.0];
     [favoritesButton setTitle:@"Favorites" forState:UIControlStateNormal];
     [favoritesButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
