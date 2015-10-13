@@ -678,14 +678,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZbI-Wq-sM0">
-                                <rect key="frame" x="20" y="20" width="59" height="30"/>
-                                <animations/>
-                                <state key="normal" title="CANCEL"/>
-                                <connections>
-                                    <action selector="cancelPressed:" destination="OTX-h8-fJw" eventType="touchUpInside" id="Zpf-XJ-jWQ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uuo-Y1-TAL">
                                 <rect key="frame" x="348" y="20" width="44" height="30"/>
                                 <animations/>
@@ -718,14 +710,11 @@
                             <constraint firstItem="FJ8-y9-yjW" firstAttribute="centerX" secondItem="q9Z-U5-Scz" secondAttribute="centerX" id="hNR-rZ-LXc"/>
                             <constraint firstItem="uuo-Y1-TAL" firstAttribute="top" secondItem="aM6-Mm-t8m" secondAttribute="bottom" id="n7u-zF-Xqw"/>
                             <constraint firstItem="FJ8-y9-yjW" firstAttribute="top" secondItem="aM6-Mm-t8m" secondAttribute="bottom" constant="40" id="nzq-wo-h0z"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="ZbI-Wq-sM0" secondAttribute="leading" id="ocG-jG-6Tn"/>
-                            <constraint firstItem="ZbI-Wq-sM0" firstAttribute="top" secondItem="aM6-Mm-t8m" secondAttribute="bottom" id="tWp-b3-mEm"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="accountHandleTextField" destination="RpY-03-Tyg" id="leY-e4-cDe"/>
-                        <outlet property="cancelButton" destination="ZbI-Wq-sM0" id="l4T-5Y-lMI"/>
                         <outlet property="doneButton" destination="uuo-Y1-TAL" id="CRz-ot-8UX"/>
                         <outlet property="titleLabel" destination="FJ8-y9-yjW" id="0JJ-WD-3Cz"/>
                     </connections>

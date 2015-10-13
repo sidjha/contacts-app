@@ -16,9 +16,8 @@
 
 @end
 
-@interface SAEditViewController : UIViewController
+@interface SAEditViewController : UIViewController <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextField *accountHandleTextField;

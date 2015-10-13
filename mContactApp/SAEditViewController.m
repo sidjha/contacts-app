@@ -17,12 +17,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    
+    _accountHandleTextField.delegate = self;
     [_titleLabel setText:_accountLabelStr];
     
     if (_accountValueStr) {
         [_accountHandleTextField setText:_accountValueStr];
     }
+    
+    if([_accountLabelStr isEqualToString:@"WhatsApp"]) {
+        [_accountHandleTextField setKeyboardType:UIKeyboardTypePhonePad];
+    }
+    
+    [_accountHandleTextField becomeFirstResponder];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -39,13 +46,48 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)cancelPressed:(id)sender {
+- (IBAction)donePressed:(id)sender {
+    
+    // hide keyboard
+    [_accountHandleTextField resignFirstResponder];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)donePressed:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    BOOL _isAllowed = YES;
+    
+    // Don't allow whitespace or new line chars
+    NSString *trimmedStr = [[textField.text stringByReplacingCharactersInRange:range withString:string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([_accountHandleTextField.text isEqualToString:trimmedStr])
+    {
+        _isAllowed =  NO;
+    }
+    
+    NSMutableCharacterSet *allowedChars;
+    
+    // set allowed characters for corresponding account types
+    if ([_accountLabelStr isEqualToString:@"WhatsApp"]) {
+        
+        allowedChars = [NSMutableCharacterSet characterSetWithCharactersInString:@"01234567890+-"];
+    
+    } else if ([_accountLabelStr isEqualToString:@"Snapchat"]) {
+        
+        allowedChars = [NSMutableCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_.-"];
+    
+    } else {
+        
+        allowedChars = [NSMutableCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_."];
+    }
+    
+    if ([string rangeOfCharacterFromSet:[allowedChars invertedSet]].location != NSNotFound) {
+        _isAllowed = NO;
+    }
+    
+    return _isAllowed;
 }
+
 
 /*
 #pragma mark - Navigation
