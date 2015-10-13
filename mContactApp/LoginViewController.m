@@ -118,6 +118,30 @@
     return NO; // We do not want UITextField to insert line-breaks.
 }
 
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string {
+    
+    // Don't allow whitespace or new line chars
+    NSString *trimmedStr = [[textField.text stringByReplacingCharactersInRange:range withString:string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([textField.text isEqualToString:trimmedStr])
+    {
+        return NO;
+    }
+    
+    if (textField.tag == 0) {
+        
+        NSMutableCharacterSet *allowedChars = [NSMutableCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyz0123456789_.-"];
+        
+        if ([string rangeOfCharacterFromSet:[allowedChars invertedSet]].location != NSNotFound) {
+            return NO;
+        }
+        
+        return YES;
+    }
+    
+    return YES;
+}
+
 
 /*
 #pragma mark - Navigation

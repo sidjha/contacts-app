@@ -755,7 +755,7 @@
                                     <segue destination="Zdn-9h-xxo" kind="show" id="hVY-GF-Zs6"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C9Y-re-c9I">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" textAlignment="center" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="C9Y-re-c9I">
                                 <rect key="frame" x="53" y="213" width="315" height="50"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>

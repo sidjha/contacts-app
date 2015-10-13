@@ -118,6 +118,46 @@
     return NO; // We do not want UITextField to insert line-breaks.
 }
 
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string {
+    
+    if (textField.tag == 0) {
+        
+        // if username, don't allow whitespaces and only allow lowercase alphanumeric with _.-
+        
+        NSString *trimmedStr = [[textField.text stringByReplacingCharactersInRange:range withString:string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        if ([textField.text isEqualToString:trimmedStr]) {
+            return NO;
+        }
+
+        NSMutableCharacterSet *allowedChars = [NSMutableCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyz0123456789_.-"];
+        
+        if ([string rangeOfCharacterFromSet:[allowedChars invertedSet]].location != NSNotFound) {
+            return NO;
+        }
+        
+        return YES;
+    
+    } else if (textField.tag == 1) {
+        
+        // if password, don't allow whitespaces
+        
+        NSString *trimmedStr = [[textField.text stringByReplacingCharactersInRange:range withString:string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        if ([textField.text isEqualToString:trimmedStr]) {
+            return NO;
+        }
+        
+        return YES;
+        
+    } else {
+        
+        // if name, allow all characters
+        
+        return YES;
+    }
+}
+
 /*
  #pragma mark - Navigation
  
