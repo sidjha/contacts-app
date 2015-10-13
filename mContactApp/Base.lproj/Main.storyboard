@@ -354,7 +354,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="koe-bK-vKh" secondAttribute="trailing" id="cxa-6V-ple"/>
                             <constraint firstItem="NZ9-B3-S7W" firstAttribute="top" secondItem="cmV-LR-gBi" secondAttribute="bottom" constant="60" id="egK-wb-sIK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="T9b-8r-NzZ" secondAttribute="trailing" id="lhQ-16-8r7"/>
-                            <constraint firstItem="T9b-8r-NzZ" firstAttribute="top" secondItem="cmV-LR-gBi" secondAttribute="bottom" constant="5" id="o3E-yF-YNK"/>
+                            <constraint firstItem="T9b-8r-NzZ" firstAttribute="top" secondItem="cmV-LR-gBi" secondAttribute="bottom" id="o3E-yF-YNK"/>
                             <constraint firstItem="gdB-a3-9aq" firstAttribute="top" secondItem="NZ9-B3-S7W" secondAttribute="bottom" constant="20" id="swR-uF-Nz3"/>
                             <constraint firstItem="3iz-Dh-T5z" firstAttribute="top" secondItem="koe-bK-vKh" secondAttribute="bottom" constant="15" id="uha-4Y-Shu"/>
                         </constraints>
@@ -630,7 +630,7 @@
                             <constraint firstItem="a91-M4-c4q" firstAttribute="leading" secondItem="Hic-8U-Tct" secondAttribute="leadingMargin" constant="-16" id="YEa-ei-DLi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="a91-M4-c4q" secondAttribute="trailing" constant="-16" id="mrA-D1-idg"/>
                             <constraint firstItem="IS4-l8-DCM" firstAttribute="top" secondItem="a91-M4-c4q" secondAttribute="bottom" id="vI8-2n-2xX"/>
-                            <constraint firstItem="Bbd-lG-Bjo" firstAttribute="top" secondItem="DWe-kD-uuB" secondAttribute="bottom" constant="10" id="xSs-zx-jJy"/>
+                            <constraint firstItem="Bbd-lG-Bjo" firstAttribute="top" secondItem="DWe-kD-uuB" secondAttribute="bottom" id="xSs-zx-jJy"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
