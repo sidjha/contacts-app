@@ -19,4 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *phoneButton;
 @property (weak, nonatomic) IBOutlet UIButton *socialButton;
 
+- (void) changeBG:(UIColor *)bg;
+
 @end

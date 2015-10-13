@@ -65,7 +65,7 @@
 # NB: NIB/XIB files still exist even on Storyboard projects, so we want this...
 
 *~.nib
-
+*.xcuserstate
 
 ####
 # Xcode build files -
