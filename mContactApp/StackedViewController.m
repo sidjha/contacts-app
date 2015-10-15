@@ -68,10 +68,10 @@
 @synthesize cards = _cards;
 
 - (void) viewWillAppear:(BOOL)animated {
-
+    
     // Retrieve user's card and friends' cards from server
     [self getMyCard];
-
+    
 }
 
 - (void)viewDidLoad {
@@ -128,7 +128,6 @@
     [self.view addSubview:plusButton];
     
     
-    
     UIButton *favoritesButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     favoritesButton.frame = CGRectMake(0, 25, 90, 30);
@@ -137,7 +136,43 @@
     [favoritesButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [self.view addSubview:favoritesButton];
-
+    
+    // initialize the Pull down to Refresh thing
+    _refreshControl = [[UIRefreshControl alloc] init];
+    
+    UIFont *font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightMedium];
+    _attributedString = [[NSMutableAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [_attributedString addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, [_attributedString length])];
+    [_attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, [_attributedString length])];
+    
+    [_refreshControl setAttributedTitle:_attributedString];
+    [_refreshControl setTintColor:[UIColor whiteColor]];
+    [_refreshControl addTarget:self action:@selector(getMyCard) forControlEvents:UIControlEventValueChanged];
+    
+    //self.collectionView.alwaysBounceVertical = YES;
+    [self.collectionView addSubview:_refreshControl];
+    
+    /*
+     _requestStatus = [[UILabel alloc] init];
+     _requestStatus.frame = CGRectMake(120, 25, 120, 30);
+     _requestStatus.text = @"Getting cards...";
+     _requestStatus.font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightMedium];
+     [_requestStatus setTextColor:[UIColor whiteColor]];
+     
+     [self.view addSubview:_requestStatus];
+     
+     _refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+     _refreshButton.frame = CGRectMake(260, 25, 30, 30);
+     _refreshButton.titleLabel.font = [UIFont systemFontOfSize:16.0];
+     [_refreshButton setTitle:@"R" forState:UIControlStateNormal];
+     [_refreshButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+     
+     [_refreshButton addTarget:self action:@selector(getMyCard) forControlEvents:UIControlEventTouchUpInside];
+     
+     [self.view addSubview:_refreshButton];
+     
+     */
+    
 }
 
 - (void) editViewController:(EditViewController *)controller didFinishUpdatingCard:(NSMutableDictionary *)card {
@@ -148,7 +183,7 @@
 
 
 - (IBAction)editButtonPressed:(id)sender {
-
+    
     NSLog(@"Edit button pressed");
     
 }
@@ -156,17 +191,17 @@
 - (IBAction)socialButtonPressed:(id)sender {
     // Get current card
     NSDictionary *card = self.cards[self.exposedItemIndexPath.item];
-
+    
     NSString *name;
-
+    
     if ([card objectForKey:@"name"]) {
         name = card[@"name"];
     }
-
+    
     if ([card objectForKey:@"social_links"]) {
         
         NSString *msg;
-
+        
         if (name != NULL) {
             msg = [NSString stringWithFormat:@"Select a channel to reach %@ on", name];
         } else {
@@ -176,17 +211,17 @@
         UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Social Links" message:msg preferredStyle:UIAlertControllerStyleActionSheet];
         
         [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
-
+        
         for (id key in card[@"social_links"]) {
             [actionSheet addAction:[UIAlertAction actionWithTitle:key style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 
                 NSString *stringURL;
                 NSString *handle = card[@"social_links"][key];
-
+                
                 if ([key isEqualToString:@"Twitter"]) {
                     
                     stringURL = [NSString stringWithFormat:@"twitter://user?screen_name=%@", handle];
-                
+                    
                 } else if ([key isEqualToString:@"Facebook"]) {
                     
                     stringURL = @"fb://profile";
@@ -230,7 +265,7 @@
                 } else {
                     
                     /*
-                     iTunes IDs: 
+                     iTunes IDs:
                      
                      Instagram — 389801252
                      Facebook — 284882215
@@ -267,7 +302,7 @@
                         if (result) {
                             
                             [self presentViewController:storeVC animated:YES completion:nil];
-                        
+                            
                         } else {
                             
                             NSLog(@"Error: %@", error);
@@ -279,7 +314,7 @@
         
         // Present action sheet.
         [self presentViewController:actionSheet animated:YES completion:nil];
-    
+        
     } else {
         
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -294,7 +329,7 @@
     
     NSDictionary *card = self.cards[self.exposedItemIndexPath.item];
     NSString *phoneNumber;
-
+    
     if ([card objectForKey:@"phone"]) {
         
         phoneNumber = [@"tel:" stringByAppendingString:card[@"phone"]];
@@ -322,82 +357,72 @@
 
 - (void) getMyCard {
     
+    UIFont *font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightMedium];
+    _attributedString = [[NSMutableAttributedString alloc] initWithString:@"Refreshing Cards..."];
+    [_attributedString addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, [_attributedString length])];
+    [_attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, [_attributedString length])];
+    
+    [_refreshControl setAttributedTitle:_attributedString];
+    
     NSString *userID = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8UserID"];
     NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
     
     // make request to /users/show
-    // Show a progress HUD
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Getting cards from server..";
     
-    // Note: Explicitly getting a low priority queue and making the request on that,
-    //       because MBProgressHUD recommends so. However, the success and failure
-    //       methods are called on the main queue by AFNetworking anyway. So is
-    //       this even necessary? The progress HUD works even if called on the main
-    //       thread before the request. Do we need to do some garbage collection
-    //       on the main queue after?
+    NSString *URLString = [NSString stringWithFormat:@"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/users/show/%@", userID];
     
-    // new low priority thread to make request
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        
-        NSString *URLString = [NSString stringWithFormat:@"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/users/show/%@", userID];
-        
-        // Set headers
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        
-        manager.securityPolicy.allowInvalidCertificates = NO;
-        
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        
-        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
-        
-        manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
-        
-        // Make the request
-        [manager
-         GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
-             NSLog(@"/users/show response data: %@", responseObject);
+    // Set headers
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    manager.securityPolicy.allowInvalidCertificates = NO;
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
+    
+    manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+    
+    // Make the request
+    [manager
+     GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
+         //NSLog(@"/users/show response data: %@", responseObject);
+         
+         NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
+         NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
+         NSMutableArray *objects = [[NSMutableArray alloc]init];
+         
+         NSMutableDictionary *card;
+         
+         for (NSInteger i = 0; i < [keys count]; i++) {
              
-             
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-             
-             NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
-             NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
-             NSMutableArray *objects = [[NSMutableArray alloc]init];
-             
-             NSMutableDictionary *card;
-             
-             for (NSInteger i = 0; i < [keys count]; i++) {
+             if ([responseObject objectForKey:keys[i]]) {
                  
-                 if ([responseObject objectForKey:keys[i]]) {
-                     
-                     [matchingKeys addObject:keys[i]];
-                     [objects addObject:responseObject[keys[i]]];
-                 }
+                 [matchingKeys addObject:keys[i]];
+                 [objects addObject:responseObject[keys[i]]];
              }
+         }
+         
+         card = [NSMutableDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
+         _myCard = card;
+         
+         if ([_cards count] > 0) {
              
-             card = [NSMutableDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
-             _myCard = card;
+             [_cards replaceObjectAtIndex:0 withObject:card];
              
-             if ([_cards count] > 0) {
-                 
-                 [_cards replaceObjectAtIndex:0 withObject:card];
+         } else {
              
-             } else {
-                 
-                 [_cards addObject:card];
-             }
-             
-            [self getFriendsCards];
-
-             
-         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-
-             NSLog(@"Error: %@", error);
-             
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-         }];
-    });
+             [_cards addObject:card];
+         }
+         
+         [self getFriendsCards];
+         
+         
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         _requestStatus.text = @"";
+         NSLog(@"Error: %@", error);
+         
+         
+     }];
 }
 
 - (void) getFriendsCards {
@@ -406,98 +431,86 @@
     
     // make request to /friends/list
     // Show a progress HUD
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Getting friend's cards from server..";
+    NSString *URLString = @"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/friends/list";
     
-    // Note: Explicitly getting a low priority queue and making the request on that,
-    //       because MBProgressHUD recommends so. However, the success and failure
-    //       methods are called on the main queue by AFNetworking anyway. So is
-    //       this even necessary? The progress HUD works even if called on the main
-    //       thread before the request. Do we need to do some garbage collection
-    //       on the main queue after?
+    // Set headers
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    // new low priority thread to make request
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        
-        NSString *URLString = @"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/friends/list";
-        
-        // Set headers
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        
-        manager.securityPolicy.allowInvalidCertificates = NO;
-        
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        
-        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
-        
-        // Make the request
-        [manager
-         GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
+    manager.securityPolicy.allowInvalidCertificates = NO;
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
+    
+    // Make the request
+    [manager
+     GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
+         
+         UIFont *font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightMedium];
+         _attributedString = [[NSMutableAttributedString alloc] initWithString:@"Pull to Refresh"];
+         [_attributedString addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, [_attributedString length])];
+         [_attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, [_attributedString length])];
+         
+         [_refreshControl setAttributedTitle:_attributedString];
+         
+         //NSLog(@"/friends/list response data: %@", responseObject);
+         
+         for (NSInteger j = 0; j < [[responseObject valueForKey:@"friends"] count]; j++) {
              
-             NSLog(@"/friends/list response data: %@", responseObject);
+             NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
+             NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
+             NSMutableArray *objects = [[NSMutableArray alloc]init];
              
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             NSDictionary *card;
              
-             for (NSInteger j = 0; j < [[responseObject valueForKey:@"friends"] count]; j++) {
-                 
-                 NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
-                 NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
-                 NSMutableArray *objects = [[NSMutableArray alloc]init];
-                 
-                 NSDictionary *card;
-                 
-                 for (NSInteger i = 0; i < [keys count]; i++) {
-                     if ([responseObject[@"friends"][j] objectForKey:keys[i]]) {
-                         [matchingKeys addObject:keys[i]];
-                         [objects addObject:responseObject[@"friends"][j][keys[i]]];
-                     }
-                 }
-                 
-                 card = [NSDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
-                 
-                 
-                 /*
-                  
-                  Basically, if the friend card doesn't exist, simply add it.
-                  
-                  If the friend card exists, replace it.
-                  
-                  OK, so:
-                  
-                  - iterate over _cards array
-                  - if card with username already there, replace that card with "card"
-                  - if card with username does not exist, add "card"
-                  
-                  */
-                 
-                 bool found = 0;
-                 for (NSInteger k = 0; k < [_cards count]; k++) {
-                     if ([card[@"username"] isEqualToString:_cards[k][@"username"]]) {
-                         
-                         [_cards replaceObjectAtIndex:k withObject:card];
-                         
-                         found = 1;
-                     }
-                 }
-                 
-                 if (found == 0) {
-                     
-                     [_cards addObject:card];
+             for (NSInteger i = 0; i < [keys count]; i++) {
+                 if ([responseObject[@"friends"][j] objectForKey:keys[i]]) {
+                     [matchingKeys addObject:keys[i]];
+                     [objects addObject:responseObject[@"friends"][j][keys[i]]];
                  }
              }
              
-             [self.collectionView reloadData];
-
-         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             card = [NSDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
              
-             NSLog(@"Error: %@", error);
              
-             // if GET "/friends/list" fails, reload anyway so user's card is displayed
-             //[self.collectionView reloadData];
-
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-         }];
-    });
+             /*
+              
+              Basically, if the friend card doesn't exist, simply add it.
+              
+              If the friend card exists, replace it.
+              
+              OK, so:
+              
+              - iterate over _cards array
+              - if card with username already there, replace that card with "card"
+              - if card with username does not exist, add "card"
+              
+              */
+             
+             bool found = 0;
+             for (NSInteger k = 0; k < [_cards count]; k++) {
+                 if ([card[@"username"] isEqualToString:_cards[k][@"username"]]) {
+                     
+                     [_cards replaceObjectAtIndex:k withObject:card];
+                     
+                     found = 1;
+                 }
+             }
+             
+             if (found == 0) {
+                 
+                 [_cards addObject:card];
+             }
+         }
+         
+         [_refreshControl endRefreshing];
+         [self.collectionView reloadData];
+         
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"Error: %@", error);
+         [_refreshControl endRefreshing];
+         
+     }];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -534,13 +547,13 @@
     StackedCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardcell" forIndexPath:indexPath];
     // TODO: Mutable vs. Immutable dictionary
     NSDictionary *card = self.cards[indexPath.item];
-
+    
     if (indexPath.row == 0) {
         
         cell.editButton.hidden = false;
         cell.socialButton.hidden = true;
         cell.phoneButton.hidden = true;
-    
+        
     } else {
         
         cell.editButton.hidden = true;
@@ -551,7 +564,7 @@
     cell.title = card[@"name"];
     
     if ([card objectForKey:@"status"]) {
-
+        
         cell.status = card[@"status"];
     }
     
@@ -559,7 +572,7 @@
         
         NSURL *imageURL = [NSURL URLWithString:card[@"profile_img"]];
         cell.profileImg = imageURL;
-
+        
     } else {
         // initialize imageView with placeholder image
     }
@@ -567,15 +580,15 @@
     
     // Color repository
     NSDictionary *colorDict = @{
-        @"#95a5a6": [UIColor whiteColor], // Concrete
-        @"#E74C3C": [UIColor whiteColor], // alizarin (red) .
-        @"#5856D6": [UIColor whiteColor], // purple .
-        @"#ecf0f1": [UIColor blackColor], // clouds .
-        @"#f1c40f": [UIColor blackColor], // sunflower .
-        @"#e67e22": [UIColor whiteColor], // carrot .
-        @"#6a76ac": [UIColor whiteColor], // TiVo purple .
-        @"#1F1F21": [UIColor whiteColor] //iOS 7 black .
-        };
+                                @"#95a5a6": [UIColor whiteColor], // Concrete
+                                @"#E74C3C": [UIColor whiteColor], // alizarin (red) .
+                                @"#5856D6": [UIColor whiteColor], // purple .
+                                @"#ecf0f1": [UIColor blackColor], // clouds .
+                                @"#f1c40f": [UIColor blackColor], // sunflower .
+                                @"#e67e22": [UIColor whiteColor], // carrot .
+                                @"#6a76ac": [UIColor whiteColor], // TiVo purple .
+                                @"#1F1F21": [UIColor whiteColor] //iOS 7 black .
+                                };
     
     // current color
     colorDict = @{ @"#95a5a6": [UIColor whiteColor]};
@@ -629,11 +642,11 @@
 }
 
 - (NSIndexPath *)targetIndexPathForMoveFromItemAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
-
+    
     // Don't allow moving of the first card in the stack
     //if (sourceIndexPath.row == 0) {
-     //   return nil;
-   // }
+    //   return nil;
+    // }
     
     // Don't allow moving of card to top position in the stack
     if (proposedDestinationIndexPath.row == 0) {
@@ -676,7 +689,7 @@
     if (name == NULL) {
         name = @"";
     }
-
+    
     return name;
 }
 
