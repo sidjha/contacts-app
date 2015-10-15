@@ -39,6 +39,7 @@
     self.statusField.delegate = self;
     
     self.profileImage.translatesAutoresizingMaskIntoConstraints = NO;
+    self.profileImage.clipsToBounds = YES;
     
     if ([_card objectForKey:@"profile_img"]) {
         // TODO: no need to load this from URL, can get parent to pass actual image data in
@@ -157,10 +158,13 @@
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.profileImage.image = chosenImage;
+    self.profileImage.clipsToBounds = YES;
     
-    NSData *imgData = UIImageJPEGRepresentation(self.profileImage.image, 0.0);
+    NSData *imgData = UIImageJPEGRepresentation(self.profileImage.image, 0.9);
     
     [self uploadImage:imgData];
+    
+    //UIImageWriteToSavedPhotosAlbum (chosenImage, nil, nil , nil);
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
