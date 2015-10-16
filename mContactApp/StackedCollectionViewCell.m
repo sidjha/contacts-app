@@ -44,23 +44,6 @@
 
 - (void) setProfileImg:(NSURL *)profileImg {
     _profileImg = profileImg;
-    
-    /*
-    // Load the image from the URL on background thread
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSData *imageData = [NSData dataWithContentsOfURL:self.profileImg];
-        
-        // Populate the image view on the main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIImage *image = [UIImage imageWithData:imageData];
-            self.profileImageView.image = image;
-            
-            self.profileImageView.contentMode = UIViewContentModeScaleAspectFill;
-            self.profileImageView.clipsToBounds = YES;
-        });
-    });
-     */
-
 }
 
 - (void) setStatus:(NSString *)status {

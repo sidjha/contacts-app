@@ -557,11 +557,12 @@
         
         __weak StackedCollectionViewCell *weakCell = cell;
         
+        [cell.profileImageView setClipsToBounds:YES];
+        [cell.profileImageView setContentMode:UIViewContentModeScaleAspectFill];
+        
         [cell.profileImageView setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nonnull response, UIImage * _Nonnull image) {
             
             weakCell.profileImageView.image = image;
-            weakCell.contentMode = UIViewContentModeScaleAspectFill;
-            weakCell.profileImageView.clipsToBounds = YES;
             [weakCell setNeedsLayout];
         } failure:nil];
         
