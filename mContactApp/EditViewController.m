@@ -326,7 +326,7 @@
     
     // Set up ON/OFF label
     cell.onOffLabel.clipsToBounds = YES;
-    cell.onOffLabel.layer.cornerRadius = 10;
+    cell.onOffLabel.layer.cornerRadius = 5;
     
     if ([self.socialLinks objectForKey:[_links objectAtIndex:indexPath.row]]) {
         cell.onOffLabel.text = @"ON";

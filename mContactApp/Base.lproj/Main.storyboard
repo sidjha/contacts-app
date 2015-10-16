@@ -529,7 +529,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="330" height="70"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Facebook.png" translatesAutoresizingMaskIntoConstraints="NO" id="HH9-Xd-KVA" userLabel="Social Network Image">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Facebook.png" translatesAutoresizingMaskIntoConstraints="NO" id="HH9-Xd-KVA" userLabel="Social Network Image">
                                                                     <rect key="frame" x="8" y="8" width="53" height="54"/>
                                                                     <animations/>
                                                                     <constraints>
@@ -537,17 +537,21 @@
                                                                         <constraint firstAttribute="width" constant="50" id="hcL-OC-aJk"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Social Network Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUD-k7-WgV">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Social Network Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUD-k7-WgV">
                                                                     <rect key="frame" x="78" y="24" width="169" height="21"/>
                                                                     <animations/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="OFF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XS3-Zp-Wg0">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="OFF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XS3-Zp-Wg0">
                                                                     <rect key="frame" x="288" y="24" width="42" height="21"/>
                                                                     <animations/>
                                                                     <color key="backgroundColor" red="0.82437020540237427" green="0.82448941469192505" blue="0.82434409856796265" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="21" id="fjh-eU-O8F"/>
+                                                                        <constraint firstAttribute="width" constant="42" id="rKP-4T-KQf"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -555,9 +559,11 @@
                                                             </subviews>
                                                             <animations/>
                                                             <constraints>
+                                                                <constraint firstItem="XS3-Zp-Wg0" firstAttribute="centerY" secondItem="j7H-Qj-fkq" secondAttribute="centerY" id="6GE-4K-gll"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="XS3-Zp-Wg0" secondAttribute="trailing" id="8Im-s5-Fc5"/>
-                                                                <constraint firstItem="XS3-Zp-Wg0" firstAttribute="centerY" secondItem="dUD-k7-WgV" secondAttribute="centerY" id="HQS-2Y-ZI6"/>
+                                                                <constraint firstItem="HH9-Xd-KVA" firstAttribute="centerY" secondItem="j7H-Qj-fkq" secondAttribute="centerY" id="L11-ta-DWi"/>
                                                                 <constraint firstItem="HH9-Xd-KVA" firstAttribute="leading" secondItem="j7H-Qj-fkq" secondAttribute="leadingMargin" constant="5" id="SgY-Ib-IMP"/>
+                                                                <constraint firstItem="dUD-k7-WgV" firstAttribute="centerY" secondItem="j7H-Qj-fkq" secondAttribute="centerY" id="WLz-po-EY1"/>
                                                                 <constraint firstItem="dUD-k7-WgV" firstAttribute="leading" secondItem="HH9-Xd-KVA" secondAttribute="trailing" constant="20" id="w4r-6B-3C1"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
