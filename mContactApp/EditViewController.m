@@ -315,11 +315,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:
 (NSIndexPath *)indexPath {
+    
     static NSString *cellID = @"socialLinkCell";
     SocialLinksTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
     cell.socialLinkImage.image = [_linkImages objectAtIndex:indexPath.row];
     cell.socialLinkLabel.text = [_links objectAtIndex:indexPath.row];
+    
+    cell.socialLinkImage.image = [_linkImages objectAtIndex:indexPath.row];
+    
+    // Set up ON/OFF label
+    cell.onOffLabel.clipsToBounds = YES;
+    cell.onOffLabel.layer.cornerRadius = 10;
+    
+    if ([self.socialLinks objectForKey:[_links objectAtIndex:indexPath.row]]) {
+        cell.onOffLabel.text = @"ON";
+        cell.onOffLabel.backgroundColor = [self colorFromHexString:@"#2ecc71"];
+        cell.onOffLabel.textColor = [UIColor whiteColor];
+    } else {
+        cell.onOffLabel.text = @"OFF";
+        cell.onOffLabel.backgroundColor = [self colorFromHexString:@"#CCCCCC"];
+        cell.onOffLabel.textColor = [UIColor blackColor];
+    }
     
     return cell;
 }
@@ -374,6 +391,8 @@
             }
         }
     }
+    
+    [self.socialLinksTableView reloadData];
     
     NSLog(@"self.socialLinks contents: %@", self.socialLinks);
     
@@ -445,6 +464,15 @@
     NSUInteger numberOfLines = CGRectGetHeight(boundingRect) / textView.font.lineHeight;
     
     return numberOfLines <= 3;
+}
+
+
+- (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
 

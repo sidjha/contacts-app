@@ -626,6 +626,8 @@
     return cell;
 }
 
+
+// TODO: Make this method into a global method available to all classes
 - (UIColor *)colorFromHexString:(NSString *)hexString {
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];

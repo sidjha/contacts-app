@@ -11,5 +11,6 @@
 @interface SocialLinksTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *socialLinkImage;
 @property (weak, nonatomic) IBOutlet UILabel *socialLinkLabel;
+@property (weak, nonatomic) IBOutlet UILabel *onOffLabel;
 
 @end

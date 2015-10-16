@@ -544,15 +544,26 @@
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="OFF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XS3-Zp-Wg0">
+                                                                    <rect key="frame" x="288" y="24" width="42" height="21"/>
+                                                                    <animations/>
+                                                                    <color key="backgroundColor" red="0.82437020540237427" green="0.82448941469192505" blue="0.82434409856796265" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                             <animations/>
                                                             <constraints>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="XS3-Zp-Wg0" secondAttribute="trailing" id="8Im-s5-Fc5"/>
+                                                                <constraint firstItem="XS3-Zp-Wg0" firstAttribute="centerY" secondItem="dUD-k7-WgV" secondAttribute="centerY" id="HQS-2Y-ZI6"/>
                                                                 <constraint firstItem="HH9-Xd-KVA" firstAttribute="leading" secondItem="j7H-Qj-fkq" secondAttribute="leadingMargin" constant="5" id="SgY-Ib-IMP"/>
                                                                 <constraint firstItem="dUD-k7-WgV" firstAttribute="leading" secondItem="HH9-Xd-KVA" secondAttribute="trailing" constant="20" id="w4r-6B-3C1"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <animations/>
                                                         <connections>
+                                                            <outlet property="onOffLabel" destination="XS3-Zp-Wg0" id="KhW-wY-Dan"/>
                                                             <outlet property="socialLinkImage" destination="HH9-Xd-KVA" id="mU3-CV-k4Y"/>
                                                             <outlet property="socialLinkLabel" destination="dUD-k7-WgV" id="ney-Re-Gdh"/>
                                                             <segue destination="OTX-h8-fJw" kind="showDetail" identifier="socialAccountEditSegue" trigger="accessoryAction" id="S4n-nR-K2L"/>
