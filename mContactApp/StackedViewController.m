@@ -30,6 +30,7 @@
 #import "MBProgressHUD.h"
 #import "EditViewController.h"
 #import "AddFriendViewController.h"
+#import "UIImageView+AFNetworking.h"
 #include <stdlib.h>
 @import StoreKit;
 
@@ -544,9 +545,36 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    StackedCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardcell" forIndexPath:indexPath];
+    StackedCollectionViewCell *cell = (StackedCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cardcell" forIndexPath:indexPath];
     // TODO: Mutable vs. Immutable dictionary
     NSDictionary *card = self.cards[indexPath.item];
+    
+    if ([card objectForKey:@"profile_img"]) {
+        
+        NSURL *imageURL = [NSURL URLWithString:card[@"profile_img"]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:imageURL];
+        UIImage *placeholderImage =[UIImage imageNamed:@"placeholder"];
+        
+        __weak StackedCollectionViewCell *weakCell = cell;
+        
+        [cell.profileImageView setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nonnull response, UIImage * _Nonnull image) {
+            
+            weakCell.profileImageView.image = image;
+            weakCell.contentMode = UIViewContentModeScaleAspectFill;
+            weakCell.profileImageView.clipsToBounds = YES;
+            [weakCell setNeedsLayout];
+        } failure:nil];
+        
+    } else {
+        // initialize imageView with placeholder image
+    }
+    
+    cell.title = card[@"name"];
+    
+    if ([card objectForKey:@"status"]) {
+        
+        cell.status = card[@"status"];
+    }
     
     if (indexPath.row == 0) {
         
@@ -560,23 +588,6 @@
         cell.socialButton.hidden = false;
         cell.phoneButton.hidden = false;
     }
-    
-    cell.title = card[@"name"];
-    
-    if ([card objectForKey:@"status"]) {
-        
-        cell.status = card[@"status"];
-    }
-    
-    if ([card objectForKey:@"profile_img"]) {
-        
-        NSURL *imageURL = [NSURL URLWithString:card[@"profile_img"]];
-        cell.profileImg = imageURL;
-        
-    } else {
-        // initialize imageView with placeholder image
-    }
-    
     
     // Color repository
     NSDictionary *colorDict = @{

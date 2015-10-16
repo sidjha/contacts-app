@@ -32,8 +32,6 @@
     
     if (![_card[@"status"] isEqualToString:@""]) {
         [self.statusField setText:_card[@"status"]];
-    } else {
-        [self.statusField setText:@"Type a simple status here"];
     }
     
     self.statusField.delegate = self;
@@ -53,19 +51,15 @@
         // TODO: initialize imageView with placeholder image
     }
 
-    
     UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapDetected)];
     singleTapOnImage.numberOfTapsRequired = 1;
     self.profileImage.userInteractionEnabled = YES;
     [self.profileImage addGestureRecognizer:singleTapOnImage];
     
-    
     [self.phoneField setText:_card[@"phone"]];
-    
     self.phoneField.delegate = self;
     
     self.socialLinks = _card[@"social_links"];
-    
     
     self.links = [[NSMutableArray alloc]initWithObjects:
               @"Facebook",@"Instagram",
@@ -83,19 +77,13 @@
                        [UIImage imageNamed:@"linkicons/Facebook.png"]
                        , nil];
     
-    
     self.socialLinksTableView.separatorColor = [UIColor clearColor];
-    
-    
-    
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.delegate editViewController:self didFinishUpdatingCard:(NSMutableDictionary *)_card];
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -130,6 +118,8 @@
     [self presentViewController:actionSheet animated:YES completion:nil];
 }
 
+
+// ?? What does this method do
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
     CGRect frame = self.socialLinksTableView.frame;
@@ -139,6 +129,7 @@
 
 
 - (IBAction)donePressed:(id)sender {
+    
     // TODO: Make sure to update the card after each text field is updated/dirty
     _card[@"name"] = _nameField.text;
     _card[@"status"] = _statusField.text;
@@ -201,9 +192,8 @@
         if (task.error) {
             NSLog(@"%@", task.error);
         } else {
-            NSLog(@"Successful upload to S3.");
             _updatedProfileImgURL = [NSString stringWithFormat:@"http://s3.amazonaws.com/favor8-bucket-2/%@", objectKey];
-            NSLog(@"New profile image: %@", _updatedProfileImgURL);
+            NSLog(@"Successful upload to S3: %@", _updatedProfileImgURL);
         }
         
         return nil;
@@ -287,8 +277,7 @@
         [manager
          POST:URLString parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject){
              NSLog(@"/users/update response data: %@", responseObject);
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-             
+            
              NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
              NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
              NSMutableArray *objects = [[NSMutableArray alloc]init];
@@ -305,6 +294,7 @@
              // unnecessary? do we really need to update my card again after posting to server?
              // there needs to be some kind of feedback that the update was pushed successfully
              _card = [NSMutableDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
 
              
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
