@@ -8,12 +8,14 @@
 
 #import "EditViewController.h"
 #import "StackedViewController.h"
-#import "AFHTTPRequestOperationManager.h"
-#import "AFURLRequestSerialization.h"
-#import "MBProgressHUD.h"
-#import "AWSS3.h"
 #import "SocialLinksTableViewCell.h"
 #import "SAEditViewController.h"
+
+#import "AFHTTPRequestOperationManager.h"
+#import "AFURLRequestSerialization.h"
+#import "AWSS3.h"
+
+#import "MBProgressHUD.h"
 
 @interface EditViewController ()
 
@@ -95,7 +97,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+/** What happens after image area is tapped.
+ * Presents an action sheet to allow a user to choose
+ * between taking a picture or choosing from Photo Library.
+ */
 - (void) imageTapDetected {
+    
     UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
     imgPicker.delegate = self;
     imgPicker.allowsEditing = YES;
@@ -123,8 +130,8 @@
     [self presentViewController:actionSheet animated:YES completion:nil];
 }
 
-
-// ?? What does this method do
+/** Readjusts table view size based on its content
+ */
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
     CGRect frame = self.socialLinksTableView.frame;
@@ -152,6 +159,9 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
+/** Uploads the image to Amazon S3.
+ * @param imageData NSData representation of the image
+ */
 - (void) uploadImage:(NSData *)imageData {
     // Upload image to S3 and get a URL back
     
@@ -159,14 +169,20 @@
     [hud setMode:MBProgressHUDModeDeterminate];
     [hud setLabelText:@"Uploading"];
     
+    // Generate name for image
+    
     NSString *objectKey = [[NSProcessInfo processInfo] globallyUniqueString];
     objectKey = [objectKey stringByAppendingString:@".jpg"];
+    
+    // Create a temp local file for the image
     
     NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:objectKey];
     
     [imageData writeToFile:path atomically:YES];
     
     NSURL *localFileURL = [[NSURL alloc] initFileURLWithPath:path];
+    
+    // Set up S3 upload
     
     AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
     
@@ -184,12 +200,18 @@
             
             NSLog(@"%@", task.error);
             
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Upload Failed" message:@"Sorry, something went wrong and we couldn't upload your image. Please try again." preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+            
+            [alertController addAction:okAction];
+            
             [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
         } else {
             
             _updatedProfileImgURL = [NSString stringWithFormat:@"http://s3.amazonaws.com/favor8-bucket-2/%@", objectKey];
-            
-            NSLog(@"Successful upload to S3: %@", _updatedProfileImgURL);
             
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         }
@@ -243,6 +265,9 @@
      */
 }
 
+/** Handle tap on Done button.
+ *
+ */
 - (IBAction)donePressed:(id)sender {
     
     BOOL changed = NO;
@@ -286,6 +311,9 @@
     
 }
 
+/** Update user's card data to server
+ * by making a request to /users/update.
+ */
 - (void)updateMyCard {
     
     NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
@@ -339,7 +367,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:
-(NSInteger)section{
+(NSInteger)section {
+    
     return [_links count];
 }
 
