@@ -773,11 +773,11 @@
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="socialLinkCell" rowHeight="71" id="aPn-hT-kuY" customClass="SocialLinksTableViewCell">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="socialLinkCell" rowHeight="71" id="aPn-hT-kuY" customClass="SocialLinksTableViewCell">
                                                         <rect key="frame" x="0.0" y="28" width="377" height="71"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aPn-hT-kuY" id="j7H-Qj-fkq" userLabel="Cell Content View">
-                                                            <rect key="frame" x="0.0" y="0.0" width="330" height="70"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="344" height="70"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Facebook.png" translatesAutoresizingMaskIntoConstraints="NO" id="HH9-Xd-KVA" userLabel="Social Network Image">
@@ -823,7 +823,7 @@
                                                             <outlet property="onOffLabel" destination="XS3-Zp-Wg0" id="KhW-wY-Dan"/>
                                                             <outlet property="socialLinkImage" destination="HH9-Xd-KVA" id="mU3-CV-k4Y"/>
                                                             <outlet property="socialLinkLabel" destination="dUD-k7-WgV" id="ney-Re-Gdh"/>
-                                                            <segue destination="OTX-h8-fJw" kind="showDetail" identifier="socialAccountEditSegue" trigger="accessoryAction" id="S4n-nR-K2L"/>
+                                                            <segue destination="OTX-h8-fJw" kind="show" identifier="socialAccountEditSegue" id="ALH-oc-im3"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>

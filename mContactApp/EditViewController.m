@@ -371,26 +371,12 @@
     return cell;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 80;
-}
-
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"Row tapped");
-}
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
-    [self performSegueWithIdentifier:@"socialAccountEditSegue" sender:self];
-    NSLog(@"Disclosure button tapped");
 }
 
 - (void)socialEditViewController:(SAEditViewController *)controller didFinishUpdatingAccount:(NSMutableDictionary *)accountHandle {
