@@ -386,9 +386,7 @@
                             <outlet property="delegate" destination="eNr-lb-Y1A" id="ZpX-Vd-AA8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="QN2-oF-FRB">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="fPB-4H-xX8"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Settings" id="QN2-oF-FRB"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVn-9W-pKc" userLabel="First Responder" sceneMemberID="firstResponder"/>
