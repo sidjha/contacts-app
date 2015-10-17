@@ -28,10 +28,11 @@
     
     self.nameField.delegate = self;
     
-    // TODO: Add a placeholder for textview instead
-    
     if (![_card[@"status"] isEqualToString:@""]) {
         [self.statusField setText:_card[@"status"]];
+    } else {
+         // TODO: Add a placeholder for textview instead
+        [self.statusField setText:@"A simple status placeholder will go here."];
     }
     
     self.statusField.delegate = self;
@@ -59,7 +60,7 @@
     [self.phoneField setText:_card[@"phone"]];
     self.phoneField.delegate = self;
     
-    self.socialLinks = _card[@"social_links"];
+    self.socialLinks = [[NSMutableDictionary alloc] initWithDictionary:_card[@"social_links"] copyItems:YES];
     
     self.links = [[NSMutableArray alloc]initWithObjects:
               @"Facebook",@"Instagram",
@@ -82,7 +83,11 @@
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.delegate editViewController:self didFinishUpdatingCard:(NSMutableDictionary *)_card];
+    
+    if ([self isDismiss]) {
+        [self.delegate editViewController:self didFinishUpdatingCard:(NSMutableDictionary *)_card];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -127,24 +132,6 @@
     self.socialLinksTableView.frame = frame;
 }
 
-
-- (IBAction)donePressed:(id)sender {
-    
-    // TODO: Make sure to update the card after each text field is updated/dirty
-    _card[@"name"] = _nameField.text;
-    _card[@"status"] = _statusField.text;
-    _card[@"phone"] = _phoneField.text;
-    
-    _card[@"social_links"] = _socialLinks;
-    
-    if (_updatedProfileImgURL) {
-        _card[@"profile_img"] = self.updatedProfileImgURL;
-    }
-    
-    [self updateMyCard];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
@@ -168,10 +155,14 @@
 - (void) uploadImage:(NSData *)imageData {
     // Upload image to S3 and get a URL back
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [hud setMode:MBProgressHUDModeDeterminate];
+    [hud setLabelText:@"Uploading"];
+    
     NSString *objectKey = [[NSProcessInfo processInfo] globallyUniqueString];
     objectKey = [objectKey stringByAppendingString:@".jpg"];
     
-    NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:@"favor8-image.jpg"];
+    NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:objectKey];
     
     [imageData writeToFile:path atomically:YES];
     
@@ -190,10 +181,17 @@
     [[transferManager upload:uploadRequest] continueWithExecutor:[AWSExecutor mainThreadExecutor] withBlock:^id(AWSTask *task) {
         
         if (task.error) {
+            
             NSLog(@"%@", task.error);
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         } else {
+            
             _updatedProfileImgURL = [NSString stringWithFormat:@"http://s3.amazonaws.com/favor8-bucket-2/%@", objectKey];
+            
             NSLog(@"Successful upload to S3: %@", _updatedProfileImgURL);
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }
         
         return nil;
@@ -245,71 +243,103 @@
      */
 }
 
+- (IBAction)donePressed:(id)sender {
+    
+    BOOL changed = NO;
+    _dismiss = YES;
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Saving";
+    
+    // only update card if changed fields
+    
+    if (![self.nameField.text isEqualToString:_card[@"name"]]) {
+        changed = YES;
+        _card[@"name"] = self.nameField.text;
+    }
+    
+    if (![self.statusField.text isEqualToString:_card[@"status"]]) {
+        changed = YES;
+        _card[@"status"] = self.statusField.text;
+    }
+    
+    if (![self.phoneField.text isEqualToString:_card[@"phone"]]) {
+        changed = YES;
+        _card[@"phone"] = self.phoneField.text;
+    }
+    
+    if (self.updatedProfileImgURL) {
+        changed = YES;
+        _card[@"profile_img"] = self.updatedProfileImgURL;
+    }
+    
+    if (![self.socialLinks isEqualToDictionary:_card[@"social_links"]]) {
+        changed = YES;
+        _card[@"social_links"] = self.socialLinks;
+    }
+    
+    if (changed) {
+        [self updateMyCard];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+}
 
 - (void)updateMyCard {
+    
     NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
     
-    // make request to /users/show
-    // Show a progress HUD
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Saving..";
+    NSString *URLString = [NSString stringWithFormat:@"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/users/update"];
     
-    // new low priority thread to make request
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        
-        NSString *URLString = [NSString stringWithFormat:@"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/users/update"];
-        
-        // Set headers
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        
-        manager.securityPolicy.allowInvalidCertificates = NO;
-        
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        
-        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
-        
-        
-        NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
-        data[@"data"] = _card;
-        NSLog(@"Data: %@", data);
-        
-        // Make the request
-        [manager
-         POST:URLString parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject){
-             NSLog(@"/users/update response data: %@", responseObject);
-            
-             NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
-             NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
-             NSMutableArray *objects = [[NSMutableArray alloc]init];
+    // Set headers
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    manager.securityPolicy.allowInvalidCertificates = NO;
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
+    
+    manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+    data[@"data"] = _card;
+    
+    // Make the request
+    [manager
+     POST:URLString parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject){
+         NSLog(@"/users/update response data: %@", responseObject);
+         
+         NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
+         NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
+         NSMutableArray *objects = [[NSMutableArray alloc]init];
+         
+         for (NSInteger i = 0; i < [keys count]; i++) {
              
-             for (NSInteger i = 0; i < [keys count]; i++) {
+             if ([responseObject[@"user"] objectForKey:keys[i]]) {
                  
-                 if ([responseObject[@"user"] objectForKey:keys[i]]) {
-                     
-                     [matchingKeys addObject:keys[i]];
-                     [objects addObject:responseObject[@"user"][keys[i]]];
-                 }
+                 [matchingKeys addObject:keys[i]];
+                 [objects addObject:responseObject[@"user"][keys[i]]];
              }
-             
-             // unnecessary? do we really need to update my card again after posting to server?
-             // there needs to be some kind of feedback that the update was pushed successfully
-             _card = [NSMutableDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-
-             
-         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             
-             NSLog(@"Error: %@", error);
-             
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-         }];
-    });
-
+         }
+         
+         _card = [NSMutableDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
+         
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+         
+        [self dismissViewControllerAnimated:YES completion:nil];
+         
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         
+         NSLog(@"Error: %@", error);
+         [MBProgressHUD hideHUDForView:self.view animated:YES];
+     }];
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:
 (NSInteger)section{
-    NSLog(@"We're here: %lu", (unsigned long)[_links count]);
     return [_links count];
 }
 
@@ -365,8 +395,6 @@
 
 - (void)socialEditViewController:(SAEditViewController *)controller didFinishUpdatingAccount:(NSMutableDictionary *)accountHandle {
     
-    NSLog(@"Account handle: %@", accountHandle);
-    
     NSString *key = [accountHandle allKeys][0];
     NSString *value = [accountHandle allValues][0];
     
@@ -393,9 +421,6 @@
     }
     
     [self.socialLinksTableView reloadData];
-    
-    NSLog(@"self.socialLinks contents: %@", self.socialLinks);
-    
 }
 
 # pragma mark — UITextFieldDelegate methods

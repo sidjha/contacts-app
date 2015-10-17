@@ -29,16 +29,14 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
-@property (weak, nonatomic) NSString *name;
-@property (weak, nonatomic) NSString *status;
-@property (weak, nonatomic) NSString *phone;
 @property (strong, nonatomic) NSMutableDictionary *socialLinks;
-@property (weak, nonatomic) NSString *profileImgURL;
 @property (strong, nonatomic) NSMutableArray *links;
 @property (strong, nonatomic) NSMutableArray *linkImages;
 @property (strong, nonatomic) NSString *updatedProfileImgURL;
 
-@property (weak, nonatomic) NSMutableDictionary *card;
+@property (strong, nonatomic) NSMutableDictionary *card;
+
+@property (nonatomic, assign, getter = isDismiss) BOOL dismiss;
 
 @property (weak, nonatomic) id <EditViewControllerDelegate> delegate;
 

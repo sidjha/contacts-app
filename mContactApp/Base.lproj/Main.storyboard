@@ -409,7 +409,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
                                                     <connections>
-                                                        <action selector="validateFields:" destination="IgP-ON-DX4" eventType="editingChanged" id="gqF-tC-S1t"/>
+                                                        <action selector="validateFields:" destination="IgP-ON-DX4" eventType="editingChanged" id="GLD-wu-xP8"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -438,7 +438,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
                                                     <connections>
-                                                        <action selector="validateFields:" destination="IgP-ON-DX4" eventType="editingChanged" id="NVo-D8-eWN"/>
+                                                        <action selector="validateFields:" destination="IgP-ON-DX4" eventType="editingChanged" id="vjE-0h-dtb"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -463,7 +463,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                                                     <connections>
-                                                        <action selector="validateFields:" destination="IgP-ON-DX4" eventType="editingChanged" id="xQj-BG-Qof"/>
+                                                        <action selector="validateFields:" destination="IgP-ON-DX4" eventType="editingChanged" id="gqM-HE-eTW"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -725,7 +725,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="nYP-yX-t8K"/>
                                                 </constraints>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt eu fugiat nulla pariatur. </string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>

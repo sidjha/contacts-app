@@ -178,7 +178,6 @@
     [self.navigationItem.rightBarButtonItem setEnabled:valid];
 }
 
-
 #pragma mark - Table view data source
 
 /*
