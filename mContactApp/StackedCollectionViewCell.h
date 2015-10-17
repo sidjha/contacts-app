@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIButton *phoneButton;
 @property (weak, nonatomic) IBOutlet UIButton *socialButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 
 - (void) changeBG:(UIColor *)bg;
 

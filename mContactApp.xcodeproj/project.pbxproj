@@ -25,6 +25,8 @@
 		EBAF4AA41BA298440024DEB8 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF4AA31BA298440024DEB8 /* SignupViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EBBDAA411BCA24250005E486 /* FriendRequestsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBDAA401BCA24250005E486 /* FriendRequestsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EBBDAA441BCA26E30005E486 /* FriendRequestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBDAA431BCA26E30005E486 /* FriendRequestTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		EBE6AB861BD1BC2400942BB7 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE6AB851BD1BC2400942BB7 /* SettingsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EBE6AB891BD1C38600942BB7 /* ChangePasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE6AB881BD1C38600942BB7 /* ChangePasswordTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		FAACFC87C87DFCC373482D47 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49AB772EA34C02137A47776 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,10 @@
 		EBBDAA401BCA24250005E486 /* FriendRequestsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendRequestsTableViewController.m; sourceTree = "<group>"; };
 		EBBDAA421BCA26E30005E486 /* FriendRequestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendRequestTableViewCell.h; sourceTree = "<group>"; };
 		EBBDAA431BCA26E30005E486 /* FriendRequestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendRequestTableViewCell.m; sourceTree = "<group>"; };
+		EBE6AB841BD1BC2400942BB7 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		EBE6AB851BD1BC2400942BB7 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		EBE6AB871BD1C38600942BB7 /* ChangePasswordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordTableViewController.h; sourceTree = "<group>"; };
+		EBE6AB881BD1C38600942BB7 /* ChangePasswordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,10 @@
 				634732551B7B1623009B0D3B /* AppDelegate.m */,
 				634732571B7B1623009B0D3B /* ViewController.h */,
 				634732581B7B1623009B0D3B /* ViewController.m */,
+				EBE6AB841BD1BC2400942BB7 /* SettingsTableViewController.h */,
+				EBE6AB851BD1BC2400942BB7 /* SettingsTableViewController.m */,
+				EBE6AB871BD1C38600942BB7 /* ChangePasswordTableViewController.h */,
+				EBE6AB881BD1C38600942BB7 /* ChangePasswordTableViewController.m */,
 				EB1A0EBE1BA2A5FA005F9FF8 /* EditViewController.h */,
 				EB1A0EBF1BA2A5FA005F9FF8 /* EditViewController.m */,
 				EB08CC881BAFD1E3009AD762 /* SocialLinksTableViewCell.h */,
@@ -278,7 +288,9 @@
 				EBBDAA441BCA26E30005E486 /* FriendRequestTableViewCell.m in Sources */,
 				EBAF4AA41BA298440024DEB8 /* SignupViewController.m in Sources */,
 				634732561B7B1623009B0D3B /* AppDelegate.m in Sources */,
+				EBE6AB861BD1BC2400942BB7 /* SettingsTableViewController.m in Sources */,
 				634732531B7B1623009B0D3B /* main.m in Sources */,
+				EBE6AB891BD1C38600942BB7 /* ChangePasswordTableViewController.m in Sources */,
 				EB9F6ADE1B9BF4B1007CEEEE /* StackedCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

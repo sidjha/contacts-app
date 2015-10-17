@@ -30,6 +30,7 @@
 #import "MBProgressHUD.h"
 #import "EditViewController.h"
 #import "AddFriendViewController.h"
+#import "SettingsTableViewController.h"
 #import "UIImageView+AFNetworking.h"
 #include <stdlib.h>
 @import StoreKit;
@@ -582,12 +583,14 @@
         cell.editButton.hidden = false;
         cell.socialButton.hidden = true;
         cell.phoneButton.hidden = true;
+        cell.settingsButton.hidden = false;
         
     } else {
         
         cell.editButton.hidden = true;
         cell.socialButton.hidden = false;
         cell.phoneButton.hidden = false;
+        cell.settingsButton.hidden = true;
     }
     
     // Color repository
@@ -681,6 +684,9 @@
         EditViewController *editVC = (EditViewController *)[segue destinationViewController];
         editVC.delegate = self;
         editVC.card = _myCard;
+    } else if ([segue.identifier isEqualToString:@"settingsSegue"]) {
+        SettingsTableViewController *settingsVC = (SettingsTableViewController *)[segue destinationViewController];
+        // pass the user object to settings
     }
 }
 
