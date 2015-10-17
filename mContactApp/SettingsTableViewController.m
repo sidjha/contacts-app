@@ -7,7 +7,7 @@
 //
 
 #import "SettingsTableViewController.h"
-#import "ChangePasswordTableViewController.h"
+#import "AppDelegate.h"
 
 @interface SettingsTableViewController ()
 
@@ -34,9 +34,7 @@
 
 #pragma mark - Table view delegate
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-
 {
     if (indexPath.section == 0) {
         if (indexPath.row == 1) {
@@ -53,10 +51,38 @@
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://google.com"]];
         }
     }
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void) logout {
     
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure you want to logout?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Logout" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        
+        // Log user out of application
+        
+        // TODO: log user out on the server side too, if necessary.
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:nil forKey:@"favor8AuthToken"];
+        [defaults setObject:nil forKey:@"favor8UserID"];
+        [defaults synchronize];
+       
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        
+        [appDelegate resetWindowToInitialView];
+    
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+
 }
 
 /*
@@ -105,6 +131,7 @@
 */
 
 
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -112,6 +139,8 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
+ 
+ */
 
 
 @end
