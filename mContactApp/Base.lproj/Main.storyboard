@@ -414,14 +414,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jbw-97-bqP">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jbw-97-bqP">
                                                     <rect key="frame" x="18" y="0.0" width="388" height="43"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                                                    <connections>
+                                                        <action selector="validateFields:" destination="IgP-ON-DX4" eventType="editingChanged" id="gqF-tC-S1t"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="jbw-97-bqP" firstAttribute="leading" secondItem="hBl-m8-6zB" secondAttribute="leadingMargin" constant="10" id="7XK-5M-dnZ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="jbw-97-bqP" secondAttribute="trailing" id="oXk-6j-3xF"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -436,14 +443,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fG4-8M-6Wc">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fG4-8M-6Wc">
                                                     <rect key="frame" x="18" y="0.0" width="388" height="43"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                                                    <connections>
+                                                        <action selector="validateFields:" destination="IgP-ON-DX4" eventType="editingChanged" id="NVo-D8-eWN"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="fG4-8M-6Wc" firstAttribute="leading" secondItem="x71-yb-d0k" secondAttribute="leadingMargin" constant="10" id="SC9-WN-1Vi"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fG4-8M-6Wc" secondAttribute="trailing" id="ZWy-29-HcU"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -454,14 +468,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-enter new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZNj-g3-xdj">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-enter new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZNj-g3-xdj">
                                                     <rect key="frame" x="18" y="0.0" width="388" height="43"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                                                    <connections>
+                                                        <action selector="validateFields:" destination="IgP-ON-DX4" eventType="editingChanged" id="xQj-BG-Qof"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="ZNj-g3-xdj" firstAttribute="leading" secondItem="V66-d2-B1r" secondAttribute="leadingMargin" constant="10" id="7HO-og-gs2"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ZNj-g3-xdj" secondAttribute="trailing" id="vQJ-Kb-J0Y"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>

@@ -27,10 +27,13 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction:)];
+    [self.navigationItem.rightBarButtonItem setEnabled:NO];
     
     self.oldPasswordTextField.delegate = self;
     self.updatedPasswordTextFieldFirst.delegate = self;
     self.updatedPasswordTextFieldSecond.delegate = self;
+    
+    self.tableView.allowsSelection = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,18 +47,16 @@
     NSString *newPassword1 = self.updatedPasswordTextFieldFirst.text;
     NSString *newPassword2 = self.updatedPasswordTextFieldSecond.text;
     
-    // TODO: check if old password valid
     if (![newPassword1 isEqualToString:newPassword2]) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Passwords do not match" message:@"Passwords do not match" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Passwords do not match" message:nil preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:nil];
         
         [alertController addAction:okAction];
         
         [self presentViewController:alertController animated:YES completion:nil];
         
     } else {
-        
         NSArray *passwords = @[oldPassword, newPassword1];
         [self savePassword:passwords];
     }
@@ -67,8 +68,7 @@
     
     // make request to /users/show
     // Show a progress HUD
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Saving password...";
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     // new low priority thread to make request
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
@@ -92,7 +92,6 @@
         // Make the request
         [manager
          POST:URLString parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject){
-             NSLog(@"/users/change-password response data: %@", responseObject);
              
              [self.view endEditing:YES];
              [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -102,20 +101,27 @@
              
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              
+             NSString *alertMsg;
+             NSString *alertTitle;
              // show appropriate error message based on response code
+             if ([operation.response statusCode] == 400) {
+                 alertTitle = @"Incorrect Password";
+                 alertMsg = @"That's not the correct current password.";
+             } else {
+                 NSLog(@"Error: %@", error);
+                 alertTitle = @"Oops..";
+                 alertMsg = @"Sorry, we couldn't update your password because something went wrong.";
+             }
              
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              
-             NSLog(@"Error: %@", error);
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle message:alertMsg preferredStyle:UIAlertControllerStyleAlert];
              
-             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Could not save password." preferredStyle:UIAlertControllerStyleAlert];
-             
-             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:nil];
              
              [alertController addAction:okAction];
              
              [self presentViewController:alertController animated:YES completion:nil];
-             
          }];
     });
 }
@@ -155,6 +161,21 @@
     }
     
     return YES;
+}
+
+- (IBAction)validateFields:(id)sender
+{
+    BOOL valid = YES;
+    
+    NSArray *textFieldArray = @[self.oldPasswordTextField, self.updatedPasswordTextFieldFirst, self.updatedPasswordTextFieldSecond];
+    // On every press we're going to run through all the fields and get their length values. If any of them equal nil we will set our bool to NO.
+    for (int i = 0; i < [textFieldArray count]; i++)
+    {
+        if (![[[textFieldArray objectAtIndex:i] text] length])
+            valid = NO;
+    }
+    
+    [self.navigationItem.rightBarButtonItem setEnabled:valid];
 }
 
 
