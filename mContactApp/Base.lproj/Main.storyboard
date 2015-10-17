@@ -29,6 +29,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="validateFields:" destination="Zdn-9h-xxo" eventType="editingChanged" id="Tcb-L8-wvu"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Cf-JX-nah">
                                 <rect key="frame" x="184" y="213" width="46" height="30"/>
@@ -76,6 +79,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="validateFields:" destination="Zdn-9h-xxo" eventType="editingChanged" id="5wv-r5-lTk"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <animations/>
