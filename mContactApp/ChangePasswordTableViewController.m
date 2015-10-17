@@ -27,6 +27,10 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction:)];
+    
+    self.oldPasswordTextField.delegate = self;
+    self.updatedPasswordTextFieldFirst.delegate = self;
+    self.updatedPasswordTextFieldSecond.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -115,6 +119,44 @@
          }];
     });
 }
+
+# pragma mark - UITextFieldDelegate protocol methods
+
+- (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField
+{
+    
+    // shift focus to next text field
+    // http://stackoverflow.com/a/1351090
+    
+    NSInteger nextTag = textField.tag + 1;
+    
+    // Try to find next responder
+    UIResponder* nextResponder = [self.tableView viewWithTag:nextTag];
+    
+    if (nextResponder) {
+        // Found next responder, so set it.
+        [nextResponder becomeFirstResponder];
+    } else {
+        // Not found, so remove keyboard.
+        [textField resignFirstResponder];
+    }
+    
+    return NO; // We do not want UITextField to insert line-breaks.
+}
+
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string {
+    
+    // Don't allow whitespace or new line chars
+    NSString *trimmedStr = [[textField.text stringByReplacingCharactersInRange:range withString:string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([textField.text isEqualToString:trimmedStr])
+    {
+        return NO;
+    }
+    
+    return YES;
+}
+
 
 #pragma mark - Table view data source
 
