@@ -71,6 +71,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     
+    [super viewWillAppear:animated];
     // Retrieve user's card and friends' cards from server
     [self getMyCard];
     
