@@ -21,12 +21,15 @@
 
 @implementation AddFriendViewController
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self getIncomingRequests];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self getIncomingRequests];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -282,12 +285,14 @@
 - (void) friendRequestsController:(FriendRequestsTableViewController *)controller didApproveRequest:(NSString *)username {
     
     [self addNewFriend:username];
+   // [self getIncomingRequests];
     
 }
 
 - (void) friendRequestsController:(FriendRequestsTableViewController *)controller didIgnoreRequest:(NSString *)username {
     
-    // TODO: make request to remove incoming request from server
+    [self ignoreFriendRequest:username];
+   // [self getIncomingRequests];
     
 }
 
@@ -339,7 +344,48 @@
              
          }];
     });
+}
 
+/** Ignore an incoming friend request.
+ * @param username An NSString containing the username pertaining to friend request to ignore
+ */
+- (void) ignoreFriendRequest:(NSString *)username {
+    
+    // Make request to approve friendship on server side
+    // and get new friend's card
+    
+    NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
+    
+    // new low priority thread to make request
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        NSString *URLString = [NSString stringWithFormat:@"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/friends/destroy_incoming_request"];
+        
+        // Set headers
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        
+        manager.securityPolicy.allowInvalidCertificates = NO;
+        
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
+        
+        
+        NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+        data[@"target_username"] = username;
+        
+        // Make the request
+        [manager
+         POST:URLString parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject){
+             
+             // Do nothing
+             
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             // Do nothing
+             
+         }];
+    });
+    
     
 }
 
