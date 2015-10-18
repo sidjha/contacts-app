@@ -7,10 +7,12 @@
 //
 
 #import "AddFriendViewController.h"
+#import "FriendRequestsTableViewController.h"
+
 #import "AFHTTPRequestOperationManager.h"
 #import "AFURLRequestSerialization.h"
+
 #import "MBProgressHUD.h"
-#import "FriendRequestsTableViewController.h"
 
 
 @interface AddFriendViewController ()
@@ -35,6 +37,9 @@
 - (IBAction)cancelButton:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+/** Brings up a dialog to send a friend request.
+ */
 - (IBAction)addFriendByUsername:(id)sender {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter Username of Person" message:nil preferredStyle:UIAlertControllerStyleAlert];
@@ -67,10 +72,14 @@
     [self presentViewController:alertController animated:YES completion:nil];
     
 }
+
 - (IBAction)addFriendbyCodeUpload:(id)sender {
  
 }
-
+/** Gets any incoming friend requests from the server
+ * in the background, and updates the badge on View Friend Requests
+ * button with the number of pending incoming requests.
+ */
 - (void) getIncomingRequests {
     
     NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
@@ -94,7 +103,6 @@
         // Make the request
         [manager
          GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
-             NSLog(@"/friends/incoming_requests response data: %@", responseObject);
              
              self.incomingFriendRequests = responseObject[@"incoming_requests"];
              
@@ -115,7 +123,9 @@
 
 }
 
-
+/** Sends a friend request to a user
+ * @param username An NSString containing the username of person to send request to.
+ */
 - (void) sendFriendRequest:(NSString *)username {
     NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
     
@@ -281,6 +291,10 @@
     
 }
 
+/** Creates a friendship between current user and another user.
+ * by making a request to /friendships/create.
+ * @param username An NSString containing the username of friend to add
+ */
 - (void) addNewFriend:(NSString *)username {
     
     // Make request to approve friendship on server side
@@ -309,12 +323,20 @@
         // Make the request
         [manager
          POST:URLString parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject){
-             NSLog(@"/friendships/create response data: %@", responseObject);
+             
+             // Do nothing
              
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             
-             NSLog(@"Error: %@", error);
 
+             NSString *msg = [NSString stringWithFormat:@"Sorry, something went wrong and we could not add %@.", username];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:msg preferredStyle:UIAlertControllerStyleAlert];
+             
+             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+             
+             [alertController addAction:okAction];
+             
+             [self presentViewController:alertController animated:YES completion:nil];
+             
          }];
     });
 
