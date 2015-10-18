@@ -54,6 +54,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+# pragma mark - UITextFieldDelegate methods
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     BOOL _isAllowed = YES;
     
@@ -86,6 +88,12 @@
     }
     
     return _isAllowed;
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    
+    [self.doneButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+    return YES;
 }
 
 
