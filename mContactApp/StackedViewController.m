@@ -93,7 +93,7 @@
     // of cards from filling the entire
     // view height evenly and only show
     // their -topReveal amount
-    self.stackedLayout.fillHeight = NO;
+    self.stackedLayout.fillHeight = YES;
     
     // Set to NO to prevent a small number
     // of cards from being scrollable and
