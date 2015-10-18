@@ -21,6 +21,9 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uhl-vu-eB1">
                                 <rect key="frame" x="0.0" y="101" width="414" height="50"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="wG4-Xy-Mrd"/>
+                                </constraints>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
@@ -34,12 +37,16 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Cf-JX-nah">
-                                <rect key="frame" x="184" y="213" width="46" height="30"/>
+                                <rect key="frame" x="0.0" y="213" width="414" height="57"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <color key="backgroundColor" red="0.38414278626441956" green="0.45295840501785278" blue="0.84486162662506104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3kK-gy-oow"/>
+                                    <constraint firstAttribute="width" constant="107" id="Cs2-rL-PCt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="tintColor" red="0.9999127984046936" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="LOGIN"/>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="Zdn-9h-xxo" eventType="touchUpInside" id="v5z-Mu-ZNt"/>
                                 </connections>
@@ -72,6 +79,9 @@
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BTE-C7-Spu">
                                 <rect key="frame" x="0.0" y="155" width="414" height="50"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="xN3-n8-1ZW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
@@ -102,7 +112,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="BTE-C7-Spu" secondAttribute="trailing" id="cdu-cC-EWp"/>
                             <constraint firstItem="7Cf-JX-nah" firstAttribute="centerX" secondItem="4B0-3h-5L0" secondAttribute="centerX" id="gs0-TA-csa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Uhl-vu-eB1" secondAttribute="trailing" id="h1D-GE-NZi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Cf-JX-nah" secondAttribute="trailing" constant="-20" id="ij5-dL-1jk"/>
                             <constraint firstItem="BTE-C7-Spu" firstAttribute="top" secondItem="Uhl-vu-eB1" secondAttribute="bottom" constant="20" id="ktc-Ig-50w"/>
+                            <constraint firstItem="7Cf-JX-nah" firstAttribute="leading" secondItem="4B0-3h-5L0" secondAttribute="leadingMargin" constant="-20" id="s68-Og-5vr"/>
                             <constraint firstItem="Uhl-vu-eB1" firstAttribute="centerX" secondItem="4B0-3h-5L0" secondAttribute="centerX" id="vgk-3p-yta"/>
                             <constraint firstItem="maj-PM-5hc" firstAttribute="leading" secondItem="4B0-3h-5L0" secondAttribute="leadingMargin" constant="50" id="zcH-vG-6oL"/>
                         </constraints>

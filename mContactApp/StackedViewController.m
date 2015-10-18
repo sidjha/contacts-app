@@ -597,7 +597,7 @@
     // Color repository
     NSDictionary *colorDict = @{
                                 @"#95a5a6": [UIColor whiteColor], // Concrete
-                                @"#E74C3C": [UIColor whiteColor], // alizarin (red) .
+                                @"#E95E50": [UIColor whiteColor], // alizarin (red) one shade lower.
                                 @"#5856D6": [UIColor whiteColor], // purple .
                                 @"#ecf0f1": [UIColor blackColor], // clouds .
                                 @"#f1c40f": [UIColor blackColor], // sunflower .
@@ -607,7 +607,7 @@
                                 };
     
     // current color
-    colorDict = @{ @"#95a5a6": [UIColor whiteColor]};
+    colorDict = @{ @"#6967DA": [UIColor whiteColor]};
     
     NSArray *colors = [colorDict allKeys];
     

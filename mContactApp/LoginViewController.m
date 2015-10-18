@@ -31,6 +31,8 @@
     self.passwordField.delegate = self;
     
     [self.loginButton setEnabled:NO];
+    
+    //[self.loginButton.layer setBorderColor:[UIColor blueColor].CGColor];
 }
 
 - (void)didReceiveMemoryWarning {
