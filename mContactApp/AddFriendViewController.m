@@ -37,10 +37,11 @@
 }
 - (IBAction)addFriendByUsername:(id)sender {
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Add a person to your Favor8" message:@"Enter username of person you wish to add" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter Username of Person" message:nil preferredStyle:UIAlertControllerStyleAlert];
     
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField){
-        textField.placeholder = NSLocalizedString(@"Username", @"Username");
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        
+        textField.placeholder = NSLocalizedString(@"username", @"Username");
         textField.delegate = self;
     }];
     
@@ -48,11 +49,17 @@
         
         UITextField *username = alertController.textFields.firstObject;
         
-        [self sendFriendRequest:username.text];
+        if ([username.text length] > 0) {
+            [self sendFriendRequest:username.text];
+        }
         
+        [self.view endEditing:YES];
     }];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel Action") style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel Action") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        [self.view endEditing:YES];
+    }];
     
     [alertController addAction:okAction];
     [alertController addAction:cancelAction];
@@ -114,63 +121,108 @@
     
     // make request to /users/show
     // Show a progress HUD
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Sending friend request..";
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    // new low priority thread to make request
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        
-        NSString *URLString = [NSString stringWithFormat:@"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/friends/send_request"];
-        
-        // Set headers
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        
-        manager.securityPolicy.allowInvalidCertificates = NO;
-        
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        
-        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
-        
-        
-        NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
-        data[@"target_username"] = username;
-        
-        // Make the request
-        [manager
-         POST:URLString parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject){
-             NSLog(@"/friends/send_request response data: %@", responseObject);
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-             
-             NSLog(@"Friend request to %@ sent!", username);
-             
-             NSString *msg = [NSString stringWithFormat:@"Friend request to %@ sent.", username];
-             
-             // show alert
-             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Friend request sent." message:msg preferredStyle:UIAlertControllerStyleAlert];
-             
-             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-             
-             [alertController addAction:okAction];
-             
-             [self presentViewController:alertController animated:YES completion:nil];
-             
-         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             
-             NSLog(@"Error: %@", error);
-             
-             NSString *msg = [NSString stringWithFormat:@"Friend request to %@ could not be sent", username];
-             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:msg preferredStyle:UIAlertControllerStyleAlert];
-             
-             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-             
-             [alertController addAction:okAction];
-             
-             [self presentViewController:alertController animated:YES completion:nil];
-             
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-         }];
-    });
+    NSString *URLString = [NSString stringWithFormat:@"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/friends/send_request"];
+    
+    // Set headers
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    manager.securityPolicy.allowInvalidCertificates = NO;
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
+    
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+    data[@"target_username"] = username;
+    
+    // Make the request
+    [manager
+     POST:URLString parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject){
 
+         [MBProgressHUD hideHUDForView:self.view animated:YES];
+         
+         NSString *msg = [NSString stringWithFormat:@"Friend request to %@ sent.", username];
+         
+         // show alert
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sent" message:msg preferredStyle:UIAlertControllerStyleAlert];
+         
+         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+         
+         [alertController addAction:okAction];
+         
+         [self presentViewController:alertController animated:YES completion:nil];
+         
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         
+         NSString *msg;
+         UIAlertController *alertController;
+         
+         if ([operation.response statusCode] == 400) {
+             
+             if ([operation.responseObject[@"error"] isEqualToString:@"Friend request already sent."]) {
+                 
+                 msg = [NSString stringWithFormat:@"Friend request to %@ has already been sent and is waiting for approval.", username];
+                 alertController = [UIAlertController alertControllerWithTitle:@"Already Sent" message:msg preferredStyle:UIAlertControllerStyleAlert];
+                 
+                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                 
+                 [alertController addAction:okAction];
+             
+             } else if ([operation.responseObject[@"error"] isEqualToString:@"User already a friend."]) {
+                 
+                 msg = [NSString stringWithFormat:@"You are already friends with %@.", username];
+                 alertController = [UIAlertController alertControllerWithTitle:@"Already a Friend" message:msg preferredStyle:UIAlertControllerStyleAlert];
+                 
+                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                 
+                 [alertController addAction:okAction];
+
+             } else if ([operation.responseObject[@"error"] isEqualToString:@"Cannot add yourself."]) {
+                 
+                 msg = @"You cannot add yourself as a friend.";
+                 alertController = [UIAlertController alertControllerWithTitle:@"Not Allowed" message:msg preferredStyle:UIAlertControllerStyleAlert];
+                 
+                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                 
+                 [alertController addAction:okAction];
+             
+             } else {
+                 
+                 msg = @"Please Try Again.";
+                 alertController = [UIAlertController alertControllerWithTitle:@"Invalid Request" message:msg preferredStyle:UIAlertControllerStyleAlert];
+                 
+                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                 
+                 [alertController addAction:okAction];
+             }
+         
+         } else if ([operation.response statusCode] == 404) {
+             
+             msg = [NSString stringWithFormat:@"User with that username (%@) not found.", username];
+             alertController = [UIAlertController alertControllerWithTitle:@"User Not Found" message:msg preferredStyle:UIAlertControllerStyleAlert];
+             
+             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+             
+             [alertController addAction:okAction];
+         
+         } else {
+             
+             msg = @"Sorry, something went wrong and the friend request couldn't be sent. Please try again.";
+             alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:msg preferredStyle:UIAlertControllerStyleAlert];
+             
+             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+             
+             [alertController addAction:okAction];
+         
+         }
+         
+         [MBProgressHUD hideHUDForView:self.view animated:YES];
+         
+         [self presentViewController:alertController animated:YES completion:nil];
+     }];
 }
 
 #pragma mark - UITextFieldDelegate protocol methods
