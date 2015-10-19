@@ -229,7 +229,7 @@
                                                 <constraint firstAttribute="width" constant="44" id="CKl-5J-TeQ"/>
                                                 <constraint firstAttribute="height" constant="44" id="XnB-Nj-aE2"/>
                                             </constraints>
-                                            <state key="normal" backgroundImage="settings"/>
+                                            <state key="normal" backgroundImage="gear"/>
                                             <connections>
                                                 <segue destination="mjT-jU-6gf" kind="presentation" id="VCC-yu-U7N"/>
                                             </connections>
@@ -1124,11 +1124,11 @@
                                 <exclude reference="n8x-bK-7Cs"/>
                                 <exclude reference="5kh-Yr-9du"/>
                                 <exclude reference="8Hc-ad-qyB"/>
-                                <exclude reference="AAr-H3-KlX"/>
-                                <exclude reference="LrF-vL-fUq"/>
                                 <exclude reference="5Tk-iN-w5r"/>
                                 <exclude reference="Z63-Yb-BuG"/>
                                 <exclude reference="kSH-Pn-TFF"/>
+                                <exclude reference="AAr-H3-KlX"/>
+                                <exclude reference="LrF-vL-fUq"/>
                                 <exclude reference="9xp-JL-CdI"/>
                                 <exclude reference="GxW-8i-aii"/>
                                 <exclude reference="ROx-TS-9LH"/>
@@ -1156,7 +1156,7 @@
     <resources>
         <image name="Facebook.png" width="100" height="100"/>
         <image name="chat" width="33" height="30"/>
-        <image name="phone" width="64" height="64"/>
-        <image name="settings" width="33" height="32"/>
+        <image name="gear" width="33" height="33"/>
+        <image name="phone" width="33" height="32"/>
     </resources>
 </document>
