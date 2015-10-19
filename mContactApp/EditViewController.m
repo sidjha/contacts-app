@@ -198,8 +198,6 @@
         
         if (task.error) {
             
-            NSLog(@"%@", task.error);
-            
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Upload Failed" message:@"Sorry, something went wrong and we couldn't upload your image. Please try again." preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -231,16 +229,16 @@
      };
      
      [expression setValue:@"AWSS3ObjectCannedACLPublicRead" forRequestParameter:@"ACL"];
-     NSLog(@"Expression RP: %@", expression.requestParameters);
+
      
      AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
      dispatch_async(dispatch_get_main_queue(), ^{
      if (error) {
-     NSLog(@"Error: %@", error);
+
      } else {
-     NSLog(@"Upload successful.");
+   
      _updatedProfileImgURL = [NSString stringWithFormat:@"http://s3.amazonaws.com/favor8-bucket-2/%@", objectKey];
-     NSLog(@"New profile image: %@", _updatedProfileImgURL);
+    
      }
      });
      };
@@ -250,10 +248,10 @@
      
      [[transferUtility uploadData:imageData bucket:@"favor8-bucket-2" key:objectKey contentType:@"image/jpeg" expression:expression completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
      if (task.error) {
-     NSLog(@"Error: %@", task.error);
+     
      }
      if (task.exception) {
-     NSLog(@"Exception: %@", task.exception);
+
      }
      if (task.result) {
      AWSS3TransferUtilityUploadTask *uploadTask = task.result;
@@ -337,7 +335,6 @@
     // Make the request
     [manager
      POST:URLString parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject){
-         NSLog(@"/users/update response data: %@", responseObject);
          
          NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
          NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
@@ -360,7 +357,8 @@
          
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          
-         NSLog(@"Error: %@", error);
+         // TODO: show an error message
+         
          [MBProgressHUD hideHUDForView:self.view animated:YES];
      }];
     

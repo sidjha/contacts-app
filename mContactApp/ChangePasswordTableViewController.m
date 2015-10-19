@@ -105,10 +105,11 @@
              NSString *alertTitle;
              // show appropriate error message based on response code
              if ([operation.response statusCode] == 400) {
+                 
                  alertTitle = @"Incorrect Password";
                  alertMsg = @"That's not the correct current password.";
              } else {
-                 NSLog(@"Error: %@", error);
+
                  alertTitle = @"Oops..";
                  alertMsg = @"Sorry, we couldn't update your password because something went wrong.";
              }

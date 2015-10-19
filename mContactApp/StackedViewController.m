@@ -192,8 +192,6 @@
 
 - (IBAction)editButtonPressed:(id)sender {
     
-    NSLog(@"Edit button pressed");
-    
 }
 
 - (IBAction)socialButtonPressed:(id)sender {
@@ -285,8 +283,6 @@
                      
                      */
                     
-                    NSLog(@"Couldn't open URL: %@", url);
-                    
                     NSDictionary *iTunesIDs = @{
                                                 @"Instagram":[NSNumber numberWithInt:389801252],
                                                 @"Facebook": [NSNumber numberWithInt:284882215],
@@ -311,9 +307,6 @@
                             
                             [self presentViewController:storeVC animated:YES completion:nil];
                             
-                        } else {
-                            
-                            NSLog(@"Error: %@", error);
                         }
                     }];
                 }

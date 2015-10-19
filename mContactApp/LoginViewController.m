@@ -73,7 +73,6 @@
     // Make the request
     [manager
      POST:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
-         NSLog(@"/users/login response data: %@", responseObject);
          [MBProgressHUD hideHUDForView:self.view animated:YES];
          
          // TODO: save the auth token more securely in Keychain
