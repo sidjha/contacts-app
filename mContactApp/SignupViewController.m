@@ -23,6 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSMutableAttributedString * str = [[NSMutableAttributedString alloc] initWithString:@"By signing up, you agree to our terms and privacy policy."];
+    [str addAttribute: NSLinkAttributeName value: @"http://www.google.com" range: NSMakeRange(32, 5)];
+    [str addAttribute: NSLinkAttributeName value: @"http://www.google.com" range: NSMakeRange(42, 14)];
+    self.disclaimerTextView.attributedText = str;
+    [self.disclaimerTextView setTextAlignment:NSTextAlignmentCenter];
+    
     [self.usernameField becomeFirstResponder];
     
     self.usernameField.delegate = self;

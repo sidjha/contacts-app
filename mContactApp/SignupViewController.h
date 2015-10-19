@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UIButton *signupButton;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UITextView *disclaimerTextView;
 
 - (IBAction)signupButtonPressed:(id)sender;
 
