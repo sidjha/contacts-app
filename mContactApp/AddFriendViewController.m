@@ -77,7 +77,7 @@
 }
 
 - (IBAction)addFriendbyCodeUpload:(id)sender {
- 
+    
 }
 /** Gets any incoming friend requests from the server
  * in the background, and updates the badge on View Friend Requests
@@ -86,7 +86,7 @@
 - (void) getIncomingRequests {
     
     NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
- 
+    
     // do this on the background queue
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
@@ -110,16 +110,16 @@
              self.incomingFriendRequests = responseObject[@"incoming_requests"];
              
              if ([responseObject[@"incoming_requests"] count] > 0) {
-                  [self.viewRequestsButton setTitle:[NSString stringWithFormat:@"View Friend Requests (%lu)", [responseObject[@"incoming_requests"] count]] forState:UIControlStateNormal];
+                 [self.viewRequestsButton setTitle:[NSString stringWithFormat:@"View Friend Requests (%lu)", [responseObject[@"incoming_requests"] count]] forState:UIControlStateNormal];
              }
              
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              
-            // Do nothing
+             // Do nothing
              
          }];
     });
-
+    
 }
 
 /** Sends a friend request to a user
@@ -150,7 +150,7 @@
     // Make the request
     [manager
      POST:URLString parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject){
-
+         
          [MBProgressHUD hideHUDForView:self.view animated:YES];
          
          NSString *msg = [NSString stringWithFormat:@"Friend request to %@ sent.", username];
@@ -179,7 +179,7 @@
                  UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                  
                  [alertController addAction:okAction];
-             
+                 
              } else if ([operation.responseObject[@"error"] isEqualToString:@"User already a friend."]) {
                  
                  msg = [NSString stringWithFormat:@"You are already friends with %@.", username];
@@ -188,7 +188,7 @@
                  UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                  
                  [alertController addAction:okAction];
-
+                 
              } else if ([operation.responseObject[@"error"] isEqualToString:@"Cannot add yourself."]) {
                  
                  msg = @"You cannot add yourself as a friend.";
@@ -197,7 +197,7 @@
                  UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                  
                  [alertController addAction:okAction];
-             
+                 
              } else {
                  
                  msg = @"Please Try Again.";
@@ -207,7 +207,7 @@
                  
                  [alertController addAction:okAction];
              }
-         
+             
          } else if ([operation.response statusCode] == 404) {
              
              msg = [NSString stringWithFormat:@"User with that username (%@) not found.", username];
@@ -216,7 +216,7 @@
              UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
              
              [alertController addAction:okAction];
-         
+             
          } else {
              
              msg = @"Sorry, something went wrong and the friend request couldn't be sent. Please try again.";
@@ -225,7 +225,7 @@
              UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
              
              [alertController addAction:okAction];
-         
+             
          }
          
          [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -247,7 +247,7 @@
     }
     
     NSMutableCharacterSet *allowedChars = [NSMutableCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyz0123456789_.-"];
-        
+    
     if ([string rangeOfCharacterFromSet:[allowedChars invertedSet]].location != NSNotFound) {
         return NO;
     }
@@ -267,7 +267,7 @@
     
     if ([segue.identifier isEqualToString:@"viewFriendRequestsSegue"]) {
         UINavigationController *navVC = (UINavigationController *) segue.destinationViewController;
-
+        
         FriendRequestsTableViewController *friendRequestsTVC = [navVC.viewControllers objectAtIndex:0];
         
         friendRequestsTVC.requests = self.incomingFriendRequests;
@@ -281,14 +281,14 @@
 - (void) friendRequestsController:(FriendRequestsTableViewController *)controller didApproveRequest:(NSString *)username {
     
     [self addNewFriend:username];
-   // [self getIncomingRequests];
+    // [self getIncomingRequests];
     
 }
 
 - (void) friendRequestsController:(FriendRequestsTableViewController *)controller didIgnoreRequest:(NSString *)username {
     
     [self ignoreFriendRequest:username];
-   // [self getIncomingRequests];
+    // [self getIncomingRequests];
     
 }
 
@@ -328,7 +328,7 @@
              // Do nothing
              
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-
+             
              NSString *msg = [NSString stringWithFormat:@"Sorry, something went wrong and we could not add %@.", username];
              UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:msg preferredStyle:UIAlertControllerStyleAlert];
              

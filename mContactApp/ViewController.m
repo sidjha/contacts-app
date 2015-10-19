@@ -14,8 +14,8 @@
 
 @implementation ViewController
 
-    CGFloat screenWidth;
-    CGFloat screenHeight;
+CGFloat screenWidth;
+CGFloat screenHeight;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

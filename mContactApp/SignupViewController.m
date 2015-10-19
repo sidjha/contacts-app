@@ -43,7 +43,7 @@
     
     // Show a progress HUD
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
- 
+    
     NSString *username = _usernameField.text;
     NSString *password = _passwordField.text;
     NSString *name = _nameField.text;
@@ -71,7 +71,7 @@
          NSString *savedVal = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
          
          StackedViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"card"];
-        
+         
          [MBProgressHUD hideHUDForView:self.view animated:YES];
          [self presentViewController:controller animated:YES completion:nil];
          
@@ -153,7 +153,7 @@
         if ([textField.text isEqualToString:trimmedStr]) {
             return NO;
         }
-
+        
         NSMutableCharacterSet *allowedChars = [NSMutableCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyz0123456789_.-"];
         
         if ([string rangeOfCharacterFromSet:[allowedChars invertedSet]].location != NSNotFound) {
@@ -161,7 +161,7 @@
         }
         
         return YES;
-    
+        
     } else if (textField.tag == 1) {
         
         // if password, don't allow whitespaces

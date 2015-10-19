@@ -35,8 +35,8 @@
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     NSMutableDictionary *accountHandle = [NSMutableDictionary dictionaryWithDictionary:@{
-                                            _titleLabel.text : _accountHandleTextField.text
-                                            }];
+                                                                                         _titleLabel.text : _accountHandleTextField.text
+                                                                                         }];
     [self.delegate socialEditViewController:self didFinishUpdatingAccount:accountHandle];
 }
 
@@ -73,11 +73,11 @@
     if ([_accountLabelStr isEqualToString:@"WhatsApp"]) {
         
         allowedChars = [NSMutableCharacterSet characterSetWithCharactersInString:@"01234567890+-"];
-    
+        
     } else if ([_accountLabelStr isEqualToString:@"Snapchat"]) {
         
         allowedChars = [NSMutableCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_.-"];
-    
+        
     } else {
         
         allowedChars = [NSMutableCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_."];
@@ -98,13 +98,13 @@
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

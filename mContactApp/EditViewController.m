@@ -33,7 +33,7 @@
     if (![_card[@"status"] isEqualToString:@""]) {
         [self.statusField setText:_card[@"status"]];
     } else {
-         // TODO: Add a placeholder for textview instead
+        // TODO: Add a placeholder for textview instead
         [self.statusField setText:@"A simple status placeholder will go here."];
     }
     
@@ -49,11 +49,11 @@
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         UIImage *image = [UIImage imageWithData:imageData];
         self.profileImage.image = image;
-
+        
     } else {
         // TODO: initialize imageView with placeholder image
     }
-
+    
     UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapDetected)];
     singleTapOnImage.numberOfTapsRequired = 1;
     self.profileImage.userInteractionEnabled = YES;
@@ -65,9 +65,9 @@
     self.socialLinks = [[NSMutableDictionary alloc] initWithDictionary:_card[@"social_links"] copyItems:YES];
     
     self.links = [[NSMutableArray alloc]initWithObjects:
-              @"Facebook",@"Instagram",
-              @"Twitter",@"Snapchat",@"WhatsApp",
-              @"LinkedIn",@"FB Messenger", nil];
+                  @"Facebook",@"Instagram",
+                  @"Twitter",@"Snapchat",@"WhatsApp",
+                  @"LinkedIn",@"FB Messenger", nil];
     
     
     self.linkImages = [[NSMutableArray alloc]initWithObjects:
@@ -219,7 +219,7 @@
 }
 
 - (void) uploadToS3UsingTransferUtility {
-
+    
     /*
      AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
      expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
@@ -229,16 +229,16 @@
      };
      
      [expression setValue:@"AWSS3ObjectCannedACLPublicRead" forRequestParameter:@"ACL"];
-
+     
      
      AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
      dispatch_async(dispatch_get_main_queue(), ^{
      if (error) {
-
+     
      } else {
-   
+     
      _updatedProfileImgURL = [NSString stringWithFormat:@"http://s3.amazonaws.com/favor8-bucket-2/%@", objectKey];
-    
+     
      }
      });
      };
@@ -251,7 +251,7 @@
      
      }
      if (task.exception) {
-
+     
      }
      if (task.result) {
      AWSS3TransferUtilityUploadTask *uploadTask = task.result;
@@ -351,9 +351,9 @@
          
          _card = [NSMutableDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
          
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+         [MBProgressHUD hideHUDForView:self.view animated:YES];
          
-        [self dismissViewControllerAnimated:YES completion:nil];
+         [self dismissViewControllerAnimated:YES completion:nil];
          
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          
@@ -454,7 +454,7 @@
         BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
         
         return newLength <= MAXLENGTH || returnKey;
-
+        
     } else {
         // Limit phone number entry to only phone numbers
         NSMutableCharacterSet *allowedChars = [NSMutableCharacterSet characterSetWithCharactersInString:@"+-1234567890 "];

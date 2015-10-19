@@ -74,7 +74,7 @@
     [super viewWillAppear:animated];
     
     self.failedRequestCount = 0;
-
+    
     // Retrieve user's card and friends' cards from server
     [self getMyCard];
     
@@ -159,14 +159,14 @@
     [self.collectionView addSubview:_refreshControl];
     
     
-     _requestStatus = [[UILabel alloc] init];
-     _requestStatus.frame = CGRectMake(120, 25, 160, 30);
-     _requestStatus.text = @"Getting cards from server";
-     _requestStatus.font = [UIFont systemFontOfSize:13.0 weight:UIFontWeightMedium];
-     [_requestStatus setTextColor:[UIColor whiteColor]];
-     [_requestStatus setTextAlignment:NSTextAlignmentCenter];
+    _requestStatus = [[UILabel alloc] init];
+    _requestStatus.frame = CGRectMake(120, 25, 160, 30);
+    _requestStatus.text = @"Getting cards from server";
+    _requestStatus.font = [UIFont systemFontOfSize:13.0 weight:UIFontWeightMedium];
+    [_requestStatus setTextColor:[UIColor whiteColor]];
+    [_requestStatus setTextAlignment:NSTextAlignmentCenter];
     
-     [self.view addSubview:_requestStatus];
+    [self.view addSubview:_requestStatus];
     
     /*
      _refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -531,7 +531,7 @@
              
              [self getFriendsCards];
          } else {
-    
+             
              [_requestStatus setText:@"Pull down to refresh"];
          }
      }];
