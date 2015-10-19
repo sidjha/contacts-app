@@ -126,6 +126,8 @@
     
     UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
     
+    //[plusButton setBackgroundImage:[UIImage imageNamed:@"people"] forState:UIControlStateNormal];
+    
     plusButton.frame = CGRectMake(screenWidth-38, 25, 30, 30);
     [plusButton setTintColor:[UIColor whiteColor]];
     
