@@ -1050,10 +1050,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Adv-gh-ty1">
-                                <rect key="frame" x="264" y="319" width="40" height="32"/>
+                                <rect key="frame" x="264" y="319" width="45" height="32"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Login">
+                                <state key="normal" title="Login.">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1086,7 +1086,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="tintColor" red="0.9999127984046936" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="SIGNUP">
+                                <state key="normal" title="SIGN UP">
                                     <color key="titleColor" red="0.9999127984046936" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -1096,6 +1096,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="By signing up, you agree to our terms of use and privacy policy." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oPg-fE-5O9">
                                 <rect key="frame" x="20" y="365" width="374" height="50"/>
                                 <animations/>
+                                <color key="tintColor" red="0.38414278626441956" green="0.45295840501785278" blue="0.84486162662506104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0D2-Lg-uC7"/>
                                 </constraints>
