@@ -82,7 +82,7 @@
          [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"favor8UserID"];
          [[NSUserDefaults standardUserDefaults] synchronize];
          
-         NSString *savedVal = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8UserID"];
+         [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8UserID"];
          
          StackedViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"card"];
          

@@ -42,7 +42,7 @@
     [self.view endEditing:YES];
     
     // Show a progress HUD
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     NSString *username = _usernameField.text;
     NSString *password = _passwordField.text;
@@ -68,7 +68,7 @@
          [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"favor8UserID"];
          [[NSUserDefaults standardUserDefaults] synchronize];
          
-         NSString *savedVal = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
+         [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
          
          StackedViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"card"];
          

@@ -708,9 +708,6 @@
         EditViewController *editVC = (EditViewController *)[segue destinationViewController];
         editVC.delegate = self;
         editVC.card = _myCard;
-    } else if ([segue.identifier isEqualToString:@"settingsSegue"]) {
-        SettingsTableViewController *settingsVC = (SettingsTableViewController *)[segue destinationViewController];
-        // pass the user object to settings
     }
 }
 

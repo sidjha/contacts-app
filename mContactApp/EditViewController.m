@@ -115,6 +115,8 @@
             
             imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
             imgPicker.modalPresentationStyle = UIModalPresentationPopover;
+            imgPicker.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
+
             [self presentViewController:imgPicker animated:YES completion:nil];
         }]];
     }
