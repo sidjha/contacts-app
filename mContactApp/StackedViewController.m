@@ -592,7 +592,10 @@
         } failure:nil];
         
     } else {
-        // initialize imageView with placeholder image
+        [cell.profileImageView setClipsToBounds:YES];
+        [cell.profileImageView setContentMode:UIViewContentModeScaleAspectFill];
+
+        cell.profileImageView.image = [UIImage imageNamed:@"placeholder"];
     }
     
     cell.title = card[@"name"];

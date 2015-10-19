@@ -51,7 +51,7 @@
         self.profileImage.image = image;
         
     } else {
-        // TODO: initialize imageView with placeholder image
+        self.profileImage.image = [UIImage imageNamed:@"profile_img_placeholder"];
     }
     
     UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapDetected)];

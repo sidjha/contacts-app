@@ -106,10 +106,10 @@
 		6347324F1B7B1623009B0D3B /* mContactApp */ = {
 			isa = PBXGroup;
 			children = (
-				6347325A1B7B1623009B0D3B /* Main.storyboard */,
 				EB9F6ADC1B9BF4B1007CEEEE /* StackedCollectionViewCell.h */,
 				EB9F6ADD1B9BF4B1007CEEEE /* StackedCollectionViewCell.m */,
 				EB9F6ABB1B9B7AD5007CEEEE /* StackedViewController.h */,
+				6347325A1B7B1623009B0D3B /* Main.storyboard */,
 				EB9F6ABC1B9B7AD5007CEEEE /* StackedViewController.m */,
 				EB3FB4A11B9692C100B11FCE /* LoginViewController.h */,
 				EB3FB4A21B9692C100B11FCE /* LoginViewController.m */,
