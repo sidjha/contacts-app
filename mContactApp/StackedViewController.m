@@ -72,6 +72,9 @@
 - (void) viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
+    
+    self.failedRequestCount = 0;
+
     // Retrieve user's card and friends' cards from server
     [self getMyCard];
     
@@ -155,15 +158,17 @@
     //self.collectionView.alwaysBounceVertical = YES;
     [self.collectionView addSubview:_refreshControl];
     
-    /*
+    
      _requestStatus = [[UILabel alloc] init];
-     _requestStatus.frame = CGRectMake(120, 25, 120, 30);
-     _requestStatus.text = @"Getting cards...";
-     _requestStatus.font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightMedium];
+     _requestStatus.frame = CGRectMake(120, 25, 160, 30);
+     _requestStatus.text = @"Getting cards from server";
+     _requestStatus.font = [UIFont systemFontOfSize:13.0 weight:UIFontWeightMedium];
      [_requestStatus setTextColor:[UIColor whiteColor]];
-     
+     [_requestStatus setTextAlignment:NSTextAlignmentCenter];
+    
      [self.view addSubview:_requestStatus];
-     
+    
+    /*
      _refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
      _refreshButton.frame = CGRectMake(260, 25, 30, 30);
      _refreshButton.titleLabel.font = [UIFont systemFontOfSize:16.0];
@@ -388,7 +393,8 @@
     // Make the request
     [manager
      GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
-         //NSLog(@"/users/show response data: %@", responseObject);
+         
+         self.failedRequestCount = 0;
          
          NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
          NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
@@ -417,14 +423,25 @@
              [_cards addObject:card];
          }
          
+         [self.collectionView reloadData];
+         
          [self getFriendsCards];
          
          
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         _requestStatus.text = @"";
-         NSLog(@"Error: %@", error);
          
+         [_refreshControl endRefreshing];
          
+         self.failedRequestCount++;
+         
+         // try to get cards only once more, otherwise, show hint
+         if (self.failedRequestCount < 2) {
+             
+             [self getMyCard];
+         } else {
+             
+             [_requestStatus setText:@"Pull down to refresh"];
+         }
      }];
 }
 
@@ -449,14 +466,14 @@
     [manager
      GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
          
+         self.failedRequestCount = 0;
+         
          UIFont *font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightMedium];
          _attributedString = [[NSMutableAttributedString alloc] initWithString:@"Pull to Refresh"];
          [_attributedString addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, [_attributedString length])];
          [_attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, [_attributedString length])];
          
          [_refreshControl setAttributedTitle:_attributedString];
-         
-         //NSLog(@"/friends/list response data: %@", responseObject);
          
          for (NSInteger j = 0; j < [[responseObject valueForKey:@"friends"] count]; j++) {
              
@@ -507,12 +524,23 @@
          }
          
          [_refreshControl endRefreshing];
+         [_requestStatus setHidden:YES];
+         
          [self.collectionView reloadData];
          
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"Error: %@", error);
+         
          [_refreshControl endRefreshing];
          
+         self.failedRequestCount++;
+         
+         if (self.failedRequestCount < 2) {
+             
+             [self getFriendsCards];
+         } else {
+    
+             [_requestStatus setText:@"Pull down to refresh"];
+         }
      }];
 }
 

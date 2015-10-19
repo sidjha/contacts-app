@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
+
 #import <AWSCore/AWSCore.h>
 #import <AWSS3/AWSS3.h>
+
+#import "AFNetworkActivityIndicatorManager.h"
 
 @interface AppDelegate ()
 
@@ -36,6 +39,8 @@
     AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];
     
     AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;
+    
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
     return YES;
 }
