@@ -48,11 +48,11 @@
         if (indexPath.row == 0) {
             
             // Show Privacy Policy
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://google.com"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://mesh8.co/favor8/privacy"]];
         } else {
             
             // Show Terms of Use
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://google.com"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://mesh8.co/favor8/terms"]];
         }
     }
     
