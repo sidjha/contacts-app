@@ -18,7 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction:)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction:)];
+    
+    [doneButton setTintColor:[UIColor colorWithRed:0.41 green:0.40 blue:0.85 alpha:1.0]];
+    
+    self.navigationItem.rightBarButtonItem = doneButton;
     
 }
 

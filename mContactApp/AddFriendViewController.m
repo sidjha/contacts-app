@@ -30,6 +30,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.addByUsernameButton.layer setBorderWidth:1.0];
+    [self.addByUsernameButton.layer setBorderColor:[UIColor colorWithRed:0.41 green:0.40 blue:0.85 alpha:1.0].CGColor];
+    [self.addByUsernameButton.layer setCornerRadius:5.0];
 }
 
 - (void)didReceiveMemoryWarning {

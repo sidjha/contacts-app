@@ -26,8 +26,13 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction:)];
-    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction:)];
+    
+    [doneButton setTintColor:[UIColor colorWithRed:0.41 green:0.40 blue:0.85 alpha:1.0]];
+    
+    [doneButton setEnabled:NO];
+    
+    self.navigationItem.rightBarButtonItem = doneButton;
     
     self.oldPasswordTextField.delegate = self;
     self.updatedPasswordTextFieldFirst.delegate = self;

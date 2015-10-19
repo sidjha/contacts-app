@@ -13,7 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addByUsernameButton;
-@property (weak, nonatomic) IBOutlet UIButton *addByCodeUploadButton;
 @property (weak, nonatomic) IBOutlet UIButton *viewRequestsButton;
 
 @property (strong, nonatomic) NSMutableArray *incomingFriendRequests;

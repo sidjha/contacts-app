@@ -26,7 +26,9 @@
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction:)];
     
-    self.navigationItem.leftBarButtonItem = doneButton;
+    [doneButton setTintColor:[UIColor colorWithRed:0.41 green:0.40 blue:0.85 alpha:1.0]];
+    
+    self.navigationItem.rightBarButtonItem = doneButton;
     
     self.friendRequestsTableView.allowsSelection = NO;
 }
