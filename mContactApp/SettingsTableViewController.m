@@ -49,10 +49,14 @@
             
             // Show Privacy Policy
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://mesh8.co/favor8/privacy"]];
-        } else {
+        } else if (indexPath.row == 1) {
             
             // Show Terms of Use
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://mesh8.co/favor8/terms"]];
+        } else {
+            NSString *urlEmail = @"mailto:favor8.support@mesh8.co?subject=Feedback from Favor8 user&body=Hi team: ";
+            NSString *url = [urlEmail stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+            [[UIApplication sharedApplication]  openURL: [NSURL URLWithString: url]];
         }
     }
     
