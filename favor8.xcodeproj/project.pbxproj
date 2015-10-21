@@ -412,6 +412,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mesh8.mContactApp;
 				PRODUCT_NAME = Favor8;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -428,6 +429,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mesh8.mContactApp;
 				PRODUCT_NAME = Favor8;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
