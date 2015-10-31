@@ -230,13 +230,6 @@
                     
                     stringURL = [NSString stringWithFormat:@"twitter://user?screen_name=%@", handle];
                     
-                } else if ([key isEqualToString:@"Facebook"]) {
-                    
-                    stringURL = @"fb://profile";
-                    
-                    // NOTE: fb://profile/<handle> requires handle to be facebook numeric id
-                    //stringURL = [NSString stringWithFormat:@"fb://profile", handle];
-                    
                 } else if ([key isEqualToString:@"FB Messenger"]) {
                     
                     // NOTE: if there's no user thread with that user, an error message shows up in Messenger

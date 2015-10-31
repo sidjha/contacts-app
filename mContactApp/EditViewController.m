@@ -65,9 +65,9 @@
     self.socialLinks = [[NSMutableDictionary alloc] initWithDictionary:_card[@"social_links"] copyItems:YES];
     
     self.links = [[NSMutableArray alloc]initWithObjects:
-                  @"Facebook",@"Instagram",
+                  @"FB Messenger",@"Instagram",
                   @"Twitter",@"Snapchat",@"WhatsApp",
-                  @"LinkedIn",@"FB Messenger", nil];
+                  @"LinkedIn", nil];
     
     
     self.linkImages = [[NSMutableArray alloc]initWithObjects:
@@ -76,8 +76,7 @@
                        [UIImage imageNamed:@"linkicons/Twitter.png"],
                        [UIImage imageNamed:@"linkicons/Snapchat.png"],
                        [UIImage imageNamed:@"linkicons/Whatsapp.png"],
-                       [UIImage imageNamed:@"linkicons/LinkedIn.png"],
-                       [UIImage imageNamed:@"linkicons/Facebook.png"]
+                       [UIImage imageNamed:@"linkicons/LinkedIn.png"]
                        , nil];
     
     self.socialLinksTableView.separatorColor = [UIColor clearColor];
@@ -525,11 +524,11 @@
         
         NSIndexPath *indexPath = [self.socialLinksTableView indexPathForCell:sender];
         
-        NSString *s = [NSString stringWithFormat:@"Row: %ld", indexPath.row];
+        NSString *s = [NSString stringWithFormat:@"Row: %d", indexPath.row];
         
         SAEditViewController *detailVC = (SAEditViewController *) segue.destinationViewController;
         
-        NSMutableArray *socialLabels = [[NSMutableArray alloc]initWithObjects: @"Facebook", @"Instagram", @"Twitter", @"Snapchat", @"WhatsApp", @"LinkedIn", @"FB Messenger", nil];
+        NSMutableArray *socialLabels = [[NSMutableArray alloc]initWithObjects: @"FB Messenger", @"Instagram", @"Twitter", @"Snapchat", @"WhatsApp", @"LinkedIn", nil];
         
         [detailVC.titleLabel setText:s];
         
