@@ -384,7 +384,7 @@
          
          self.failedRequestCount = 0;
          
-         NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
+         NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img", @"color"];
          NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
          NSMutableArray *objects = [[NSMutableArray alloc]init];
          
@@ -465,7 +465,7 @@
          
          for (NSInteger j = 0; j < [[responseObject valueForKey:@"friends"] count]; j++) {
              
-             NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
+             NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img", @"color"];
              NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
              NSMutableArray *objects = [[NSMutableArray alloc]init];
              
@@ -615,28 +615,39 @@
     
     // Color repository
     NSDictionary *colorDict = @{
-                                @"#95a5a6": [UIColor whiteColor], // Concrete
+                                @"#95A5A6": [UIColor whiteColor], // Concrete
                                 @"#E95E50": [UIColor whiteColor], // alizarin (red) one shade lower.
-                                @"#5856D6": [UIColor whiteColor], // purple .
-                                @"#ecf0f1": [UIColor blackColor], // clouds .
-                                @"#f1c40f": [UIColor blackColor], // sunflower .
-                                @"#e67e22": [UIColor whiteColor], // carrot .
-                                @"#6a76ac": [UIColor whiteColor], // TiVo purple .
+                                @"#6967DA": [UIColor whiteColor], // purple .
+                                @"#ECF0F1": [UIColor blackColor], // clouds .
+                                @"#F1C40F": [UIColor blackColor], // sunflower .
                                 @"#1F1F21": [UIColor whiteColor] //iOS 7 black .
                                 };
     
-    // current color
-    colorDict = @{ @"#6967DA": [UIColor whiteColor]};
+    NSString *bgColor;
     
-    NSArray *colors = [colorDict allKeys];
+    if ([card objectForKey:@"color"]) {
+        bgColor = card[@"color"];
+    } else {
+        bgColor = @"#E95E50"; // default color: red
+    }
     
-    int r = arc4random_uniform((int)[colors count]);
+    //NSArray *colors = [colorDict allKeys];
+    //int r = arc4random_uniform((int)[colors count]);
     
-    UIColor *bg = [self colorFromHexString:colors[r]];
+    // Get a corresponding UIColor for the hex string
+    UIColor *bg = [self colorFromHexString:bgColor];
     
     cell.backgroundColor = bg;
-    [cell changeBG: bg];
-    [cell setColor:colorDict[colors[r]]];
+    [cell changeBG:bg];
+    
+    if (![colorDict objectForKey:bgColor]) {
+        
+        // set card foreground color to white if color not in colorDict
+        [cell setColor:[UIColor whiteColor]];
+
+    } else {
+        [cell setColor:colorDict[bgColor]];
+    }
     
     cell.layer.cornerRadius = 15.0;
     cell.layer.masksToBounds = NO;

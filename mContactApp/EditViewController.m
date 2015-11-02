@@ -80,6 +80,14 @@
                        , nil];
     
     self.socialLinksTableView.separatorColor = [UIColor clearColor];
+
+    self.bgColors = @[@"Purple", @"Red", @"Steel", @"Mustard", @"Black"];
+    
+    if ([self.card objectForKey:@"color"]) {
+        NSString *color = self.card[@"color"];
+        [self.colorPicker selectRow:[self.bgColors indexOfObject:[self colorStringFromHex:color]] inComponent:0 animated:YES];
+    }
+    
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -302,6 +310,13 @@
         _card[@"social_links"] = self.socialLinks;
     }
     
+    NSString *color = self.bgColors[[self.colorPicker selectedRowInComponent:0]];
+    
+    if (![color isEqualToString:_card[@"color"]]) {
+        changed = YES;
+        _card[@"color"] = [self hexStringFromColor:color];
+    }
+    
     if (changed) {
         [self updateMyCard];
     } else {
@@ -337,7 +352,7 @@
     [manager
      POST:URLString parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject){
          
-         NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img"];
+         NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img", @"color"];
          NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
          NSMutableArray *objects = [[NSMutableArray alloc]init];
          
@@ -519,6 +534,30 @@
     return numberOfLines <= 3;
 }
 
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.bgColors count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [self.bgColors objectAtIndex:row];
+}
+
+/*
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (row == 0) {
+        
+    }
+}
+ */
+
 
 - (UIColor *)colorFromHexString:(NSString *)hexString {
     unsigned rgbValue = 0;
@@ -527,6 +566,35 @@
     [scanner scanHexInt:&rgbValue];
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
+
+- (NSString *) colorStringFromHex: (NSString *)hexString {
+    
+    NSDictionary *colorDict = @{
+                                @"#6967DA": @"Purple",
+                                @"#ECF0F1": @"Steel",
+                                @"#F1C40F": @"Mustard",
+                                @"#E95E50": @"Red",
+                                @"#1F1F21": @"Black",
+                                };
+    
+    return [colorDict objectForKey:hexString];
+    
+}
+
+- (NSString *) hexStringFromColor:(NSString *)colorString {
+    
+    // Color repository
+    NSDictionary *colorDict = @{
+                                @"Purple": @"#6967DA",
+                                @"Steel": @"#ECF0F1",
+                                @"Mustard": @"#F1C40F",
+                                @"Red": @"#E95E50",
+                                @"Black": @"#1F1F21",
+                                };
+    
+    return [colorDict objectForKey:colorString];
+}
+
 
 
 #pragma mark - Navigation

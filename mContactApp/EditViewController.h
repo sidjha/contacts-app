@@ -17,7 +17,7 @@
 
 @end
 
-@interface EditViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SAEditViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate>
+@interface EditViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SAEditViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -29,11 +29,13 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UILabel *statusPlaceholder;
+@property (weak, nonatomic) IBOutlet UIPickerView *colorPicker;
 
 @property (strong, nonatomic) NSMutableDictionary *socialLinks;
 @property (strong, nonatomic) NSMutableArray *links;
 @property (strong, nonatomic) NSMutableArray *linkImages;
 @property (strong, nonatomic) NSString *updatedProfileImgURL;
+@property (strong, nonatomic) NSArray *bgColors;
 
 @property (strong, nonatomic) NSMutableDictionary *card;
 
