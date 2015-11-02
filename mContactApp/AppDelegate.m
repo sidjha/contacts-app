@@ -13,6 +13,8 @@
 
 #import "AFNetworkActivityIndicatorManager.h"
 
+#import "StackedViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -45,6 +47,19 @@
     AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;
     
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    
+    // Push StackedViewController on directly if user logged in
+    
+    NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
+
+    if (authToken) {
+        StackedViewController *controller = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"card"];
+        
+        [self.window setRootViewController:controller];
+        
+       // [self presentViewController:controller animated:YES completion:nil];
+
+    }
     
     return YES;
 }
