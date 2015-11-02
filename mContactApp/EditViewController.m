@@ -81,11 +81,18 @@
     
     self.socialLinksTableView.separatorColor = [UIColor clearColor];
 
-    self.bgColors = @[@"Purple", @"Red", @"Steel", @"Mustard", @"Black"];
+    self.bgColors = @[@"Slate Blue", @"Red", @"Pink", @"Yellow", @"Green", @"Grey", @"Black"];
+    
     
     if ([self.card objectForKey:@"color"]) {
         NSString *color = self.card[@"color"];
-        [self.colorPicker selectRow:[self.bgColors indexOfObject:[self colorStringFromHex:color]] inComponent:0 animated:YES];
+        NSString *colorString = [self colorStringFromHex:color];
+        if (colorString) {
+            [self.colorPicker selectRow:[self.bgColors indexOfObject:colorString] inComponent:0 animated:YES];
+        } else {
+            [self.colorPicker selectRow:[self.bgColors indexOfObject:@"Slate Blue"] inComponent:0 animated:YES];
+        }
+        
     }
     
 }
@@ -568,12 +575,14 @@
 }
 
 - (NSString *) colorStringFromHex: (NSString *)hexString {
-    
+
     NSDictionary *colorDict = @{
-                                @"#6967DA": @"Purple",
-                                @"#ECF0F1": @"Steel",
-                                @"#F1C40F": @"Mustard",
+                                @"#6967DA": @"Slate Blue",
                                 @"#E95E50": @"Red",
+                                @"#EF4DB6": @"Pink",
+                                @"#FFCD02": @"Yellow",
+                                @"#27AE60": @"Green",
+                                @"#8E8E93": @"Grey",
                                 @"#1F1F21": @"Black",
                                 };
     
@@ -585,11 +594,13 @@
     
     // Color repository
     NSDictionary *colorDict = @{
-                                @"Purple": @"#6967DA",
-                                @"Steel": @"#ECF0F1",
-                                @"Mustard": @"#F1C40F",
+                                @"Slate Blue": @"#6967DA",
                                 @"Red": @"#E95E50",
-                                @"Black": @"#1F1F21",
+                                @"Pink": @"#EF4DB6",
+                                @"Yellow": @"#FFCD02",
+                                @"Green": @"#27AE60",
+                                @"Grey": @"#8E8E93",
+                                @"Black": @"#1F1F21"
                                 };
     
     return [colorDict objectForKey:colorString];

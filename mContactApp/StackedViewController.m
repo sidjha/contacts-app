@@ -613,14 +613,18 @@
         cell.settingsButton.hidden = true;
     }
     
+    UIColor *black = [self colorFromHexString:@"#101010"];
+    UIColor *white = [self colorFromHexString:@"#FFFFFF"];
+    
     // Color repository
     NSDictionary *colorDict = @{
-                                @"#95A5A6": [UIColor whiteColor], // Concrete
-                                @"#E95E50": [UIColor whiteColor], // alizarin (red) one shade lower.
-                                @"#6967DA": [UIColor whiteColor], // purple .
-                                @"#ECF0F1": [UIColor blackColor], // clouds .
-                                @"#F1C40F": [UIColor blackColor], // sunflower .
-                                @"#1F1F21": [UIColor whiteColor] //iOS 7 black .
+                                @"#E95E50": white, // Red
+                                @"#6967DA": white, // Slate Blue
+                                @"#EF4DB6": white, // Pink
+                                @"#FFCD02": black, // Yellow
+                                @"#27AE60": white, // Green
+                                @"#8E8E93": black, // Grey
+                                @"#1F1F21": white // Black
                                 };
     
     NSString *bgColor;
@@ -628,14 +632,19 @@
     if ([card objectForKey:@"color"]) {
         bgColor = card[@"color"];
     } else {
-        bgColor = @"#E95E50"; // default color: red
+        bgColor = @"#6967DA"; // default color: purple
     }
-    
-    //NSArray *colors = [colorDict allKeys];
-    //int r = arc4random_uniform((int)[colors count]);
     
     // Get a corresponding UIColor for the hex string
     UIColor *bg = [self colorFromHexString:bgColor];
+    
+    
+    /*
+    // For simulating random colors from colorDict, instead:
+    NSArray *colors = [colorDict allKeys];
+    int r = arc4random_uniform((int)[colors count]);
+    bg = [self colorFromHexString:colors[r]];
+    */
     
     cell.backgroundColor = bg;
     [cell changeBG:bg];

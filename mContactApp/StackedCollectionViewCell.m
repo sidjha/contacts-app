@@ -38,8 +38,8 @@
 - (void)setColor:(UIColor *)color {
     
     _color = [color copy];
-    self.nameLabel.textColor = color;
-    self.statusTextView.textColor = color;
+    self.nameLabel.textColor = self.color;
+    self.statusTextView.textColor = self.color;
 }
 
 - (void) setProfileImg:(NSURL *)profileImg {
