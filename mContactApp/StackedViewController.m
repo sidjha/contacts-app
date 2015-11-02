@@ -183,6 +183,13 @@
      
      */
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getMyCard) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void) editViewController:(EditViewController *)controller didFinishUpdatingCard:(NSMutableDictionary *)card {
@@ -352,85 +359,93 @@
 }
 
 - (void) getMyCard {
-    
-    UIFont *font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightMedium];
-    _attributedString = [[NSMutableAttributedString alloc] initWithString:@"Refreshing Cards..."];
-    [_attributedString addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, [_attributedString length])];
-    [_attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, [_attributedString length])];
-    
-    [_refreshControl setAttributedTitle:_attributedString];
-    
-    NSString *userID = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8UserID"];
+
     NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
     
-    // make request to /users/show
-    
-    NSString *URLString = [NSString stringWithFormat:@"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/users/show/%@", userID];
-    
-    // Set headers
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    manager.securityPolicy.allowInvalidCertificates = NO;
-    
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
-    
-    manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
-    
-    // Make the request
-    [manager
-     GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
-         
-         self.failedRequestCount = 0;
-         
-         NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img", @"color"];
-         NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
-         NSMutableArray *objects = [[NSMutableArray alloc]init];
-         
-         NSMutableDictionary *card;
-         
-         for (NSInteger i = 0; i < [keys count]; i++) {
+    if (authToken) {
+        
+        NSString *userID = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8UserID"];
+        
+        UIFont *font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightMedium];
+        _attributedString = [[NSMutableAttributedString alloc] initWithString:@"Refreshing Cards..."];
+        [_attributedString addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, [_attributedString length])];
+        [_attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, [_attributedString length])];
+        
+        [_refreshControl setAttributedTitle:_attributedString];
+        
+        // make request to /users/show
+        
+        NSString *URLString = [NSString stringWithFormat:@"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/users/show/%@", userID];
+        
+        // Set headers
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        
+        manager.securityPolicy.allowInvalidCertificates = NO;
+        
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
+        
+        manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+        
+        // Make the request
+        [manager
+         GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
              
-             if ([responseObject objectForKey:keys[i]]) {
+             self.failedRequestCount = 0;
+             
+             NSArray *keys = @[@"name", @"status", @"social_links", @"username", @"phone", @"profile_img", @"color"];
+             NSMutableArray *matchingKeys = [[NSMutableArray alloc]init];
+             NSMutableArray *objects = [[NSMutableArray alloc]init];
+             
+             NSMutableDictionary *card;
+             
+             for (NSInteger i = 0; i < [keys count]; i++) {
                  
-                 [matchingKeys addObject:keys[i]];
-                 [objects addObject:responseObject[keys[i]]];
+                 if ([responseObject objectForKey:keys[i]]) {
+                     
+                     [matchingKeys addObject:keys[i]];
+                     [objects addObject:responseObject[keys[i]]];
+                 }
              }
-         }
-         
-         card = [NSMutableDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
-         _myCard = card;
-         
-         if ([_cards count] > 0) {
              
-             [_cards replaceObjectAtIndex:0 withObject:card];
+             card = [NSMutableDictionary dictionaryWithObjects:objects forKeys:matchingKeys];
+             _myCard = card;
              
-         } else {
+             if ([_cards count] > 0) {
+                 
+                 [_cards replaceObjectAtIndex:0 withObject:card];
+                 
+             } else {
+                 
+                 [_cards addObject:card];
+             }
              
-             [_cards addObject:card];
-         }
-         
-         [self.collectionView reloadData];
-         
-         [self getFriendsCards];
-         
-         
-     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         
-         [_refreshControl endRefreshing];
-         
-         self.failedRequestCount++;
-         
-         // try to get cards only once more, otherwise, show hint
-         if (self.failedRequestCount < 2) {
+             [self.collectionView reloadData];
              
-             [self getMyCard];
-         } else {
+             [self getFriendsCards];
              
-             [_requestStatus setText:@"Pull down to refresh"];
-         }
-     }];
+             
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             
+             [_refreshControl endRefreshing];
+             
+             self.failedRequestCount++;
+             
+             // try to get cards only once more, otherwise, show hint
+             if (self.failedRequestCount < 2) {
+                 
+                 [self getMyCard];
+             } else {
+                 
+                 [_requestStatus setText:@"Pull down to refresh"];
+             }
+         }];
+        
+    } else {
+        // Hack to remove foreground observer because can't figure out why dealloc isn't called. TODO.
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+    }
 }
 
 - (void) getFriendsCards {
@@ -587,7 +602,7 @@
     } else {
         [cell.profileImageView setClipsToBounds:YES];
         [cell.profileImageView setContentMode:UIViewContentModeScaleAspectFill];
-
+        
         cell.profileImageView.image = [UIImage imageNamed:@"placeholder"];
     }
     
@@ -640,11 +655,11 @@
     
     
     /*
-    // For simulating random colors from colorDict, instead:
-    NSArray *colors = [colorDict allKeys];
-    int r = arc4random_uniform((int)[colors count]);
-    bg = [self colorFromHexString:colors[r]];
-    */
+     // For simulating random colors from colorDict, instead:
+     NSArray *colors = [colorDict allKeys];
+     int r = arc4random_uniform((int)[colors count]);
+     bg = [self colorFromHexString:colors[r]];
+     */
     
     cell.backgroundColor = bg;
     [cell changeBG:bg];
@@ -653,7 +668,7 @@
         
         // set card foreground color to white if color not in colorDict
         [cell setColor:[UIColor whiteColor]];
-
+        
     } else {
         [cell setColor:colorDict[bgColor]];
     }
