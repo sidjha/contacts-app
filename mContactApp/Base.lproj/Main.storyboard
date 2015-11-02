@@ -899,20 +899,30 @@
                                                     <outlet property="delegate" destination="S3k-DT-xzz" id="qSh-Ps-oxx"/>
                                                 </connections>
                                             </tableView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can enter a status here..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQl-bY-nHw">
+                                                <rect key="frame" x="12" y="39" width="386" height="18"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" red="0.9999127984046936" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="xAz-nN-Zks" secondAttribute="trailing" constant="8" id="185-ax-MPQ"/>
+                                            <constraint firstItem="nQl-bY-nHw" firstAttribute="leading" secondItem="kz4-dh-0Da" secondAttribute="leading" constant="12" id="22E-OC-yEb"/>
                                             <constraint firstItem="iks-1F-qel" firstAttribute="top" secondItem="86n-1g-cUf" secondAttribute="bottom" constant="20" id="A8v-v1-1hG"/>
                                             <constraint firstItem="AVW-ZI-Wcy" firstAttribute="top" secondItem="xhq-FV-MI1" secondAttribute="bottom" constant="20" id="BSl-Ao-WSy"/>
                                             <constraint firstItem="xAz-nN-Zks" firstAttribute="top" secondItem="kz4-dh-0Da" secondAttribute="top" id="DBB-g4-jxc"/>
                                             <constraint firstItem="iks-1F-qel" firstAttribute="width" secondItem="xhq-FV-MI1" secondAttribute="width" id="DhY-ew-iBW"/>
                                             <constraint firstItem="iks-1F-qel" firstAttribute="leading" secondItem="kz4-dh-0Da" secondAttribute="leading" id="Ey1-7y-Kwb"/>
                                             <constraint firstAttribute="trailing" secondItem="iks-1F-qel" secondAttribute="trailing" id="Gxo-A3-Q29"/>
+                                            <constraint firstAttribute="trailing" secondItem="nQl-bY-nHw" secondAttribute="trailing" constant="8" id="PVA-Z7-h4D"/>
                                             <constraint firstItem="gL1-hU-i4a" firstAttribute="baseline" secondItem="AVW-ZI-Wcy" secondAttribute="baseline" id="XtP-aH-Pcg"/>
                                             <constraint firstItem="xAz-nN-Zks" firstAttribute="leading" secondItem="kz4-dh-0Da" secondAttribute="leading" constant="12" id="ZCX-F3-KbD"/>
                                             <constraint firstItem="8Bg-94-AAB" firstAttribute="top" secondItem="xAz-nN-Zks" secondAttribute="bottom" constant="8" id="b3f-60-tyc"/>
+                                            <constraint firstItem="nQl-bY-nHw" firstAttribute="top" secondItem="xAz-nN-Zks" secondAttribute="bottom" constant="15" id="bcb-r9-fKq"/>
                                             <constraint firstAttribute="trailing" secondItem="xhq-FV-MI1" secondAttribute="trailing" id="dMj-ds-NOv"/>
                                             <constraint firstAttribute="trailing" secondItem="86n-1g-cUf" secondAttribute="trailing" constant="8" id="eVf-Cv-PUE"/>
                                             <constraint firstItem="AVW-ZI-Wcy" firstAttribute="leading" secondItem="kz4-dh-0Da" secondAttribute="leading" constant="8" id="fuR-Xa-W6D"/>
@@ -968,6 +978,7 @@
                         <outlet property="profileImage" destination="xhq-FV-MI1" id="mcM-IC-aap"/>
                         <outlet property="socialLinksTableView" destination="iks-1F-qel" id="XZD-fo-Hn3"/>
                         <outlet property="statusField" destination="8Bg-94-AAB" id="zR8-0H-aco"/>
+                        <outlet property="statusPlaceholder" destination="nQl-bY-nHw" id="yQa-Nh-eh7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQd-OH-w3Y" userLabel="First Responder" sceneMemberID="firstResponder"/>

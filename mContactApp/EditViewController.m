@@ -31,10 +31,10 @@
     self.nameField.delegate = self;
     
     if (![_card[@"status"] isEqualToString:@""]) {
+        [self.statusPlaceholder setHidden:YES];
         [self.statusField setText:_card[@"status"]];
     } else {
-        // TODO: Add a placeholder for textview instead
-        [self.statusField setText:@"A simple status placeholder will go here."];
+        [self.statusPlaceholder setHidden:NO];
     }
     
     self.statusField.delegate = self;
@@ -482,6 +482,20 @@
         [textField resignFirstResponder];
     }
     return NO; // We do not want UITextField to insert line-breaks.
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [self.statusPlaceholder setHidden:YES];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@""]) {
+        [self.statusPlaceholder setHidden:NO];
+    } else {
+        [self.statusPlaceholder setHidden:YES];
+    }
 }
 
 

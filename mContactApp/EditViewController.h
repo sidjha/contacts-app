@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *socialLinksTableView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UILabel *statusPlaceholder;
 
 @property (strong, nonatomic) NSMutableDictionary *socialLinks;
 @property (strong, nonatomic) NSMutableArray *links;
