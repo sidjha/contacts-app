@@ -15,18 +15,18 @@
 		634732611B7B1623009B0D3B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6347325F1B7B1623009B0D3B /* LaunchScreen.xib */; };
 		637C7D4E1B7DC4CB00E9B855 /* linkicons in Resources */ = {isa = PBXBuildFile; fileRef = 637C7D4D1B7DC4CB00E9B855 /* linkicons */; };
 		637F81221B8713D90021BF65 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 637F81201B8713D90021BF65 /* Model.xcdatamodeld */; };
-		EB08CC8A1BAFD1E3009AD762 /* SocialLinksTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB08CC891BAFD1E3009AD762 /* SocialLinksTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		EB1A0EC01BA2A5FA005F9FF8 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1A0EBF1BA2A5FA005F9FF8 /* EditViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EB08CC8A1BAFD1E3009AD762 /* SocialLinksTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB08CC891BAFD1E3009AD762 /* SocialLinksTableViewCell.m */; };
+		EB1A0EC01BA2A5FA005F9FF8 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1A0EBF1BA2A5FA005F9FF8 /* EditViewController.m */; };
 		EB3FB4A31B9692C100B11FCE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3FB4A21B9692C100B11FCE /* LoginViewController.m */; };
 		EB9F6ABD1B9B7AD5007CEEEE /* StackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6ABC1B9B7AD5007CEEEE /* StackedViewController.m */; };
 		EB9F6ADE1B9BF4B1007CEEEE /* StackedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6ADD1B9BF4B1007CEEEE /* StackedCollectionViewCell.m */; };
-		EBA6B67A1BC7266D0076E80E /* SAEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA6B6791BC7266D0076E80E /* SAEditViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EBA6B67D1BC7A7AD0076E80E /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA6B67C1BC7A7AD0076E80E /* AddFriendViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EBAF4AA41BA298440024DEB8 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF4AA31BA298440024DEB8 /* SignupViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EBBDAA411BCA24250005E486 /* FriendRequestsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBDAA401BCA24250005E486 /* FriendRequestsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EBBDAA441BCA26E30005E486 /* FriendRequestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBDAA431BCA26E30005E486 /* FriendRequestTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		EBE6AB861BD1BC2400942BB7 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE6AB851BD1BC2400942BB7 /* SettingsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EBE6AB891BD1C38600942BB7 /* ChangePasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE6AB881BD1C38600942BB7 /* ChangePasswordTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EBA6B67A1BC7266D0076E80E /* SAEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA6B6791BC7266D0076E80E /* SAEditViewController.m */; };
+		EBA6B67D1BC7A7AD0076E80E /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA6B67C1BC7A7AD0076E80E /* AddFriendViewController.m */; };
+		EBAF4AA41BA298440024DEB8 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF4AA31BA298440024DEB8 /* SignupViewController.m */; };
+		EBBDAA411BCA24250005E486 /* FriendRequestsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBDAA401BCA24250005E486 /* FriendRequestsTableViewController.m */; };
+		EBBDAA441BCA26E30005E486 /* FriendRequestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBDAA431BCA26E30005E486 /* FriendRequestTableViewCell.m */; };
+		EBE6AB861BD1BC2400942BB7 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE6AB851BD1BC2400942BB7 /* SettingsTableViewController.m */; };
+		EBE6AB891BD1C38600942BB7 /* ChangePasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE6AB881BD1C38600942BB7 /* ChangePasswordTableViewController.m */; };
 		FAACFC87C87DFCC373482D47 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49AB772EA34C02137A47776 /* libPods.a */; };
 /* End PBXBuildFile section */
 
