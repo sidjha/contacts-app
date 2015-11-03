@@ -52,4 +52,10 @@
     [self.statusTextView setText:self.status];
 }
 
+- (void) setUsername:(NSString *)username {
+    _username = username;
+    
+    [self.usernameLabel setText:self.username];
+}
+
 @end

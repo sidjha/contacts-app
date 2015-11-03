@@ -613,6 +613,10 @@
         cell.status = card[@"status"];
     }
     
+    if ([card objectForKey:@"username"]) {
+        cell.username = card[@"username"];
+    }
+    
     if (indexPath.row == 0) {
         
         cell.editButton.hidden = false;
