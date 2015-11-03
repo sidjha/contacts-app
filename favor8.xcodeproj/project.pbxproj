@@ -18,6 +18,7 @@
 		EB08CC8A1BAFD1E3009AD762 /* SocialLinksTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB08CC891BAFD1E3009AD762 /* SocialLinksTableViewCell.m */; };
 		EB1A0EC01BA2A5FA005F9FF8 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1A0EBF1BA2A5FA005F9FF8 /* EditViewController.m */; };
 		EB3FB4A31B9692C100B11FCE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3FB4A21B9692C100B11FCE /* LoginViewController.m */; };
+		EB7148111BE899A6009E8D22 /* ForgotPwdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7148101BE899A6009E8D22 /* ForgotPwdTableViewController.m */; };
 		EB9F6ABD1B9B7AD5007CEEEE /* StackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6ABC1B9B7AD5007CEEEE /* StackedViewController.m */; };
 		EB9F6ADE1B9BF4B1007CEEEE /* StackedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9F6ADD1B9BF4B1007CEEEE /* StackedCollectionViewCell.m */; };
 		EBA6B67A1BC7266D0076E80E /* SAEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA6B6791BC7266D0076E80E /* SAEditViewController.m */; };
@@ -52,6 +53,8 @@
 		EB1A0EBF1BA2A5FA005F9FF8 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		EB3FB4A11B9692C100B11FCE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		EB3FB4A21B9692C100B11FCE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		EB71480F1BE899A6009E8D22 /* ForgotPwdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPwdTableViewController.h; sourceTree = "<group>"; };
+		EB7148101BE899A6009E8D22 /* ForgotPwdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPwdTableViewController.m; sourceTree = "<group>"; };
 		EB9F6ABB1B9B7AD5007CEEEE /* StackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackedViewController.h; sourceTree = "<group>"; };
 		EB9F6ABC1B9B7AD5007CEEEE /* StackedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackedViewController.m; sourceTree = "<group>"; };
 		EB9F6ADC1B9BF4B1007CEEEE /* StackedCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackedCollectionViewCell.h; sourceTree = "<group>"; };
@@ -106,10 +109,10 @@
 		6347324F1B7B1623009B0D3B /* favor8 */ = {
 			isa = PBXGroup;
 			children = (
+				6347325A1B7B1623009B0D3B /* Main.storyboard */,
 				EB9F6ADC1B9BF4B1007CEEEE /* StackedCollectionViewCell.h */,
 				EB9F6ADD1B9BF4B1007CEEEE /* StackedCollectionViewCell.m */,
 				EB9F6ABB1B9B7AD5007CEEEE /* StackedViewController.h */,
-				6347325A1B7B1623009B0D3B /* Main.storyboard */,
 				EB9F6ABC1B9B7AD5007CEEEE /* StackedViewController.m */,
 				EB3FB4A11B9692C100B11FCE /* LoginViewController.h */,
 				EB3FB4A21B9692C100B11FCE /* LoginViewController.m */,
@@ -135,6 +138,8 @@
 				EBBDAA401BCA24250005E486 /* FriendRequestsTableViewController.m */,
 				EBBDAA421BCA26E30005E486 /* FriendRequestTableViewCell.h */,
 				EBBDAA431BCA26E30005E486 /* FriendRequestTableViewCell.m */,
+				EB71480F1BE899A6009E8D22 /* ForgotPwdTableViewController.h */,
+				EB7148101BE899A6009E8D22 /* ForgotPwdTableViewController.m */,
 				6347325D1B7B1623009B0D3B /* Images.xcassets */,
 				637C7D4D1B7DC4CB00E9B855 /* linkicons */,
 				6347325F1B7B1623009B0D3B /* LaunchScreen.xib */,
@@ -284,6 +289,7 @@
 				EBA6B67D1BC7A7AD0076E80E /* AddFriendViewController.m in Sources */,
 				EB08CC8A1BAFD1E3009AD762 /* SocialLinksTableViewCell.m in Sources */,
 				EB9F6ABD1B9B7AD5007CEEEE /* StackedViewController.m in Sources */,
+				EB7148111BE899A6009E8D22 /* ForgotPwdTableViewController.m in Sources */,
 				EB1A0EC01BA2A5FA005F9FF8 /* EditViewController.m in Sources */,
 				EBBDAA411BCA24250005E486 /* FriendRequestsTableViewController.m in Sources */,
 				EBBDAA441BCA26E30005E486 /* FriendRequestTableViewCell.m in Sources */,
