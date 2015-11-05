@@ -96,10 +96,16 @@
                                     <segue destination="MWF-Ka-0az" kind="show" id="qxA-VQ-ph4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-l7-tiT">
-                                <rect key="frame" x="146" y="268" width="123" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-l7-tiT">
+                                <rect key="frame" x="139" y="265" width="136" height="28"/>
                                 <animations/>
-                                <state key="normal" title="Forgot Password?"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="FORGOT PASSWORD?">
+                                    <color key="titleColor" red="0.38414278629999998" green="0.45295840500000001" blue="0.84486162659999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="0ud-x5-OFz" kind="presentation" id="foM-IS-dBr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
@@ -107,6 +113,7 @@
                         <constraints>
                             <constraint firstItem="BTE-C7-Spu" firstAttribute="centerX" secondItem="4B0-3h-5L0" secondAttribute="centerX" id="5JV-Db-JBR"/>
                             <constraint firstItem="rGL-l7-tiT" firstAttribute="top" secondItem="PcH-tb-Oj8" secondAttribute="bottom" constant="5" id="Gnz-PR-yuH"/>
+                            <constraint firstItem="rGL-l7-tiT" firstAttribute="centerX" secondItem="4B0-3h-5L0" secondAttribute="centerX" id="McH-bg-VWA"/>
                             <constraint firstItem="BTE-C7-Spu" firstAttribute="leading" secondItem="4B0-3h-5L0" secondAttribute="leadingMargin" id="OLw-Cb-Fah"/>
                             <constraint firstItem="BTE-C7-Spu" firstAttribute="width" secondItem="Uhl-vu-eB1" secondAttribute="width" id="TFl-Nd-WHb"/>
                             <constraint firstItem="7Cf-JX-nah" firstAttribute="top" secondItem="BTE-C7-Spu" secondAttribute="bottom" constant="20" id="Usx-Md-Idh"/>
@@ -158,7 +165,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gBp-l2-QMn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1004" y="2086"/>
+            <point key="canvasLocation" x="-1010" y="2086"/>
         </scene>
         <!--Forgot Password-->
         <scene sceneID="2zp-K3-OnW">
@@ -180,14 +187,28 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jSN-UJ-kmx">
-                                                    <rect key="frame" x="13" y="12" width="388" height="19"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jSN-UJ-kmx">
+                                                    <rect key="frame" x="18" y="12" width="388" height="19"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                    <connections>
+                                                        <action selector="validateUsernameField:" destination="5V1-3m-zVq" eventType="editingChanged" id="Stb-aY-5EN"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="jSN-UJ-kmx" firstAttribute="centerX" secondItem="lrP-iW-R7i" secondAttribute="centerX" id="2FG-ta-eTh"/>
+                                                <constraint firstItem="jSN-UJ-kmx" firstAttribute="leading" secondItem="lrP-iW-R7i" secondAttribute="leadingMargin" constant="10" id="Baw-Hf-y8T"/>
+                                                <constraint firstItem="jSN-UJ-kmx" firstAttribute="centerY" secondItem="lrP-iW-R7i" secondAttribute="centerY" id="gsf-JY-Ppa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="jSN-UJ-kmx" secondAttribute="trailing" id="zRD-xm-66b"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="2FG-ta-eTh"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -198,8 +219,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s72-dx-0bX">
-                                                    <rect key="frame" x="17" y="7" width="370" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s72-dx-0bX">
+                                                    <rect key="frame" x="8" y="7" width="398" height="30"/>
                                                     <animations/>
                                                     <state key="normal" title="Send Verification Code"/>
                                                     <connections>
@@ -208,6 +229,11 @@
                                                 </button>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="s72-dx-0bX" secondAttribute="trailing" id="PAC-hn-07q"/>
+                                                <constraint firstItem="s72-dx-0bX" firstAttribute="centerY" secondItem="6w6-hp-N5w" secondAttribute="centerY" id="lLJ-AF-Evh"/>
+                                                <constraint firstItem="s72-dx-0bX" firstAttribute="leading" secondItem="6w6-hp-N5w" secondAttribute="leadingMargin" id="rMB-Vg-dui"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -222,14 +248,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Verification Code" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4qB-3q-pEZ">
-                                                    <rect key="frame" x="13" y="12" width="388" height="19"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Verification Code" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4qB-3q-pEZ">
+                                                    <rect key="frame" x="18" y="12" width="378" height="19"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next"/>
+                                                    <connections>
+                                                        <action selector="validateVerificationField:" destination="5V1-3m-zVq" eventType="editingChanged" id="IHt-j6-2Qn"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="4qB-3q-pEZ" firstAttribute="centerY" secondItem="XYD-Ig-mHQ" secondAttribute="centerY" id="28v-Qi-tPj"/>
+                                                <constraint firstItem="4qB-3q-pEZ" firstAttribute="leading" secondItem="XYD-Ig-mHQ" secondAttribute="leadingMargin" constant="10" id="9aY-67-tQn"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4qB-3q-pEZ" secondAttribute="trailing" constant="10" id="IoI-yo-hFt"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -244,14 +278,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ywM-aj-cLf">
-                                                    <rect key="frame" x="13" y="12" width="388" height="19"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ywM-aj-cLf">
+                                                    <rect key="frame" x="18" y="12" width="388" height="19"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                                                    <connections>
+                                                        <action selector="validatePasswordField:" destination="5V1-3m-zVq" eventType="editingChanged" id="iYX-CZ-CGx"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="ywM-aj-cLf" firstAttribute="centerY" secondItem="cfx-Nx-RDW" secondAttribute="centerY" id="MDQ-6C-cHz"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ywM-aj-cLf" secondAttribute="trailing" id="ztc-ak-xPm"/>
+                                                <constraint firstItem="ywM-aj-cLf" firstAttribute="leading" secondItem="cfx-Nx-RDW" secondAttribute="leadingMargin" constant="10" id="zzI-cb-j6V"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -262,14 +304,47 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-enter new password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lc7-IN-Ttq">
-                                                    <rect key="frame" x="13" y="12" width="388" height="19"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-enter new password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lc7-IN-Ttq">
+                                                    <rect key="frame" x="18" y="12" width="388" height="19"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
+                                                    <connections>
+                                                        <action selector="validatePasswordField:" destination="5V1-3m-zVq" eventType="editingChanged" id="ezt-sl-gVd"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lc7-IN-Ttq" secondAttribute="trailing" id="cYU-Dg-3Ru"/>
+                                                <constraint firstItem="lc7-IN-Ttq" firstAttribute="leading" secondItem="coe-Ia-Z0J" secondAttribute="leadingMargin" constant="10" id="kzl-F3-ghO"/>
+                                                <constraint firstItem="lc7-IN-Ttq" firstAttribute="centerY" secondItem="coe-Ia-Z0J" secondAttribute="centerY" id="qgc-0i-sJy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="uod-t9-Eb3">
+                                        <rect key="frame" x="0.0" y="532" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uod-t9-Eb3" id="lMf-tQ-OLV">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="El0-rf-5d7">
+                                                    <rect key="frame" x="8" y="7" width="398" height="30"/>
+                                                    <animations/>
+                                                    <state key="normal" title="Reset Password"/>
+                                                    <connections>
+                                                        <action selector="saveNewPassword:" destination="5V1-3m-zVq" eventType="touchUpInside" id="g1y-52-R8q"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="leadingMargin" secondItem="El0-rf-5d7" secondAttribute="leading" id="i3X-x6-hYW"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="El0-rf-5d7" secondAttribute="trailing" id="stO-S8-5kR"/>
+                                                <constraint firstItem="El0-rf-5d7" firstAttribute="centerY" secondItem="lMf-tQ-OLV" secondAttribute="centerY" id="w3e-dX-FdQ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -288,6 +363,7 @@
                     <connections>
                         <outlet property="passwordField1" destination="ywM-aj-cLf" id="hfE-ti-ljo"/>
                         <outlet property="passwordField2" destination="lc7-IN-Ttq" id="il2-h0-ycw"/>
+                        <outlet property="resetPasswordButton" destination="El0-rf-5d7" id="24N-QR-nwK"/>
                         <outlet property="sendVerCodeButton" destination="s72-dx-0bX" id="c6T-bf-fUJ"/>
                         <outlet property="usernameField" destination="jSN-UJ-kmx" id="JLz-T0-xvG"/>
                         <outlet property="vercodeField" destination="4qB-3q-pEZ" id="Ju7-1j-pyp"/>
@@ -1042,8 +1118,8 @@
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="OFF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XS3-Zp-Wg0">
-                                                                    <rect key="frame" x="294" y="24" width="42" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XS3-Zp-Wg0">
+                                                                    <rect key="frame" x="323" y="24" width="42" height="21"/>
                                                                     <animations/>
                                                                     <color key="backgroundColor" red="0.82437020540237427" green="0.82448941469192505" blue="0.82434409856796265" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>

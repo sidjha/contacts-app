@@ -15,7 +15,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *vercodeField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField1;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField2;
+@property (weak, nonatomic) IBOutlet UIButton *resetPasswordButton;
+
+@property (copy, nonatomic) NSString *vercode;
+@property (copy, nonatomic) NSString *username;
 
 - (IBAction)sendVerCode:(id)sender;
+- (IBAction)saveNewPassword:(id)sender;
 
 @end
