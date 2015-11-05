@@ -642,7 +642,7 @@
                                 @"#EF4DB6": white, // Pink
                                 @"#FFCD02": black, // Yellow
                                 @"#27AE60": white, // Green
-                                @"#8E8E93": black, // Grey
+                                @"#8E8E93": white, // Grey
                                 @"#1F1F21": white // Black
                                 };
     
