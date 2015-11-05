@@ -165,7 +165,7 @@
     
     [self uploadImage:imgData];
     
-    //UIImageWriteToSavedPhotosAlbum (chosenImage, nil, nil , nil);
+    UIImageWriteToSavedPhotosAlbum (chosenImage, nil, nil , nil);
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
