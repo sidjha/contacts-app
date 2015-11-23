@@ -213,19 +213,28 @@
         name = card[@"name"];
     }
     
+    NSString *msg;
+    
+    if (name != NULL) {
+        msg = [NSString stringWithFormat:@"Select a channel to reach %@ on", name];
+    } else {
+        msg = @"Select a channel to reach on";
+    }
+    
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Social Links" message:msg preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+
+    if ([card objectForKey:@"phone"]) {
+        [actionSheet addAction:[UIAlertAction actionWithTitle:@"SMS" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSString *stringURL;
+            stringURL = [NSString stringWithFormat:@"sms:%@", card[@"phone"]];
+            NSLog(@"%@", stringURL);
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:stringURL]];
+        }]];
+    }
+    
     if ([card objectForKey:@"social_links"]) {
-        
-        NSString *msg;
-        
-        if (name != NULL) {
-            msg = [NSString stringWithFormat:@"Select a channel to reach %@ on", name];
-        } else {
-            msg = @"Select a channel to reach on";
-        }
-        
-        UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Social Links" message:msg preferredStyle:UIAlertControllerStyleActionSheet];
-        
-        [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
         
         for (id key in card[@"social_links"]) {
             [actionSheet addAction:[UIAlertAction actionWithTitle:key style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -318,7 +327,9 @@
         // Present action sheet.
         [self presentViewController:actionSheet animated:YES completion:nil];
         
-    } else {
+    }
+    
+    else {
         
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Social Links set" message:@"Your friend has not enabled any social links." preferredStyle:UIAlertControllerStyleAlert];
