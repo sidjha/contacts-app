@@ -708,6 +708,10 @@
     
     [self.cards removeObjectAtIndex:fromIndexPath.item];
     [self.cards insertObject:card atIndex:toIndexPath.item];
+    
+    // Make POST request to update friends order on server
+    [self updateFriendOrder];
+    
 }
 
 - (BOOL)canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -732,6 +736,48 @@
     return proposedDestinationIndexPath;
 }
 
+
+/** Reorders the user's friend list on the server
+ * by making a request to /friends/reorder
+ */
+- (void) updateFriendOrder {
+    
+    NSString *authToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8AuthToken"];
+    
+    // new low priority thread to make request
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        NSString *URLString = [NSString stringWithFormat:@"https://favor8api-alpha1.herokuapp.com/favor8/api/v1.0/friends/reorder"];
+        
+        // Set headers
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        
+        manager.securityPolicy.allowInvalidCertificates = NO;
+        
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:authToken password:@"something"];
+        
+        NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+        
+        NSMutableArray *friends = [[NSMutableArray alloc] init];
+        for(NSInteger i = 1; i < [self.cards count]; i++) {
+            [friends addObject:[self.cards objectAtIndex:i][@"username"]];
+        }
+        
+        data[@"friends"] = friends;
+        
+        // Make the request
+        [manager
+         POST:URLString parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject){
+             
+             // Do nothing
+             
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             // Do nothing
+         }];
+    });
+}
 
 
 #pragma mark - Navigation methods
