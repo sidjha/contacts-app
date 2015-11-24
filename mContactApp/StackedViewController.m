@@ -229,7 +229,6 @@
         [actionSheet addAction:[UIAlertAction actionWithTitle:@"SMS" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSString *stringURL;
             stringURL = [NSString stringWithFormat:@"sms:%@", card[@"phone"]];
-            NSLog(@"%@", stringURL);
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:stringURL]];
         }]];
     }
