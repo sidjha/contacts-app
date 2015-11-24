@@ -15,6 +15,8 @@
 
 #import "StackedViewController.h"
 
+#import "Flurry.h"
+
 @interface AppDelegate ()
 
 @end
@@ -47,6 +49,17 @@
     AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;
     
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    
+    
+    // Initialize analytics
+
+    NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8UserID"];
+    
+    if (username) {
+        [Flurry setUserID:username];
+    }
+    
+    [Flurry startSession:@"DCQTDGT92M6CFQQ47SHV"];
     
     // Push StackedViewController on directly if user logged in
     

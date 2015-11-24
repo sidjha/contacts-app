@@ -77,7 +77,7 @@
          
          // TODO: save the auth token more securely in Keychain
          NSString *authToken = responseObject[@"auth_token"];
-         NSString *userID = responseObject[@"user_id"];
+         NSString *userID = responseObject[@"username"];
          [[NSUserDefaults standardUserDefaults] setObject:authToken forKey:@"favor8AuthToken"];
          [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"favor8UserID"];
          [[NSUserDefaults standardUserDefaults] synchronize];

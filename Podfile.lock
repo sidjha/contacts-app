@@ -23,12 +23,14 @@ PODS:
   - AWSCore (2.2.6)
   - AWSS3 (2.2.6):
     - AWSCore (= 2.2.6)
+  - Flurry-iOS-SDK/FlurrySDK (7.3.0)
   - MBProgressHUD (0.9.1)
   - TGLStackedViewController (1.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - AWSS3 (~> 2.2.3)
+  - Flurry-iOS-SDK/FlurrySDK
   - MBProgressHUD (~> 0.9.1)
   - TGLStackedViewController (~> 1.1)
 
@@ -36,6 +38,7 @@ SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   AWSCore: dd05203bf44d45b58b7667754ce4fa6f1bdb1c3e
   AWSS3: a8aeb5f8224236c2b1b46fdab14add3eff971fc4
+  Flurry-iOS-SDK: 054befae0fa0244fb000985bfe757d70f87a9f60
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   TGLStackedViewController: 2edc69ada1f9ed269d982d9936d7ff567890e634
 

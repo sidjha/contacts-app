@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Flurry-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,22 +42,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>223299B824EA0B5369F7C6C0F6FCE660</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>26F802EBF39519C38C07EE385CA8B1F6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2B10DA70810B989EE41AFE80860438EB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3F424DE4C8195FF554DA43D6289C2892</key>
+		<key>37F5E02E966D25BDE15C8FAFAFB31C5D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +52,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7F21A84BBFE1C35DF7A3E3CA3DEE4131</key>
+		<key>60432A8E9CFCC168BB99349842EFA90E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>683B6F85BE0CEA46432F40164CB5302A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7C459FCA8B0A8F90B21DAE24E8E5D2BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9FA085457E0CB1D4348B5A2746C045E3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A77F7C535F9164EBECCDB4470AC3A39F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -25,14 +25,22 @@
 
 #import "StackedViewController.h"
 #import "StackedCollectionViewCell.h"
+
 #import "AFHTTPRequestOperationManager.h"
 #import "AFURLRequestSerialization.h"
+
 #import "MBProgressHUD.h"
+
 #import "EditViewController.h"
 #import "AddFriendViewController.h"
 #import "SettingsTableViewController.h"
+
 #import "UIImageView+AFNetworking.h"
+
 #include <stdlib.h>
+
+#import "Flurry.h"
+
 @import StoreKit;
 
 @interface UIColor (randomColor)
@@ -336,6 +344,8 @@
         [alert addAction:ok];
         [self presentViewController:alert animated:YES completion:nil];
     }
+    
+    [Flurry logEvent:@"Tapped chat icon on card"];
 }
 
 - (IBAction)phoneButtonPressed:(id)sender {
@@ -361,6 +371,8 @@
 
 - (IBAction) pushAddFriendViewController
 {
+    
+    [Flurry logEvent:@"Tapped Add Contact button"];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     AddFriendViewController *addFriendVC = [storyboard instantiateViewControllerWithIdentifier:@"AddFriendViewController.m"];
@@ -722,6 +734,8 @@
     // Make POST request to update friends order on server
     [self updateFriendOrder];
     
+    [Flurry logEvent:@"Reordered card"];
+    
 }
 
 - (BOOL)canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -799,6 +813,8 @@
         EditViewController *editVC = (EditViewController *)[segue destinationViewController];
         editVC.delegate = self;
         editVC.card = _myCard;
+        
+        [Flurry logEvent:@"Entered Edit Mode"];
     }
 }
 
