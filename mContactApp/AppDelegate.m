@@ -53,7 +53,7 @@
     
     // Initialize analytics
 
-    NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8UserID"];
+    NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8Username"];
     
     if (username) {
         [Flurry setUserID:username];

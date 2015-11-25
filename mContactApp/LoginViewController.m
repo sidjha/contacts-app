@@ -77,12 +77,12 @@
          
          // TODO: save the auth token more securely in Keychain
          NSString *authToken = responseObject[@"auth_token"];
-         NSString *userID = responseObject[@"username"];
+         NSString *username = responseObject[@"username"];
+         NSString *userID = responseObject[@"user_id"];
          [[NSUserDefaults standardUserDefaults] setObject:authToken forKey:@"favor8AuthToken"];
          [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"favor8UserID"];
+         [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"favor8Username"];
          [[NSUserDefaults standardUserDefaults] synchronize];
-         
-         [[NSUserDefaults standardUserDefaults] stringForKey:@"favor8UserID"];
          
          StackedViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"card"];
          

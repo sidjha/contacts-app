@@ -76,6 +76,7 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:nil forKey:@"favor8AuthToken"];
         [defaults setObject:nil forKey:@"favor8UserID"];
+        [defaults setObject:nil forKey:@"favor8Username"];
         [defaults synchronize];
         
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
